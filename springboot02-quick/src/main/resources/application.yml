@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+#person:
+#  age: 20
+#  boos: false
+#  birth: 2018/10/06
+#  maps: {k1: v1,k2: v2}
+#  lists:
+#    - lisi
+#    - zhaoliu
+#    - heiqi
+#  dog:
+#    name: 小黄
+#    age: 3
+#  name: zhangsan
