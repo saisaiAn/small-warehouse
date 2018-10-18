@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>确认订单</title>
-    <link rel="stylesheet" type="text/css" href="css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="css/confirm.css"/>
-    <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/loaders.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/loading.css"/>
-	<script src="js/rem.js"></script> 
-    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/confirm.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
+	<script src="/static/before/js/rem.js"></script>
+    <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		sessionStorage.url = "confirm";
 		$(window).load(function(){
@@ -47,7 +47,7 @@
 	    <div class="warp warptwo clearfloat">
 	    	<div class="confirm clearfloat">
 	    		<div class="add clearfloat box-s">
-	    			<a href="address.html">
+	    			<a href="/WEB-INF/views/before/address.jsp">
 		    			<div class="left clearfloat fl">
 		    				<i class="iconfont icon-dizhi1"></i>
 		    			</div>
@@ -67,16 +67,16 @@
 	    		<div class="lie clearfloat">
 					<a href="detail.jsp">
 						<div class="tu clearfloat fl">
-							<img src="images/xj.jpg"/>
+							<img src="/static/before/images/xj.jpg"/>
 						</div>
 					</a>
 					<div class="right clearfloat fl">
-						<a href="detail.jsp">
+						<a href="/WEB-INF/views/before/detail.jsp">
 							<p class="tit over">单反相机，彰显你的风格</p>
 							<p class="fu-tit">颜色：蓝色  内存：120G</p>
 						</a>
 						<div class="xia clearfloat">
-							<a href="detail.jsp">
+							<a href="/WEB-INF/views/before/detail.jsp">
 								<p class="jifen fl over">100000积分</p>
 							</a>
 							<span class="fr db">×1</span>
@@ -88,9 +88,9 @@
 						<p class="fl">购买数量</p>
 			     		<div class="you clearfloat fr">
 			     			<ul>
-			     				<li><img src="images/jian.jpg"/></li>
+			     				<li><img src="/static/before/images/jian.jpg"/></li>
 			     				<li>1</li>
-			     				<li><img src="images/jia.jpg"/></li>
+			     				<li><img src="/static/before/images/jia.jpg"/></li>
 			     			</ul>
 			     		</div>
 					</div>		     		
@@ -149,7 +149,7 @@
 	    	<div class="zuo clearfloat fl box-s">
 	    		共<span>1</span>件  总积分：<span>100000</span>
 	    	</div>
-	    	<a href="zhifu.jsp" class="fl db">
+	    	<a href="/WEB-INF/views/before/zhifu.jsp" class="fl db">
 	    		提交订单
 	    	</a>
 	    </div>
@@ -159,25 +159,25 @@
 	    <footer class="page-footer fixed-footer" id="footer">
 			<ul>
 				<li>
-					<a href="index.jsp">
+					<a href="/WEB-INF/views/before/index.jsp">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
 				<li>
-					<a href="cation.jsp">
+					<a href="/WEB-INF/views/before/cation.jsp">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li class="active">
-					<a href="shopcar.jsp">
+					<a href="/WEB-INF/views/before/shopcar.jsp">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="center.jsp">
+					<a href="/WEB-INF/views/before/center.jsp">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>

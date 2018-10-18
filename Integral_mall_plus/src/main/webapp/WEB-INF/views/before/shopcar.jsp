@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>购物车</title>
-    <link rel="stylesheet" type="text/css" href="css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="css/shopcar.css"/>
-    <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/loaders.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/loading.css"/>
-    <link rel="stylesheet" type="text/css" href="sourse/layer/mobile/need/layer.css">
-    <script src="js/rem.js"></script> 
-    <script src="js/jquery.min.js" type="text/javascript"></script>
-    <script src="sourse/layer/mobile/layer.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/shopcar.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/sourse/layer/mobile/need/layer.css">
+    <script src="/static/before/js/rem.js"></script>
+    <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/before/sourse/layer/mobile/layer.js"></script>
 	<script type="text/javascript">
 		$(window).load(function(){
 			$(".loading").addClass("loader-chanage")
@@ -56,7 +56,7 @@
 	    			<a href="javascript:void(0)">
 		    			<div class="tu clearfloat fl">
 		    				<span></span>
-		    				<img src="images/xj.jpg"/>
+		    				<img src="/static/before/images/xj.jpg"/>
 		    			</div>
 		    			<div class="right clearfloat fl">
 		    				<p class="tit over">单反相机，彰显你的风格</p>
@@ -65,9 +65,9 @@
 		    				<div class="bottom clearfloat">
 		    					<div class="zuo clearfloat fl">
 		    						<ul>
-		    							<li><img src="images/jian.jpg"/></li>
+		    							<li><img src="/static/before/images/jian.jpg"/></li>
 		    							<li>1</li>
-		    							<li><img src="images/jia.jpg"/></li>
+		    							<li><img src="/static/before/images/jia.jpg"/></li>
 		    						</ul>
 		    					</div>
 		    					<i class="iconfont icon-lajixiang fr"></i>
@@ -86,7 +86,7 @@
 	    			<a href="javascript:void(0)">
 		    			<div class="tu clearfloat fl">
 		    				<span></span>
-		    				<img src="images/xj.jpg"/>
+		    				<img src="/static/before/images/xj.jpg"/>
 		    			</div>
 		    			<div class="right clearfloat fl">
 		    				<p class="tit over">单反相机，彰显你的风格</p>
@@ -95,9 +95,9 @@
 		    				<div class="bottom clearfloat">
 		    					<div class="zuo clearfloat fl">
 		    						<ul>
-		    							<li><img src="images/jian.jpg"/></li>
+		    							<li><img src="/static/before/images/jian.jpg"/></li>
 		    							<li>1</li>
-		    							<li><img src="images/jia.jpg"/></li>
+		    							<li><img src="/static/before/images/jia.jpg"/></li>
 		    						</ul>
 		    					</div>
 		    					<i class="iconfont icon-lajixiang fr"></i>
@@ -116,7 +116,7 @@
 	    			<a href="javascript:void(0)">
 		    			<div class="tu clearfloat fl">
 		    				<span></span>
-		    				<img src="images/xj.jpg"/>
+		    				<img src="/static/before/images/xj.jpg"/>
 		    			</div>
 		    			<div class="right clearfloat fl">
 		    				<p class="tit over">单反相机，彰显你的风格</p>
@@ -125,9 +125,9 @@
 		    				<div class="bottom clearfloat">
 		    					<div class="zuo clearfloat fl">
 		    						<ul>
-		    							<li><img src="images/jian.jpg"/></li>
+		    							<li><img src="/static/before/images/jian.jpg"/></li>
 		    							<li>1</li>
-		    							<li><img src="images/jia.jpg"/></li>
+		    							<li><img src="/static/before/images/jia.jpg"/></li>
 		    						</ul>
 		    					</div>
 		    					<i class="iconfont icon-lajixiang fr"></i>
@@ -146,7 +146,7 @@
 	    			<a href="javascript:void(0)">
 		    			<div class="tu clearfloat fl">
 		    				<span></span>
-		    				<img src="images/xj.jpg"/>
+		    				<img src="/static/before/images/xj.jpg"/>
 		    			</div>
 		    			<div class="right clearfloat fl">
 		    				<p class="tit over">单反相机，彰显你的风格</p>
@@ -155,9 +155,9 @@
 		    				<div class="bottom clearfloat">
 		    					<div class="zuo clearfloat fl">
 		    						<ul>
-		    							<li><img src="images/jian.jpg"/></li>
+		    							<li><img src="/static/before/images/jian.jpg"/></li>
 		    							<li>1</li>
-		    							<li><img src="images/jia.jpg"/></li>
+		    							<li><img src="/static/before/images/jia.jpg"/></li>
 		    						</ul>
 		    					</div>
 		    					<i class="iconfont icon-lajixiang fr"></i>
@@ -173,7 +173,7 @@
 	    	<div class="zuo clearfloat fl box-s">
 	    		合计：<span></span>
 	    	</div>
-	    	<a href="confirm.jsp" class="fl db">
+	    	<a href="/WEB-INF/views/before/confirm.jsp" class="fl db">
 	    		立即结算
 	    	</a>
 	    </div>
@@ -183,25 +183,25 @@
 	    <footer class="page-footer fixed-footer" id="footer">
 			<ul>
 				<li>
-					<a href="index.jsp">
+					<a href="/WEB-INF/views/before/index.jsp">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
 				<li>
-					<a href="cation.jsp">
+					<a href="/WEB-INF/views/before/cation.jsp">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li class="active">
-					<a href="shopcar.jsp">
+					<a href="/WEB-INF/views/before/shopcar.jsp">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="center.jsp">
+					<a href="/WEB-INF/views/before/center.jsp">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>

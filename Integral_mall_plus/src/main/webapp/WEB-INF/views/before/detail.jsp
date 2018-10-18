@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>详情页</title>
-    <link rel="stylesheet" type="text/css" href="css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="css/detail.css"/>
-    <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/loaders.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/loading.css"/>
-    <link rel="stylesheet" href="css/swiper.min.css">
-    <script src="js/rem.js"></script> 
-    <script src="js/jquery.min.js" type="text/javascript"></script>
-    <script src="js/others.js"></script>
-	<script src="js/swiper.jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/detail.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
+    <link rel="stylesheet" href="/static/before/css/swiper.min.css">
+    <script src="/static/before/js/rem.js"></script>
+    <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/before/js/others.js"></script>
+	<script src="/static/before/js/swiper.jquery.min.js"></script>
 	<script type="text/javascript">
 		$(window).load(function(){
 			$(".loading").addClass("loader-chanage")
@@ -127,7 +127,7 @@
 			</div>
 			<div class="right clearfloat fl">
 				<span class="btn fl" onClick="toshare()">加入购物车</span>
-				<a href="confirm.jsp" class="btn btnone fl">立即购买</a>
+				<a href="/WEB-INF/views/before/confirm.jsp" class="btn btnone fl">立即购买</a>
 			</div>
 		</div>
 		<!--footerone end-->
@@ -135,14 +135,14 @@
 		<!--弹出购物车内容-->
 		<div class="am-share">
 		    <div class="am-share-footer">
-		        <button class="share_btn"><img src="images/chahao.png" /></button>
+		        <button class="share_btn"><img src="/static/before/images/chahao.png" /></button>
 		    </div>
 		    <div class="am-share-sns box-s">
 		        <div class="sdetail clearfloat">
 		            <div class="top clearfloat">
 		                <div class="tu clearfloat fl">
 		                    <span></span>
-		                    <img src="images/xj2.jpg" />
+		                    <img src="/static/before/images/xj2.jpg" />
 		                </div>
 		                <div class="you clearfloat fl">
 		                    <p class="tit">单反相机</p>
@@ -171,15 +171,15 @@
 		                <p class="fl">购买数量</p>
 		                <div class="you clearfloat fr">
 		                    <ul>
-		                        <li id="down"><img src="images/jian.jpg" /></li>
+		                        <li id="down"><img src="/static/before/images/jian.jpg" /></li>
 		                        <li id="count">1</li>
-		                        <li onclick="document.getElementById('count').innerHTML++"><img src="images/jia.jpg" /></li>
+		                        <li onclick="document.getElementById('count').innerHTML++"><img src="/static/before/images/jia.jpg" /></li>
 		                    </ul>
 		                </div>
 		            </div>
 		        </div>
 		    </div>
-		    <a href="shopcar.jsp" class="shop-btn db">确定</a>
+		    <a href="/WEB-INF/views/before/shopcar.jsp" class="shop-btn db">确定</a>
 		</div>
 		<script type="text/javascript">
 			var down = document.getElementById("down");
@@ -202,25 +202,25 @@
 	    <footer class="page-footer fixed-footer" id="footer">
 			<ul>
 				<li>
-					<a href="index.jsp">
+					<a href="/WEB-INF/views/before/index.jsp">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
 				<li class="active">
-					<a href="cation.jsp">
+					<a href="/WEB-INF/views/before/cation.jsp">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li>
-					<a href="shopcar.jsp">
+					<a href="/WEB-INF/views/before/shopcar.jsp">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="center.jsp">
+					<a href="/WEB-INF/views/before/center.jsp">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>

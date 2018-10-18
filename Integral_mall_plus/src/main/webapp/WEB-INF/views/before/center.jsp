@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <title>会员中心</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <link rel="stylesheet" type="text/css" href="css/center.css" />
-    <link rel="stylesheet" type="text/css" href="css/loaders.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/loading.css"/>
-    <script src="js/rem.js"></script> 
-    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/center.css" />
+    <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
+    <script src="/static/before/js/rem.js"></script>
+    <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         sessionStorage.url = "confirm";
         $(window).load(function(){
@@ -42,7 +42,7 @@
         <a href="">
             <dl>
                 <dt>
-                    <img src="images/user.png" />
+                    <img src="/static/before/images/user.png" />
                 </dt>
                 <dd>
                     <h4>hjl416148489<span>普通会员</span></h4>
@@ -72,7 +72,7 @@
     <div class="vip-club border_top_bottom vip-account">
         <div class="vip-club-title border_bottom">
             <span><i class="iconfont"></i>我的账户</span>
-            <a href="index.jsp">积分兑换商品<i class="iconfont"></i></a>
+            <a href="/WEB-INF/views/before/index.jsp">积分兑换商品<i class="iconfont"></i></a>
         </div>
         <ul>
             <li><a href=""><i class="color_f44623">0</i><p>账户余额</p> </a></li>
@@ -89,7 +89,7 @@
             </li>
             <li class="border_bottom">
                 <a href="" class="border_right"><i class="iconfont" style="font-size:24px;"></i><em>物流查询</em></a> 
-                <a href="address.html" onclick="sessionStorage.url = 'center';"><i class="iconfont icon-dizhi1"></i><em>收货地址</em></a>
+                <a href="/WEB-INF/views/before/address.html" onclick="sessionStorage.url = 'center';"><i class="iconfont icon-dizhi1"></i><em>收货地址</em></a>
             </li>
             <li class="border_bottom"> 
                 <a href="" class="border_right"><i class="iconfont"></i><em>评价晒单</em></a>
@@ -105,25 +105,25 @@
     <footer class="page-footer fixed-footer" id="footer">
         <ul>
             <li>
-                <a href="index.jsp">
+                <a href="/WEB-INF/views/before/index.jsp">
                     <i class="iconfont icon-shouye"></i>
                     <p>首页</p>
                 </a>
             </li>
             <li>
-                <a href="cation.jsp">
+                <a href="/WEB-INF/views/before/cation.jsp">
                     <i class="iconfont icon-icon04"></i>
                     <p>分类</p>
                 </a>
             </li>
             <li>
-                <a href="shopcar.jsp">
+                <a href="/WEB-INF/views/before/shopcar.jsp">
                     <i class="iconfont icon-gouwuche"></i>
                     <p>购物车</p>
                 </a>
             </li>
             <li class="active">
-                <a href="center.jsp">
+                <a href="/WEB-INF/views/before/center.jsp">
                     <i class="iconfont icon-yonghuming"></i>
                     <p>我的</p>
                 </a>
