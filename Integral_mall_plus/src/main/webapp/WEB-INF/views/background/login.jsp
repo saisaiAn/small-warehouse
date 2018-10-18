@@ -1,26 +1,30 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-		<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+		<link href="/static/background/assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/static/background/assets/css/font-awesome.min.css" />
 		<!--[if IE 7]>
-		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
+		  <link rel="stylesheet" href="/static/background/assets/css/font-awesome-ie7.min.css" />
 		<![endif]-->
-		<link rel="stylesheet" href="assets/css/ace.min.css" />
-		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
-		<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
-        <link rel="stylesheet" href="css/style.css"/>
+		<link rel="stylesheet" href="/static/background/assets/css/ace.min.css" />
+		<link rel="stylesheet" href="/static/background/assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="/static/background/assets/css/ace-skins.min.css" />
+        <link rel="stylesheet" href="/static/background/css/style.css"/>
 		<!--[if lte IE 8]>
-		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="/static/background/assets/css/ace-ie.min.css" />
 		<![endif]-->
-		<script src="assets/js/ace-extra.min.js"></script>
+		<script src="/static/background/assets/js/ace-extra.min.js"></script>
 		<!--[if lt IE 9]>
-		<script src="assets/js/html5shiv.js"></script>
-		<script src="assets/js/respond.min.js"></script>
+		<script src="/static/background/assets/js/html5shiv.js"></script>
+		<script src="/static/background/assets/js/respond.min.js"></script>
 		<![endif]-->
-		<script src="js/jquery-1.9.1.min.js"></script>        
-        <script src="assets/layer/layer.js" type="text/javascript"></script>
+		<script src="/static/background/js/jquery-1.9.1.min.js"></script>
+        <script src="/static/background/assets/layer/layer.js" type="text/javascript"></script>
 <title>登录</title>
 </head>
 
@@ -36,7 +40,7 @@
     <div class="loginbody">
 <div class="login-container">
 	<div class="center">
-	     <img src="images/logo1.png" />
+	     <img src="/static/background/images/logo1.png" />
 							</div>
 
 							<div class="space-6"></div>
@@ -50,9 +54,9 @@
 												管理员登录
 											</h4>
 
-											<div class="login_icon"><img src="images/login.png" /></div>
+											<div class="login_icon"><img src="/static/background/images/login.png" /></div>
 
-											<form class="">
+											<form  action="login" method="post">
 												<fieldset>
 										<ul>
    <li class="frame_style form_error"><label class="user_icon"></label><input name="用户名" type="text"  id="username"/><i>用户名</i></li>
@@ -68,7 +72,7 @@
 															<span class="lbl">保存密码</span>
 														</label>
 
-														<button type="button" class="width-35 pull-right btn btn-sm btn-primary" id="login_btn">
+														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary" id="login_btn">
 															<i class="icon-key"></i>
 															登录
 														</button>
@@ -101,7 +105,7 @@
 </body>
 </html>
 <script>
-$('#login_btn').on('click', function(){
+/*$('#login_btn').on('click', function(){
 	     var num=0;
 		 var str="";
      $("input[type$='text'],input[type$='password']").each(function(n){
@@ -126,7 +130,7 @@ $('#login_btn').on('click', function(){
 			   layer.close(index);	
 		  }		  		     						
 		
-	});
+	});*/
   $(document).ready(function(){
 	 $("input[type='text'],input[type='password']").blur(function(){
         var $el = $(this);
