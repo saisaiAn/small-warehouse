@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>列表</title>
-    <link rel="stylesheet" type="text/css" href="css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="css/list.css"/>
-    <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/loaders.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/loading.css"/>
-    <script src="js/rem.js"></script> 
-    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/list.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
+    <script src="/static/before/js/rem.js"></script>
+    <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(window).load(function(){
 			$(".loading").addClass("loader-chanage")
@@ -53,17 +53,17 @@
 				</div>
 				<div class="bottom clearfloat">
 					<div class="lie clearfloat">
-						<a href="detail.jsp">
+						<a href="/WEB-INF/views/before/detail.jsp">
 							<div class="tu clearfloat fl">
-								<img src="images/dianqi.jpg"/>
+								<img src="/static/before/images/dianqi.jpg"/>
 							</div>
 						</a>
 						<div class="right clearfloat fl">
-							<a href="detail.jsp">
+							<a href="/WEB-INF/views/before/detail.jsp">
 								<p class="tit">科顺（KESUN） 煮蛋器 多功能家用蒸蛋器 可蒸7个蛋</p>
 							</a>
 							<div class="xia clearfloat">
-								<a href="detail.jsp">
+								<a href="/WEB-INF/views/before/detail.jsp">
 									<p class="jifen fl over">2800积分</p>
 								</a>
 						
@@ -71,17 +71,17 @@
 						</div>
 					</div>
 					<div class="lie clearfloat">
-						<a href="detail.jsp">
+						<a href="/WEB-INF/views/before/detail.jsp">
 							<div class="tu clearfloat fl">
-								<img src="images/list1.jpg"/>
+								<img src="/static/before/images/list1.jpg"/>
 							</div>
 						</a>
 						<div class="right clearfloat fl">
-							<a href="detail.jsp">
+							<a href="/WEB-INF/views/before/detail.jsp">
 								<p class="tit">小熊（Bear) 单双层 多功能 全不锈钢 家用自动断电 煮蛋器 蒸蛋器 早餐机</p>
 							</a>
 							<div class="xia clearfloat">
-								<a href="detail.jsp">
+								<a href="/WEB-INF/views/before/detail.jsp">
 									<p class="jifen fl over">5000积分</p>
 								</a>
 						
@@ -89,17 +89,17 @@
 						</div>
 					</div>
 					<div class="lie clearfloat">
-						<a href="detail.jsp">
+						<a href="/WEB-INF/views/before/detail.jsp">
 							<div class="tu clearfloat fl">
-								<img src="images/list2.jpg"/>
+								<img src="/static/before/images/list2.jpg"/>
 							</div>
 						</a>
 						<div class="right clearfloat fl">
-							<a href="detail.jsp">
+							<a href="/WEB-INF/views/before/detail.jsp">
 								<p class="tit">小熊(Bear) ZDQ-206 煮蛋器 双层蒸蛋器 自动断电</p>
 							</a>
 							<div class="xia clearfloat">
-								<a href="detail.jsp">
+								<a href="/WEB-INF/views/before/detail.jsp">
 									<p class="jifen fl over">3700积分</p>
 								</a>
 								
@@ -109,7 +109,7 @@
 					<div class="lie clearfloat">
 						<a href="detail.jsp">
 							<div class="tu clearfloat fl">
-								<img src="images/chufang.jpg"/>
+								<img src="/static/before/images/chufang.jpg"/>
 							</div>
 						</a>
 						<div class="right clearfloat fl">
@@ -127,7 +127,7 @@
 					<div class="lie clearfloat">
 						<a href="detail.jsp">
 							<div class="tu clearfloat fl">
-								<img src="images/list3.jpg"/>
+								<img src="/static/before/images/list3.jpg"/>
 							</div>
 						</a>
 						<div class="right clearfloat fl">

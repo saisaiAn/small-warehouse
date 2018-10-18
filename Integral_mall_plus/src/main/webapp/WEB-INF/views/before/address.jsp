@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <title>管理收货地址</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="css/address.css" />
-    <link rel="stylesheet" type="text/css" href="css/loaders.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/loading.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/address.css" />
+    <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
     <style type="text/css">
         .shade_content_div {
             height: 100%;
@@ -36,8 +36,8 @@
             border: 1px solid #CCCCCC;
         }
     </style>
-    <script src="js/jquery.min.js" type="text/javascript"></script>
-    <script src="sourse/layer/mobile/layer.js"></script>
+    <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/before/sourse/layer/mobile/layer.js"></script>
     <script type="text/javascript">
         $(window).load(function(){
             $(".loading").addClass("loader-chanage")
@@ -74,7 +74,7 @@
                 <label class="am-radio am-warning">
                     <input type="radio" name="radio3" value="" data-am-ucheck checked> 设为默认
                 </label>
-                <a href="" class="editButton"><img src="images/bj.png" width="18" />&nbsp;编辑</a>
+                <a href="" class="editButton"><img src="/static/before/images/bj.png" width="18" />&nbsp;编辑</a>
                 <a href="" class="deleteButton">删除</a>
             </div>
         </li>
@@ -86,7 +86,7 @@
                 <label class="am-radio am-warning">
                     <input type="radio" name="radio3" value="" data-am-ucheck> 设为默认
                 </label>
-                <a href="" class="editButton"><img src="images/bj.png" width="18" />&nbsp;编辑</a>
+                <a href="" class="editButton"><img src="/static/before/images/bj.png" width="18" />&nbsp;编辑</a>
                 <a href="" class="deleteButton">删除</a>
             </div>
         </li>
@@ -98,7 +98,7 @@
                 <label class="am-radio am-warning">
                     <input type="radio" name="radio3" value="" data-am-ucheck> 设为默认
                 </label>
-                <a href="" class="editButton"><img src="images/bj.png" width="18" />&nbsp;编辑</a>
+                <a href="" class="editButton"><img src="/static/before/images/bj.png" width="18" />&nbsp;编辑</a>
                 <a href="" class="deleteButton">删除</a>
             </div>
         </li>
@@ -110,7 +110,7 @@
                 <label class="am-radio am-warning">
                     <input type="radio" name="radio3" value="" data-am-ucheck> 设为默认
                 </label>
-                <a href="" class="editButton"><img src="images/bj.png" width="18" />&nbsp;编辑</a>
+                <a href="" class="editButton"><img src="/static/before/images/bj.png" width="18" />&nbsp;编辑</a>
                 <a href="" class="deleteButton">删除</a>
             </div>
         </li>
