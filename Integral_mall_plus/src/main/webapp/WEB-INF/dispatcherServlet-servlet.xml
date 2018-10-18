@@ -9,6 +9,9 @@
         <context:component-scan base-package="cn.hcfy" use-default-filters="false">
             <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:include-filter>
         </context:component-scan>
+    <context:component-scan base-package="cn.background" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:include-filter>
+    </context:component-scan>
         <!--配置视图解析器-->
         <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
             <property name="prefix" value="/WEB-INF/views/"></property>
