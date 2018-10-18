@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.background.dao.EmpMapper">
+  <resultMap id="BaseResultMap" type="cn.background.bean.Emp">
+    <id column="EmpNo" jdbcType="INTEGER" property="empno" />
+    <result column="EmpName" jdbcType="VARCHAR" property="empname" />
+    <result column="EmpSex" jdbcType="VARCHAR" property="empsex" />
+    <result column="IDcard" jdbcType="VARCHAR" property="idcard" />
+    <result column="DepartmentNo" jdbcType="INTEGER" property="departmentno" />
+    <result column="Positivedates" jdbcType="TIMESTAMP" property="positivedates" />
+    <result column="EmpPhone" jdbcType="VARCHAR" property="empphone" />
+    <result column="intergralNo" jdbcType="INTEGER" property="intergralno" />
+    <result column="position" jdbcType="INTEGER" property="position" />
+    <result column="empType" jdbcType="INTEGER" property="emptype" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    EmpNo, EmpName, EmpSex, IDcard, DepartmentNo, Positivedates, EmpPhone, intergralNo, 
+    position, empType
+  </sql>
+  <select id="selectByExample" parameterType="cn.background.bean.EmpExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from emp
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from emp
+    where EmpNo = #{empno,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from emp
+    where EmpNo = #{empno,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.background.bean.EmpExample">
+    delete from emp
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.background.bean.Emp">
+    insert into emp (EmpNo, EmpName, EmpSex, 
+      IDcard, DepartmentNo, Positivedates, 
+      EmpPhone, intergralNo, position, 
+      empType)
+    values (#{empno,jdbcType=INTEGER}, #{empname,jdbcType=VARCHAR}, #{empsex,jdbcType=VARCHAR}, 
+      #{idcard,jdbcType=VARCHAR}, #{departmentno,jdbcType=INTEGER}, #{positivedates,jdbcType=TIMESTAMP}, 
+      #{empphone,jdbcType=VARCHAR}, #{intergralno,jdbcType=INTEGER}, #{position,jdbcType=INTEGER}, 
+      #{emptype,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.background.bean.Emp">
+    insert into emp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="empno != null">
+        EmpNo,
+      </if>
+      <if test="empname != null">
+        EmpName,
+      </if>
+      <if test="empsex != null">
+        EmpSex,
+      </if>
+      <if test="idcard != null">
+        IDcard,
+      </if>
+      <if test="departmentno != null">
+        DepartmentNo,
+      </if>
+      <if test="positivedates != null">
+        Positivedates,
+      </if>
+      <if test="empphone != null">
+        EmpPhone,
+      </if>
+      <if test="intergralno != null">
+        intergralNo,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="emptype != null">
+        empType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="empno != null">
+        #{empno,jdbcType=INTEGER},
+      </if>
+      <if test="empname != null">
+        #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="empsex != null">
+        #{empsex,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentno != null">
+        #{departmentno,jdbcType=INTEGER},
+      </if>
+      <if test="positivedates != null">
+        #{positivedates,jdbcType=TIMESTAMP},
+      </if>
+      <if test="empphone != null">
+        #{empphone,jdbcType=VARCHAR},
+      </if>
+      <if test="intergralno != null">
+        #{intergralno,jdbcType=INTEGER},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=INTEGER},
+      </if>
+      <if test="emptype != null">
+        #{emptype,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.background.bean.EmpExample" resultType="java.lang.Long">
+    select count(*) from emp
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update emp
+    <set>
+      <if test="record.empno != null">
+        EmpNo = #{record.empno,jdbcType=INTEGER},
+      </if>
+      <if test="record.empname != null">
+        EmpName = #{record.empname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.empsex != null">
+        EmpSex = #{record.empsex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idcard != null">
+        IDcard = #{record.idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.departmentno != null">
+        DepartmentNo = #{record.departmentno,jdbcType=INTEGER},
+      </if>
+      <if test="record.positivedates != null">
+        Positivedates = #{record.positivedates,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.empphone != null">
+        EmpPhone = #{record.empphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.intergralno != null">
+        intergralNo = #{record.intergralno,jdbcType=INTEGER},
+      </if>
+      <if test="record.position != null">
+        position = #{record.position,jdbcType=INTEGER},
+      </if>
+      <if test="record.emptype != null">
+        empType = #{record.emptype,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update emp
+    set EmpNo = #{record.empno,jdbcType=INTEGER},
+      EmpName = #{record.empname,jdbcType=VARCHAR},
+      EmpSex = #{record.empsex,jdbcType=VARCHAR},
+      IDcard = #{record.idcard,jdbcType=VARCHAR},
+      DepartmentNo = #{record.departmentno,jdbcType=INTEGER},
+      Positivedates = #{record.positivedates,jdbcType=TIMESTAMP},
+      EmpPhone = #{record.empphone,jdbcType=VARCHAR},
+      intergralNo = #{record.intergralno,jdbcType=INTEGER},
+      position = #{record.position,jdbcType=INTEGER},
+      empType = #{record.emptype,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.background.bean.Emp">
+    update emp
+    <set>
+      <if test="empname != null">
+        EmpName = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="empsex != null">
+        EmpSex = #{empsex,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        IDcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentno != null">
+        DepartmentNo = #{departmentno,jdbcType=INTEGER},
+      </if>
+      <if test="positivedates != null">
+        Positivedates = #{positivedates,jdbcType=TIMESTAMP},
+      </if>
+      <if test="empphone != null">
+        EmpPhone = #{empphone,jdbcType=VARCHAR},
+      </if>
+      <if test="intergralno != null">
+        intergralNo = #{intergralno,jdbcType=INTEGER},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=INTEGER},
+      </if>
+      <if test="emptype != null">
+        empType = #{emptype,jdbcType=INTEGER},
+      </if>
+    </set>
+    where EmpNo = #{empno,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.background.bean.Emp">
+    update emp
+    set EmpName = #{empname,jdbcType=VARCHAR},
+      EmpSex = #{empsex,jdbcType=VARCHAR},
+      IDcard = #{idcard,jdbcType=VARCHAR},
+      DepartmentNo = #{departmentno,jdbcType=INTEGER},
+      Positivedates = #{positivedates,jdbcType=TIMESTAMP},
+      EmpPhone = #{empphone,jdbcType=VARCHAR},
+      intergralNo = #{intergralno,jdbcType=INTEGER},
+      position = #{position,jdbcType=INTEGER},
+      empType = #{emptype,jdbcType=INTEGER}
+    where EmpNo = #{empno,jdbcType=INTEGER}
+  </update>
+</mapper>
