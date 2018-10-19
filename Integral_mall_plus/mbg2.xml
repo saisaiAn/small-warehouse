@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <!--配置数据库链接信息-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/integral_mall_plus"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+<!--指定JAVABEAN生成的位置-->
+        <javaModelGenerator targetPackage="cn.hcfy.bean" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+<!--指定映射文件生成的位置-->
+        <sqlMapGenerator targetPackage="mapper"  targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+<!--指定DAO接口的生成的位置，mapper接口-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.hcfy.dao"  targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+<!--Table生成策略-->
+        <table tableName="commodity" domainObjectName="Commodity" >
+        </table>
+        <table tableName="commodityreview" domainObjectName="CommodityReview"/>
+        <table tableName="commoditytype" domainObjectName="CommodityType"/>
+        <table tableName="department" domainObjectName="Department"/>
+        <table tableName="emp" domainObjectName="Emp"/>
+        <table tableName="imager" domainObjectName="Imager"/>
+        <table tableName="integral" domainObjectName="Integral"/>
+        <table tableName="integralaudit" domainObjectName="IntegralAudit"/>
+        <table tableName="integralschedule" domainObjectName="IntegralSchedule"/>
+        <table tableName="integraltype" domainObjectName="IntegralType"/>
+        <table tableName="orders" domainObjectName="Orders"/>
+    </context>
+</generatorConfiguration>
