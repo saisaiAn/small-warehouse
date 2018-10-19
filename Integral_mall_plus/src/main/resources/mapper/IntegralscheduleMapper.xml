@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hcfy.dao.IntegralAuditMapper">
-  <resultMap id="BaseResultMap" type="cn.hcfy.bean.IntegralAudit">
-    <id column="IntegralAuditNo" jdbcType="INTEGER" property="integralauditno" />
+<mapper namespace="cn.background.dao.IntegralscheduleMapper">
+  <resultMap id="BaseResultMap" type="cn.background.bean.Integralschedule">
+    <id column="intergralScheduleNo" jdbcType="INTEGER" property="intergralscheduleno" />
     <result column="empNo" jdbcType="INTEGER" property="empno" />
     <result column="intergralChange" jdbcType="VARCHAR" property="intergralchange" />
     <result column="Changeint" jdbcType="INTEGER" property="changeint" />
+    <result column="ChangeDate" jdbcType="TIMESTAMP" property="changedate" />
+    <result column="IntegralNo" jdbcType="INTEGER" property="integralno" />
     <result column="reviewer" jdbcType="INTEGER" property="reviewer" />
     <result column="IntegralTypeNo" jdbcType="INTEGER" property="integraltypeno" />
-    <result column="AuditType" jdbcType="INTEGER" property="audittype" />
-    <result column="AuditOpinion" jdbcType="VARCHAR" property="auditopinion" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,16 +70,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    IntegralAuditNo, empNo, intergralChange, Changeint, reviewer, IntegralTypeNo, AuditType, 
-    AuditOpinion
+    intergralScheduleNo, empNo, intergralChange, Changeint, ChangeDate, IntegralNo, reviewer, 
+    IntegralTypeNo
   </sql>
-  <select id="selectByExample" parameterType="cn.hcfy.bean.IntegralAuditExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.background.bean.IntegralscheduleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from integralaudit
+    from integralschedule
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -90,32 +90,32 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from integralaudit
-    where IntegralAuditNo = #{integralauditno,jdbcType=INTEGER}
+    from integralschedule
+    where intergralScheduleNo = #{intergralscheduleno,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from integralaudit
-    where IntegralAuditNo = #{integralauditno,jdbcType=INTEGER}
+    delete from integralschedule
+    where intergralScheduleNo = #{intergralscheduleno,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.hcfy.bean.IntegralAuditExample">
-    delete from integralaudit
+  <delete id="deleteByExample" parameterType="cn.background.bean.IntegralscheduleExample">
+    delete from integralschedule
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.hcfy.bean.IntegralAudit">
-    insert into integralaudit (IntegralAuditNo, empNo, intergralChange, 
-      Changeint, reviewer, IntegralTypeNo, 
-      AuditType, AuditOpinion)
-    values (#{integralauditno,jdbcType=INTEGER}, #{empno,jdbcType=INTEGER}, #{intergralchange,jdbcType=VARCHAR}, 
-      #{changeint,jdbcType=INTEGER}, #{reviewer,jdbcType=INTEGER}, #{integraltypeno,jdbcType=INTEGER}, 
-      #{audittype,jdbcType=INTEGER}, #{auditopinion,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="cn.background.bean.Integralschedule">
+    insert into integralschedule (intergralScheduleNo, empNo, intergralChange, 
+      Changeint, ChangeDate, IntegralNo, 
+      reviewer, IntegralTypeNo)
+    values (#{intergralscheduleno,jdbcType=INTEGER}, #{empno,jdbcType=INTEGER}, #{intergralchange,jdbcType=VARCHAR}, 
+      #{changeint,jdbcType=INTEGER}, #{changedate,jdbcType=TIMESTAMP}, #{integralno,jdbcType=INTEGER}, 
+      #{reviewer,jdbcType=INTEGER}, #{integraltypeno,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="cn.hcfy.bean.IntegralAudit">
-    insert into integralaudit
+  <insert id="insertSelective" parameterType="cn.background.bean.Integralschedule">
+    insert into integralschedule
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="integralauditno != null">
-        IntegralAuditNo,
+      <if test="intergralscheduleno != null">
+        intergralScheduleNo,
       </if>
       <if test="empno != null">
         empNo,
@@ -126,22 +126,22 @@
       <if test="changeint != null">
         Changeint,
       </if>
+      <if test="changedate != null">
+        ChangeDate,
+      </if>
+      <if test="integralno != null">
+        IntegralNo,
+      </if>
       <if test="reviewer != null">
         reviewer,
       </if>
       <if test="integraltypeno != null">
         IntegralTypeNo,
       </if>
-      <if test="audittype != null">
-        AuditType,
-      </if>
-      <if test="auditopinion != null">
-        AuditOpinion,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="integralauditno != null">
-        #{integralauditno,jdbcType=INTEGER},
+      <if test="intergralscheduleno != null">
+        #{intergralscheduleno,jdbcType=INTEGER},
       </if>
       <if test="empno != null">
         #{empno,jdbcType=INTEGER},
@@ -152,31 +152,31 @@
       <if test="changeint != null">
         #{changeint,jdbcType=INTEGER},
       </if>
+      <if test="changedate != null">
+        #{changedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="integralno != null">
+        #{integralno,jdbcType=INTEGER},
+      </if>
       <if test="reviewer != null">
         #{reviewer,jdbcType=INTEGER},
       </if>
       <if test="integraltypeno != null">
         #{integraltypeno,jdbcType=INTEGER},
       </if>
-      <if test="audittype != null">
-        #{audittype,jdbcType=INTEGER},
-      </if>
-      <if test="auditopinion != null">
-        #{auditopinion,jdbcType=VARCHAR},
-      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.hcfy.bean.IntegralAuditExample" resultType="java.lang.Long">
-    select count(*) from integralaudit
+  <select id="countByExample" parameterType="cn.background.bean.IntegralscheduleExample" resultType="java.lang.Long">
+    select count(*) from integralschedule
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update integralaudit
+    update integralschedule
     <set>
-      <if test="record.integralauditno != null">
-        IntegralAuditNo = #{record.integralauditno,jdbcType=INTEGER},
+      <if test="record.intergralscheduleno != null">
+        intergralScheduleNo = #{record.intergralscheduleno,jdbcType=INTEGER},
       </if>
       <if test="record.empno != null">
         empNo = #{record.empno,jdbcType=INTEGER},
@@ -187,17 +187,17 @@
       <if test="record.changeint != null">
         Changeint = #{record.changeint,jdbcType=INTEGER},
       </if>
+      <if test="record.changedate != null">
+        ChangeDate = #{record.changedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.integralno != null">
+        IntegralNo = #{record.integralno,jdbcType=INTEGER},
+      </if>
       <if test="record.reviewer != null">
         reviewer = #{record.reviewer,jdbcType=INTEGER},
       </if>
       <if test="record.integraltypeno != null">
         IntegralTypeNo = #{record.integraltypeno,jdbcType=INTEGER},
-      </if>
-      <if test="record.audittype != null">
-        AuditType = #{record.audittype,jdbcType=INTEGER},
-      </if>
-      <if test="record.auditopinion != null">
-        AuditOpinion = #{record.auditopinion,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -205,21 +205,21 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update integralaudit
-    set IntegralAuditNo = #{record.integralauditno,jdbcType=INTEGER},
+    update integralschedule
+    set intergralScheduleNo = #{record.intergralscheduleno,jdbcType=INTEGER},
       empNo = #{record.empno,jdbcType=INTEGER},
       intergralChange = #{record.intergralchange,jdbcType=VARCHAR},
       Changeint = #{record.changeint,jdbcType=INTEGER},
+      ChangeDate = #{record.changedate,jdbcType=TIMESTAMP},
+      IntegralNo = #{record.integralno,jdbcType=INTEGER},
       reviewer = #{record.reviewer,jdbcType=INTEGER},
-      IntegralTypeNo = #{record.integraltypeno,jdbcType=INTEGER},
-      AuditType = #{record.audittype,jdbcType=INTEGER},
-      AuditOpinion = #{record.auditopinion,jdbcType=VARCHAR}
+      IntegralTypeNo = #{record.integraltypeno,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.hcfy.bean.IntegralAudit">
-    update integralaudit
+  <update id="updateByPrimaryKeySelective" parameterType="cn.background.bean.Integralschedule">
+    update integralschedule
     <set>
       <if test="empno != null">
         empNo = #{empno,jdbcType=INTEGER},
@@ -230,30 +230,30 @@
       <if test="changeint != null">
         Changeint = #{changeint,jdbcType=INTEGER},
       </if>
+      <if test="changedate != null">
+        ChangeDate = #{changedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="integralno != null">
+        IntegralNo = #{integralno,jdbcType=INTEGER},
+      </if>
       <if test="reviewer != null">
         reviewer = #{reviewer,jdbcType=INTEGER},
       </if>
       <if test="integraltypeno != null">
         IntegralTypeNo = #{integraltypeno,jdbcType=INTEGER},
       </if>
-      <if test="audittype != null">
-        AuditType = #{audittype,jdbcType=INTEGER},
-      </if>
-      <if test="auditopinion != null">
-        AuditOpinion = #{auditopinion,jdbcType=VARCHAR},
-      </if>
     </set>
-    where IntegralAuditNo = #{integralauditno,jdbcType=INTEGER}
+    where intergralScheduleNo = #{intergralscheduleno,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.hcfy.bean.IntegralAudit">
-    update integralaudit
+  <update id="updateByPrimaryKey" parameterType="cn.background.bean.Integralschedule">
+    update integralschedule
     set empNo = #{empno,jdbcType=INTEGER},
       intergralChange = #{intergralchange,jdbcType=VARCHAR},
       Changeint = #{changeint,jdbcType=INTEGER},
+      ChangeDate = #{changedate,jdbcType=TIMESTAMP},
+      IntegralNo = #{integralno,jdbcType=INTEGER},
       reviewer = #{reviewer,jdbcType=INTEGER},
-      IntegralTypeNo = #{integraltypeno,jdbcType=INTEGER},
-      AuditType = #{audittype,jdbcType=INTEGER},
-      AuditOpinion = #{auditopinion,jdbcType=VARCHAR}
-    where IntegralAuditNo = #{integralauditno,jdbcType=INTEGER}
+      IntegralTypeNo = #{integraltypeno,jdbcType=INTEGER}
+    where intergralScheduleNo = #{intergralscheduleno,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -56,23 +56,23 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 											<div class="login_icon"><img src="/static/background/images/login.png" /></div>
 
-											<form  action="login" method="post">
+											<form   method="post" name="table">
 												<fieldset>
 										<ul>
    <li class="frame_style form_error"><label class="user_icon"></label><input name="用户名" type="text"  id="username"/><i>用户名</i></li>
    <li class="frame_style form_error"><label class="password_icon"></label><input name="密码" type="password"   id="userpwd"/><i>密码</i></li>
-   <li class="frame_style form_error"><label class="Codes_icon"></label><input name="验证码" type="text"   id="Codes_text"/><i>验证码</i><div class="Codes_region"></div></li>
+  <%-- <li class="frame_style form_error"><label class="Codes_icon"></label><input name="验证码" type="text"   id="Codes_text"/><i>验证码</i><div class="Codes_region"></div></li>--%>
    
   </ul>
 													<div class="space"></div>
 
 													<div class="clearfix">
-														<label class="inline">
+														<%--<label class="inline">
 															<input type="checkbox" class="ace">
 															<span class="lbl">保存密码</span>
-														</label>
+														</label>--%>
 
-														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary" id="login_btn">
+														<button type="button" class="width-35 pull-right btn btn-sm btn-primary" id="login_btn">
 															<i class="icon-key"></i>
 															登录
 														</button>
@@ -104,7 +104,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <div class="loginbm">版权所有  2016  <a href="">南京思美软件系统有限公司</a> </div><strong></strong>
 </body>
 </html>
-<script>
+
+<script >
+
 /*$('#login_btn').on('click', function(){
 	     var num=0;
 		 var str="";
@@ -132,6 +134,41 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		
 	});*/
   $(document).ready(function(){
+      $("#login_btn").click(function () {
+          var $username = $("#username").val();
+          var $pwd = $("#userpwd").val();
+         /* alert($username);
+          alert($pwd);*/
+          if($username =="" ||$pwd ==""){
+              layer.alert('用户名或者密码不能为空！',{
+                  title: '提示框',
+                  icon:1,
+              });
+          }else{
+            $.ajax({
+                url:"login",
+                data:{username:$username,pwd:$pwd},
+                type:"post",
+                success:function (result) {
+                    if(result==0){
+                        layer.alert('登陆成功！',{
+                            title: '提示框',
+                            icon:1,
+                        });
+                        setTimeout(function () {location.href="jumpindex";},2000);
+                    }else{
+                        layer.alert('登陆失败，帐号或者密码错误！',{
+                            title: '提示框',
+                            icon:1,
+                        });
+                    }
+                }
+            })
+          }
+      })
+
+
+
 	 $("input[type='text'],input[type='password']").blur(function(){
         var $el = $(this);
         var $parent = $el.parent();
