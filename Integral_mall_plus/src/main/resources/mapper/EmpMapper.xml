@@ -682,7 +682,7 @@
   <select id="loginByEmp" parameterType="cn.bean.Emp" resultType="cn.bean.Emp">
           select * from emp
           <where>
-
+             empname=#{empname} and password=#{password}
           </where>
   </select>
   <select id="selectByExample" parameterType="cn.bean.EmpExample" resultMap="BaseResultMap">
