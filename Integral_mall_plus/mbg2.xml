@@ -20,7 +20,7 @@
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 <!--指定JAVABEAN生成的位置-->
-        <javaModelGenerator targetPackage="cn.hcfy.bean" targetProject=".\src\main\java">
+        <javaModelGenerator targetPackage="cn.bean" targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
@@ -29,7 +29,7 @@
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 <!--指定DAO接口的生成的位置，mapper接口-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.hcfy.dao"  targetProject=".\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.dao" targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 <!--Table生成策略-->

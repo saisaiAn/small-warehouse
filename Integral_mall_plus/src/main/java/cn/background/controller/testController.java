@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class testController {
 
+
     @RequestMapping("view")
     public String test(){//进入后台模式
         System.out.println("ceshi");

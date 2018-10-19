@@ -10,7 +10,7 @@ public class HelloController {
 
     @RequestMapping("hello")
     public String hello(){
-        return "/before/index";
+        return "/before/login";
     }
     @RequestMapping("findUser")
     public String findUser(Model model){
