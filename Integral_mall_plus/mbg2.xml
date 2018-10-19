@@ -45,5 +45,6 @@
         <table tableName="integralschedule" domainObjectName="IntegralSchedule"/>
         <table tableName="integraltype" domainObjectName="IntegralType"/>
         <table tableName="orders" domainObjectName="Orders"/>
+        <table tableName="shoppingCar" domainObjectName="shoppingCar"/>
     </context>
 </generatorConfiguration>
