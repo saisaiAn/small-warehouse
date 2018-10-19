@@ -103,12 +103,12 @@
 		</div>
 		<div class="login-content ">
 			<div class="form">
-				<form action="#" method="post">
+
 					<div class="form-group">
 						<div class="col-xs-12  ">
 							<div class="input-group">
 								<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-								<input type="text" id="username" name="username" class="form-control" placeholder="用户名">
+								<input type="text" id="empname" name="username" class="form-control" placeholder="用户名">
 							</div>
 						</div>
 					</div>
@@ -122,7 +122,7 @@
 					</div>
 					<div class="form-group form-actions">
 						<div class="col-xs-4 col-xs-offset-4 ">
-							<button type="submit" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-off"></span> 登录</button>
+							<button type="button" id="submit" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-off"></span> 登录</button>
 						</div>
 					</div>
 					<div class="form-group">
@@ -135,7 +135,7 @@
 							</p>
 						</div>
 					</div>
-				</form>
+
 			</div>
 		</div>
 	</div>
@@ -144,7 +144,38 @@
 <div style="text-align:center;">
 	<p>来源：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
 </div>
-
+<script type="text/javascript" src="/static/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#submit").click(function(){
+            var empname =$("#empname").val();
+            var password = $("#password").val();
+            alert(password+"=="+empname);
+            if (empname!=null&&empname.length >=6){
+                if (password !=null&&password.length >=6){
+                    $.ajax({
+                        url:"/BeforeLogin",
+                        data:{ empname:empname, password:password} ,
+                        type:"POST",
+                        success:function (result) {
+                            alert(result);
+                            if (result=="y"){
+                                location.href="/toBeforeLogin";
+                            }else {
+                                alert("账号或密码不正确");
+                                window.location.reload();
+                            }
+                        }
+                    })
+                }else{
+                    alert("请填写大于或等于6位的密码");
+                }
+            }else{
+                alert("请填写大于或等于6位的用户名");
+            }
+        })
+    })
+</script>
 </body>
 
 </html>

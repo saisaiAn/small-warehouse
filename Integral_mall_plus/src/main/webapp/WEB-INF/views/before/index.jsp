@@ -92,7 +92,7 @@
 		        	<div class="content clearfloat">
 		        		<div class="top clearfloat">
 		        			<div class="list clearfloat fl box-s">
-		        				<a href="/WEB-INF/views/before/detail.jsp">
+		        				<a href="/toBeforeDetail">
 			        				<div class="zuo clearfloat fl box-s">
 			        					<p class="tit text">单反相机，彰显你的风格</p>
 				        				<p><span>积分:</span><span class="over db red">1000000</span></p>
@@ -104,7 +104,7 @@
 		        				</a>
 		        			</div>
 		        			<div class="list clearfloat fl box-s">
-		        				<a href="/WEB-INF/views/before/detail.jsp">
+		        				<a href="/toBeforeDetail">
 			        				<div class="zuo clearfloat fl box-s">
 			        					<p class="tit text">单反相机，彰显你的风格</p>
 				        				<p><span>积分:</span><span class="over db red">1000000</span></p>
@@ -118,7 +118,7 @@
 		        		</div>
 		        		<div class="bottom clearfloat">
 		        			<div class="list clearfloat fl">
-		        				<a href="/WEB-INF/views/before/detail.jsp">
+		        				<a href="/toBeforeDetail">
 		        					
 			        				<div class="tu clearfloat fr">
 			        					<span></span>
@@ -131,7 +131,7 @@
 		        				</a>
 		        			</div>
 		        			<div class="list clearfloat fl">
-		        				<a href="/WEB-INF/views/before/detail.jsp">
+		        				<a href="/toBeforeDetail">
 		        					
 			        				<div class="tu clearfloat fr">
 			        					<span></span>
@@ -144,7 +144,7 @@
 		        				</a>
 		        			</div>
 		        			<div class="list clearfloat fl">
-		        				<a href="/WEB-INF/views/before/detail.jsp">
+		        				<a href="/toBeforeDetail">
 		        					
 			        				<div class="tu clearfloat fr">
 			        					<span></span>
@@ -168,7 +168,7 @@
 		        	</div>
 		        	<div class="content clearfloat">
 		        		<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/1f1.jpg" />
@@ -181,7 +181,7 @@
 						</div>
 
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/1f2.jpg" />
@@ -193,7 +193,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/1f3.jpg" />
@@ -205,7 +205,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/1f2.jpg" />
@@ -217,7 +217,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/1f3.jpg" />
@@ -229,7 +229,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/1f1.jpg" />
@@ -250,7 +250,7 @@
 		        	</div>
 		        	<div class="content clearfloat">
 		        		<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/2f1.jpg" />
@@ -262,7 +262,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/2f2.jpg" />
@@ -274,7 +274,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/2f3.jpg" />
@@ -286,7 +286,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/2f4.jpg" />
@@ -298,7 +298,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            
 						            <img src="/static/before/images/2f5.jpg" />
@@ -310,7 +310,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/2f6.jpg" />
@@ -331,7 +331,7 @@
 		        	</div>
 		        	<div class="content clearfloat">
 		        		<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/3f1.jpg" />
@@ -343,7 +343,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/3f2.jpg" />
@@ -355,7 +355,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/3f3.jpg" />
@@ -367,7 +367,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/3f2.jpg" />
@@ -379,7 +379,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/3f3.jpg" />
@@ -391,7 +391,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/3f1.jpg" />
@@ -412,7 +412,7 @@
 		        	</div>
 		        	<div class="content clearfloat">
 		        		<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/xj.jpg" />
@@ -424,7 +424,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/4f2.jpg" />
@@ -436,7 +436,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/4f3.jpg" />
@@ -448,7 +448,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/4f4.jpg" />
@@ -460,7 +460,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/4f3.jpg" />
@@ -472,7 +472,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/4f2.jpg" />
@@ -493,7 +493,7 @@
 		        	</div>
 		        	<div class="content clearfloat">
 		        		<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/5f1.jpg" />
@@ -505,7 +505,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/5f2.jpg" />
@@ -517,7 +517,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/5f3.jpg" />
@@ -529,7 +529,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/5f3.jpg" />
@@ -541,7 +541,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/5f1.jpg" />
@@ -553,7 +553,7 @@
 						    </a>
 						</div>
 			        	<div class="list clearfloat fl">
-						    <a href="/WEB-INF/views/before/detail.jsp">
+						    <a href="/toBeforeDetail">
 						        <div class="tu clearfloat fr">
 						            <span></span>
 						            <img src="/static/before/images/5f2.jpg" />
@@ -572,25 +572,25 @@
 		<footer class="page-footer fixed-footer" id="footer">
 			<ul>
 				<li class="active">
-					<a href="/WEB-INF/views/before/index.jsp">
+					<a href="/toBeforeIndex">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
 				<li>
-					<a href="/WEB-INF/views/before/cation.jsp">
+					<a href="/toBeforeCation">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li>
-					<a href="/WEB-INF/views/before/shopcar.jsp">
+					<a href="/toBeforeShopcar">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="/WEB-INF/views/before/center.jsp">
+					<a href="/toBeforeCenter">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>
