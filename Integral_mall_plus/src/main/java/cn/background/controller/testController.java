@@ -12,7 +12,7 @@ public class testController {
 
     @RequestMapping("view")
     public String test(){//进入后台模式
-        System.out.println("ceshi");
+        System.out.println("进入后台模式");
         return "/background/login";
     }
 

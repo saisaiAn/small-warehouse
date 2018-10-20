@@ -1,9 +1,10 @@
 package cn.bean;
-
+//积分审核表
 public class IntegralAudit {
     private Integer integralauditno;
 
     private Integer empno;
+    private Emp empId; //外键员工表
 
     private String intergralchange;
 
@@ -12,10 +13,27 @@ public class IntegralAudit {
     private Integer reviewer;
 
     private Integer integraltypeno;
+    private IntegralType integralTypeId; //外键积分所属类型表
 
     private Integer audittype;
 
     private String auditopinion;
+
+    public Emp getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(Emp empId) {
+        this.empId = empId;
+    }
+
+    public IntegralType getIntegralTypeId() {
+        return integralTypeId;
+    }
+
+    public void setIntegralTypeId(IntegralType integralTypeId) {
+        this.integralTypeId = integralTypeId;
+    }
 
     public Integer getIntegralauditno() {
         return integralauditno;

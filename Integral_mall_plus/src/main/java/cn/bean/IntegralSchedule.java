@@ -1,11 +1,12 @@
 package cn.bean;
 
 import java.util.Date;
-
+//积分明细表
 public class IntegralSchedule {
     private Integer intergralscheduleno;
 
     private Integer empno;
+    private Emp empId; //外键员工表
 
     private String intergralchange;
 
@@ -14,10 +15,36 @@ public class IntegralSchedule {
     private Date changedate;
 
     private Integer integralno;
+    private Integral integralId; //外键积分表
 
     private Integer reviewer;
 
     private Integer integraltypeno;
+    private IntegralType integralTypeId;//外键积分所属类型表
+
+    public Emp getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(Emp empId) {
+        this.empId = empId;
+    }
+
+    public Integral getIntegralId() {
+        return integralId;
+    }
+
+    public void setIntegralId(Integral integralId) {
+        this.integralId = integralId;
+    }
+
+    public IntegralType getIntegralTypeId() {
+        return integralTypeId;
+    }
+
+    public void setIntegralTypeId(IntegralType integralTypeId) {
+        this.integralTypeId = integralTypeId;
+    }
 
     public Integer getIntergralscheduleno() {
         return intergralscheduleno;

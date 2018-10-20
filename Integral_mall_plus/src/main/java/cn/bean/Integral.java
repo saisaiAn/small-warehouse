@@ -1,7 +1,7 @@
 package cn.bean;
 
 import java.util.Date;
-
+//积分表
 public class Integral {
     private Integer intergralno;
 

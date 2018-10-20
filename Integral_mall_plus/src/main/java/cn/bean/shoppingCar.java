@@ -1,13 +1,31 @@
 package cn.bean;
-
+//购物车表
 public class shoppingCar {
     private Integer carno;
 
     private Integer shoppingempno;
+    private Emp empId; //外键用户表
 
     private Integer shoppingcommodityno;
+    private Commodity commodityId; //外键商品表
 
     private Integer commoditysum;
+
+    public Emp getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(Emp empId) {
+        this.empId = empId;
+    }
+
+    public Commodity getCommodityId() {
+        return commodityId;
+    }
+
+    public void setCommodityId(Commodity commodityId) {
+        this.commodityId = commodityId;
+    }
 
     public Integer getCarno() {
         return carno;

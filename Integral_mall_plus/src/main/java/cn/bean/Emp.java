@@ -12,18 +12,36 @@ public class Emp {
     private String idcard;
 
     private Integer departmentno;
+    private Department departmentId;  //外键部门表id
 
     private Date positivedates;
 
     private String empphone;
 
     private Integer intergralno;
+    private Integral integralId;  //外键积分表id
 
     private Integer position;
 
     private Integer emptype;
 
     private String password;
+
+    public Department getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Department departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public Integral getIntegralId() {
+        return integralId;
+    }
+
+    public void setIntegralId(Integral integralId) {
+        this.integralId = integralId;
+    }
 
     public Integer getEmpno() {
         return empno;

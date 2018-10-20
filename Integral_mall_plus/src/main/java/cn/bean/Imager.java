@@ -1,5 +1,6 @@
 package cn.bean;
 
+//图片表
 public class Imager {
     private Integer imagerno;
 

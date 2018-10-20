@@ -1,5 +1,6 @@
 package cn.bean;
 
+//部门表
 public class Department {
     private Integer depano;
 

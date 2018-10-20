@@ -1,19 +1,28 @@
 package cn.bean;
 
 import java.util.Date;
-
+//订单表
 public class Orders {
     private Integer orderno;
 
     private String orderintegral;
 
     private Integer ordercommodityno;
+    private Commodity commodityId; //外键商品表
 
     private Date ordertime;
 
     private Integer orderstatus;
 
     private Integer empno;
+
+    public Commodity getCommodityId() {
+        return commodityId;
+    }
+
+    public void setCommodityId(Commodity commodityId) {
+        this.commodityId = commodityId;
+    }
 
     public Integer getOrderno() {
         return orderno;

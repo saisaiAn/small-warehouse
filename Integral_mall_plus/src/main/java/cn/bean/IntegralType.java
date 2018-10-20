@@ -1,5 +1,5 @@
 package cn.bean;
-
+//积分类型表
 public class IntegralType {
     private Integer integraltypeno;
 

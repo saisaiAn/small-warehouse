@@ -1,5 +1,5 @@
 package cn.bean;
-
+//商品表
 public class Commodity {
     private Integer commodityno;
 
@@ -14,6 +14,25 @@ public class Commodity {
     private Integer commodityinventory;
 
     private Integer commoditytypeno;
+    private CommodityType commodityTypeId;//商品分类id
+
+    private Integer commoditytype;
+
+    public CommodityType getCommodityTypeId() {
+        return commodityTypeId;
+    }
+
+    public void setCommodityTypeId(CommodityType commodityTypeId) {
+        this.commodityTypeId = commodityTypeId;
+    }
+
+    public Integer getCommoditytype() {
+        return commoditytype;
+    }
+
+    public void setCommoditytype(Integer commoditytype) {
+        this.commoditytype = commoditytype;
+    }
 
     public Integer getCommodityno() {
         return commodityno;

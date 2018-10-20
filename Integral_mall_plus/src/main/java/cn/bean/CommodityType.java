@@ -1,5 +1,5 @@
 package cn.bean;
-
+//商品分类表
 public class CommodityType {
     private Integer commoditytypeno;
 

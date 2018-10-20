@@ -1,19 +1,37 @@
 package cn.bean;
 
 import java.util.Date;
-
+//商品评论表
 public class CommodityReview {
     private Integer commodityreviewno;
 
     private Integer commodityno;
+    private Commodity commodityId;  //外键商品表
 
     private String reviewcontent;
 
     private Integer empno;
+    private Emp empId;  //外键员工表
 
     private Date reviewtime;
 
     private Integer imagerno;
+
+    public Commodity getCommodityId() {
+        return commodityId;
+    }
+
+    public void setCommodityId(Commodity commodityId) {
+        this.commodityId = commodityId;
+    }
+
+    public Emp getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(Emp empId) {
+        this.empId = empId;
+    }
 
     public Integer getCommodityreviewno() {
         return commodityreviewno;
