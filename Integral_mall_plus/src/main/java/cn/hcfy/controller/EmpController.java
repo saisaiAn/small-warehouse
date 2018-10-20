@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class EmpController {
 
@@ -19,15 +21,17 @@ public class EmpController {
 
     @RequestMapping("/BeforeLogin")
     @ResponseBody
-    public String login(@RequestParam(value="empname",required=false)String empname, @RequestParam(value="password",required=false) String password,Model model){
+    public String login(@RequestParam(value="empname",required=false)String empname,
+                     @RequestParam(value="password",required=false) String password,
+                     HttpSession  httpSession){
         Emp emp=new Emp();
         System.out.println(empname+"=="+password);
         emp.setEmpname(empname);
         emp.setPassword(password);
         Emp empReturn = empService.loginToIndexBefore(emp);
-        System.out.println(empReturn.getDepartment().getDepaname());
+        System.out.println(empReturn.getDepartmentId().getDepaname());
         if(empReturn==null){ return  "n";}
-        model.addAttribute("empBefore",empReturn);
+        httpSession.setAttribute("empBefore",empReturn);
         return "y";
     }
 

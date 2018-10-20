@@ -49,7 +49,7 @@
 	    <div class="warp warptwo clearfloat">
 	    	<div class="confirm clearfloat">
 	    		<div class="add clearfloat box-s">
-	    			<a href="/WEB-INF/views/before/address.jsp">
+	    			<a href="/toBeforeAddress">
 		    			<div class="left clearfloat fl">
 		    				<i class="iconfont icon-dizhi1"></i>
 		    			</div>
@@ -73,12 +73,12 @@
 						</div>
 					</a>
 					<div class="right clearfloat fl">
-						<a href="/WEB-INF/views/before/detail.jsp">
+						<a href="/toBeforeDetail">
 							<p class="tit over">单反相机，彰显你的风格</p>
 							<p class="fu-tit">颜色：蓝色  内存：120G</p>
 						</a>
 						<div class="xia clearfloat">
-							<a href="/WEB-INF/views/before/detail.jsp">
+							<a href="/toBeforeDetail">
 								<p class="jifen fl over">100000积分</p>
 							</a>
 							<span class="fr db">×1</span>
@@ -151,7 +151,7 @@
 	    	<div class="zuo clearfloat fl box-s">
 	    		共<span>1</span>件  总积分：<span>100000</span>
 	    	</div>
-	    	<a href="/WEB-INF/views/before/zhifu.jsp" class="fl db">
+	    	<a href="/toBeforeZhiFu" class="fl db">
 	    		提交订单
 	    	</a>
 	    </div>
@@ -161,25 +161,25 @@
 	    <footer class="page-footer fixed-footer" id="footer">
 			<ul>
 				<li>
-					<a href="/WEB-INF/views/before/index.jsp">
+					<a href="/toBeforeIndex">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
 				<li>
-					<a href="/WEB-INF/views/before/cation.jsp">
+					<a href="/toBeforeCation">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li class="active">
-					<a href="/WEB-INF/views/before/shopcar.jsp">
+					<a href="/toBeforeShopcar">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="/WEB-INF/views/before/center.jsp">
+					<a href="/toBeforeCenter">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>

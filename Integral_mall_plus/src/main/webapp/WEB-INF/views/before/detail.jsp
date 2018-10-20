@@ -129,7 +129,7 @@
 			</div>
 			<div class="right clearfloat fl">
 				<span class="btn fl" onClick="toshare()">加入购物车</span>
-				<a href="/WEB-INF/views/before/confirm.jsp" class="btn btnone fl">立即购买</a>
+				<a href="/toBeforeConfirm" class="btn btnone fl">立即购买</a>
 			</div>
 		</div>
 		<!--footerone end-->
@@ -181,7 +181,7 @@
 		            </div>
 		        </div>
 		    </div>
-		    <a href="/WEB-INF/views/before/shopcar.jsp" class="shop-btn db">确定</a>
+		    <a href="/toBeforeShopcar" class="shop-btn db">确定</a>
 		</div>
 		<script type="text/javascript">
 			var down = document.getElementById("down");
@@ -201,28 +201,28 @@
 		    }
 		</script>
 		<!--footer star-->
-	    <footer class="page-footer fixed-footer" id="footer">
+		<footer class="page-footer fixed-footer" id="footer">
 			<ul>
-				<li>
-					<a href="/WEB-INF/views/before/index.jsp">
+				<li class="active">
+					<a href="/toBeforeIndex">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
-				<li class="active">
-					<a href="/WEB-INF/views/before/cation.jsp">
+				<li>
+					<a href="/toBeforeCation">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li>
-					<a href="/WEB-INF/views/before/shopcar.jsp">
+					<a href="/toBeforeShopcar">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="/WEB-INF/views/before/center.jsp">
+					<a href="/toBeforeCenter">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>

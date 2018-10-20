@@ -23,6 +23,7 @@
 		})
 	</script>
 </head>
+
 <!--loading页开始-->
 <div class="loading">
 	<div class="loader">
@@ -36,7 +37,7 @@
 	</div>
 </div>
 <!--loading页结束-->
-	<body>		
+	<body>
 		<!--头部区域-->
 	    <header class="mui-bar mui-bar-nav" id="header">
 	        <h4>积分商城</h4>

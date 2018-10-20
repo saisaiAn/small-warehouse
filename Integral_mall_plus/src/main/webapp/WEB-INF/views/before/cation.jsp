@@ -48,7 +48,7 @@
 	    <div class="warp clearfloat">
 		    <div class="cations clearfloat">
 		    	<div class="list clearfloat fl">
-		    		<a href="/WEB-INF/views/before/list.jsp">
+		    		<a href="/toBeforeList">
 			    		<p class="tit over box-s">家居家纺</p>
 			    		<div class="tu">
 			    			<img src="/static/before/images/jiaju.jpg"/>
@@ -56,7 +56,7 @@
 		    		</a>
 		    	</div>
 		    	<div class="list clearfloat fl">
-		    		<a href="/WEB-INF/views/before/list.jsp">
+		    		<a href="/toBeforeList">
 			    		<p class="tit over box-s">3C数码</p>
 			    		<div class="tu">
 			    			<img src="/static/before/images/3c.jpg"/>
@@ -64,7 +64,7 @@
 		    		</a>
 		    	</div>
 		    	<div class="list clearfloat fl">
-		    		<a href="/WEB-INF/views/before/list.jsp">
+		    		<a href="/toBeforeList">
 			    		<p class="tit over box-s">家用电器</p>
 			    		<div class="tu">
 			    			<img src="/static/before/images/dianqi.jpg"/>
@@ -72,7 +72,7 @@
 		    		</a>
 		    	</div>
 		    	<div class="list clearfloat fl">
-		    		<a href="/WEB-INF/views/before/list.jsp">
+		    		<a href="/toBeforeList">
 			    		<p class="tit over box-s">厨房小电</p>
 			    		<div class="tu">
 			    			<img src="/static/before/images/chufang.jpg"/>
@@ -80,7 +80,7 @@
 		    		</a>
 		    	</div>
 		    	<div class="list clearfloat fl">
-		    		<a href="/WEB-INF/views/before/list.jsp">
+		    		<a href="/toBeforeList">
 			    		<p class="tit over box-s">零食小吃</p>
 			    		<div class="tu">
 			    			<img src="/static/before/images/lingshi.jpg"/>
@@ -88,7 +88,7 @@
 		    		</a>
 		    	</div>
 		    	<div class="list clearfloat fl">
-		    		<a href="/WEB-INF/views/before/list.jsp">
+		    		<a href="/toBeforeList">
 			    		<p class="tit over box-s">酒水饮料</p>
 			    		<div class="tu">
 			    			<img src="/static/before/images/4.jpg"/>
@@ -96,7 +96,7 @@
 		    		</a>
 		    	</div>
 		    	<div class="list clearfloat fl">
-		    		<a href="/WEB-INF/views/before/list.jsp">
+		    		<a href="/toBeforeList">
 			    		<p class="tit over box-s">个护健康</p>
 			    		<div class="tu">
 			    			<img src="/static/before/images/gehu.jpg"/>
@@ -104,7 +104,7 @@
 		    		</a>
 		    	</div>
 		    	<div class="list clearfloat fl">
-		    		<a href="/WEB-INF/views/before/list.jsp">
+		    		<a href="/toBeforeList">
 			    		<p class="tit over box-s">生活电器</p>
 			    		<div class="tu">
 			    			<img src="/static/before/images/shenghuo.jpg"/>
@@ -113,7 +113,7 @@
 		    	</div>
 		    	
 		    	<div class="list clearfloat fl">
-		    		<a href="/WEB-INF/views/before/list.jsp">
+		    		<a href="/toBeforeList">
 			    		<p class="tit over box-s">服饰</p>
 			    		<div class="tu">
 			    			<img src="/static/before/images/fuzhuang.jpg"/>
@@ -121,7 +121,7 @@
 		    		</a>
 		    	</div>
 		    	<div class="list clearfloat fl">
-		    		<a href="/WEB-INF/views/before/list.jsp">
+		    		<a href="/toBeforeList">
 			    		<p class="tit over box-s">生鲜水果</p>
 			    		<div class="tu">
 			    			<img src="/static/before/images/sg.jpg"/>
