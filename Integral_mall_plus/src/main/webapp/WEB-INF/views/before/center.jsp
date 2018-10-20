@@ -77,10 +77,10 @@
             <a href="/WEB-INF/views/before/index.jsp">积分兑换商品<i class="iconfont"></i></a>
         </div>
         <ul>
-            <li><a href=""><i class="color_f44623">0</i><p>账户余额</p> </a></li>
+            <li><a href=""><i class="color_f44623"></i><p>账户余额</p> </a></li>
             <li><a href=""><i class="color_f4a425">30</i><p>我的积分</p> </a></li>
-            <li><a href=""><i class="color_45a1de">0</i><p>我的礼券</p> </a></li>
-            <li><a href=""><i class="color_1dccaa">1</i><p>宝贝收藏</p> </a></li>
+            <%--<li><a href=""><i class="color_45a1de">0</i><p>我的礼券</p> </a></li>--%>
+            <%--<li><a href=""><i class="color_1dccaa">1</i><p>宝贝收藏</p> </a></li>--%>
         </ul>
     </div>
     <div class="vip-list-icon border_top_bottom">
@@ -106,26 +106,26 @@
     <!--尾部-->
     <footer class="page-footer fixed-footer" id="footer">
         <ul>
-            <li>
-                <a href="/WEB-INF/views/before/index.jsp">
+            <li class="active">
+                <a href="/toBeforeIndex">
                     <i class="iconfont icon-shouye"></i>
                     <p>首页</p>
                 </a>
             </li>
             <li>
-                <a href="/WEB-INF/views/before/cation.jsp">
+                <a href="/toBeforeCation">
                     <i class="iconfont icon-icon04"></i>
                     <p>分类</p>
                 </a>
             </li>
             <li>
-                <a href="/WEB-INF/views/before/shopcar.jsp">
+                <a href="/toBeforeShopcar">
                     <i class="iconfont icon-gouwuche"></i>
                     <p>购物车</p>
                 </a>
             </li>
-            <li class="active">
-                <a href="/WEB-INF/views/before/center.jsp">
+            <li>
+                <a href="/toBeforeCenter">
                     <i class="iconfont icon-yonghuming"></i>
                     <p>我的</p>
                 </a>
