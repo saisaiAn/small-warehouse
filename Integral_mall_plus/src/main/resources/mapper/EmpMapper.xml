@@ -1,9 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.dao.EmpMapper">
-    <select id="loginToIndexBefore" parameterType="cn.bean.Emp" resultType="cn.bean.Emp" >
-        select  * from emp
+    <resultMap type="cn.bean.Emp" id="WithDeptResultMap">
+        <id column="empno" jdbcType="INTEGER" property="empno" />
+        <result column="empname" jdbcType="VARCHAR" property="empname" />
+        <result column="empsex" jdbcType="VARCHAR" property="empsex" />
+        <result column="idcard" jdbcType="VARCHAR" property="idcard" />
+        <result column="departmentno" jdbcType="INTEGER" property="departmentno" />
+        <result column="positivedates" jdbcType="timestamp" property="positivedates" />
+        <result column="empphone" jdbcType="VARCHAR" property="empphone" />
+        <result column="intergralno" jdbcType="INTEGER" property="intergralno" />
+        <result column="position" jdbcType="INTEGER" property="position" />
+        <result column="emptype" jdbcType="INTEGER" property="emptype" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <!-- 指定联合查询出的部门字段的封装 -->
+        <association property="department" javaType="cn.bean.Department">
+            <id column="depano" property="depano"/>
+            <result column="depaname" property="depaname"/>
+            <result column="parentdepa" property="parentdepa"/>
+            <association property="department" javaType="cn.bean.Department">
+                <id column="depano" property="depano"/>
+                <result column="depaname" property="depaname"/>
+                <result column="parentdepa" property="parentdepa"/>
+            </association>
+        </association>
+        <association property="integral" javaType="cn.bean.Integral">
+            <id column="intergralno" property="intergralno"/>
+            <result column="totalintegral" property="totalintegral"/>
+            <result column="haveintegral" property="haveintegral"/>
+            <result column="remainingpoints" property="remainingpoints"/>
+            <result column="lastchangetime" property="lastchangetime"/>
+        </association>
+    </resultMap>
+    <sql id="WithDept_Column_List">
+  	e.empno, e.empname, e.empsex, e.idcard, e.departmentno, e.positivedates, e.empphone,
+  	e.intergralno, e.position, e.emptype, e.password,
+  	d.depano, d.depaname,d.parentdepa,i.intergralno,i.totalintegral,i.haveintegral,i.remainingpoints,i.lastchangetime
+  </sql>
+    <select id="loginToIndexBefore" parameterType="cn.bean.Emp" resultMap="WithDeptResultMap" >
+        select
+        <include refid="WithDept_Column_List" />
+        from emp e ,department d,integral i
         <where>
+          e.departmentno=d.depano and e.intergralno=i.intergralno and
           empname=#{empname} and password = #{password}
         </where>
     </select>

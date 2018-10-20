@@ -158,7 +158,6 @@
                         data:{ empname:empname, password:password} ,
                         type:"POST",
                         success:function (result) {
-                            alert(result);
                             if (result=="y"){
                                 location.href="/toBeforeLogin";
                             }else {

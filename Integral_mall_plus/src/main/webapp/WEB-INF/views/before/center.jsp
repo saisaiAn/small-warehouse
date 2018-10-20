@@ -77,10 +77,10 @@
             <a href="/WEB-INF/views/before/index.jsp">积分兑换商品<i class="iconfont"></i></a>
         </div>
         <ul>
-            <li><a href=""><i class="color_f44623">0</i><p>账户余额</p> </a></li>
+            <li><a href=""><i class="color_f44623"></i><p>账户余额</p> </a></li>
             <li><a href=""><i class="color_f4a425">30</i><p>我的积分</p> </a></li>
-            <li><a href=""><i class="color_45a1de">0</i><p>我的礼券</p> </a></li>
-            <li><a href=""><i class="color_1dccaa">1</i><p>宝贝收藏</p> </a></li>
+            <%--<li><a href=""><i class="color_45a1de">0</i><p>我的礼券</p> </a></li>--%>
+            <%--<li><a href=""><i class="color_1dccaa">1</i><p>宝贝收藏</p> </a></li>--%>
         </ul>
     </div>
     <div class="vip-list-icon border_top_bottom">

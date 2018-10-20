@@ -7,6 +7,16 @@ public class Department {
 
     private Integer parentdepa;
 
+    private Department department;
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
     public Integer getDepano() {
         return depano;
     }
