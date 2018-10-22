@@ -26,14 +26,16 @@
         </association>
     </resultMap>
     <sql id="WithCommodityType_Column_List">
-
-  </sql>
-    <select id="loginToIndexBefore" parameterType="cn.bean.Emp" resultMap="WithDeptResultMap" >
+        c.commodityno,c.price,c.needintegral,c.commoditytitle,c.commoditydetails,c.commodityinventory,c.commoditytypeno,c.commoditytype,
+        ct.commoditytypeno,ct.commoditytypename,ct.commodityrank,
+        sct.commoditytypeno,sct.commoditytypename,sct.supercommoditytype,sct.commodityrank
+    </sql>
+    <select id="selectAllCommodity" resultMap="CommodityResultMap" >
         select
-        <include refid="WithDept_Column_List" />
-        from commodity c,commoditytype ct
+        <include refid="WithCommodityType_Column_List" />
+        from commodity c,commoditytype ct,commoditytype sct
         <where>
-            c.commoditytypeno=ct.commoditytypeno
+            c.commoditytypeno=ct.commoditytypeno and  ct.supercommoditytype=sct.commoditytypeno
         </where>
     </select>
 </mapper>

@@ -160,91 +160,93 @@
 		        		</div>
 		        	</div>
 		        </div>
-		        
+				<% int i=1;%>
 		        <!--1F家居用品、电器-->
-		        <div class="theme clearfloat">
-		        	<div class="boutit clearfloat">
-		        		<span></span>
-		        		<samp>1F家居用品、电器</samp>
-		        	</div>
-		        	<div class="content clearfloat">
-		        		<div class="list clearfloat fl">
-						    <a href="/toBeforeDetail">
-						        <div class="tu clearfloat fr">
-						            <span></span>
-						            <img src="/static/before/images/1f1.jpg" />
-						        </div>
-						        <div class="shang clearfloat fl box-s">
-						            <p class="tit over">利仁（Liven） DHG-233A 电火锅</p>
-						            <p><span>积分:</span><span class="over db red">11000</span></p>
-						        </div>
-						    </a>
+			<c:forEach items="${typeList}" var="type">
+				<div class="theme clearfloat">
+					<div class="boutit clearfloat">
+						<span></span>
+						<samp><%=i++%>F${type.commoditytypename}</samp>
+					</div>
+					<div class="content clearfloat">
+						<div class="list clearfloat fl">
+							<a href="/toBeforeDetail">
+								<div class="tu clearfloat fr">
+									<span></span>
+									<img src="/static/before/images/1f1.jpg" />
+								</div>
+								<div class="shang clearfloat fl box-s">
+									<p class="tit over">利仁（Liven） DHG-233A 电火锅</p>
+									<p><span>积分:</span><span class="over db red">11000</span></p>
+								</div>
+							</a>
 						</div>
 
-			        	<div class="list clearfloat fl">
-						    <a href="/toBeforeDetail">
-						        <div class="tu clearfloat fr">
-						            <span></span>
-						            <img src="/static/before/images/1f2.jpg" />
-						        </div>
-						        <div class="shang clearfloat fl box-s">
-						            <p class="tit over">九阳（Joyoung）榨汁机家用果汁机（汁渣分离</p>
-						            <p><span>积分:</span><span class="over db red">11000</span></p>
-						        </div>
-						    </a>
+						<div class="list clearfloat fl">
+							<a href="/toBeforeDetail">
+								<div class="tu clearfloat fr">
+									<span></span>
+									<img src="/static/before/images/1f2.jpg" />
+								</div>
+								<div class="shang clearfloat fl box-s">
+									<p class="tit over">九阳（Joyoung）榨汁机家用果汁机（汁渣分离</p>
+									<p><span>积分:</span><span class="over db red">11000</span></p>
+								</div>
+							</a>
 						</div>
-			        	<div class="list clearfloat fl">
-						    <a href="/toBeforeDetail">
-						        <div class="tu clearfloat fr">
-						            <span></span>
-						            <img src="/static/before/images/1f3.jpg" />
-						        </div>
-						        <div class="shang clearfloat fl box-s">
-						            <p class="tit over">亿嘉IJARL LOTOTO 时尚创意 带盖马克杯 水杯 绿色兔子 FM491008TZM</p>
-						            <p><span>积分:</span><span class="over db red">1500</span></p>
-						        </div>
-						    </a>
+						<div class="list clearfloat fl">
+							<a href="/toBeforeDetail">
+								<div class="tu clearfloat fr">
+									<span></span>
+									<img src="/static/before/images/1f3.jpg" />
+								</div>
+								<div class="shang clearfloat fl box-s">
+									<p class="tit over">亿嘉IJARL LOTOTO 时尚创意 带盖马克杯 水杯 绿色兔子 FM491008TZM</p>
+									<p><span>积分:</span><span class="over db red">1500</span></p>
+								</div>
+							</a>
 						</div>
-			        	<div class="list clearfloat fl">
-						    <a href="/toBeforeDetail">
-						        <div class="tu clearfloat fr">
-						            <span></span>
-						            <img src="/static/before/images/1f2.jpg" />
-						        </div>
-						        <div class="shang clearfloat fl box-s">
-						            <p class="tit over">九阳（Joyoung）榨汁机家用果汁机（汁渣分离</p>
-						            <p><span>积分:</span><span class="over db red">11000</span></p>
-						        </div>
-						    </a>
+						<div class="list clearfloat fl">
+							<a href="/toBeforeDetail">
+								<div class="tu clearfloat fr">
+									<span></span>
+									<img src="/static/before/images/1f2.jpg" />
+								</div>
+								<div class="shang clearfloat fl box-s">
+									<p class="tit over">九阳（Joyoung）榨汁机家用果汁机（汁渣分离</p>
+									<p><span>积分:</span><span class="over db red">11000</span></p>
+								</div>
+							</a>
 						</div>
-			        	<div class="list clearfloat fl">
-						    <a href="/toBeforeDetail">
-						        <div class="tu clearfloat fr">
-						            <span></span>
-						            <img src="/static/before/images/1f3.jpg" />
-						        </div>
-						        <div class="shang clearfloat fl box-s">
-						            <p class="tit over">亿嘉IJARL LOTOTO 时尚创意 带盖马克杯 水杯 绿色兔子 FM491008TZM</p>
-						            <p><span>积分:</span><span class="over db red">1500</span></p>
-						        </div>
-						    </a>
+						<div class="list clearfloat fl">
+							<a href="/toBeforeDetail">
+								<div class="tu clearfloat fr">
+									<span></span>
+									<img src="/static/before/images/1f3.jpg" />
+								</div>
+								<div class="shang clearfloat fl box-s">
+									<p class="tit over">亿嘉IJARL LOTOTO 时尚创意 带盖马克杯 水杯 绿色兔子 FM491008TZM</p>
+									<p><span>积分:</span><span class="over db red">1500</span></p>
+								</div>
+							</a>
 						</div>
-			        	<div class="list clearfloat fl">
-						    <a href="/toBeforeDetail">
-						        <div class="tu clearfloat fr">
-						            <span></span>
-						            <img src="/static/before/images/1f1.jpg" />
-						        </div>
-						        <div class="shang clearfloat fl box-s">
-						            <p class="tit over">利仁（Liven） DHG-233A 电火锅</p>
-						            <p><span>积分:</span><span class="over db red">11000</span></p>
-						        </div>
-						    </a>
+						<div class="list clearfloat fl">
+							<a href="/toBeforeDetail">
+								<div class="tu clearfloat fr">
+									<span></span>
+									<img src="/static/before/images/1f1.jpg" />
+								</div>
+								<div class="shang clearfloat fl box-s">
+									<p class="tit over">利仁（Liven） DHG-233A 电火锅</p>
+									<p><span>积分:</span><span class="over db red">11000</span></p>
+								</div>
+							</a>
 						</div>
-		        	</div>				        	
-		        </div>
+					</div>
+				</div>
+			</c:forEach>
 		        <!--2F小吃零食-->
-		        <div class="theme clearfloat">
+		    <%--    <div class="theme clearfloat">
 		        	<div class="boutit clearfloat">
 		        		<span></span>
 		        		<samp>2F小吃零食</samp>
@@ -323,9 +325,9 @@
 						    </a>
 						</div>
 		        	</div>				        	
-		        </div>
+		        </div>--%>
 		        <!--3F男女服装-->
-		        <div class="theme clearfloat">
+		     <%--   <div class="theme clearfloat">
 		        	<div class="boutit clearfloat">
 		        		<span></span>
 		        		<samp>3F男女服装</samp>
@@ -404,9 +406,9 @@
 						    </a>
 						</div>
 		        	</div>				        	
-		        </div>
+		        </div>--%>
 		        <!--4F手机、数码配件-->
-		        <div class="theme clearfloat">
+		        <%--<div class="theme clearfloat">
 		        	<div class="boutit clearfloat">
 		        		<span></span>
 		        		<samp>4F手机、数码配件</samp>
@@ -485,9 +487,9 @@
 						    </a>
 						</div>
 		        	</div>				        	
-		        </div>
+		        </div>--%>
 		        <!--5F个护化妆-->
-		        <div class="theme clearfloat">
+<%--		        <div class="theme clearfloat">
 		        	<div class="boutit clearfloat">
 		        		<span></span>
 		        		<samp>5F个护化妆</samp>
@@ -566,7 +568,7 @@
 						    </a>
 						</div>
 		        	</div>				        	
-		        </div>
+		        </div>--%>
 	        </div>
 		</div>
 		<!--footer star-->

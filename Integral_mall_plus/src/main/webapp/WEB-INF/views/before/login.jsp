@@ -158,7 +158,7 @@
                         type:"POST",
                         success:function (result) {
                             if (result=="y"){
-                                location.href="/toBeforeLogin";
+                                location.href="/toBeforeIndex";
                             }else {
                                 alert("账号或密码不正确");
                                 window.location.reload();
