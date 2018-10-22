@@ -47,133 +47,50 @@
 	    
 	    <div class="warp warptwo clearfloat">
 	    	<div class="shopcar clearfloat">
-	    		<div class="list clearfloat fl">
-	    			<div class="xuan clearfloat fl">
-	    				<div class="radio" > 
-						    <label>
-						        <input type="checkbox" name="sex" value="" />
-						    </label>
+				<c:forEach items="${shoppingCarList}" var="shoppingCar">
+					<div class="list clearfloat fl">
+						<div class="xuan clearfloat fl">
+							<div class="radio" >
+								<label>
+									<input type="checkbox" name="sex" value="" />
+								</label>
+							</div>
 						</div>
-	    			</div>
-	    			<a href="javascript:void(0)">
-		    			<div class="tu clearfloat fl">
-		    				<span></span>
-		    				<img src="/static/before/images/xj.jpg"/>
-		    			</div>
-		    			<div class="right clearfloat fl">
-		    				<p class="tit over">单反相机，彰显你的风格</p>
-		    				<p class="fu-tit over">颜色：蓝色  内存：120G</p>
-		    				<p class="jifen over">100000积分</p>
-		    				<div class="bottom clearfloat">
-		    					<div class="zuo clearfloat fl">
-		    						<ul>
-		    							<li><img src="/static/before/images/jian.jpg"/></li>
-		    							<li>1</li>
-		    							<li><img src="/static/before/images/jia.jpg"/></li>
-		    						</ul>
-		    					</div>
-		    					<i class="iconfont icon-lajixiang fr"></i>
-		    				</div>
-		    			</div>
-	    			</a>
-	    		</div>
-	    		<div class="list clearfloat fl">
-	    			<div class="xuan clearfloat fl">
-	    				<div class="radio" > 
-						    <label>
-						        <input type="checkbox" name="sex" value="" />
-						    </label>
-						</div>
-	    			</div>
-	    			<a href="javascript:void(0)">
-		    			<div class="tu clearfloat fl">
-		    				<span></span>
-		    				<img src="/static/before/images/xj.jpg"/>
-		    			</div>
-		    			<div class="right clearfloat fl">
-		    				<p class="tit over">单反相机，彰显你的风格</p>
-		    				<p class="fu-tit over">颜色：蓝色  内存：120G</p>
-		    				<p class="jifen over">100000积分</p>
-		    				<div class="bottom clearfloat">
-		    					<div class="zuo clearfloat fl">
-		    						<ul>
-		    							<li><img src="/static/before/images/jian.jpg"/></li>
-		    							<li>1</li>
-		    							<li><img src="/static/before/images/jia.jpg"/></li>
-		    						</ul>
-		    					</div>
-		    					<i class="iconfont icon-lajixiang fr"></i>
-		    				</div>
-		    			</div>
-	    			</a>
-	    		</div>
-	    		<div class="list clearfloat fl">
-	    			<div class="xuan clearfloat fl">
-	    				<div class="radio" > 
-						    <label>
-						        <input type="checkbox" name="sex" value="" />
-						    </label>
-						</div>
-	    			</div>
-	    			<a href="javascript:void(0)">
-		    			<div class="tu clearfloat fl">
-		    				<span></span>
-		    				<img src="/static/before/images/xj.jpg"/>
-		    			</div>
-		    			<div class="right clearfloat fl">
-		    				<p class="tit over">单反相机，彰显你的风格</p>
-		    				<p class="fu-tit over">颜色：蓝色  内存：120G</p>
-		    				<p class="jifen over">100000积分</p>
-		    				<div class="bottom clearfloat">
-		    					<div class="zuo clearfloat fl">
-		    						<ul>
-		    							<li><img src="/static/before/images/jian.jpg"/></li>
-		    							<li>1</li>
-		    							<li><img src="/static/before/images/jia.jpg"/></li>
-		    						</ul>
-		    					</div>
-		    					<i class="iconfont icon-lajixiang fr"></i>
-		    				</div>
-		    			</div>
-	    			</a>
-	    		</div>
-	    		<div class="list clearfloat fl">
-	    			<div class="xuan clearfloat fl">
-	    				<div class="radio" > 
-						    <label>
-						        <input type="checkbox" name="sex" value="" />
-						    </label>
-						</div>
-	    			</div>
-	    			<a href="javascript:void(0)">
-		    			<div class="tu clearfloat fl">
-		    				<span></span>
-		    				<img src="/static/before/images/xj.jpg"/>
-		    			</div>
-		    			<div class="right clearfloat fl">
-		    				<p class="tit over">单反相机，彰显你的风格</p>
-		    				<p class="fu-tit over">颜色：蓝色  内存：120G</p>
-		    				<p class="jifen over">100000积分</p>
-		    				<div class="bottom clearfloat">
-		    					<div class="zuo clearfloat fl">
-		    						<ul>
-		    							<li><img src="/static/before/images/jian.jpg"/></li>
-		    							<li>1</li>
-		    							<li><img src="/static/before/images/jia.jpg"/></li>
-		    						</ul>
-		    					</div>
-		    					<i class="iconfont icon-lajixiang fr"></i>
-		    				</div>
-		    			</div>
-	    			</a>
-	    		</div>
+						<a href="javascript:void(0)">
+							<div class="tu clearfloat fl">
+								<span></span>
+								<c:forEach items="${imgList}" var="img">
+									<c:if test="${img.imageclassification==3&&img.imagerid==shoppingCar.shoppingcommodityno}">
+										<img src="${img.imagerurl}" />
+									</c:if>
+								</c:forEach>
+							</div>
+							<div class="right clearfloat fl">
+								<p class="tit over">${shoppingCar.commodityId.commoditytitle}</p>
+								<p class="fu-tit over">${shoppingCar.commodityNote}</p>
+								<p class="jifen over"><span>${shoppingCar.commodityId.needintegral}</span>积分</p>
+								<div class="bottom clearfloat">
+									<div class="zuo clearfloat fl">
+										<ul>
+											<li><img src="/static/before/images/jian.jpg"/></li>
+											<li>1</li>
+											<li><img src="/static/before/images/jia.jpg"/></li>
+										</ul>
+									</div>
+									<i class="iconfont icon-lajixiang fr "></i>
+									<span class="carno">${shoppingCar.carno}</span>
+								</div>
+							</div>
+						</a>
+					</div>
+				</c:forEach>
 	    	</div>
 	    </div>
 	    
 	    <!--settlement star-->
 	    <div class="settlement clearfloat">
 	    	<div class="zuo clearfloat fl box-s">
-	    		合计：<span></span>
+	    		合计：<span class="hj"></span>
 	    	</div>
 	    	<a href="/WEB-INF/views/before/confirm.jsp" class="fl db">
 	    		立即结算
@@ -211,7 +128,6 @@
 			</ul>
 		</footer>
 		<!--footer end-->
-
 		<script type="text/javascript">
 			$('input[type="checkbox"]').click(function() { // 找到勾选按钮，绑定事件
 				tatol();
@@ -226,13 +142,29 @@
 				tatol();
 			});
 			$('.icon-lajixiang').click(function() { // 找到删除按钮，绑定点击事件
+                var del =$(this).next(".carno").html();
 				var self = this;
 				layer.open({
 	                content: '确定删除？',
 	                btn: ['确定', '取消'],
 	                yes: function(index) {
-	                    $(self).parent().parent().parent().parent().remove();
-	                    layer.closeAll();
+                        $.ajax({
+                            url:"/deletBeforeShopCar",
+                            data:{ carno:del} ,
+                            type:"POST",
+                            success:function (result) {
+                                alert(result);
+                                if (result=="y"){
+                                    alert("删除成功");
+                                    location.href="/toBeforeShopcar";
+                                }else {
+                                    alert("删除失败");
+                                    window.location.reload();
+                                }
+                            }
+                        })
+	                    // $(self).parent().parent().parent().parent().remove();
+	                    // layer.closeAll();
 	                    tatol();
 	                }
 	            });

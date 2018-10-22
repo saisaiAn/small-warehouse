@@ -1,14 +1,8 @@
 package cn.hcfy.controller;
 
-import cn.bean.Commodity;
-import cn.bean.CommodityType;
-import cn.bean.Emp;
-import cn.bean.Imager;
+import cn.bean.*;
 import cn.dao.ImagerMapper;
-import cn.hcfy.service.CommodityService;
-import cn.hcfy.service.CommodityTypeService;
-import cn.hcfy.service.EmpService;
-import cn.hcfy.service.ImagerService;
+import cn.hcfy.service.*;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,6 +30,9 @@ public class EmpController {
     @Autowired
     ImagerService imagerService;
 
+    @Autowired
+    shoppingCarService shoppingCarService;
+
     @RequestMapping("/BeforeLogin")
     @ResponseBody
     public String login(@RequestParam(value="empname",required=false)String empname,
@@ -55,19 +52,23 @@ public class EmpController {
         return "y";
     }
 
+    @RequestMapping("/addBeforeShopping")
+    public String addShopCar(shoppingCar shoppingCar){
+        int judge= shoppingCarService.insertShoppingCar(shoppingCar);
+        return "forward:/toBeforeShopcar";
 
-
-
-
-
-
-
-
-
-
-
-
-
+    }
+    @ResponseBody
+    @RequestMapping("deletBeforeShopCar")
+    public String deletBeforeShopCar(@Param("carno")int carno){
+        int judge= shoppingCarService.deleteByPrimaryKey(carno);
+        System.out.println(judge);
+        if(judge>0){
+            return "y";
+        }else{
+            return "n";
+        }
+    }
     @RequestMapping("/toBeforeLogin")
     public String login(){
         return "/before/login";
@@ -77,14 +78,12 @@ public class EmpController {
         List<Commodity> commodityList=commodityService.selectAllCommodity();
         List<CommodityType> commodityTypeList=commodityTypeService.selectAllCommodityType();
         List<Imager> imagerList = imagerService.selectAllImager();
-        for (Commodity commodity: commodityList ) {
-            System.out.println(commodity.getCommoditytitle()+"=="+commodity.getCommodityTypeId().getCommoditytypename());
-        }
         model.addAttribute("commodityList",commodityList);
         model.addAttribute("typeList",commodityTypeList);
 
         return "/before/index";
     }
+
     @RequestMapping("/toBeforeAddress")
     public String address(){
         return "/before/address";
@@ -113,7 +112,10 @@ public class EmpController {
         return "/before/list";
     }
     @RequestMapping("/toBeforeShopcar")
-    public String shopcar(){
+    public String shopcar(HttpSession session,Model model){
+        Emp emp=(Emp)session.getAttribute("empBefore");
+        List<shoppingCar> shoppingCarList= shoppingCarService.selectShoppingCarById(emp);
+        model.addAttribute("shoppingCarList",shoppingCarList);
         return "/before/shopcar";
     }
     @RequestMapping("/toBeforeZhiFu")

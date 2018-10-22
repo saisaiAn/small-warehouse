@@ -68,4 +68,38 @@ public class shoppingCar {
     public void setCommodityNote(String commodityNote) {
         this.commodityNote = commodityNote;
     }
+
+    public shoppingCar(Integer shoppingempno, Integer shoppingcommodityno, Integer commoditysum, String commodityNote) {
+        this.shoppingempno = shoppingempno;
+        this.shoppingcommodityno = shoppingcommodityno;
+        this.commoditysum = commoditysum;
+        this.commodityNote = commodityNote;
+    }
+
+    public shoppingCar(Integer carno, Integer shoppingempno, Emp empId, Integer shoppingcommodityno, Commodity commodityId, Integer commoditysum, String commodityNote) {
+        this.carno = carno;
+        this.shoppingempno = shoppingempno;
+        this.empId = empId;
+        this.shoppingcommodityno = shoppingcommodityno;
+        this.commodityId = commodityId;
+        this.commoditysum = commoditysum;
+        this.commodityNote = commodityNote;
+    }
+
+
+    public shoppingCar() {
+    }
+
+    @Override
+    public String toString() {
+        return "shoppingCar{" +
+                "carno=" + carno +
+                ", shoppingempno=" + shoppingempno +
+                ", empId=" + empId +
+                ", shoppingcommodityno=" + shoppingcommodityno +
+                ", commodityId=" + commodityId +
+                ", commoditysum=" + commoditysum +
+                ", commodityNote='" + commodityNote + '\'' +
+                '}';
+    }
 }
