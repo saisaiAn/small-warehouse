@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="Integral_mall_plus:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="SSMDemo1.war">
-      <element id="artifact" artifact-name="Integral_mall_plus:war exploded" />
-    </root>
-  </artifact>
-</component>

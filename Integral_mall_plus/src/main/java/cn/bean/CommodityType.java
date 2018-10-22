@@ -7,7 +7,17 @@ public class CommodityType {
 
     private Integer supercommoditytype;
 
+    private CommodityType supercommoditytypeno;
+
     private Integer commodityrank;
+
+    public CommodityType getSupercommoditytypeno() {
+        return supercommoditytypeno;
+    }
+
+    public void setSupercommoditytypeno(CommodityType supercommoditytypeno) {
+        this.supercommoditytypeno = supercommoditytypeno;
+    }
 
     public Integer getCommoditytypeno() {
         return commoditytypeno;

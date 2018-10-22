@@ -1,5 +1,6 @@
+<%@ page import="cn.bean.Emp" %>
 <!DOCTYPE html>
-<%@ page isELIgnored="false" contentType="text/html;charset=UTF-8"  language="java" %>
+<%@ page isELIgnored="false"  contentType="text/html;charset=UTF-8"  language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -74,13 +75,12 @@
     <div class="vip-club border_top_bottom vip-account">
         <div class="vip-club-title border_bottom">
             <span><i class="iconfont"></i>我的账户</span>
-            <a href="/WEB-INF/views/before/index.jsp">积分兑换商品<i class="iconfont"></i></a>
+            <a href="/toBeforeIndex">积分兑换商品<i class="iconfont"></i></a>
         </div>
         <ul>
-            <li><a href=""><i class="color_f44623"></i><p>账户余额</p> </a></li>
-            <li><a href=""><i class="color_f4a425">30</i><p>我的积分</p> </a></li>
-            <%--<li><a href=""><i class="color_45a1de">0</i><p>我的礼券</p> </a></li>--%>
-            <%--<li><a href=""><i class="color_1dccaa">1</i><p>宝贝收藏</p> </a></li>--%>
+            <li><a href=""><i class="color_f44623">${empBefore.integralId.remainingpoints}</i><p>剩余积分</p> </a></li>
+            <li><a href=""><i class="color_f4a425">${empBefore.integralId.totalintegral}</i><p>总积分</p> </a></li>
+            <li><a href=""><i class="color_45a1de">${empBefore.integralId.haveintegral}</i><p>已用积分</p> </a></li>
         </ul>
     </div>
     <div class="vip-list-icon border_top_bottom">
@@ -91,7 +91,7 @@
             </li>
             <li class="border_bottom">
                 <a href="" class="border_right"><i class="iconfont" style="font-size:24px;"></i><em>物流查询</em></a> 
-                <a href="/WEB-INF/views/before/address.html" onclick="sessionStorage.url = 'center';"><i class="iconfont icon-dizhi1"></i><em>收货地址</em></a>
+                <a href="/toBeforeAddress" onclick="sessionStorage.url = 'center';"><i class="iconfont icon-dizhi1"></i><em>收货地址</em></a>
             </li>
             <li class="border_bottom"> 
                 <a href="" class="border_right"><i class="iconfont"></i><em>评价晒单</em></a>

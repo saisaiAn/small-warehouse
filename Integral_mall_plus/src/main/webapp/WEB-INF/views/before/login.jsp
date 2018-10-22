@@ -103,7 +103,7 @@
 		</div>
 		<div class="login-content ">
 			<div class="form">
-
+				<form action="/BeforeLogin" id="loginFrom" method="post" name="loginFrom">
 					<div class="form-group">
 						<div class="col-xs-12  ">
 							<div class="input-group">
@@ -116,7 +116,7 @@
 						<div class="col-xs-12  ">
 							<div class="input-group">
 								<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-								<input type="text" id="password" name="password" class="form-control" placeholder="密码">
+								<input type="password" id="password" name="password" class="form-control" placeholder="密码">
 							</div>
 						</div>
 					</div>
@@ -135,7 +135,7 @@
 							</p>
 						</div>
 					</div>
-
+				</form>
 			</div>
 		</div>
 	</div>
@@ -150,16 +150,15 @@
         $("#submit").click(function(){
             var empname =$("#empname").val();
             var password = $("#password").val();
-            alert(password+"=="+empname);
             if (empname!=null&&empname.length >=6){
                 if (password !=null&&password.length >=6){
-                    $.ajax({
+                   $.ajax({
                         url:"/BeforeLogin",
                         data:{ empname:empname, password:password} ,
                         type:"POST",
                         success:function (result) {
                             if (result=="y"){
-                                location.href="/toBeforeLogin";
+                                location.href="/toBeforeIndex";
                             }else {
                                 alert("账号或密码不正确");
                                 window.location.reload();

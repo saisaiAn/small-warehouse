@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.dao.CommodityMapper">
-
+    <!-- 实体类全字段返回对象 -->
+    <resultMap type="cn.bean.Commodity" id="CommodityResultMap">
+        <id column="commodityno" jdbcType="INTEGER" property="commodityno" />
+        <result column="price" jdbcType="DOUBLE" property="price" />
+        <result column="needintegral" jdbcType="INTEGER" property="needintegral" />
+        <result column="commoditytitle" jdbcType="VARCHAR" property="commoditytitle" />
+        <result column="commoditydetails" jdbcType="VARCHAR" property="commoditydetails" />
+        <result column="commodityinventory" jdbcType="INTEGER" property="commodityinventory" />
+        <result column="commoditytypeno" jdbcType="INTEGER" property="commoditytypeno" />
+        <result column="commoditytype" jdbcType="INTEGER" property="commoditytype" />
+        <!-- 指定联合查询出的商品类型字段的封装 -->
+        <association property="commodityTypeId" javaType="cn.bean.CommodityType">
+            <id column="commoditytypeno" property="commoditytypeno"/>
+            <result column="commoditytypename" property="commoditytypename"/>
+            <result column="supercommoditytype" property="supercommoditytype"/>
+            <result column="commodityrank" property="commodityrank"/>
+            <association property="supercommoditytypeno" javaType="cn.bean.CommodityType">
+                <id column="commoditytypeno" property="commoditytypeno"/>
+                <result column="commoditytypename" property="commoditytypename"/>
+                <result column="supercommoditytype" property="supercommoditytype"/>
+                <result column="commodityrank" property="commodityrank"/>
+            </association>
+        </association>
+    </resultMap>
+    <sql id="WithCommodityType_Column_List">
+        c.commodityno,c.price,c.needintegral,c.commoditytitle,c.commoditydetails,c.commodityinventory,c.commoditytypeno,c.commoditytype,
+        ct.commoditytypeno,ct.commoditytypename,ct.commodityrank,
+        sct.commoditytypeno,sct.commoditytypename,sct.supercommoditytype,sct.commodityrank
+    </sql>
+    <select id="selectAllCommodity" resultMap="CommodityResultMap" >
+        select
+        <include refid="WithCommodityType_Column_List" />
+        from commodity c,commoditytype ct,commoditytype sct
+        <where>
+            c.commoditytypeno=ct.commoditytypeno and  ct.supercommoditytype=sct.commoditytypeno
+        </where>
+    </select>
 </mapper>

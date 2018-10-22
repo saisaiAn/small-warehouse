@@ -1,5 +1,9 @@
 package cn.dao;
 
-public interface CommodityMapper {
+import cn.bean.Commodity;
 
+import java.util.List;
+
+public interface CommodityMapper {
+    public List<Commodity> selectAllCommodity();
 }
