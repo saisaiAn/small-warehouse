@@ -151,10 +151,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 type:"post",
                 success:function (result) {
                     if(result==0){
-                        layer.alert('登陆成功！',{
-                            title: '提示框',
-                            icon:1,
-                        });
+                        layer.msg("登陆成功");
                         setTimeout(function () {location.href="jumpindex";},2000);
                     }else{
                         layer.alert('登陆失败，帐号或者密码错误！',{

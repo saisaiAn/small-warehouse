@@ -25,7 +25,7 @@ public class EmpController {
         emp.setEmpname(empname);
         emp.setPassword(password);
         Emp empReturn = empService.loginToIndexBefore(emp);
-        System.out.println(empReturn.getDepartment().getDepaname());
+        System.out.println(empReturn.getDepartmentId().getDepaname());
         if(empReturn==null){ return  "n";}
         model.addAttribute("empBefore",empReturn);
         return "y";

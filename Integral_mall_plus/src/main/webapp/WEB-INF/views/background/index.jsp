@@ -1,4 +1,5 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -6,7 +7,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>网站后台管理系统  </title>
+		<title>积分商城后台管理系统  </title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="/static/background/assets/css/bootstrap.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="/static/background/assets/css/font-awesome.min.css" />
@@ -239,7 +240,7 @@ function link_operating(name,title){
                <ul class="nav ace-nav">	
                 <li class="light-blue">
 				<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-				 <span  class="time"><em id="time"></em></span><span class="user-info"><small>欢迎光临,</small>超级管理员</span>
+				 <span  class="time"><em id="time"></em></span><span class="user-info"><small>欢迎光临,</small>${loginUser.empname}</span>
 				 <i class="icon-caret-down"></i>
 				</a>
 				<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
@@ -400,7 +401,7 @@ function link_operating(name,title){
                  <li>
 					<a href="#" class="dropdown-toggle"><i class="icon-user"></i><span class="menu-text"> 会员管理 </span><b class="arrow icon-angle-down"></b></a>
                     <ul class="submenu">
-                    <li class="home"><a href="javascript:void(0)" name="user_list.html" title="会员列表"  class="iframeurl"><i class="icon-double-angle-right"></i>会员列表</a></li>
+                    <li class="home"><a href="javascript:void(0)" name="Membermanagement" title="会员列表"  class="iframeurl"><i class="icon-double-angle-right"></i>会员列表</a></li>
                    <!-- <li class="home"><a href="javascript:void(0)" name="member-Grading.html" title="等级管理"  class="iframeurl"><i class="icon-double-angle-right"></i>等级管理</a></li>-->
                     <li class="home"><a href="javascript:void(0)" name="integration.html" title="会员记录管理"  class="iframeurl"><i class="icon-double-angle-right"></i>会员记录管理</a></li>
 
@@ -526,8 +527,8 @@ function link_operating(name,title){
        
          <div class="footer_style" id="footerstyle">  
 		 <script type="text/javascript">try{ace.settings.check('footerstyle' , 'fixed')}catch(e){}</script>
-          <p class="l_f">版权所有：南京四美软件  苏ICP备11011739号</p>
-          <p class="r_f">地址：南京市鼓楼区阅江楼街道公共路64号  更多模板：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+<%--          <p class="l_f">版权所有：南京四美软件  苏ICP备11011739号</p>
+          <p class="r_f">地址：南京市鼓楼区阅江楼街道公共路64号  更多模板：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>--%>
          </div>
          <!--修改密码样式-->
          <div class="change_Pass_style" id="change_Pass">
