@@ -131,33 +131,38 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <div class="add_menber" id="add_menber_style" style="display:none">
   
     <ul class=" page-content">
-     <li><label class="label_name">用&nbsp;&nbsp;户 &nbsp;名：</label><span class="add_name"><input value="" name="用户名" type="text"  class="text_add"/></span><div class="prompt r_f"></div></li>
-    <li><label class="label_name">部&nbsp;&nbsp;门：</label><span class="add_name">
-    <select class="form-control" style="width: 200px;">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-    </select>
-    </span><div class="prompt r_f"></div></li>
-     <li><label class="label_name">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</label><span class="add_name">
-     <label><input name="form-field-radio" type="radio" checked="checked" class="ace"><span class="lbl">男</span></label>&nbsp;&nbsp;&nbsp;
-     <label><input name="form-field-radio" type="radio" class="ace"><span class="lbl">女</span></label>&nbsp;&nbsp;&nbsp;
-     </span>
-     <div class="prompt r_f"></div>
-     </li>
-     <li><label class="label_name">身份证：</label><span class="add_name"><input name="固定电话" type="text"  class="text_add"/></span><div class="prompt r_f"></div></li>
-     <li><label class="label_name">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</label><span class="add_name"><input name="移动电话" type="text"  class="text_add"/></span><div class="prompt r_f"></div></li>
-        <li><label class="label_name">职&nbsp;&nbsp;位：</label><span class="add_name">
-    <select class="form-control" style="width: 200px;">
-        <option value="1">普通员工</option>
-        <option value="2">经理</option>
-        <option value="3">综合部经理</option>
-        <option value="4">校长</option>
-    </select>
-    </span><div class="prompt r_f"></div></li>
+        <form action="bgAddEmp" method="post" name="empTable" >
+             <li><label class="label_name">用&nbsp;&nbsp;户 &nbsp;名：</label><span class="add_name"><input value="" id="name" name="empname" type="text"  class="text_add"/></span><div class="prompt r_f"></div></li>
+            <li><label class="label_name">部&nbsp;&nbsp;&nbsp;&nbsp;门：</label><span class="add_name">
+            <select class="form-control" style="width: 200px;" name="departmentId.depano">
+                <c:forEach items="${deptList}" var="dept">
+                    <option value="${dept.depano}">${dept.depaname}</option>
+                </c:forEach>
+            </select>
+            </span><div class="prompt r_f"></div></li>
+             <li><label class="label_name">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</label><span class="add_name">
+             <label><input name="empsex" type="radio" checked="checked" class="ace" value="男"><span class="lbl">男</span></label>&nbsp;&nbsp;&nbsp;
+             <label><input name="empsex" type="radio" class="ace" value="女"><span class="lbl">女</span></label>&nbsp;&nbsp;&nbsp;
+             </span>
+             <div class="prompt r_f"></div>
+             </li>
+             <li><label class="label_name">&nbsp;身&nbsp;份&nbsp;证：</label><span class="add_name"><input name="idcard" id="card" type="text" style="width: 200px;" class="text_add"/></span><div class="prompt r_f"></div></li>
+             <li><label class="label_name">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</label><span class="add_name"><input name="empphone" id="phone" type="text"  class="text_add"/></span><div class="prompt r_f"></div></li>
+                <li><label class="label_name">职&nbsp;&nbsp;&nbsp;&nbsp;位：</label><span class="add_name">
+            <select class="form-control" style="width: 200px;" name="position">
+                <option value="1">普通员工</option>
+                <option value="2">经理</option>
+                <option value="3">综合部经理</option>
+                <option value="4">校长</option>
+            </select>
+            </span><div class="prompt r_f"></div></li>
+                <button type="button" class="btn btn-success addemp" style="margin-left: 100px;">提交</button>
+                <br/>
+                <br/>
+                <br/>
+        </form>
     </ul>
+
  </div>
 </body>
 </html>
@@ -197,7 +202,7 @@ jQuery(function($) {
 					return 'left';
 				}
 			})
-/*用户-添加*/
+/*用户-添加-显示*/
  $('#member_add').on('click', function(){
     layer.open({
         type: 1,
@@ -206,33 +211,27 @@ jQuery(function($) {
 		shadeClose: true, //点击遮罩关闭层
         area : ['800px' , ''],
         content:$('#add_menber_style'),
-
-		/*yes:function(index,layero){
-		 var num=0;
-		 var str="";
-     $(".add_menber input[type$='text']").each(function(n){
-          if($(this).val()=="")
-          {
-               
-			   layer.alert(str+=""+$(this).attr("name")+"不能为空！\r\n",{
-                title: '提示框',				
-				icon:0,								
-          }); 
-		    num++;
-            return false;            
-          } 
-		 });
-		  if(num>0){  return false;}	 	
-          else{
-			  layer.alert('添加成功！',{
-               title: '提示框',				
-			icon:1,		
-			  });
-			   layer.close(index);	
-		  }
-		}*/
     });
 });
+ /*添加员工验证*/
+ $(".addemp").on('click',function () {
+     var idcard = $("#card").val();
+     var phone = $("#phone").val();
+     var name = $("#name").val();
+     if(name!=""){
+         if(idcard==""&&phone==""){
+             layer.msg("请输入完整所有内容");
+         }else
+             if(!isNaN(idcard)&&!isNaN(phone)){
+                 empTable.submit();
+             }else{
+                 layer.msg("身份证或者电话输入格式有误！");
+             }
+     }else
+         layer.msg("用户名不能为空");
+
+
+ })
 /*用户-查看*/
 function member_show(title,url,id,w,h){
 	layer_show(title,url+'#?='+id,w,h);

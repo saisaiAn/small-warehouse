@@ -9,5 +9,8 @@
         <module name="Integral_mall_plus" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Integral_mall_plus" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,6 +1,10 @@
 package cn.dao;
 
 
-public interface DepartmentMapper {
+import cn.bean.Department;
 
+import java.util.List;
+
+public interface DepartmentMapper {
+    List<Department> findAllDepartment();//查询所有部门
 }

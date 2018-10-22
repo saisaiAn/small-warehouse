@@ -161,6 +161,9 @@
   </dependencies>
 
   <build>
+    <!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 -->
+
+
     <finalName>SSMDemo1</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>

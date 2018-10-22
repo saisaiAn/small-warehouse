@@ -33,14 +33,19 @@ public class LoginController {
         emp.setPassword(pwd);
         Emp emp1 = bgLoginService.LoginByUsernameAndPassword(emp);
         if(emp1!=null){
-            //登陆成功 保存session
-            System.out.println(emp1.getEmpname()+"登陆");
-            session.setAttribute("loginUser",emp1);
-            return "0";
+            if(emp1.getPosition()==1){
+                return "2";
+            }else if(emp1.getPosition()!=1){
+                //登陆成功 保存session
+                System.out.println(emp1.getEmpname()+"登陆");
+                session.setAttribute("loginUser",emp1);
+                return "0";
+            }
         }else {
             //登陆失败
             return "1";
         }
+        return "3";
     }
     @RequestMapping("jumpindex")
     public String jumpIndex(){//跳转index页面
