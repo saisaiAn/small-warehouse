@@ -38,4 +38,13 @@
             c.commoditytypeno=ct.commoditytypeno and  ct.supercommoditytype=sct.commoditytypeno
         </where>
     </select>
+    <select id="selectCommodityById" parameterType="cn.bean.Commodity" resultMap="CommodityResultMap">
+        select
+        <include refid="WithCommodityType_Column_List" />
+        from commodity c,commoditytype ct,commoditytype sct
+        <where>
+            c.commoditytypeno=ct.commoditytypeno and  ct.supercommoditytype=sct.commoditytypeno
+            and c.commodityno=#{commodityno}
+        </where>
+    </select>
 </mapper>

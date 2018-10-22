@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface CommodityMapper {
     public List<Commodity> selectAllCommodity();
+    public Commodity selectCommodityById(Commodity commodity);
 }

@@ -13,6 +13,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -47,7 +48,10 @@ public class EmpController {
         Emp empReturn = empService.loginToIndexBefore(emp);
         System.out.println(empReturn.getDepartmentId().getDepaname());
         if(empReturn==null){ return  "n";}
+        List<Imager> imagerList = imagerService.selectAllImager();
         httpSession.setAttribute("empBefore",empReturn);
+        httpSession.setAttribute("imgList",imagerList);
+
         return "y";
     }
 
@@ -78,7 +82,7 @@ public class EmpController {
         }
         model.addAttribute("commodityList",commodityList);
         model.addAttribute("typeList",commodityTypeList);
-        model.addAttribute("imgList",imagerList);
+
         return "/before/index";
     }
     @RequestMapping("/toBeforeAddress")
@@ -98,7 +102,10 @@ public class EmpController {
         return "/before/confirm";
     }
     @RequestMapping("/toBeforeDetail")
-    public String detail(){
+    public String detail(@RequestParam(value = "id" ,defaultValue = "1")Integer id, Model model){
+        Commodity commodity=new Commodity();
+        commodity.setCommodityno(id);
+        model.addAttribute("commodity",commodityService.selectCommodityById(commodity));
         return "/before/detail";
     }
     @RequestMapping("/toBeforeList")

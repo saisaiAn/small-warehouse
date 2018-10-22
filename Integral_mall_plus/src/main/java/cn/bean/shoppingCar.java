@@ -11,6 +11,8 @@ public class shoppingCar {
 
     private Integer commoditysum;
 
+    private String commodityNote;
+
     public Emp getEmpId() {
         return empId;
     }
@@ -57,5 +59,13 @@ public class shoppingCar {
 
     public void setCommoditysum(Integer commoditysum) {
         this.commoditysum = commoditysum;
+    }
+
+    public String getCommodityNote() {
+        return commodityNote;
+    }
+
+    public void setCommodityNote(String commodityNote) {
+        this.commodityNote = commodityNote;
     }
 }
