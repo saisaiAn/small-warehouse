@@ -97,7 +97,7 @@
 
 <body>
 <div class="box">
-	<div class="login-box">
+	<div class="login-box" >
 		<div class="login-title text-center">
 			<h1><small>登录</small></h1>
 		</div>

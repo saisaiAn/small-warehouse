@@ -6,7 +6,6 @@ public class Commodity {
     private Double price;
 
     private Integer needintegral;
-
     private String commoditytitle;
 
     private String commoditydetails;

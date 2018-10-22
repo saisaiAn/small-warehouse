@@ -14,4 +14,5 @@ public class CommodityService {
     public List<Commodity> selectAllCommodity(){
         return commodityMapper.selectAllCommodity();
     }
+    public Commodity selectCommodityById(Commodity commodity){return commodityMapper.selectCommodityById(commodity);}
 }

@@ -78,7 +78,7 @@
 				<div class="top clearfloat box-s">
 					<div class="shang clearfloat">
 						<div class="zuo clearfloat fl over2 box-s">
-							单反相机，彰显你的风格
+							${commodity.commoditytitle}
 						</div>
 						<div class="you clearfloat fr">
 							<i class="iconfont icon-fenxiang"></i>
@@ -86,8 +86,8 @@
 						</div>
 					</div>
 					<div class="xia clearfloat">
-						<p class="jifen fl box-s"><samp>100000</samp>积分</p>
-						<span class="fr">销量8件</span>
+						<p class="jifen fl box-s"><samp>${commodity.needintegral}</samp>积分</p>
+						<span class="fr">库存${commodity.commodityinventory}件</span>
 					</div>
 				</div>
 				<div class="middle clearfloat box-s">
@@ -137,18 +137,28 @@
 		<!--弹出购物车内容-->
 		<div class="am-share">
 		    <div class="am-share-footer">
-		        <button class="share_btn"><img src="/static/before/images/chahao.png" /></button>
+		        <button class="share_btn">
+					<c:forEach items="${imgList}" var="img">
+						<c:if test="${img.imageclassification==3&&img.imagerid==commodity.commodityno}">
+							<img src="${img.imagerurl}" />
+						</c:if>
+					</c:forEach>
+				</button>
 		    </div>
 		    <div class="am-share-sns box-s">
 		        <div class="sdetail clearfloat">
 		            <div class="top clearfloat">
 		                <div class="tu clearfloat fl">
 		                    <span></span>
-		                    <img src="/static/before/images/xj2.jpg" />
+							<c:forEach items="${imgList}" var="img">
+								<c:if test="${img.imageclassification==3&&img.imagerid==commodity.commodityno}">
+									<img src="${img.imagerurl}" />
+								</c:if>
+							</c:forEach>
 		                </div>
 		                <div class="you clearfloat fl">
-		                    <p class="tit">单反相机</p>
-		                    <span>100000积分</span>
+		                    <p class="tit">${commodity.commoditytitle}</p>
+		                    <span>${commodity.needintegral}积分</span>
 		                </div>
 		            </div>
 		            <div class="middle clearfloat">
