@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dao.CommodityTypeMapper">
+    <!-- 实体类全字段返回对象 -->
+    <resultMap type="cn.bean.CommodityType" id="CommodityTypeResultMap">
+            <id column="commoditytypeno" property="commoditytypeno"/>
+            <result column="commoditytypename" property="commoditytypename"/>
+            <result column="supercommoditytype" property="supercommoditytype"/>
+            <result column="commodityrank" property="commodityrank"/>
+            <association property="supercommoditytypeno" javaType="cn.bean.CommodityType">
+                <id column="commoditytypeno" property="commoditytypeno"/>
+                <result column="commoditytypename" property="commoditytypename"/>
+                <result column="supercommoditytype" property="supercommoditytype"/>
+                <result column="commodityrank" property="commodityrank"/>
+            </association>
+    </resultMap>
+    <sql id="WithCommodityType_Column_List">
+        ct.commoditytypeno,ct.commoditytypename,ct.commodityrank,
+        sct.commoditytypeno,sct.commoditytypename,sct.supercommoditytype,sct.commodityrank
+    </sql>
+    <select id="selectAllCommodityType" resultMap="CommodityTypeResultMap" >
+        select
+        <include refid="WithCommodityType_Column_List" />
+        from commoditytype ct,commoditytype sct
+        <where>
+            ct.supercommoditytype=sct.commoditytypeno
+        </where>
+    </select>
+</mapper>

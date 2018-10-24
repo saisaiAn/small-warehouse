@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BgEmpService {
@@ -42,4 +43,13 @@ public class BgEmpService {
     public int delEmp(Integer id){
         return empMapper.bgdelEmp(id);
     }
+
+    public List<Emp> likeEmp(String name){
+        return empMapper.bgLikeSelectByName(name);
+    }
+
+    public int bgupdEmpPwd(Map<String,Object> map){
+        return empMapper.bgupdEmpPwd(map);
+    }
+
 }
