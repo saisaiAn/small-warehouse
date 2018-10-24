@@ -20,7 +20,6 @@ public class shoppingCarService {
     public List<shoppingCar> selectShoppingCarById(Emp emp){
         return shoppingCarMapper.selectShoppingCarById(emp);
     };
-    public int deleteByPrimaryKey(Integer carno){
-        return  shoppingCarMapper.deleteByPrimaryKey(carno);
-    };
+    public int deleteByPrimaryKey(Integer carno){ return  shoppingCarMapper.deleteByPrimaryKey(carno); };
+    public int updateByExampleSelective(shoppingCar shoppingcar){ return shoppingCarMapper.updateByExampleSelective(shoppingcar); };
 }

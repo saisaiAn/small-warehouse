@@ -15,6 +15,7 @@ public class Orders {
     private Integer orderstatus;
 
     private Integer empno;
+    private Emp emp;
 
     public Commodity getCommodityId() {
         return commodityId;
@@ -38,6 +39,14 @@ public class Orders {
 
     public void setOrderintegral(String orderintegral) {
         this.orderintegral = orderintegral == null ? null : orderintegral.trim();
+    }
+
+    public Emp getEmp() {
+        return emp;
+    }
+
+    public void setEmp(Emp emp) {
+        this.emp = emp;
     }
 
     public Integer getOrdercommodityno() {

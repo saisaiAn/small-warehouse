@@ -7,10 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -39,19 +36,29 @@ public class EmpController {
                      @RequestParam(value="password",required=false) String password,
                      HttpSession  httpSession){
         Emp emp=new Emp();
-        System.out.println(empname+"=="+password);
         emp.setEmpname(empname);
         emp.setPassword(password);
         Emp empReturn = empService.loginToIndexBefore(emp);
-        System.out.println(empReturn.getDepartmentId().getDepaname());
         if(empReturn==null){ return  "n";}
         List<Imager> imagerList = imagerService.selectAllImager();
         httpSession.setAttribute("empBefore",empReturn);
         httpSession.setAttribute("imgList",imagerList);
-
         return "y";
     }
+    @ResponseBody
+    @RequestMapping("/BeforePay")
+    public String BeforePay(@Param("count")String count){
+        String[] carno=count.split(",");
+        for (String carId:carno) {
 
+        }
+//        if(judge>0){
+//            return "y";
+//        }else{
+//            return "n";
+//        }
+        return "y";
+    }
     @RequestMapping("/addBeforeShopping")
     public String addShopCar(shoppingCar shoppingCar){
         int judge= shoppingCarService.insertShoppingCar(shoppingCar);
@@ -63,6 +70,20 @@ public class EmpController {
     public String deletBeforeShopCar(@Param("carno")int carno){
         int judge= shoppingCarService.deleteByPrimaryKey(carno);
         System.out.println(judge);
+        if(judge>0){
+            return "y";
+        }else{
+            return "n";
+        }
+    }
+    @ResponseBody
+    @RequestMapping(value = "/updateBeforeShopCar")
+    public String updateBeforeShopCar(@Param("carno")int carno,@Param("commoditySum") int commoditySum){
+        System.out.println(commoditySum+"==cars");
+        shoppingCar shoppingCar=new shoppingCar();
+        shoppingCar.setCarno(carno);
+        shoppingCar.setCommoditysum(commoditySum);
+        int judge= shoppingCarService.updateByExampleSelective(shoppingCar);
         if(judge>0){
             return "y";
         }else{
