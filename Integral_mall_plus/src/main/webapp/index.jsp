@@ -10,7 +10,7 @@
     <div class="col-md-2 bg-success" ></div>
     <a href="/hello"><div class="col-md-3 bg-success" style="padding:150px 200px; " ><span style="color: #1b6d85; font-size: 100px;font-family:Microsoft YaHei;">前台</span></div></a>
     <div class="col-md-2 bg-success" ></div>
-    <a href=""><div class="col-md-3 bg-success" style="padding:150px 200px;" ><span style="color: #1b6d85; font-size:100px;font-family:Microsoft YaHei;">后台</span></div></a>
+    <a href="/view"><div class="col-md-3 bg-success" style="padding:150px 200px;" ><span style="color: #1b6d85; font-size:100px;font-family:Microsoft YaHei;">后台</span></div></a>
     <div class="col-md-2 bg-success" ></div>
 </div>
 </body>

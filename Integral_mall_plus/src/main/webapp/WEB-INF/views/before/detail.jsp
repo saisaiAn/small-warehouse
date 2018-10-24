@@ -87,7 +87,7 @@
 					</div>
 					<div class="xia clearfloat">
 						<p class="jifen fl box-s"><samp>${commodity.needintegral}</samp>积分</p>
-						<span class="fr">库存${commodity.commodityinventory}件</span>
+						<span class="fr">库存<span class="kc">${commodity.commodityinventory}</span> 件</span>
 					</div>
 				</div>
 				<div class="middle clearfloat box-s">
@@ -136,6 +136,7 @@
 		
 		<!--弹出购物车内容-->
 		<div class="am-share">
+            <form action="/addBeforeShopping" id="carForm" method="post">
 		    <div class="am-share-footer">
 		        <button class="share_btn">
 					<c:forEach items="${imgList}" var="img">
@@ -185,25 +186,50 @@
 		                    <ul>
 		                        <li id="down"><img src="/static/before/images/jian.jpg" /></li>
 		                        <li id="count">1</li>
-		                        <li onclick="document.getElementById('count').innerHTML++"><img src="/static/before/images/jia.jpg" /></li>
+		                        <li id="up"><img src="/static/before/images/jia.jpg" /></li>
 		                    </ul>
 		                </div>
 		            </div>
 		        </div>
 		    </div>
-		    <a href="/toBeforeShopcar" class="shop-btn db">确定</a>
+                <input type="hidden" id="sum" name="commoditysum"/>
+                <input type="hidden" id="commodityId" name="shoppingcommodityno" value="${commodity.commodityno}" />
+                <input type="hidden" id="commodityNote" name="commodityNote"/>
+                <input type="hidden" id="shoppingempno" name="shoppingempno" value="${empBefore.empno}"/>
+                <button id="sub" class="shop-btn db">确定</button>
+            </form>
 		</div>
+        <script type="text/javascript">
+            $(function(){
+                $("#sub").click(function(){
+                    var result='';
+                    $(".cur").each(function(){
+                        result=result+ $(this).html()+',';
+                    });
+                    $("#commodityNote").val(result);
+                    $("#sum").val($("#count").html());
+                    if($(".kc").html>0){
+                        $("#carForm").submit;
+                    }
+                });
+            })
+        </script>
 		<script type="text/javascript">
 			var down = document.getElementById("down");
 		    var count = document.getElementById("count");
+		    var sum=document.getElementById("sum");
 		    window.onload = function(){
 		        down.onclick = function(){
+		            alert(count.innerHTML);
 		            if(count.innerHTML > 1){
 		                count.innerHTML--;
 		            }else{
 		                count.innerHTML = 1;
 		            }
 		        }
+                document.getElementById('up').onclick = function(){
+                        count.innerHTML++;
+                }
 		        $(".middle .xia li").click(function() {
 		            $(this).addClass('cur').siblings().removeClass('cur');
 		        });

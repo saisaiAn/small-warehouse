@@ -1,5 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.dao.shoppingCarMapper">
-
+    <!--前台购物车列表查询-->
+    <resultMap type="cn.bean.shoppingCar" id="shoppingCarResultMap">
+        <id column="carno" jdbcType="INTEGER" property="carno" />
+        <result column="shoppingempno" jdbcType="INTEGER" property="shoppingempno" />
+        <result column="shoppingcommodityno" jdbcType="INTEGER" property="shoppingcommodityno" />
+        <result column="commoditysum" jdbcType="INTEGER" property="commoditysum" />
+        <result column="commodityNote" jdbcType="VARCHAR" property="commodityNote" />
+        <!-- 指定联合查询出的商品类型字段的封装 -->
+        <association property="commodityId" javaType="cn.bean.Commodity">
+            <id column="commodityno" jdbcType="INTEGER" property="commodityno" />
+            <result column="price" jdbcType="DOUBLE" property="price" />
+            <result column="needintegral" jdbcType="INTEGER" property="needintegral" />
+            <result column="commoditytitle" jdbcType="VARCHAR" property="commoditytitle" />
+            <result column="commoditydetails" jdbcType="VARCHAR" property="commoditydetails" />
+            <result column="commodityinventory" jdbcType="INTEGER" property="commodityinventory" />
+            <result column="commoditytypeno" jdbcType="INTEGER" property="commoditytypeno" />
+            <result column="commoditytype" jdbcType="INTEGER" property="commoditytype" />
+            <association property="commodityTypeId" javaType="cn.bean.CommodityType">
+                <id column="commoditytypeno" property="commoditytypeno"/>
+                <result column="commoditytypename" property="commoditytypename"/>
+                <result column="supercommoditytype" property="supercommoditytype"/>
+                <result column="commodityrank" property="commodityrank"/>
+            </association>
+        </association>
+    </resultMap>
+    <sql id="WithCommodityType_Column_List">
+          s.carno,s.shoppingempno,s.shoppingcommodityno,s.commoditysum,s.commodityNote,
+          c.commodityno,c.price,c.needintegral,c.commoditytitle,c.commoditydetails,c.commodityinventory,c.commoditytypeno,c.commoditytype,
+          ct.commoditytypeno,ct.commoditytypename,ct.supercommoditytype,ct.commodityrank
+    </sql>
+    <select id="selectShoppingCarById" parameterType="cn.bean.Emp" resultMap="shoppingCarResultMap">
+        select
+        <include refid="WithCommodityType_Column_List" />
+        from shoppingcar s, commodity c,commoditytype ct
+        <where>
+              s.shoppingcommodityno=c.commodityno and c.commoditytypeno=ct.commoditytypeno and s.shoppingempno=#{empno}
+        </where>
+    </select>
+    <insert id="insertShoppingCar" parameterType="cn.bean.shoppingCar" useGeneratedKeys="true" keyProperty="carno" keyColumn="carno">
+        insert into shoppingCar
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="shoppingempno != null">
+                shoppingempno,
+            </if>
+            <if test="shoppingcommodityno != null">
+                shoppingcommodityno,
+            </if>
+            <if test="commoditysum != null">
+                commoditysum,
+            </if>
+            <if test="commodityNote != null">
+                commodityNote,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="shoppingempno != null">
+                #{shoppingempno,jdbcType=INTEGER},
+            </if>
+            <if test="shoppingcommodityno != null">
+                #{shoppingcommodityno,jdbcType=INTEGER},
+            </if>
+            <if test="commoditysum != null">
+                #{commoditysum,jdbcType=INTEGER},
+            </if>
+            <if test="commodityNote != null">
+                #{commodityNote,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+      delete from shoppingCar
+      where carno = #{carno,jdbcType=INTEGER}
+    </delete>
+    <update id="updateByExampleSelective" parameterType="cn.bean.shoppingCar">
+        update shoppingcar
+        <set>
+            <if test="shoppingcar.shoppingempno != null">
+                shoppingempno = #{record.shoppingempno,jdbcType=INTEGER},
+            </if>
+            <if test="shoppingcar.shoppingcommodityno != null">
+                shoppingcommodityno = #{record.shoppingcommodityno,jdbcType=INTEGER},
+            </if>
+            <if test="shoppingcar.commoditysum != null">
+                commoditysum = #{record.commoditysum,jdbcType=INTEGER},
+            </if>
+            <if test="shoppingcar.commodityNote != null">
+                commodityNote = #{record.commodityNote,jdbcType=INTEGER},
+            </if>
+        </set>
+        <where>
+            carNo=#{carNo}
+        </where>
+    </update>
 </mapper>
