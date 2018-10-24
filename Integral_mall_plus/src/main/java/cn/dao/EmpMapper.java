@@ -10,5 +10,10 @@ public interface EmpMapper {
 
     List<Emp> findEmpAll();
 
+    void bgaddEmp(Emp emp);
+
+    void bgupdEmp(Emp emp);//修改用户
+
+    int bgdelEmp(Integer id);//删除用户同时删除绑定的积分
 
 }

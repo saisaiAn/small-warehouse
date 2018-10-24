@@ -1,6 +1,8 @@
 package cn.dao;
 
 
-public interface IntegralMapper {
+import cn.bean.Integral;
 
+public interface IntegralMapper {
+    int addJifen(Integral integral);
 }

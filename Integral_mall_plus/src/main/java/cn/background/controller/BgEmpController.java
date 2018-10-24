@@ -1,12 +1,18 @@
 package cn.background.controller;
 
 import cn.background.bgService.BgEmpService;
+import cn.bean.Department;
 import cn.bean.Emp;
+import cn.bean.Integral;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 public class BgEmpController {
@@ -22,14 +28,36 @@ public class BgEmpController {
     }
 
     @RequestMapping(value = "bgAddEmp",method = RequestMethod.POST)
-    public String addEMp(Emp emp){//添加员工
+    public String addEMp(Emp emp){//添加员工 同时为该员工添加一个积分信息
         System.out.println("添加员工");
-        System.out.println("用户名:"+emp.getEmpname());
-        System.out.println("部门id:"+emp.getDepartmentId().getDepano());
-        System.out.println("性别:"+emp.getEmpsex());
-        System.out.println("身份证:"+emp.getIdcard());
-        System.out.println("职位:"+emp.getPosition());
-        return null;
+        Integral integral = new Integral();
+        integral.setTotalintegral(0);
+        integral.setHaveintegral(0);
+        integral.setRemainingpoints(0);
+        bgEmpService.addJiFen(integral);//添加积分 添加员工同时给他添加积分信息 默认积分为0
+        //System.out.println(integral.getIntergralno()+"积分id");
+        emp.setIntergralno(integral.getIntergralno());
+        bgEmpService.addEmp(emp);//添加员工 并且吧积分id传入员工
+        return "redirect:/Membermanagement";
     }
 
+    @RequestMapping(value = "bgUpdEmp",method = RequestMethod.POST)
+    public String bgUpdEmp(Emp emp){//修改用户
+        bgEmpService.updEmp(emp);
+        return "redirect:/Membermanagement";
+    }
+    @ResponseBody
+    @RequestMapping(value = "deleteEmp",method = RequestMethod.POST)
+    public String delEmp(@RequestParam("id") Integer id,@RequestParam("jifen") Integer jifen){//删除用户 同时还要删除积分
+        System.out.println("删除员工");
+        System.out.println(id);
+        System.out.println(jifen);
+        int a = bgEmpService.delEmp(id);
+        System.out.println(a);
+        if(a>0){
+            return "y";
+        }else{
+            return "n";
+        }
+    }
 }

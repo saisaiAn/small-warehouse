@@ -89,9 +89,22 @@
         select
         <include refid="findEmpAll_List" />
         from emp e ,department d,integral i
+        where e.departmentno=d.depano
     </select>
 
-
+    <!-- 添加员工 -->
+    <insert id="bgaddEmp" parameterType="cn.bean.Emp">
+        insert into emp(empname,empsex,idcard,departmentno,positivedates,empphone,intergralno,position,emptype,password) VALUES (#{empname},
+          #{empsex},#{idcard},#{departmentno},SYSDATE(),#{empphone},#{intergralno},#{position},0,233)
+    </insert>
+    <!-- 修改用户 -->
+    <update id="bgupdEmp" parameterType="cn.bean.Emp">
+          update emp set empname = #{empname},empsex=#{empsex},idcard=#{idcard},departmentno=#{departmentno},empphone=#{empphone},position=#{position} where empno = #{empno}
+    </update>
+    <!--删除用户同时删除绑定的积分-->
+    <delete id="bgdelEmp" parameterType="java.lang.Integer">
+         DELETE emp,integral FROM emp,integral where  emp.intergralno=integral.intergralno AND emp.empno=#{id}
+    </delete>
 
 
 </mapper>
