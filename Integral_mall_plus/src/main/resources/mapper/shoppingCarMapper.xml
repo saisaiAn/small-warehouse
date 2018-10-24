@@ -25,18 +25,38 @@
                 <result column="commodityrank" property="commodityrank"/>
             </association>
         </association>
+        <association property="empId" javaType="cn.bean.Emp">
+            <id column="empno" jdbcType="INTEGER" property="empno" />
+            <result column="empname" jdbcType="VARCHAR" property="empname" />
+            <result column="empsex" jdbcType="VARCHAR" property="empsex" />
+            <result column="departmentno" jdbcType="INTEGER" property="departmentno" />
+            <result column="positivedates" jdbcType="TIMESTAMP" property="positivedates" />
+            <result column="empphone" jdbcType="VARCHAR" property="empphone" />
+            <result column="intergralno" jdbcType="INTEGER" property="intergralno" />
+            <result column="position" jdbcType="INTEGER" property="position" />
+            <result column="emptype" jdbcType="INTEGER" property="emptype" />
+        </association>
     </resultMap>
     <sql id="WithCommodityType_Column_List">
           s.carno,s.shoppingempno,s.shoppingcommodityno,s.commoditysum,s.commodityNote,
           c.commodityno,c.price,c.needintegral,c.commoditytitle,c.commoditydetails,c.commodityinventory,c.commoditytypeno,c.commoditytype,
-          ct.commoditytypeno,ct.commoditytypename,ct.supercommoditytype,ct.commodityrank
+          ct.commoditytypeno,ct.commoditytypename,ct.supercommoditytype,ct.commodityrank,
+          e.empno,e.empname,e.empsex,e.departmentno,e.positivedates,e.empphone,e.intergralno,e.position,e.emptype
     </sql>
-    <select id="selectShoppingCarById" parameterType="cn.bean.Emp" resultMap="shoppingCarResultMap">
+    <select id="selectShoppingCarByEmpId" parameterType="cn.bean.Emp" resultMap="shoppingCarResultMap">
         select
         <include refid="WithCommodityType_Column_List" />
-        from shoppingcar s, commodity c,commoditytype ct
+        from shoppingcar s, commodity c,commoditytype ct,emp e
         <where>
-              s.shoppingcommodityno=c.commodityno and c.commoditytypeno=ct.commoditytypeno and s.shoppingempno=#{empno}
+              s.shoppingcommodityno=c.commodityno and c.commoditytypeno=ct.commoditytypeno and s.shoppingempno=e.empno and e.empno=#{empno}
+        </where>
+    </select>
+    <select id="selectShoppingCarByCarId" parameterType="cn.bean.Emp" resultMap="shoppingCarResultMap">
+        select
+        <include refid="WithCommodityType_Column_List" />
+        from shoppingcar s, commodity c,commoditytype ct,emp e
+        <where>
+            s.shoppingcommodityno=c.commodityno and c.commoditytypeno=ct.commoditytypeno and s.shoppingempno=e.empno and s.carno=#{carno}
         </where>
     </select>
     <insert id="insertShoppingCar" parameterType="cn.bean.shoppingCar" useGeneratedKeys="true" keyProperty="carno" keyColumn="carno">

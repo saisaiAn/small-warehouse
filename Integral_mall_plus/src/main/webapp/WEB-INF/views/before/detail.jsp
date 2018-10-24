@@ -87,7 +87,7 @@
 					</div>
 					<div class="xia clearfloat">
 						<p class="jifen fl box-s"><samp>${commodity.needintegral}</samp>积分</p>
-						<span class="fr">库存<span class="kc">${commodity.commodityinventory}</span> 件</span>
+						<span class="fr">库存<span class="kc" style="display: inline;">${commodity.commodityinventory}</span> 件</span>
 					</div>
 				</div>
 				<div class="middle clearfloat box-s">

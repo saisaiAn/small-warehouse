@@ -39,4 +39,41 @@
             <result column="password" jdbcType="VARCHAR" property="password" />
         </association>
     </resultMap>
+    <insert id="insertOrders" parameterType="cn.bean.Orders" useGeneratedKeys="true" keyProperty="orderno" keyColumn="orderno">
+        insert into Orders
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderintegral != null">
+                orderintegral,
+            </if>
+            <if test="ordercommodityno != null">
+                ordercommodityno,
+            </if>
+            <if test="ordertime != null">
+                ordertime,
+            </if>
+            <if test="orderstatus != null">
+                orderstatus,
+            </if>
+            <if test="empno != null">
+                empno,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderintegral != null">
+                #{orderintegral,jdbcType=INTEGER},
+            </if>
+            <if test="ordercommodityno != null">
+                #{ordercommodityno,jdbcType=INTEGER},
+            </if>
+            <if test="ordertime != null">
+                #{ordertime,jdbcType=INTEGER},
+            </if>
+            <if test="orderstatus != null">
+                #{orderstatus,jdbcType=VARCHAR},
+            </if>
+            <if test="empno != null">
+                #{empno,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
 </mapper>

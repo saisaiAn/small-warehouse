@@ -11,6 +11,7 @@ public class IntegralAudit {
     private Integer changeint;
 
     private Integer reviewer;
+    private Emp empReviewer; //外键员工表
 
     private Integer integraltypeno;
     private IntegralType integralTypeId; //外键积分所属类型表
@@ -97,5 +98,13 @@ public class IntegralAudit {
 
     public void setAuditopinion(String auditopinion) {
         this.auditopinion = auditopinion == null ? null : auditopinion.trim();
+    }
+
+    public Emp getEmpReviewer() {
+        return empReviewer;
+    }
+
+    public void setEmpReviewer(Emp empReviewer) {
+        this.empReviewer = empReviewer;
     }
 }

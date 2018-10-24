@@ -17,9 +17,8 @@ public class shoppingCarService {
     public int insertShoppingCar(shoppingCar shoppingCar){
         return shoppingCarMapper.insertShoppingCar(shoppingCar);
     };
-    public List<shoppingCar> selectShoppingCarById(Emp emp){
-        return shoppingCarMapper.selectShoppingCarById(emp);
-    };
+    public List<shoppingCar> selectShoppingCarByEmpId(Emp emp){ return shoppingCarMapper.selectShoppingCarByEmpId(emp);};
+    public shoppingCar selectShoppingCarByCarId(shoppingCar shoppingCar){ return  shoppingCarMapper.selectShoppingCarByCarId(shoppingCar);};
     public int deleteByPrimaryKey(Integer carno){ return  shoppingCarMapper.deleteByPrimaryKey(carno); };
     public int updateByExampleSelective(shoppingCar shoppingcar){ return shoppingCarMapper.updateByExampleSelective(shoppingcar); };
 }

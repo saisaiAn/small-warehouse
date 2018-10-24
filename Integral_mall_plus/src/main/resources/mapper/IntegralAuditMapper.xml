@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.dao.IntegralAuditMapper">
-
+    <insert id="addIntegralAuditMapper" parameterType="cn.bean.IntegralAudit" useGeneratedKeys="true" keyProperty="integralauditno" keyColumn="integralauditno">
+        insert into IntegralAudit
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="empno != null">
+                empno,
+            </if>
+            <if test="intergralchange != null">
+                intergralchange,
+            </if>
+            <if test="changeint != null">
+                changeint,
+            </if>
+            <if test="reviewer != null">
+                reviewer,
+            </if>
+            <if test="integraltypeno != null">
+                integraltypeno,
+            </if>
+            <if test="audittype != null">
+                audittype,
+            </if>
+            <if test="auditopinion != null">
+                auditopinion,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="empno != null">
+                #{empno,jdbcType=INTEGER},
+            </if>
+            <if test="intergralchange != null">
+                #{intergralchange,jdbcType=VARCHAR},
+            </if>
+            <if test="changeint != null">
+                #{changeint,jdbcType=INTEGER},
+            </if>
+            <if test="reviewer != null">
+                #{reviewer,jdbcType=INTEGER},
+            </if>
+            <if test="integraltypeno != null">
+                #{integraltypeno,jdbcType=INTEGER},
+            </if>
+            <if test="audittype != null">
+                #{audittype,jdbcType=INTEGER},
+            </if>
+            <if test="auditopinion != null">
+                #{auditopinion,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
 </mapper>

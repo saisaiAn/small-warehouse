@@ -143,15 +143,12 @@
                    });
                    count=count.substring(0,count.length-1);
                    $.ajax({
-                       url:"/BeforePay",
+                       url:"/addBeforePay",
                        data:{ count:count} ,
                        type:"POST",
                        success:function (result) {
                            if (result=="y"){
-                               location.href="/toBeforeIndex";
-                           }else {
-                               alert("账号或密码不正确");
-                               window.location.reload();
+                          		alert("下单成功！");
                            }
                        }
                    })
@@ -189,7 +186,7 @@
 	                btn: ['确定', '取消'],
 	                yes: function(index) {
                         $.ajax({
-                            url:"/deletBeforeShopCar",
+                            url:"/deleteBeforeShopCar",
                             data:{ carno:del} ,
                             type:"POST",
                             success:function (result) {

@@ -5,4 +5,5 @@ import cn.bean.Integral;
 
 public interface IntegralMapper {
     int addJifen(Integral integral);
+    int updateByExampleIntegral(Integral integral);
 }

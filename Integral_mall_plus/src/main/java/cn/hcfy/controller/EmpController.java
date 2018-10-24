@@ -6,10 +6,11 @@ import cn.hcfy.service.*;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -30,6 +31,15 @@ public class EmpController {
     @Autowired
     shoppingCarService shoppingCarService;
 
+    @Autowired
+    OrdersService ordersService;
+
+    @Autowired
+    IntegralService integralService;
+
+    @Autowired
+    IntegralAuditService integralAuditService;
+
     @RequestMapping("/BeforeLogin")
     @ResponseBody
     public String login(@RequestParam(value="empname",required=false)String empname,
@@ -45,18 +55,46 @@ public class EmpController {
         httpSession.setAttribute("imgList",imagerList);
         return "y";
     }
+
+
     @ResponseBody
-    @RequestMapping("/BeforePay")
+    @RequestMapping(value = "/addBeforePay")
+    @Transactional(rollbackFor = {Exception.class})
     public String BeforePay(@Param("count")String count){
         String[] carno=count.split(",");
         for (String carId:carno) {
+            //通过ID查找购物车的相关属性
+            shoppingCar shoppingCar=new shoppingCar();
+            shoppingCar.setCarno(Integer.parseInt(carId));
+            shoppingCar shoppingCarTwo=shoppingCarService.selectShoppingCarByCarId(shoppingCar);
+            //用户积分扣除
+            Integral integral=new Integral();
+            integral.setIntergralno(shoppingCarTwo.getEmpId().getIntergralno());
+            integral.setHaveintegral(shoppingCarTwo.getCommoditysum()*shoppingCarTwo.getCommodityId().getNeedintegral());
+            integral.setRemainingpoints(shoppingCarTwo.getCommoditysum()*shoppingCarTwo.getCommodityId().getNeedintegral());
+            integralService.updateByExampleIntegral(integral);
+            //增加积分审核
+            IntegralAudit integralAudit=new IntegralAudit();
+            integralAudit.setEmpno(shoppingCarTwo.getShoppingempno());
+            integralAudit.setReviewer(999);
+            integralAudit.setIntergralchange("购买："+shoppingCarTwo.getCommodityId().getCommoditytitle()+";");
+            integralAudit.setChangeint(shoppingCarTwo.getCommoditysum()*shoppingCarTwo.getCommodityId().getNeedintegral());
+            integralAudit.setIntegraltypeno(3);
+            integralAudit.setAudittype(0);
+            integralAudit.setAuditopinion("");
+            integralAuditService.addIntegralAuditMapper(integralAudit);
+            //增加订单
+            Orders orders=new Orders();
+            orders.setOrdercommodityno(shoppingCarTwo.getShoppingcommodityno());
+            orders.setOrderintegral(shoppingCarTwo.getCommoditysum()*shoppingCarTwo.getCommodityId().getNeedintegral()+"");
+            orders.setOrdertime(new Date());
+            orders.setOrderstatus(1);
+            orders.setEmpno(shoppingCarTwo.getShoppingempno());
+            ordersService.insertOrders(orders);
 
+            //删除购物车表
+            shoppingCarService.deleteByPrimaryKey(Integer.parseInt(carId));
         }
-//        if(judge>0){
-//            return "y";
-//        }else{
-//            return "n";
-//        }
         return "y";
     }
     @RequestMapping("/addBeforeShopping")
@@ -66,7 +104,8 @@ public class EmpController {
 
     }
     @ResponseBody
-    @RequestMapping("deletBeforeShopCar")
+    @RequestMapping("deleteBeforeShopCar")
+    @Transactional(rollbackFor = {Exception.class})
     public String deletBeforeShopCar(@Param("carno")int carno){
         int judge= shoppingCarService.deleteByPrimaryKey(carno);
         System.out.println(judge);
@@ -78,6 +117,7 @@ public class EmpController {
     }
     @ResponseBody
     @RequestMapping(value = "/updateBeforeShopCar")
+    @Transactional(rollbackFor = {Exception.class})
     public String updateBeforeShopCar(@Param("carno")int carno,@Param("commoditySum") int commoditySum){
         System.out.println(commoditySum+"==cars");
         shoppingCar shoppingCar=new shoppingCar();
@@ -135,7 +175,7 @@ public class EmpController {
     @RequestMapping("/toBeforeShopcar")
     public String shopcar(HttpSession session,Model model){
         Emp emp=(Emp)session.getAttribute("empBefore");
-        List<shoppingCar> shoppingCarList= shoppingCarService.selectShoppingCarById(emp);
+        List<shoppingCar> shoppingCarList= shoppingCarService.selectShoppingCarByEmpId(emp);
         model.addAttribute("shoppingCarList",shoppingCarList);
         return "/before/shopcar";
     }

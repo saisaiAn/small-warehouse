@@ -50,5 +50,6 @@
         <!--控制住数据源  -->
         <property name="dataSource" ref="pooledDataSource"></property>
     </bean>
-
+    <!-- 开启注解方式声明事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
 </beans>

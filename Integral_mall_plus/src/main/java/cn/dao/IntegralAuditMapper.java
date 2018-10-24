@@ -1,6 +1,8 @@
 package cn.dao;
 
 
-public interface IntegralAuditMapper {
+import cn.bean.IntegralAudit;
 
+public interface IntegralAuditMapper {
+    public int addIntegralAuditMapper(IntegralAudit integralAudit);
 }
