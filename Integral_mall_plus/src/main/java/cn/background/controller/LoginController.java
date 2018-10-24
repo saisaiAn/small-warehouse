@@ -39,6 +39,7 @@ public class LoginController {
                 //登陆成功 保存session
                 System.out.println(emp1.getEmpname()+"登陆");
                 session.setAttribute("loginUser",emp1);
+                session.setMaxInactiveInterval(1800);
                 return "0";
             }
         }else {

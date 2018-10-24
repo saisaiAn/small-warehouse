@@ -4,6 +4,7 @@ import cn.background.bgService.BgEmpService;
 import cn.bean.Department;
 import cn.bean.Emp;
 import cn.bean.Integral;
+import javafx.scene.control.Alert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class BgEmpController {
@@ -60,4 +63,33 @@ public class BgEmpController {
             return "n";
         }
     }
+
+    @RequestMapping(value = "LikeSelectByName",method = RequestMethod.POST)
+    public String likeFind(@RequestParam("username")String username,Model model){//模糊查询
+        System.out.println("模糊查询:"+username);
+        model.addAttribute("empList",bgEmpService.likeEmp(username));
+        model.addAttribute("deptList",bgEmpService.findAllDepartment());
+        return "/background/user_list";
+    }
+
+    @RequestMapping("admin_info")
+    public String admin_info(){//跳转个人资料页面
+        return "/background/admin_info";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "updateEmpPassword",method = RequestMethod.POST)
+    public String updateEmpPassword(@RequestParam("newpwd") String newpwd,@RequestParam("empno") Integer empno){//修改密码
+        Map<String,Object> map = new HashMap<>();
+        System.out.println(newpwd);
+        System.out.println(empno);
+        map.put("id",empno);
+        map.put("pwd",newpwd);
+        if(bgEmpService.bgupdEmpPwd(map)>0){
+            return "y";
+        }else
+            return "n";
+
+    }
+
 }

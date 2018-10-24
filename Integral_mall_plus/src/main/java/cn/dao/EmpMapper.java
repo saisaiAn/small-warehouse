@@ -4,6 +4,7 @@ package cn.dao;
 import cn.bean.Emp;
 
 import java.util.List;
+import java.util.Map;
 
 public interface EmpMapper {
     Emp loginToIndexBefore(Emp emp);
@@ -16,4 +17,7 @@ public interface EmpMapper {
 
     int bgdelEmp(Integer id);//删除用户同时删除绑定的积分
 
+    List<Emp> bgLikeSelectByName(String name);//模糊查询
+
+    int bgupdEmpPwd(Map<String,Object> map);
 }
