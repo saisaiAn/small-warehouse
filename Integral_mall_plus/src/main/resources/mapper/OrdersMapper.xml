@@ -8,6 +8,7 @@
         <result column="ordertime" jdbcType="DATE" property="ordertime" />
         <result column="orderstatus" jdbcType="INTEGER" property="orderstatus" />
         <result column="empno" jdbcType="INTEGER" property="empno" />
+        <result column="OrderCommoditySum" jdbcType="INTEGER" property="OrderCommoditySum" />
         <!-- 指定联合查询出的商品类型字段的封装 -->
         <association property="commodityId" javaType="cn.bean.Commodity">
             <id column="commodityno" jdbcType="INTEGER" property="commodityno" />
@@ -18,12 +19,6 @@
             <result column="commodityinventory" jdbcType="INTEGER" property="commodityinventory" />
             <result column="commoditytypeno" jdbcType="INTEGER" property="commoditytypeno" />
             <result column="commoditytype" jdbcType="INTEGER" property="commoditytype" />
-            <association property="commodityTypeId" javaType="cn.bean.CommodityType">
-                <id column="commoditytypeno" property="commoditytypeno"/>
-                <result column="commoditytypename" property="commoditytypename"/>
-                <result column="supercommoditytype" property="supercommoditytype"/>
-                <result column="commodityrank" property="commodityrank"/>
-            </association>
         </association>
         <association property="emp" javaType="cn.bean.Emp">
             <id column="empno" jdbcType="INTEGER" property="empno" />
@@ -39,6 +34,20 @@
             <result column="password" jdbcType="VARCHAR" property="password" />
         </association>
     </resultMap>
+    <sql id="WithOrders_Column_List">
+    o.orderno,o.orderintegral,o.ordercommodityno,o.ordertime,o.orderstatus,o.empno,o.ordercommoditysum,
+    c.commodityno,c.price,c.needintegral,c.commoditytitle,c.commoditydetails,c.commodityinventory,c.commoditytypeno,c.commoditytype,
+  	e.empno, e.empname, e.empsex, e.idcard, e.departmentno, e.positivedates, e.empphone,
+  	e.intergralno, e.position, e.emptype, e.password
+  </sql>
+    <select id="selectOrdersByEmpId" parameterType="cn.bean.Emp" resultMap="ordersResultMap" >
+        select
+        <include refid="WithOrders_Column_List" />
+        from orders o ,commodity c,emp e
+        <where>
+           o.ordercommodityno=c.commodityno and o.empno=e.empno and o.empno=#{empno}
+        </where>
+    </select>
     <insert id="insertOrders" parameterType="cn.bean.Orders" useGeneratedKeys="true" keyProperty="orderno" keyColumn="orderno">
         insert into Orders
         <trim prefix="(" suffix=")" suffixOverrides=",">

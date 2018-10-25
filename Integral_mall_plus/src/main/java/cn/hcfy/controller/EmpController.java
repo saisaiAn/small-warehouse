@@ -90,6 +90,7 @@ public class EmpController {
             orders.setOrdertime(new Date());
             orders.setOrderstatus(1);
             orders.setEmpno(shoppingCarTwo.getShoppingempno());
+            orders.setOrderCommoditySum(shoppingCarTwo.getCommoditysum());
             ordersService.insertOrders(orders);
 
             //删除购物车表
@@ -182,5 +183,12 @@ public class EmpController {
     @RequestMapping("/toBeforeZhiFu")
     public String zhifu(){
         return "/before/zhifu";
+    }
+    @RequestMapping("/toBeforeOrders")
+    public String orders(@Param("id")Integer id,Model model){
+        Emp emp=new Emp();
+        emp.setEmpno(id);
+        model.addAttribute("orderList",ordersService.selectOrdersByEmpId(emp));
+        return "/before/orders";
     }
 }

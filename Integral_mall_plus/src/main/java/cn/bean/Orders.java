@@ -17,6 +17,8 @@ public class Orders {
     private Integer empno;
     private Emp emp;
 
+    private Integer OrderCommoditySum;
+
     public Commodity getCommodityId() {
         return commodityId;
     }
@@ -79,5 +81,13 @@ public class Orders {
 
     public void setEmpno(Integer empno) {
         this.empno = empno;
+    }
+
+    public Integer getOrderCommoditySum() {
+        return OrderCommoditySum;
+    }
+
+    public void setOrderCommoditySum(Integer orderCommoditySum) {
+        OrderCommoditySum = orderCommoditySum;
     }
 }

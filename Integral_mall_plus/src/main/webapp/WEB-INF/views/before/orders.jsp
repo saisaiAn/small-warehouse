@@ -5,12 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>购物车</title>
+    <title>订单列表</title>
     <link rel="stylesheet" type="text/css" href="/static/before/css/base.css"/>
     <link rel="stylesheet" type="text/css" href="/static/before/css/shopcar.css"/>
     <link rel="stylesheet" type="text/css" href="/static/before/css/mui.min.css"/>
     <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
     <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
+	<link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="/static/before/sourse/layer/mobile/need/layer.css">
     <script src="/static/before/js/rem.js"></script>
     <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
@@ -41,62 +42,70 @@
 			<a class="btn" href="javascript:history.go(-1)">
 	            <i class="iconfont icon-fanhui"></i>
 	        </a>
-	        <h4>购物车</h4>
+	        <h4>订单列表</h4>
 	    </header>
 	    <!--header end-->
 	    
 	    <div class="warp warptwo clearfloat">
-	    	<div class="shopcar clearfloat">
-				<c:forEach items="${shoppingCarList}" var="shoppingCar">
-					<div class="list clearfloat fl">
+			<ul class="address-list">
+				<c:forEach items="${orderList}" var="order">
+				<li style="display: inline-block;margin: 6px 11px;border-radius: 10px;" class="bg-info">
+					<div class="am-share-footer" style="float:left;width:156px;height:156px;padding: 2px;border: #1b6d85 1px solid; margin: 5px; display: inline-block;" >
+							<c:forEach items="${imgList}" var="img">
+								<c:if test="${img.imageclassification==3&&img.imagerid==order.ordercommodityno}">
+									<img  style="width:150px;height:150px;" src="${img.imagerurl}"/>
+								</c:if>
+							</c:forEach>
+					</div>
+					<div style="float: left;display: inline-block;">
+						<h4 class="text-success">${order.commodityId.commoditytitle}</h4>
+					</div>
+					<div style="float: left;display: inline-block;">
+						<p>收货人：${order.emp.empname}&nbsp;&nbsp;${order.emp.empphone}</p>
+						<p class="order-add1">收货地址：湖南省长沙市高新区拓基城市广场金座A2002</p>
+						<hr />
+						<div class="address-cz">
+							<a href="" class="editButton"><img src="/static/before/images/bj.png" width="18" />&nbsp;编辑</a>
+							<a href="" class="deleteButton">删除</a>
+						</div>
+					</div>
+
+				</li>
+					</c:forEach>
+			</ul>
+					<%--<div class="list clearfloat fl">
 						<div class="xuan clearfloat fl">
 							<div class="radio" >
 								<label>
-									<input type="checkbox" name="sex" value="${shoppingCar.carno}" />
+									<input type="checkbox" name="sex" value="${order.orderno}" />
 								</label>
 							</div>
 						</div>
 						<a href="javascript:void(0)">
-							<div class="tu clearfloat fl">
-								<span></span>
-								<c:forEach items="${imgList}" var="img">
-									<c:if test="${img.imageclassification==3&&img.imagerid==shoppingCar.shoppingcommodityno}">
-										<img src="${img.imagerurl}" />
-									</c:if>
-								</c:forEach>
-							</div>
+
 							<div class="right clearfloat fl">
-								<p class="tit over">${shoppingCar.commodityId.commoditytitle}</p>
-								<p class="fu-tit over">${shoppingCar.commodityNote}</p>
-								<p class=" over"><span class="jifen">${shoppingCar.commodityId.needintegral}</span>积分</p>
+								<p class="tit over">${order.commodityId.commoditytitle}</p>
+								<p class="fu-tit over">${order.orderintegral}</p>
+								<p class=" over"><span class="jifen">${order.commodityId.needintegral}</span>积分</p>
 								<div class="bottom clearfloat">
-									<div class="zuo clearfloat fl">
-										<ul>
-											<li><img src="/static/before/images/jian.jpg" carno="${shoppingCar.carno}"/></li>
-											<li>${shoppingCar.commoditysum}</li>
-											<li><img src="/static/before/images/jia.jpg" carno="${shoppingCar.carno}"/></li>
-										</ul>
-									</div>
 									<i class="iconfont icon-lajixiang fr "></i>
-									<input type="hidden"  class="carno" value="${shoppingCar.carno}"/>
+									<input type="hidden"  class="carno" value="${order.orderno}"/>
 								</div>
 							</div>
 						</a>
-					</div>
-				</c:forEach>
-	    	</div>
+					</div>--%>
 	    </div>
 	    
-	    <!--settlement star-->
+	    <%--<!--settlement star-->
 	    <div class="settlement clearfloat">
 	    	<div class="zuo clearfloat fl box-s">
 	    		合计：<span class="hj"></span>
 	    	</div>
-            <%--href="/toBeforeConfirm"--%>
+            &lt;%&ndash;href="/toBeforeConfirm"&ndash;%&gt;
 	    	<a class="fl db">
 	    		立即结算
 	    	</a>
-	    </div>
+	    </div>--%>
 	    <!--settlement end-->
 	    
 		<!--footer star-->
