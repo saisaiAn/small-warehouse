@@ -6,12 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SSMDemo1" />
+        <module name="Integral_mall_plus" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Integral_mall_plus" target="1.7" />
-      <module name="SSMDemo1" target="1.7" />
-    </bytecodeTargetLevel>
   </component>
 </project>

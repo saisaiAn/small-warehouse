@@ -17,7 +17,9 @@ public class Orders {
     private Integer empno;
     private Emp emp;
 
-    private Integer OrderCommoditySum;
+    private Integer ordercommoditysum;
+
+    private String orderexchange;
 
     public Commodity getCommodityId() {
         return commodityId;
@@ -83,11 +85,19 @@ public class Orders {
         this.empno = empno;
     }
 
-    public Integer getOrderCommoditySum() {
-        return OrderCommoditySum;
+    public Integer getOrdercommoditysum() {
+        return ordercommoditysum;
     }
 
-    public void setOrderCommoditySum(Integer orderCommoditySum) {
-        OrderCommoditySum = orderCommoditySum;
+    public void setOrdercommoditysum(Integer ordercommoditysum) {
+        this.ordercommoditysum = ordercommoditysum;
+    }
+
+    public String getOrderexchange() {
+        return orderexchange;
+    }
+
+    public void setOrderexchange(String orderexchange) {
+        this.orderexchange = orderexchange;
     }
 }

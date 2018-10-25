@@ -8,7 +8,8 @@
         <result column="ordertime" jdbcType="DATE" property="ordertime" />
         <result column="orderstatus" jdbcType="INTEGER" property="orderstatus" />
         <result column="empno" jdbcType="INTEGER" property="empno" />
-        <result column="OrderCommoditySum" jdbcType="INTEGER" property="OrderCommoditySum" />
+        <result column="ordercommoditysum" jdbcType="INTEGER" property="ordercommoditysum" />
+        <result column="orderexchange" jdbcType="VARCHAR" property="orderexchange" />
         <!-- 指定联合查询出的商品类型字段的封装 -->
         <association property="commodityId" javaType="cn.bean.Commodity">
             <id column="commodityno" jdbcType="INTEGER" property="commodityno" />
@@ -35,7 +36,7 @@
         </association>
     </resultMap>
     <sql id="WithOrders_Column_List">
-    o.orderno,o.orderintegral,o.ordercommodityno,o.ordertime,o.orderstatus,o.empno,o.ordercommoditysum,
+    o.orderno,o.orderintegral,o.ordercommodityno,o.ordertime,o.orderstatus,o.empno,o.ordercommoditysum,o.orderexchange,
     c.commodityno,c.price,c.needintegral,c.commoditytitle,c.commoditydetails,c.commodityinventory,c.commoditytypeno,c.commoditytype,
   	e.empno, e.empname, e.empsex, e.idcard, e.departmentno, e.positivedates, e.empphone,
   	e.intergralno, e.position, e.emptype, e.password
@@ -66,6 +67,12 @@
             <if test="empno != null">
                 empno,
             </if>
+            <if test="ordercommoditysum != null">
+                ordercommoditysum,
+            </if>
+            <if test="orderexchange != null">
+                orderexchange,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="orderintegral != null">
@@ -82,6 +89,12 @@
             </if>
             <if test="empno != null">
                 #{empno,jdbcType=INTEGER},
+            </if>
+            <if test="ordercommoditysum != null">
+                #{ordercommoditysum,jdbcType=INTEGER},
+            </if>
+            <if test="orderexchange != null">
+                #{orderexchange},
             </if>
         </trim>
     </insert>

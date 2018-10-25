@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 public class EmpController {
@@ -90,14 +91,25 @@ public class EmpController {
             orders.setOrdertime(new Date());
             orders.setOrderstatus(1);
             orders.setEmpno(shoppingCarTwo.getShoppingempno());
-            orders.setOrderCommoditySum(shoppingCarTwo.getCommoditysum());
+            orders.setOrdercommoditysum(shoppingCarTwo.getCommoditysum());
+            String rand= generateString(20);
+            orders.setOrderexchange(rand);
             ordersService.insertOrders(orders);
-
             //删除购物车表
             shoppingCarService.deleteByPrimaryKey(Integer.parseInt(carId));
         }
         return "y";
     }
+    public static final String ALLCHAR = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    public static String generateString(int length) {
+        StringBuffer sb = new StringBuffer();
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            sb.append(ALLCHAR.charAt(random.nextInt(ALLCHAR.length())));
+        }
+        return sb.toString();
+    }
+
     @RequestMapping("/addBeforeShopping")
     public String addShopCar(shoppingCar shoppingCar){
         int judge= shoppingCarService.insertShoppingCar(shoppingCar);
