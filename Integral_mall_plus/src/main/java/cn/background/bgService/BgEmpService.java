@@ -52,4 +52,7 @@ public class BgEmpService {
         return empMapper.bgupdEmpPwd(map);
     }
 
+    public int bgBatchdeleting_emp(List arrs){
+        return empMapper.bgBatchdeleting_emp(arrs);
+    }
 }

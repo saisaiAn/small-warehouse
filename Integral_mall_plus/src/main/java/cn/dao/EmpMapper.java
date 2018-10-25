@@ -20,4 +20,6 @@ public interface EmpMapper {
     List<Emp> bgLikeSelectByName(String name);//模糊查询
 
     int bgupdEmpPwd(Map<String,Object> map);
+
+    int bgBatchdeleting_emp(List list4); //批量删除用户同时删除他的积分
 }

@@ -5,6 +5,7 @@ import cn.bean.Department;
 import cn.bean.Emp;
 import cn.bean.Integral;
 import javafx.scene.control.Alert;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -91,5 +92,21 @@ public class BgEmpController {
             return "n";
 
     }
+
+    @ResponseBody
+    @RequestMapping(value = "Batchdeleting_emp",method = RequestMethod.POST)
+    public String Batchdeleting(@RequestParam("empnos[]") List<Integer> empnos){//批量删除用户
+        System.out.println("批量删除:"+empnos);
+        int a = bgEmpService.bgBatchdeleting_emp(empnos);
+        if(a>0){
+            return "y";
+        }else{
+            return "n";
+        }
+
+    }
+
+
+
 
 }
