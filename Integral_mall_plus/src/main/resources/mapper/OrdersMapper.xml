@@ -41,12 +41,15 @@
   	e.empno, e.empname, e.empsex, e.idcard, e.departmentno, e.positivedates, e.empphone,
   	e.intergralno, e.position, e.emptype, e.password
   </sql>
-    <select id="selectOrdersByEmpId" parameterType="cn.bean.Emp" resultMap="ordersResultMap" >
+    <select id="selectOrdersByEmpId" parameterType="Map" resultMap="ordersResultMap" >
         select
         <include refid="WithOrders_Column_List" />
         from orders o ,commodity c,emp e
         <where>
-           o.ordercommodityno=c.commodityno and o.empno=e.empno and o.empno=#{empno}
+           o.ordercommodityno=c.commodityno and o.empno=e.empno and o.empno=#{emp.empno}
+            <if test="status!=0">
+                and o.orderstatus=#{status}
+            </if>
         </where>
     </select>
     <insert id="insertOrders" parameterType="cn.bean.Orders" useGeneratedKeys="true" keyProperty="orderno" keyColumn="orderno">

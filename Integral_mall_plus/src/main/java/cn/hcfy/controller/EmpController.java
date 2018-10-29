@@ -10,9 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Controller
 public class EmpController {
@@ -114,7 +112,6 @@ public class EmpController {
     public String addShopCar(shoppingCar shoppingCar){
         int judge= shoppingCarService.insertShoppingCar(shoppingCar);
         return "forward:/toBeforeShopcar";
-
     }
     @ResponseBody
     @RequestMapping("deleteBeforeShopCar")
@@ -143,6 +140,28 @@ public class EmpController {
             return "n";
         }
     }
+    @RequestMapping("/BeforeUpdateEmp")
+    public String UpdateEmp(@ModelAttribute Emp emp){
+        empService.updateBeforeEmp(emp);
+        return "forward:/toBeforeUserInfo";
+    }
+
+    @RequestMapping("/BeforeOldPassword")
+    public String OldPassword(@ModelAttribute Emp emp){
+        Emp emp1= empService.selectOldPassword(emp);
+        System.out.println(emp1);
+        if(emp1!=null){
+            return "y";
+        }else{
+            return "n";
+        }
+    }
+    @RequestMapping("/BeforeUpdateEmpPassword")
+    public String UpdateEmpPassword(@ModelAttribute Emp emp){
+        empService.updateBeforeEmp(emp);
+        return "forward:/hello";
+    }
+
     @RequestMapping("/toBeforeLogin")
     public String login(){
         return "/before/login";
@@ -197,10 +216,21 @@ public class EmpController {
         return "/before/zhifu";
     }
     @RequestMapping("/toBeforeOrders")
-    public String orders(@Param("id")Integer id,Model model){
+    public String orders(@Param("id")Integer id,@Param("status")Integer status,Model model){
         Emp emp=new Emp();
         emp.setEmpno(id);
-        model.addAttribute("orderList",ordersService.selectOrdersByEmpId(emp));
+        Map ByEmpIdMap=new HashMap();
+        ByEmpIdMap.put("emp",emp);
+        ByEmpIdMap.put("status",status);
+        model.addAttribute("orderList",ordersService.selectOrdersByEmpId(ByEmpIdMap));
         return "/before/orders";
+    }
+    @RequestMapping("/toBeforeUserInfo")
+    public String userInfo(){
+        return "/before/userInfo";
+    }
+    @RequestMapping("/toBeforePassword")
+    public String password(){
+        return "/before/password";
     }
 }

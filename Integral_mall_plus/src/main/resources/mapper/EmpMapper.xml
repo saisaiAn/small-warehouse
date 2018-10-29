@@ -38,16 +38,25 @@
   	e.intergralno, e.position, e.emptype, e.password,
   	d.depano, d.depaname,d.parentdepa,i.intergralno,i.totalintegral,i.haveintegral,i.remainingpoints,i.lastchangetime
   </sql>
+    <!--前台登录-->
     <select id="loginToIndexBefore" parameterType="cn.bean.Emp" resultMap="WithDeptResultMap" >
         select
         <include refid="WithDept_Column_List" />
         from emp e ,department d,integral i
         <where>
           e.departmentno=d.depano and e.intergralno=i.intergralno and
-          empname=#{empname} and password = #{password}
+          e.empname=#{empname} and e.password = #{password}
         </where>
     </select>
-
+   <!-- 判断密码是否正确-->
+    <select id="selectOldPassword" parameterType="cn.bean.Emp" resultType="cn.bean.Emp">
+        select
+        *
+        from emp
+        <where>
+            empname=#{empname} and password = #{password}
+        </where>
+    </select>
     <!-- 查询所有员工 -->
     <select id="findEmpAll" resultMap="WithDeptResultMap" >
         select
@@ -98,7 +107,27 @@
 
     </delete>
 
-
+    <update id="updateBeforeEmp" parameterType="cn.bean.Emp">
+        update Emp
+        <set>
+            <if test="empname != null">
+                empName = #{empname},
+            </if>
+            <if test="empsex != null">
+                empsex = #{empsex},
+            </if>
+            <if test="idcard != null">
+                idcard = #{idcard},
+            </if>
+            <if test="empphone != null">
+                empphone = #{empphone},
+            </if>
+            <if test="password !=null">
+                password=#{password},
+            </if>
+        </set>
+        where empno = #{empno}
+    </update>
 
 
 

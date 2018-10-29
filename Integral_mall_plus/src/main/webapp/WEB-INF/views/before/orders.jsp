@@ -68,7 +68,7 @@
 					<div style="float: left;display: inline-block;width: 100%;" >
 						<p>收货人：${order.emp.empname}&nbsp;&nbsp;手机号：${order.emp.empphone}</p><%--1为已提交 2为待领取 3为已领取--%>
 						<p class="order-add1">订单总积分：<span style="color: #00c800;">${order.orderintegral}</span>&nbsp;&nbsp;订单状态：<c:if test="${order.orderstatus==1}"><span style="color: #0f0f0f;background-color: #00a0e9;padding: 5px;">已提交</span></c:if><c:if test="${order.orderstatus==2}"><span style="color: #0f0f0f;background-color: #00ee00;padding: 5px;">待领取</span></c:if><c:if test="${order.orderstatus==3}"><span style="color: #0f0f0f; background-color: #00E8D7;padding: 5px;">已领取</span></c:if></p>
-						<p style="display:none;" class="exchange"><span class="text-success" style="font-size: 12px;">兑换码：</span>${order.orderexchange}</p>
+						<p style="display:none;" class="exchange"><span class="text-success" style="font-size: 12px;">兑换码：</span><input  style="display: inline-block;height: 10px;width: 180px;" readonly type="text" value="${order.orderexchange}"></p>
 						<hr style="margin-top: 1px;margin-bottom: 1px;" />
 						<div class="address-cz" style="margin: 0 auto; display: inline-block;width:200px;padding: 5px;">
 							<button class="btn btn-info btn-sm editButton">查看兑换码</button>
@@ -113,10 +113,12 @@
 			$(".editButton").click(function () {
                 if(clickNum == 0){
                     $(this).parent().siblings(".exchange").css("display","inline-block");
+                    $(this).html("隐藏兑换码");
                     clickNum = 1;
                     return false;
                 }else{
                     $(this).parent().siblings(".exchange").css("display","none");
+                    $(this).html("查看兑换码");
                     clickNum = 0;
                     return false;
                 };
