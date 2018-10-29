@@ -68,6 +68,11 @@
         select count(*) from Commodity
     </select>
 
+    <insert id="bgAddProduct" parameterType="cn.bean.Commodity" keyColumn="id" keyProperty="commodityno" useGeneratedKeys="true">
+         INSERT into commodity(commodityno,price,needintegral,commoditytitle,commoditydetails,commodityinventory,commoditytypeno,commoditytype)
+          VALUES(null,#{price},#{needintegral},#{commoditytitle},#{commoditydetails},#{commodityinventory},#{commoditytypeno},1);
+    </insert>
+
 
 
 </mapper>

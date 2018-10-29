@@ -2,8 +2,10 @@ package cn.background.bgService;
 
 import cn.bean.Commodity;
 import cn.bean.CommodityType;
+import cn.bean.Imager;
 import cn.dao.CommodityMapper;
 import cn.dao.CommodityTypeMapper;
+import cn.dao.ImagerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,9 @@ public class BgProductService {
     CommodityMapper commodityMapper;
     @Autowired
     CommodityTypeMapper commodityTypeMapper;
+
+    @Autowired
+    ImagerMapper imagerMapper;
 
     public List<Commodity> findAllCommodity(){
         return commodityMapper.selectAllCommodity();
@@ -30,5 +35,13 @@ public class BgProductService {
 
     public List<CommodityType> findProByType(Integer idType){//根据类型查询商品
         return commodityMapper.findProByType(idType);
+    }
+
+    public int addPro(Commodity commodity){
+        return commodityMapper.bgAddProduct(commodity);
+    }
+
+    public int addImg(Imager imager){
+        return imagerMapper.addImg(imager);
     }
 }

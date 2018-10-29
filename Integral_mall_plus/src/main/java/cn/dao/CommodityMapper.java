@@ -12,4 +12,7 @@ public interface CommodityMapper {
     int findCountCommodity();
 
     public List<CommodityType> findProByType(@Param("idType") Integer idType);
+
+    int bgAddProduct(Commodity commodity);//后台添加商品
+
 }
