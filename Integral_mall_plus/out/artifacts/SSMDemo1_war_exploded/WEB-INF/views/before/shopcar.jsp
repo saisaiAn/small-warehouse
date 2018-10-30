@@ -149,6 +149,7 @@
                        success:function (result) {
                            if (result=="y"){
                           		alert("下单成功！");
+                               location.href="/toBeforeShopcar";
                            }
                        }
                    })
