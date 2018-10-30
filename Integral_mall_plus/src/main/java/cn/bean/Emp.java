@@ -130,4 +130,23 @@ public class Emp {
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Emp{" +
+                "empno=" + empno +
+                ", empname='" + empname + '\'' +
+                ", empsex='" + empsex + '\'' +
+                ", idcard='" + idcard + '\'' +
+                ", departmentno=" + departmentno +
+                ", departmentId=" + departmentId +
+                ", positivedates=" + positivedates +
+                ", empphone='" + empphone + '\'' +
+                ", intergralno=" + intergralno +
+                ", integralId=" + integralId +
+                ", position=" + position +
+                ", emptype=" + emptype +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

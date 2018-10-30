@@ -49,7 +49,7 @@
                 <div class="am-form-group">
                     <label for="user-old-password" class="am-form-label">原密码</label>
                     <div class="am-form-content">
-                        <input type="password" id="user-old-password" placeholder="请输入原登录密码"><span class="ts"></span>
+                        <input type="password" id="user-old-password" placeholder="请输入原登录密码"><span id="ts"></span>
                     </div>
                 </div>
                 <div class="am-form-group">
@@ -61,7 +61,7 @@
                 <div class="am-form-group">
                     <label for="user-confirm-password" class="am-form-label">确认密码</label>
                     <div class="am-form-content">
-                        <input type="password" id="user-confirm-password" placeholder="请再次输入上面的密码"><span class="ts"></span>
+                        <input type="password" id="user-confirm-password" name="password" placeholder="请再次输入上面的密码"><span class="ts"></span>
                     </div>
                 </div>
                 <div class="info-btn">
@@ -81,16 +81,16 @@
         $("#user-old-password").change(function(){
             $.ajax({
                 url:"/BeforeOldPassword",
-                data:{ empname:${empBefore.empname}, password:$("#user-old-password").val()} ,
+                data:{ empname:'${empBefore.empname}', password:$("#user-old-password").val()} ,
                 type:"POST",
-                success:function (result) {
+                success:function (result){
                     alert(result)
                     if (result=="y"){
-                        $(this).next(".ts").html("");
+                        $("#ts").html("");
                         c=true;
-                    }else {
+                    }else{
                         c=false;
-                        $(this).next(".ts").html("原密码输入不正确");
+                        $("#ts").html("原密码输入不正确");
                     }
                 }
             })

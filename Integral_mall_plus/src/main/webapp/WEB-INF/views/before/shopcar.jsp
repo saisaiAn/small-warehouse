@@ -173,7 +173,6 @@
                     data:{ carno:carno, commoditySum:vals.html()} ,
                     type:"post",
                     success:function (result) {
-                        alert(result);
                     }
                 })
 				tatol();

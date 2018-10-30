@@ -47,6 +47,7 @@ public class EmpController {
         Emp emp=new Emp();
         emp.setEmpname(empname);
         emp.setPassword(password);
+        System.out.println("aa==================");
         Emp empReturn = empService.loginToIndexBefore(emp);
         if(empReturn==null){ return  "n";}
         List<Imager> imagerList = imagerService.selectAllImager();
@@ -145,7 +146,7 @@ public class EmpController {
         empService.updateBeforeEmp(emp);
         return "forward:/toBeforeUserInfo";
     }
-
+    @ResponseBody
     @RequestMapping("/BeforeOldPassword")
     public String OldPassword(@ModelAttribute Emp emp){
         Emp emp1= empService.selectOldPassword(emp);
