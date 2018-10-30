@@ -4,4 +4,10 @@
     <select id="selectAllImager" resultType="cn.bean.Imager" >
         select * from imager
     </select>
+
+    <insert id="addImg" parameterType="cn.bean.Imager">
+        INSERT INTO imager(imagerno,imagerurl,imageclassification,imagerdescription,imagerid)
+        VALUES(null,#{imagerurl},#{imageclassification},#{imagerdescription},#{imagerid});
+
+    </insert>
 </mapper>

@@ -38,6 +38,8 @@
             c.commoditytypeno=ct.commoditytypeno and  ct.supercommoditytype=sct.commoditytypeno
         </where>
     </select>
+
+
     <select id="selectCommodityById" parameterType="cn.bean.Commodity" resultMap="CommodityResultMap">
         select
         <include refid="WithCommodityType_Column_List" />
@@ -47,4 +49,30 @@
             and c.commodityno=#{commodityno}
         </where>
     </select>
+
+    <!-- 根据商品类型来查询商品 -->
+    <select id="findProByType" parameterType="java.lang.Integer" resultMap="CommodityResultMap">
+        select
+        <include refid="WithCommodityType_Column_List" />
+        from commodity c,commoditytype ct,commoditytype sct
+        <where>
+            c.commoditytypeno=ct.commoditytypeno and  ct.supercommoditytype=sct.commoditytypeno
+            <if test="idType != null and idType !=''">
+                and c.CommodityTypeNo = #{idType}
+            </if>
+        </where>
+    </select>
+
+    <!-- 查询商品数量 -->
+    <select id="findCountCommodity" resultType="java.lang.Integer">
+        select count(*) from Commodity
+    </select>
+
+    <insert id="bgAddProduct" parameterType="cn.bean.Commodity" keyColumn="id" keyProperty="commodityno" useGeneratedKeys="true">
+         INSERT into commodity(commodityno,price,needintegral,commoditytitle,commoditydetails,commodityinventory,commoditytypeno,commoditytype)
+          VALUES(null,#{price},#{needintegral},#{commoditytitle},#{commoditydetails},#{commodityinventory},#{commoditytypeno},1);
+    </insert>
+
+
+
 </mapper>

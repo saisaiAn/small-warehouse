@@ -12,4 +12,9 @@ public class EmpService {
     public Emp loginToIndexBefore(Emp emp){
        return empMapper.loginToIndexBefore(emp);
     }
+
+    public int updateBeforeEmp(Emp emp){return  empMapper.updateBeforeEmp(emp); }
+    public Emp selectOldPassword(Emp emp){
+        return empMapper.selectOldPassword(emp);
+    };
 }

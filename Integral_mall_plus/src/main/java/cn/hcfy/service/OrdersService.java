@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class OrdersService {
@@ -15,5 +16,5 @@ public class OrdersService {
     OrdersMapper ordersMapper;
 
     public int insertOrders(Orders orders){return ordersMapper.insertOrders(orders); }
-    public List<Orders>selectOrdersByEmpId(Emp emp){return ordersMapper.selectOrdersByEmpId(emp);}
+    public List<Orders>selectOrdersByEmpId(Map ByEmpIdMap){return ordersMapper.selectOrdersByEmpId(ByEmpIdMap);}
 }

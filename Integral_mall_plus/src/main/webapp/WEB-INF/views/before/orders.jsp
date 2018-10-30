@@ -36,7 +36,7 @@
 	</div>
 </div>
 <!--loading页结束-->
-	<body>
+	<body class="bg-info">
 		<!--header star-->
 		<header class="mui-bar mui-bar-nav" id="header">
 			<a class="btn" href="javascript:history.go(-1)">
@@ -47,67 +47,37 @@
 	    <!--header end-->
 	    
 	    <div class="warp warptwo clearfloat">
-			<ul class="address-list">
+			<ul class="address-list" style=" width: 100%;">
 				<c:forEach items="${orderList}" var="order">
-				<li style="display: inline-block;margin: 6px 11px;border-radius: 10px;" class="bg-info">
-					<div class="am-share-footer" style="float:left;width:156px;height:156px;padding: 2px;border: #1b6d85 1px solid; margin: 5px; display: inline-block;" >
-							<c:forEach items="${imgList}" var="img">
-								<c:if test="${img.imageclassification==3&&img.imagerid==order.ordercommodityno}">
-									<img  style="width:150px;height:150px;" src="${img.imagerurl}"/>
-								</c:if>
-							</c:forEach>
-					</div>
-					<div style="float: left;display: inline-block;">
-						<h4 class="text-success">${order.commodityId.commoditytitle}</h4>
-					</div>
-					<div style="float: left;display: inline-block;">
-						<p>收货人：${order.emp.empname}&nbsp;&nbsp;${order.emp.empphone}</p>
-						<p class="order-add1">收货地址：湖南省长沙市高新区拓基城市广场金座A2002</p>
-						<hr />
-						<div class="address-cz">
-							<a href="" class="editButton"><img src="/static/before/images/bj.png" width="18" />&nbsp;编辑</a>
-							<a href="" class="deleteButton">删除</a>
+				<li style="display: inline-block;margin-top: 6px;padding: 10px; width: 100%;opacity: 0.9;background-color: #fff;" >
+					<div style=" width: 100%;">
+						<div class="am-share-footer" style="float:left;width:121px;height:121px;padding: 2px;border: #1b6d85 1px solid; margin: 5px; display: inline-block;" >
+								<c:forEach items="${imgList}" var="img">
+									<c:if test="${img.imageclassification==3&&img.imagerid==order.ordercommodityno}">
+										<img  style="width:115px;height:115px;" src="${img.imagerurl}"/>
+									</c:if>
+								</c:forEach>
+						</div>
+						<div style="float: left;display: inline-block;margin-left: 15px;">
+							<h5 style="font-family:Microsoft YaHei;color: #0f0f0f;">${order.commodityId.commoditytitle}</h5>
+							<p class=" over" style="font-size: 12px;">积分:<span class="text-success" style="font-size: 12px;">${order.commodityId.needintegral}</span>&nbsp;&nbsp;&nbsp;价格:<span class="text-success" style="font-size: 12px;">${order.commodityId.price}</span></p>
+							<p class="text-info">${order.commodityId.commoditydetails}</p>
+							<h5 style="font-family:Microsoft YaHei;color: #00be67;">数量：<span style="color: #7b3f25;">${order.ordercommoditysum}</span></h5>
 						</div>
 					</div>
-
+					<div style="float: left;display: inline-block;width: 100%;" >
+						<p>收货人：${order.emp.empname}&nbsp;&nbsp;手机号：${order.emp.empphone}</p><%--1为已提交 2为待领取 3为已领取--%>
+						<p class="order-add1">订单总积分：<span style="color: #00c800;">${order.orderintegral}</span>&nbsp;&nbsp;订单状态：<c:if test="${order.orderstatus==1}"><span style="color: #0f0f0f;background-color: #00a0e9;padding: 5px;">已提交</span></c:if><c:if test="${order.orderstatus==2}"><span style="color: #0f0f0f;background-color: #00ee00;padding: 5px;">待领取</span></c:if><c:if test="${order.orderstatus==3}"><span style="color: #0f0f0f; background-color: #00E8D7;padding: 5px;">已领取</span></c:if></p>
+						<p style="display:none;" class="exchange"><span class="text-success" style="font-size: 12px;">兑换码：</span><input  style="display: inline-block;height: 10px;width: 180px;" readonly type="text" value="${order.orderexchange}"></p>
+						<hr style="margin-top: 1px;margin-bottom: 1px;" />
+						<div class="address-cz" style="margin: 0 auto; display: inline-block;width:200px;padding: 5px;">
+							<button class="btn btn-info btn-sm editButton">查看兑换码</button>
+						</div>
+					</div>
 				</li>
 					</c:forEach>
 			</ul>
-					<%--<div class="list clearfloat fl">
-						<div class="xuan clearfloat fl">
-							<div class="radio" >
-								<label>
-									<input type="checkbox" name="sex" value="${order.orderno}" />
-								</label>
-							</div>
-						</div>
-						<a href="javascript:void(0)">
-
-							<div class="right clearfloat fl">
-								<p class="tit over">${order.commodityId.commoditytitle}</p>
-								<p class="fu-tit over">${order.orderintegral}</p>
-								<p class=" over"><span class="jifen">${order.commodityId.needintegral}</span>积分</p>
-								<div class="bottom clearfloat">
-									<i class="iconfont icon-lajixiang fr "></i>
-									<input type="hidden"  class="carno" value="${order.orderno}"/>
-								</div>
-							</div>
-						</a>
-					</div>--%>
 	    </div>
-	    
-	    <%--<!--settlement star-->
-	    <div class="settlement clearfloat">
-	    	<div class="zuo clearfloat fl box-s">
-	    		合计：<span class="hj"></span>
-	    	</div>
-            &lt;%&ndash;href="/toBeforeConfirm"&ndash;%&gt;
-	    	<a class="fl db">
-	    		立即结算
-	    	</a>
-	    </div>--%>
-	    <!--settlement end-->
-	    
 		<!--footer star-->
 		<footer class="page-footer fixed-footer" id="footer">
 			<ul>
@@ -139,6 +109,20 @@
 		</footer>
 		<!--footer end-->
 		<script type="text/javascript">
+            var clickNum = 0;
+			$(".editButton").click(function () {
+                if(clickNum == 0){
+                    $(this).parent().siblings(".exchange").css("display","inline-block");
+                    $(this).html("隐藏兑换码");
+                    clickNum = 1;
+                    return false;
+                }else{
+                    $(this).parent().siblings(".exchange").css("display","none");
+                    $(this).html("查看兑换码");
+                    clickNum = 0;
+                    return false;
+                };
+            })
             $(".db").click(function(){
                 var hjjf= $('.settlement span').html();
                 hjjf=hjjf.substring(0,hjjf.length-2);

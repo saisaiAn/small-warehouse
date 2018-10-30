@@ -10,8 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class EmpController {
@@ -90,19 +89,29 @@ public class EmpController {
             orders.setOrdertime(new Date());
             orders.setOrderstatus(1);
             orders.setEmpno(shoppingCarTwo.getShoppingempno());
-            orders.setOrderCommoditySum(shoppingCarTwo.getCommoditysum());
+            orders.setOrdercommoditysum(shoppingCarTwo.getCommoditysum());
+            String rand= generateString(20);
+            orders.setOrderexchange(rand);
             ordersService.insertOrders(orders);
-
             //删除购物车表
             shoppingCarService.deleteByPrimaryKey(Integer.parseInt(carId));
         }
         return "y";
     }
+    public static final String ALLCHAR = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    public static String generateString(int length) {
+        StringBuffer sb = new StringBuffer();
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            sb.append(ALLCHAR.charAt(random.nextInt(ALLCHAR.length())));
+        }
+        return sb.toString();
+    }
+
     @RequestMapping("/addBeforeShopping")
     public String addShopCar(shoppingCar shoppingCar){
         int judge= shoppingCarService.insertShoppingCar(shoppingCar);
         return "forward:/toBeforeShopcar";
-
     }
     @ResponseBody
     @RequestMapping("deleteBeforeShopCar")
@@ -131,6 +140,28 @@ public class EmpController {
             return "n";
         }
     }
+    @RequestMapping("/BeforeUpdateEmp")
+    public String UpdateEmp(@ModelAttribute Emp emp){
+        empService.updateBeforeEmp(emp);
+        return "forward:/toBeforeUserInfo";
+    }
+
+    @RequestMapping("/BeforeOldPassword")
+    public String OldPassword(@ModelAttribute Emp emp){
+        Emp emp1= empService.selectOldPassword(emp);
+        System.out.println(emp1);
+        if(emp1!=null){
+            return "y";
+        }else{
+            return "n";
+        }
+    }
+    @RequestMapping("/BeforeUpdateEmpPassword")
+    public String UpdateEmpPassword(@ModelAttribute Emp emp){
+        empService.updateBeforeEmp(emp);
+        return "forward:/hello";
+    }
+
     @RequestMapping("/toBeforeLogin")
     public String login(){
         return "/before/login";
@@ -185,10 +216,21 @@ public class EmpController {
         return "/before/zhifu";
     }
     @RequestMapping("/toBeforeOrders")
-    public String orders(@Param("id")Integer id,Model model){
+    public String orders(@Param("id")Integer id,@Param("status")Integer status,Model model){
         Emp emp=new Emp();
         emp.setEmpno(id);
-        model.addAttribute("orderList",ordersService.selectOrdersByEmpId(emp));
+        Map ByEmpIdMap=new HashMap();
+        ByEmpIdMap.put("emp",emp);
+        ByEmpIdMap.put("status",status);
+        model.addAttribute("orderList",ordersService.selectOrdersByEmpId(ByEmpIdMap));
         return "/before/orders";
+    }
+    @RequestMapping("/toBeforeUserInfo")
+    public String userInfo(){
+        return "/before/userInfo";
+    }
+    @RequestMapping("/toBeforePassword")
+    public String password(){
+        return "/before/password";
     }
 }

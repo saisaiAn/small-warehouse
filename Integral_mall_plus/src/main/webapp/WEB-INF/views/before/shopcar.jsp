@@ -149,7 +149,7 @@
                        success:function (result) {
                            if (result=="y"){
                           		alert("下单成功！");
-                               location.href="/toBeforeShopcar";
+                               location.href="/toBeforeOrders?id=${empBefore.empno}";
                            }
                        }
                    })
@@ -168,7 +168,6 @@
 					vals.html(vals.html() > 1 ? parseInt(vals.html()) - 1 : 1);
 				}
 				var carno=$(this).attr("carno");
-				alert(carno+"==="+vals.html());
                 $.ajax({
                     url:"/updateBeforeShopCar",
                     data:{ carno:carno, commoditySum:vals.html()} ,

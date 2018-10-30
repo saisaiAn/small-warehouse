@@ -42,21 +42,21 @@
     </header>
 <!-- 会员头像 -->
     <div class="vip-header">
-        <a href="">
+        <a href="/toBeforeUserInfo">
             <dl>
                 <dt>
                     <img src="/static/before/images/user.png" />
                 </dt>
                 <dd>
-                    <h4>hjl416148489<span>普通会员</span></h4>
-                    <p><span>积分：<i>30</i></span>&nbsp;&nbsp;<span>红包：<i>0</i></span></p>
+                    <h4>${empBefore.empname}<span>普通会员</span></h4>
+                    <p><span>积分：<i>${empBefore.integralId.remainingpoints}</i></span>&nbsp;&nbsp;<span>红包：<i>0</i></span></p>
                 </dd>
             </dl>
         </a>
         <ul>
-            <li><a href=""><span>1</span><p>待付款</p> </a></li>
-            <li><a href=""><span>0</span><p>待收货</p> </a></li>
-            <li><a href=""><span>0</span><p>待评价</p> </a></li>
+            <li><a href="/toBeforeOrders?id=${empBefore.empno}&status=1"><span></span><p>待审核</p> </a></li>
+            <li><a href="/toBeforeOrders?id=${empBefore.empno}&status=2"><span></span><p>待领取</p> </a></li>
+            <li><a href="/toBeforeOrders?id=${empBefore.empno}&status=3"><span></span><p>待评价</p> </a></li>
         </ul>
     </div>
 <!-- 会员俱乐部 -->
@@ -66,7 +66,7 @@
             <a href="">每日签到领积分<i class="iconfont"></i></a>
         </div>
         <ul>
-            <li><a href="/toBeforeOrders?id=${empBefore.empno}"><i class="iconfont"></i><p>我的订单</p> </a></li>
+            <li><a href="/toBeforeOrders?id=${empBefore.empno}&status=0"><i class="iconfont"></i><p>我的订单</p> </a></li>
             <li><a href=""><i class="iconfont"></i><p>我的秒杀</p> </a></li>
             <li><a href=""><i class="iconfont" style="font-size: 28px;"></i><p>我的众筹</p> </a></li>
             <li><a href=""><i class="iconfont"></i><p>我的预约</p> </a></li>

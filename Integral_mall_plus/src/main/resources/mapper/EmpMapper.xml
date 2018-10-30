@@ -38,56 +38,29 @@
   	e.intergralno, e.position, e.emptype, e.password,
   	d.depano, d.depaname,d.parentdepa,i.intergralno,i.totalintegral,i.haveintegral,i.remainingpoints,i.lastchangetime
   </sql>
+    <!--前台登录-->
     <select id="loginToIndexBefore" parameterType="cn.bean.Emp" resultMap="WithDeptResultMap" >
         select
         <include refid="WithDept_Column_List" />
         from emp e ,department d,integral i
         <where>
           e.departmentno=d.depano and e.intergralno=i.intergralno and
-          empname=#{empname} and password = #{password}
+          e.empname=#{empname} and e.password = #{password}
         </where>
     </select>
-
-    <!-- 查询所有员工 -->
-    <resultMap type="cn.bean.Emp" id="findEmpAllMap">
-        <id column="empno" jdbcType="INTEGER" property="empno" />
-        <result column="empname" jdbcType="VARCHAR" property="empname" />
-        <result column="empsex" jdbcType="VARCHAR" property="empsex" />
-        <result column="idcard" jdbcType="VARCHAR" property="idcard" />
-        <result column="departmentno" jdbcType="INTEGER" property="departmentno" />
-        <result column="positivedates" jdbcType="TIMESTAMP" property="positivedates" />
-        <result column="empphone" jdbcType="VARCHAR" property="empphone" />
-        <result column="intergralno" jdbcType="INTEGER" property="intergralno" />
-        <result column="position" jdbcType="INTEGER" property="position" />
-        <result column="emptype" jdbcType="INTEGER" property="emptype" />
-        <result column="password" jdbcType="VARCHAR" property="password" />
-        <!-- 指定联合查询出的部门字段的封装 -->
-        <association property="departmentId" javaType="cn.bean.Department">
-            <id column="depano" property="depano"/>
-            <result column="depaname" property="depaname"/>
-            <result column="parentdepa" property="parentdepa"/>
-            <association property="department" javaType="cn.bean.Department">
-                <id column="depano" property="depano"/>
-                <result column="depaname" property="depaname"/>
-                <result column="parentdepa" property="parentdepa"/>
-            </association>
-        </association>
-        <association property="integralId" javaType="cn.bean.Integral">
-            <id column="intergralno" property="intergralno"/>
-            <result column="totalintegral" property="totalintegral"/>
-            <result column="haveintegral" property="haveintegral"/>
-            <result column="remainingpoints" property="remainingpoints"/>
-            <result column="lastchangetime" property="lastchangetime"/>
-        </association>
-    </resultMap>
-    <sql id="findEmpAll_List">
-        e.empno, e.empname, e.empsex, e.idcard, e.departmentno, e.positivedates, e.empphone,
-        e.intergralno, e.position, e.emptype, e.password,
-        d.depano, d.depaname,d.parentdepa,i.intergralno,i.totalintegral,i.haveintegral,i.remainingpoints,i.lastchangetime
-    </sql>
-    <select id="findEmpAll" resultMap="findEmpAllMap" >
+   <!-- 判断密码是否正确-->
+    <select id="selectOldPassword" parameterType="cn.bean.Emp" resultType="cn.bean.Emp">
         select
-        <include refid="findEmpAll_List" />
+        *
+        from emp
+        <where>
+            empname=#{empname} and password = #{password}
+        </where>
+    </select>
+    <!-- 查询所有员工 -->
+    <select id="findEmpAll" resultMap="WithDeptResultMap" >
+        select
+        <include refid="WithDept_Column_List" />
         from emp e ,department d,integral i
         where e.departmentno=d.depano
     </select>
@@ -109,45 +82,9 @@
 
 
     <!-- 模糊查询所有员工 -->
-    <resultMap type="cn.bean.Emp" id="LikefindEmpAllMap">
-        <id column="empno" jdbcType="INTEGER" property="empno" />
-        <result column="empname" jdbcType="VARCHAR" property="empname" />
-        <result column="empsex" jdbcType="VARCHAR" property="empsex" />
-        <result column="idcard" jdbcType="VARCHAR" property="idcard" />
-        <result column="departmentno" jdbcType="INTEGER" property="departmentno" />
-        <result column="positivedates" jdbcType="TIMESTAMP" property="positivedates" />
-        <result column="empphone" jdbcType="VARCHAR" property="empphone" />
-        <result column="intergralno" jdbcType="INTEGER" property="intergralno" />
-        <result column="position" jdbcType="INTEGER" property="position" />
-        <result column="emptype" jdbcType="INTEGER" property="emptype" />
-        <result column="password" jdbcType="VARCHAR" property="password" />
-        <!-- 指定联合查询出的部门字段的封装 -->
-        <association property="departmentId" javaType="cn.bean.Department">
-            <id column="depano" property="depano"/>
-            <result column="depaname" property="depaname"/>
-            <result column="parentdepa" property="parentdepa"/>
-            <association property="department" javaType="cn.bean.Department">
-                <id column="depano" property="depano"/>
-                <result column="depaname" property="depaname"/>
-                <result column="parentdepa" property="parentdepa"/>
-            </association>
-        </association>
-        <association property="integralId" javaType="cn.bean.Integral">
-            <id column="intergralno" property="intergralno"/>
-            <result column="totalintegral" property="totalintegral"/>
-            <result column="haveintegral" property="haveintegral"/>
-            <result column="remainingpoints" property="remainingpoints"/>
-            <result column="lastchangetime" property="lastchangetime"/>
-        </association>
-    </resultMap>
-    <sql id="LikefindEmpAll_List">
-        e.empno, e.empname, e.empsex, e.idcard, e.departmentno, e.positivedates, e.empphone,
-        e.intergralno, e.position, e.emptype, e.password,
-        d.depano, d.depaname,d.parentdepa,i.intergralno,i.totalintegral,i.haveintegral,i.remainingpoints,i.lastchangetime
-    </sql>
-    <select id="bgLikeSelectByName" parameterType="java.lang.String" resultMap="LikefindEmpAllMap">
+    <select id="bgLikeSelectByName" parameterType="java.lang.String" resultMap="WithDeptResultMap">
         select
-        <include refid="LikefindEmpAll_List" />
+        <include refid="WithDept_Column_List" />
         from emp e ,department d,integral i
         <where>
             e.departmentno=d.depano and e.intergralno=i.intergralno and
@@ -170,7 +107,27 @@
 
     </delete>
 
-
+    <update id="updateBeforeEmp" parameterType="cn.bean.Emp">
+        update Emp
+        <set>
+            <if test="empname != null">
+                empName = #{empname},
+            </if>
+            <if test="empsex != null">
+                empsex = #{empsex},
+            </if>
+            <if test="idcard != null">
+                idcard = #{idcard},
+            </if>
+            <if test="empphone != null">
+                empphone = #{empphone},
+            </if>
+            <if test="password !=null">
+                password=#{password},
+            </if>
+        </set>
+        where empno = #{empno}
+    </update>
 
 
 
