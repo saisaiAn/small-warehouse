@@ -15,4 +15,11 @@ public interface CommodityMapper {
 
     int bgAddProduct(Commodity commodity);//后台添加商品
 
+    void updatePro(Commodity commodity);//修改商品信息
+
+    int bg_undercarriage_product(Integer proid);//下架商品
+
+    int bg_grounding_product(Integer proid);//上架商品
+
+    List<Commodity> likeProductByProName(String proName);
 }

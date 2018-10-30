@@ -44,4 +44,24 @@ public class BgProductService {
     public int addImg(Imager imager){
         return imagerMapper.addImg(imager);
     }
+
+    public Commodity findCommodityById(Commodity commodity){
+        return commodityMapper.selectCommodityById(commodity);
+    }
+
+    public void updatePro(Commodity commodity){//修改商品信息
+        commodityMapper.updatePro(commodity);
+    }
+
+    public int bg_undercarriage_product(Integer proid){//下架商品
+        return commodityMapper.bg_undercarriage_product(proid);
+    }
+
+    public int bg_grounding_product(Integer proid){//上架商品
+        return commodityMapper.bg_grounding_product(proid);
+    }
+
+    public  List<Commodity> likeProductByProName(String proName){
+        return commodityMapper.likeProductByProName(proName);
+    }
 }

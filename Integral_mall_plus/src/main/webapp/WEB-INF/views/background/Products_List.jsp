@@ -42,21 +42,20 @@
 <div class=" page-content clearfix">
     <div id="products_style">
         <div class="search_style">
-
-            <ul class="search_content clearfix">
-                <li><label class="l_f">产品名称</label><input name="" type="text" class="text_add" placeholder="输入品牌名称"
-                                                          style=" width:250px"/></li>
-                <li><label class="l_f">添加时间</label><input class="inline laydate-icon" id="start"
-                                                          style=" margin-left:10px;"></li>
-                <li style="width:90px;">
-                    <button type="button" class="btn_search"><i class="icon-search"></i>查询</button>
-                </li>
-            </ul>
+            <form action="likeProductByProName" method="post">
+                <ul class="search_content clearfix">
+                    <li><label class="l_f">产品名称</label><input name="proName" type="text" class="text_add" placeholder="输入商品名称"
+                                                              style=" width:250px"/></li>
+                    <li style="width:90px;">
+                        <button type="submit" class="btn_search"><i class="icon-search"></i>查询</button>
+                    </li>
+                </ul>
+            </form>
         </div>
         <div class="border clearfix">
        <span class="l_f">
         <a href="picture_add_product" title="添加商品" class="btn btn-warning Order_form"><i class="icon-plus"></i>添加商品</a>
-        <a href="javascript:ovid()" class="btn btn-danger"><i class="icon-trash"></i>批量删除</a>
+
        </span>
             <span class="r_f">共：<b style="color: red">${proCount}</b>件商品</span>
         </div>
@@ -119,15 +118,27 @@
                             <td width="100px">${p.commoditydetails}</td>
                             <td width="180px">${p.commodityinventory}</td>
                             <td class="text-l">${p.commodityTypeId.commoditytypename}</td>
-                            <td class="td-status"><span
-                                    class="label label-success radius">${p.commoditytype eq 0?"下架":"上架"}</span></td>
+                            <td class="td-status">
+                                <c:if test="${p.commoditytype==0}">
+                                    <span class="label radius" >下架</span>
+                                </c:if>
+                                <c:if test="${p.commoditytype==1}">
+                                    <span class="label label-success radius">上架</span>
+                                </c:if>
+                            </td>
                             <td class="td-manage">
-                                <a onClick="member_stop(this,'10001')" href="javascript:;" title="停用"
-                                   class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>
-                                <a title="编辑" onclick="member_edit('编辑','member-add.html','4','','510')"
-                                   href="javascript:;" class="btn btn-xs btn-info"><i class="icon-edit bigger-120"></i></a>
-                                <a title="删除" href="javascript:;" onclick="member_del(this,'1')"
-                                   class="btn btn-xs btn-warning"><i class="icon-trash  bigger-120"></i></a>
+                                <c:if test="${p.commoditytype==0}">
+                                    <a  href="javascript:;" title="上架商品"
+                                        class="btn btn-xs btn-success grounding" proId="${p.commodityno}"><i class="icon-ok bigger-120"></i></a>
+                                </c:if>
+                                <c:if test="${p.commoditytype==1}">
+                                    <a  href="javascript:;" title="下架商品"
+                                        class="btn btn-xs  undercarriage" proId="${p.commodityno}"><i class="icon-ok bigger-120"></i></a>
+                                </c:if>
+
+                                <a title="编辑" <%--onclick="member_edit('编辑','upd_Product/${p.commodityno}','4','','600')"--%>
+                                   href="javascript:;" proId="${p.commodityno}" class="btn btn-xs btn-info upd"><i class="icon-edit bigger-120"></i></a>
+
                             </td>
                         </tr>
                     </c:forEach>
@@ -137,6 +148,67 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(function () {
+        $(".upd").click(function () {
+            var id = $(this).attr("proId");
+            layer.open({
+                type: 2,
+                area: ['850px', '620px'],
+                fixed: false, //不固定
+                maxmin: true,
+                content: 'upd_Product/'+id
+            });
+        })
+
+        $(".undercarriage").click(function () {
+            var proId = $(this).attr("proId");
+            $.ajax({
+                url:"bg_undercarriage_product",
+                type:"post",
+                data:{proid:proId},
+                success:function (result) {
+                    if(result=="y"){
+                        layer.msg("下架成功");
+                        setTimeout(function () {
+                            location.href="/product/Products_List_html";
+                        },1000);
+                    }else{
+                        layer.msg("下架失败");
+                        setTimeout(function () {
+                            location.href="/product/Products_List_html";
+                        },1000);
+                    }
+                }
+            })
+        })
+
+        $(".grounding").click(function () {
+            var proId = $(this).attr("proId");
+            $.ajax({
+                url:"bg_grounding_product",
+                type:"post",
+                data:{proid:proId},
+                success:function (result) {
+                    if(result=="y"){
+                        layer.msg("上架成功");
+                        setTimeout(function () {
+                            location.href="/product/Products_List_html";
+                        },1500);
+                    }else{
+                        layer.msg("上架失败");
+                        setTimeout(function () {
+                            location.href="/product/Products_List_html";
+                        },1500);
+                    }
+                }
+
+            })
+        })
+
+    })
+</script>
+
 </body>
 </html>
 <script>
@@ -287,10 +359,10 @@
             layer.msg('已启用!',{icon: 6,time:1000});
         });
     }*/
-    /!*产品-编辑*!/
+    /*/!*产品-编辑*!/
     function member_edit(title,url,id,w,h){
         layer_show(title,url,w,h);
-    }
+    }*/
 
     /*/!*产品-删除*!/
     function member_del(obj,id){

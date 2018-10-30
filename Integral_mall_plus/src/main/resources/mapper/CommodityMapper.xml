@@ -73,6 +73,28 @@
           VALUES(null,#{price},#{needintegral},#{commoditytitle},#{commoditydetails},#{commodityinventory},#{commoditytypeno},1);
     </insert>
 
+    <update id="updatePro" parameterType="cn.bean.Commodity">
+        update commodity SET price = #{price},NeedIntegral=#{needintegral},Commoditytitle=#{commoditytitle},Commoditydetails=#{commoditydetails},
+        Commodityinventory=#{commodityinventory},CommodityTypeNo=#{commoditytypeno} where CommodityNo=#{commodityno}
+    </update>
 
+    <update id="bg_undercarriage_product" parameterType="java.lang.Integer">/*下架商品*/
+        update commodity set commodityType = 0 where CommodityNo= #{proid}
+    </update>
+
+    <update id="bg_grounding_product" parameterType="java.lang.Integer">/*上架商品*/
+        update commodity set commodityType = 1 where CommodityNo= #{proid}
+    </update>
+
+
+    <select id="likeProductByProName" resultMap="CommodityResultMap" parameterType="java.lang.String">
+        select
+        <include refid="WithCommodityType_Column_List" />
+        from commodity c,commoditytype ct,commoditytype sct
+        <where>
+            c.commoditytypeno=ct.commoditytypeno and  ct.supercommoditytype=sct.commoditytypeno and
+            c.Commoditytitle like "%"#{proName}"%"
+        </where>
+    </select>
 
 </mapper>

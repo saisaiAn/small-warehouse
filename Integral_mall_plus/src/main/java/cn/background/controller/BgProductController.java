@@ -8,10 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -79,6 +78,50 @@ public class BgProductController {
         imager.setImagerid(commodity.getCommodityno());
         bgProductService.addImg(imager);//添加图片
         return "redirect:/product/Products_List_html";
+    }
+
+    @RequestMapping("upd_Product/{id}")
+    public String upd_Product(@PathVariable("id") Integer id,Model model){
+        System.out.println("商品详情："+id);
+        Commodity commodity = new Commodity();
+        commodity.setCommodityno(id);
+        model.addAttribute("pro",bgProductService.findCommodityById(commodity));
+        model.addAttribute("proType",bgProductService.findAllCommodityType());
+        return "background/updProduct";
+    }
+    @ResponseBody
+    @RequestMapping(value = "udpateProduct",method = RequestMethod.POST)
+    public String udpateProduct(Commodity commodity){//修改商品信息
+        bgProductService.updatePro(commodity);
+        return "y";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "bg_undercarriage_product",method = RequestMethod.POST)
+    public String bg_undercarriage_product(@RequestParam("proid") Integer proid){
+        System.out.println("下架商品："+proid);
+        if(bgProductService.bg_undercarriage_product(proid)>0){
+            return "y";
+        }else
+            return "n";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "bg_grounding_product",method = RequestMethod.POST)
+    public String bg_grounding_product(@RequestParam("proid") Integer proid){
+        System.out.println("上架商品："+proid);
+        if(bgProductService.bg_grounding_product(proid)>0){
+            return "y";
+        }else
+            return "n";
+    }
+
+    @RequestMapping(value = "likeProductByProName",method = RequestMethod.POST)
+    public String likeProductByProName(@RequestParam("proName")String proName,Model model){
+        model.addAttribute("pro",bgProductService.likeProductByProName(proName));
+        model.addAttribute("proCount",bgProductService.findCountCommodity());
+        model.addAttribute("proType",bgProductService.findAllCommodityType());
+        return "/background/Products_List";
     }
 
 }
