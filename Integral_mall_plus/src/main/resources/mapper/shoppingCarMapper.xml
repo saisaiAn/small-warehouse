@@ -98,20 +98,20 @@
         update shoppingcar
         <set>
             <if test="shoppingcar.shoppingempno != null">
-                shoppingempno = #{record.shoppingempno,jdbcType=INTEGER},
+                shoppingempno = #{shoppingcar.shoppingempno,jdbcType=INTEGER},
             </if>
             <if test="shoppingcar.shoppingcommodityno != null">
-                shoppingcommodityno = #{record.shoppingcommodityno,jdbcType=INTEGER},
+                shoppingcommodityno = #{shoppingcar.shoppingcommodityno,jdbcType=INTEGER},
             </if>
             <if test="shoppingcar.commoditysum != null">
-                commoditysum = #{record.commoditysum,jdbcType=INTEGER},
+                commoditysum = #{shoppingcar.commoditysum,jdbcType=INTEGER},
             </if>
             <if test="shoppingcar.commodityNote != null">
-                commodityNote = #{record.commodityNote,jdbcType=INTEGER},
+                commodityNote = #{shoppingcar.commodityNote,jdbcType=INTEGER},
             </if>
         </set>
         <where>
-            carNo=#{carNo}
+            carNo=#{shoppingcar.carno}
         </where>
     </update>
 </mapper>
