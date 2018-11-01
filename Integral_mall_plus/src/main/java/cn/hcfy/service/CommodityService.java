@@ -1,6 +1,7 @@
 package cn.hcfy.service;
 
 import cn.bean.Commodity;
+import cn.bean.CommodityType;
 import cn.bean.Imager;
 import cn.dao.CommodityMapper;
 import com.alibaba.fastjson.JSON;
@@ -39,5 +40,8 @@ public class CommodityService {
     }
     public Commodity selectCommodityById(Commodity commodity){
         return commodityMapper.selectCommodityById(commodity);
+    }
+    public List<Commodity> commodityByType(Integer commodityTypeNo){
+        return commodityMapper.commodityByType(commodityTypeNo);
     }
 }

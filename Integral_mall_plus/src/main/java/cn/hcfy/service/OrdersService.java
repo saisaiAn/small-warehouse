@@ -1,7 +1,5 @@
 package cn.hcfy.service;
 
-import cn.bean.CommodityType;
-import cn.bean.Emp;
 import cn.bean.Orders;
 import cn.dao.OrdersMapper;
 import com.alibaba.fastjson.JSON;

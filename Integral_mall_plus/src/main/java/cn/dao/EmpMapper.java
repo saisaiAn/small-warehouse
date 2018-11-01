@@ -24,6 +24,7 @@ public interface EmpMapper {
     int bgBatchdeleting_emp(List list4); //批量删除用户同时删除他的积分
 
     int updateBeforeEmp(Emp emp);
+
     Emp selectOldPassword(Emp emp);
 
     List<Emp> findEmpByDept(Emp emp);

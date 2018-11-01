@@ -171,7 +171,7 @@
 					</div>
 					<div class="content clearfloat">
 						<c:forEach items="${commodityList}" var="commodity">
-							<c:if test="${commodity.commoditytypeno==type.commoditytypeno}">
+							<c:if test="${commodity.commoditytypeno==type.commoditytypeno&&commodity.commoditytype==1}">
 								<div class="list clearfloat fl">
 									<a href="/toBeforeDetail?id=${commodity.commodityno}">
 										<div class="tu clearfloat fr">

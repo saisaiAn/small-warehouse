@@ -22,4 +22,6 @@ public interface CommodityMapper {
     int bg_grounding_product(Integer proid);//上架商品
 
     List<Commodity> likeProductByProName(String proName);
+
+    List<Commodity> commodityByType(@Param("commodityTypeNo") Integer commodityTypeNo);
 }

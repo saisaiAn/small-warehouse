@@ -6,6 +6,7 @@ import cn.bean.Imager;
 import cn.dao.CommodityMapper;
 import cn.dao.CommodityTypeMapper;
 import cn.dao.ImagerMapper;
+import cn.hcfy.service.JedisClientImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,9 @@ public class BgProductService {
 
     @Autowired
     ImagerMapper imagerMapper;
+
+    @Autowired
+    private JedisClientImp jedisClient;
 
     public List<Commodity> findAllCommodity(){
         return commodityMapper.selectAllCommodity();
@@ -38,10 +42,20 @@ public class BgProductService {
     }
 
     public int addPro(Commodity commodity){
+        try{
+            jedisClient.del("BeforeCommoditys");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return commodityMapper.bgAddProduct(commodity);
     }
 
     public int addImg(Imager imager){
+        try{
+            jedisClient.del("BeforeImagers");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return imagerMapper.addImg(imager);
     }
 

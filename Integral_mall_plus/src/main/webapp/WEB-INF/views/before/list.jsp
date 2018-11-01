@@ -54,96 +54,30 @@
 					</ul>
 				</div>
 				<div class="bottom clearfloat">
-					<div class="lie clearfloat">
-						<a href="/toBeforeDetail">
-							<div class="tu clearfloat fl">
-								<img src="/static/before/images/dianqi.jpg"/>
-							</div>
-						</a>
-						<div class="right clearfloat fl">
-							<a href="/toBeforeDetail">
-								<p class="tit">科顺（KESUN） 煮蛋器 多功能家用蒸蛋器 可蒸7个蛋</p>
+					<c:forEach items="${commodityList}" var="commodity">
+						<div class="lie clearfloat">
+							<a href="/toBeforeDetail?id=${commodity.commodityno}">
+								<div class="tu clearfloat fl">
+									<c:forEach items="${imgList}" var="img">
+										<c:if test="${img.imageclassification==3&&img.imagerid==commodity.commodityno}">
+											<img  style="width:115px;height:115px;" src="${img.imagerurl}"/>
+										</c:if>
+									</c:forEach>
+								</div>
 							</a>
-							<div class="xia clearfloat">
-								<a href="/toBeforeDetail">
-									<p class="jifen fl over">2800积分</p>
+							<div class="right clearfloat fl">
+								<a href="/toBeforeDetail?id=${commodity.commodityno}">
+									<p class="tit">${commodity.commoditydetails}</p>
 								</a>
-						
+								<div class="xia clearfloat">
+									<a href="/toBeforeDetail">
+										<p class="jifen fl over">${commodity.needintegral}积分</p>
+									</a>
+
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="lie clearfloat">
-						<a href="/toBeforeDetail">
-							<div class="tu clearfloat fl">
-								<img src="/static/before/images/list1.jpg"/>
-							</div>
-						</a>
-						<div class="right clearfloat fl">
-							<a href="/toBeforeDetail">
-								<p class="tit">小熊（Bear) 单双层 多功能 全不锈钢 家用自动断电 煮蛋器 蒸蛋器 早餐机</p>
-							</a>
-							<div class="xia clearfloat">
-								<a href="/toBeforeDetail">
-									<p class="jifen fl over">5000积分</p>
-								</a>
-						
-							</div>
-						</div>
-					</div>
-					<div class="lie clearfloat">
-						<a href="/toBeforeDetail">
-							<div class="tu clearfloat fl">
-								<img src="/static/before/images/list2.jpg"/>
-							</div>
-						</a>
-						<div class="right clearfloat fl">
-							<a href="/toBeforeDetail">
-								<p class="tit">小熊(Bear) ZDQ-206 煮蛋器 双层蒸蛋器 自动断电</p>
-							</a>
-							<div class="xia clearfloat">
-								<a href="/toBeforeDetail">
-									<p class="jifen fl over">3700积分</p>
-								</a>
-								
-							</div>
-						</div>
-					</div>
-					<div class="lie clearfloat">
-						<a href="/toBeforeDetail">
-							<div class="tu clearfloat fl">
-								<img src="/static/before/images/chufang.jpg"/>
-							</div>
-						</a>
-						<div class="right clearfloat fl">
-							<a href="/toBeforeDetail">
-								<p class="tit">小熊(Bear）ZDQ-201 煮蛋器 6个蛋容量（黄色）</p>
-							</a>
-							<div class="xia clearfloat">
-								<a href="/toBeforeDetail">
-									<p class="jifen fl over">3700积分</p>
-								</a>
-								
-							</div>
-						</div>
-					</div>
-					<div class="lie clearfloat">
-						<a href="/toBeforeDetail">
-							<div class="tu clearfloat fl">
-								<img src="/static/before/images/list3.jpg"/>
-							</div>
-						</a>
-						<div class="right clearfloat fl">
-							<a href="/toBeforeDetail">
-								<p class="tit">九阳（Joyoung）煮蛋器多功能智能蒸蛋器自动断电（5个蛋量）</p>
-							</a>
-							<div class="xia clearfloat">
-								<a href="/toBeforeDetail">
-									<p class="jifen fl over">4700积分</p>
-								</a>
-							
-							</div>
-						</div>
-					</div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
