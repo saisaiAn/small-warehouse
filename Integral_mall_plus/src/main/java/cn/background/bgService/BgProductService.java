@@ -64,4 +64,9 @@ public class BgProductService {
     public  List<Commodity> likeProductByProName(String proName){
         return commodityMapper.likeProductByProName(proName);
     }
+
+    public int updImg(Imager imager){
+        return imagerMapper.updImg(imager);
+    }
+
 }

@@ -1,5 +1,6 @@
 package cn.background.controller;
 
+import cn.background.bgService.BgLoginService;
 import cn.background.bgService.BgProductService;
 import cn.bean.Commodity;
 import cn.bean.Imager;
@@ -25,6 +26,9 @@ public class BgProductController {
 
     @Autowired
     BgProductService bgProductService;
+
+    @Autowired
+    BgLoginService bgLoginService;
 
     @RequestMapping("Products_List_html")
     public String findAllPro(Model model){
@@ -87,6 +91,7 @@ public class BgProductController {
         commodity.setCommodityno(id);
         model.addAttribute("pro",bgProductService.findCommodityById(commodity));
         model.addAttribute("proType",bgProductService.findAllCommodityType());
+        model.addAttribute("img",bgLoginService.findAllImg());
         return "background/updProduct";
     }
     @ResponseBody
@@ -122,6 +127,34 @@ public class BgProductController {
         model.addAttribute("proCount",bgProductService.findCountCommodity());
         model.addAttribute("proType",bgProductService.findAllCommodityType());
         return "/background/Products_List";
+    }
+
+    @RequestMapping(value = "updProImage",method = RequestMethod.POST)
+    public  String updProImage(@RequestParam("img") MultipartFile img,@RequestParam("id")Integer id ,HttpServletRequest request,Model model) throws Exception{
+        System.out.println("修改商品图片");
+        System.out.println(img);
+        System.out.println(id);
+        //使用uuid给图片重命名，并且去掉四个-
+        String name = UUID.randomUUID().toString().replace("-","");
+        //获取文件的扩展名
+        String ext = FilenameUtils.getExtension(img.getOriginalFilename());
+        //设置图片上传路径
+        String url = request.getSession().getServletContext().getRealPath("/static/before/images");
+        System.out.println(url+"-----*****");
+        //以绝对路径保存重命名后的图片
+        File file = new File(url+"/"+name + "." + ext);
+        img.transferTo(file);
+        System.out.println(file+"路径");
+        String img1 = file.toString();
+        String imgUrl = img1.substring(img1.length()-58);
+        System.out.println(imgUrl+"******");
+        //吧图片路径保存刀数据库
+        Imager imager = new Imager();
+        imager.setImagerurl(imgUrl);
+        imager.setImagerid(id);
+        bgProductService.updImg(imager);//修改图片路径
+        model.addAttribute("img",bgLoginService.findAllImg());
+        return "redirect:upd_Product/"+id;
     }
 
 }

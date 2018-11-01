@@ -129,7 +129,27 @@
         where empno = #{empno}
     </update>
 
+    <select id="findEmpByDept" parameterType="cn.bean.Emp"  resultMap="WithDeptResultMap">
+        select
+        <include refid="WithDept_Column_List" />
+        from emp e ,department d,integral i
+        <where>
+            e.departmentno=d.depano and e.intergralno=i.intergralno and
+            e.DepartmentNo =#{departmentno}
+        </where>
 
+    </select>
+
+    <select id="findEmpById" parameterType="cn.bean.Emp"  resultMap="WithDeptResultMap">
+        select
+        <include refid="WithDept_Column_List" />
+        from emp e ,department d,integral i
+        <where>
+            e.departmentno=d.depano and e.intergralno=i.intergralno and
+            e.EmpNo =#{empno}
+        </where>
+
+    </select>
 
 
 </mapper>

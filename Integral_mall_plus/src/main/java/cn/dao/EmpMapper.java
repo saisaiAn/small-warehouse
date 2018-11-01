@@ -25,4 +25,8 @@ public interface EmpMapper {
 
     int updateBeforeEmp(Emp emp);
     Emp selectOldPassword(Emp emp);
+
+    List<Emp> findEmpByDept(Emp emp);
+
+    Emp findEmpById(Emp emp);
 }
