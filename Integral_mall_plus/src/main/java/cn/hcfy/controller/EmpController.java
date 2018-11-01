@@ -183,7 +183,9 @@ public class EmpController {
         return "/before/address";
     }
     @RequestMapping("/toBeforeCation")
-    public String cation(){
+    public String cation(Model model){
+        List<CommodityType> commodityTypeList=commodityTypeService.selectAllCommodityType();
+        model.addAttribute("typeList",commodityTypeList);
         return "/before/cation";
     }
     @RequestMapping("/toBeforeCenter")
@@ -202,7 +204,9 @@ public class EmpController {
         return "/before/detail";
     }
     @RequestMapping("/toBeforeList")
-    public String list(){
+    public String list(@Param("commoditytypeno") Integer commoditytypeno,Model model){
+        List<Commodity> commodityList=commodityService.commodityByType(commoditytypeno);
+        model.addAttribute("commodityList",commodityList);
         return "/before/list";
     }
     @RequestMapping("/toBeforeShopcar")

@@ -67,9 +67,7 @@
         </div>
         <ul>
             <li><a href="/toBeforeOrders?id=${empBefore.empno}&status=0"><i class="iconfont"></i><p>我的订单</p> </a></li>
-            <li><a href=""><i class="iconfont"></i><p>我的秒杀</p> </a></li>
-            <li><a href=""><i class="iconfont" style="font-size: 28px;"></i><p>我的众筹</p> </a></li>
-            <li><a href=""><i class="iconfont"></i><p>我的预约</p> </a></li>
+            <li><a href="/toBeforeUserInfo"><i class="iconfont"></i><p>个人信息</p> </a></li>
         </ul>
     </div>
     <div class="vip-club border_top_bottom vip-account">
