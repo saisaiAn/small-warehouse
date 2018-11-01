@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -39,7 +44,7 @@
                         </div>
                         <div class="form-group text-center row m-t-20">
                             <div class="col-12">
-                                <a href="login.html" class="btn btn-danger btn-block waves-effect waves-light text-white">Log In</a>
+                                <a href="/app" class="btn btn-danger btn-block waves-effect waves-light text-white">Log In</a>
                             </div>
                         </div>
                     </div>  

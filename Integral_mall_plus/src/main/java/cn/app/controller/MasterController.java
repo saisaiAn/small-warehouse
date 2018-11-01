@@ -41,8 +41,33 @@ public class MasterController {
         }
     }
 
-    @RequestMapping(value="index")
+    //首页
+    @RequestMapping(value="/toAppnIndex")
     public String index(){
         return "app/index";
+    }
+
+    //登录
+    @RequestMapping(value="app")
+    public String app(){
+        return "app/login";
+    }
+
+    //日历
+    @RequestMapping(value="toAppCalendar")
+    public String calendar(){
+        return "app/calendar";
+    }
+
+    //个人设置
+    @RequestMapping(value="toAppSetting")
+    public String setting(){
+        return "app/setting";
+    }
+
+    //注销
+    @RequestMapping(value = "toAppLogout")
+    public String logout(){
+        return "app/logout";
     }
 }

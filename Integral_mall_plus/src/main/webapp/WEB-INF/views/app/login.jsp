@@ -53,14 +53,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Remember me</label>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="form-group text-center row m-t-20">
                                 <div class="col-12">
@@ -68,12 +60,12 @@
                                 </div>
                             </div>
 
-                            <div class="form-group m-t-10 mb-0 row">
+                          <%--  <div class="form-group m-t-10 mb-0 row">
                                 <div class="col-sm-7 m-t-20">
                                     <a href="pages-recoverpw.html" class="text-muted"><i class="mdi mdi-lock"></i> <small>Forgot your password ?</small></a>
                                 </div>
 
-                            </div>
+                            </div>--%>
                         </form>
                     </div>
 
@@ -118,7 +110,7 @@
                             //alert(result);
                             if(result=="success"){
                                 layer.msg("登陆成功");
-                                setTimeout(function () {location.href="index";},1000);
+                                setTimeout(function () {location.href="/toAppnIndex";},1000);
                             }else if (result=="notmaster"){
                                 layer.alert('登陆失败，权限不够！',{
                                     title: '提示框',
