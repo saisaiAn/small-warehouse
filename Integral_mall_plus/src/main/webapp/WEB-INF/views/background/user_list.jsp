@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -77,7 +78,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         <a href="javascript:ovid()" id="member_add" class="btn btn-warning"><i class="icon-plus"></i>添加用户</a>
         <a href="javascript:ovid()" class="btn btn-danger Batchdeleting"><i class="icon-trash "></i>批量删除</a>
        </span>
-       <span class="r_f">共：<b>x</b>条</span>
+       <span class="r_f">共：<b>${fn:length(empList)}</b>个用户</span>
      </div>
      <!---->
      <div class="table_menu_list">
@@ -381,12 +382,15 @@ jQuery(function($) {
              layer.msg("请输入完整所有内容");
          }else if(reg.test(idcard)==false){
              layer.msg("身份证输入不合法");
-             }else if(!(/^1[34578]\d{9}$/.test(phone))){
+         }else if(!(/^1[34578]\d{9}$/.test(phone))){
                 layer.msg("手机号码输入不正确");
-             }else{
-                //layer.msg("提交");
-                empTable.submit();
-         }
+         }else if(name.length<6){
+                layer.msg("用户名不能小于六位数")
+         }else{
+             //layer.msg("提交");
+             empTable.submit();
+
+        }
      }else{
          layer.msg("用户名不能为空");
      }

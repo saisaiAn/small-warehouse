@@ -50,4 +50,63 @@
             </if>
         </trim>
     </insert>
+
+    <insert id="bgAddzdyJfApply" parameterType="cn.bean.IntegralAudit">/*自定义积分申请*/
+        insert into IntegralAudit(empno,intergralchange, changeint,integraltypeno,audittype) VALUES
+        (#{empno},#{intergralchange},#{changeint},#{integraltypeno},#{audittype})
+    </insert>
+
+<!-- 查询所有审查信息 -->
+    <resultMap id="WithIntegralAuditResultMap" type="cn.bean.IntegralAudit">
+        <id column="integralauditno" jdbcType="INTEGER" property="integralauditno"></id>
+        <result column="empno" jdbcType="INTEGER" property="empno"></result>
+        <result column="intergralchange" jdbcType="VARCHAR" property="intergralchange"></result>
+        <result column="changeint" jdbcType="INTEGER" property="changeint"></result>
+        <result column="reviewer" jdbcType="INTEGER" property="reviewer"></result>
+        <result column="integraltypeno" jdbcType="INTEGER" property="integraltypeno"></result>
+        <result column="audittype" jdbcType="INTEGER" property="audittype"></result>
+        <result column="auditopinion" jdbcType="VARCHAR" property="auditopinion"></result>
+        <!-- 审核表与员工表的联合 -->
+        <association property="empId" javaType="cn.bean.Emp">
+            <id column="empno" property="empno"></id>
+            <result column="empname"  property="empname" />
+            <result column="empsex"  property="empsex" />
+            <result column="idcard"  property="idcard" />
+            <result column="departmentno"  property="departmentno" />
+            <result column="positivedates" property="positivedates" />
+            <result column="empphone"  property="empphone" />
+            <result column="intergralno"  property="intergralno" />
+            <result column="position"  property="position" />
+            <result column="emptype"  property="emptype" />
+            <result column="password"  property="password" />
+            <!-- 审核表下员工表下的部门信息 -->
+            <association property="departmentId" javaType="cn.bean.Department">
+                <id column="depano" property="depano"/>
+                <result column="depaname" property="depaname"/>
+                <result column="parentdepa" property="parentdepa"/>
+            </association>
+        </association>
+        <!-- 积分类型 -->
+        <association property="integralTypeId" javaType="cn.bean.IntegralType">
+            <id column="integraltypeno" property="integraltypeno"></id>
+            <result column="integraltypename" property="integraltypename"></result>
+        </association>
+    </resultMap>
+    <sql id="findAllIntegralAuditSql">
+        a.IntegralAuditNo,a.empNo,a.intergralChange,a.Changeint,a.reviewer,a.IntegralTypeNo,a.AuditType,a.AuditOpinion,
+        e.empno, e.empname, e.empsex, e.idcard, e.departmentno, e.positivedates, e.empphone,
+        e.intergralno, e.position, e.emptype, e.password,
+        d.depano, d.depaname,d.parentdepa,
+        t.IntegralTypeNo,t.IntegralTypeName
+    </sql>
+    <select id="findAllIntegralAudit" resultMap="WithIntegralAuditResultMap">
+        SELECT
+        <include refid="findAllIntegralAuditSql"></include>
+        from integralaudit a,emp e,department d,integral i,IntegralType t
+        where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo
+        and e.departmentno=d.depano
+    </select>
+
+
+
 </mapper>

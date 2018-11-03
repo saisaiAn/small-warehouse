@@ -427,8 +427,16 @@
                         <ul class="submenu">
                             <li class="home"><a href="javascript:void(0)" name="Integral_management_html" title="账户管理"
                                                 class="iframeurl"><i class="icon-double-angle-right"></i>部门用户</a></li>
-                            <li class="home"><a href="javascript:void(0)" name="payment_method.html" title="支付方式"
-                                                class="iframeurl"><i class="icon-double-angle-right"></i>支付方式</a></li>
+
+                            <c:if test="${loginUser.position == 3  }"><%-- 综合部经理 --%>
+                                <li class="home"><a href="javascript:void(0)" name="handling_opinions" title="支付方式"
+                                                    class="iframeurl"><i class="icon-double-angle-right"></i>审批意见</a></li>
+                            </c:if>
+                            <c:if test="${loginUser.departmentId.depano == 4 }">
+                                <li class="home"><a href="javascript:void(0)" name="handling_opinions" title="支付方式"
+                                                    class="iframeurl"><i class="icon-double-angle-right"></i>审批意见</a></li>
+                            </c:if>
+
                             <li class="home"><a href="javascript:void(0)" name="Payment_Configure.html" title="支付配置"
                                                 class="iframeurl"><i class="icon-double-angle-right"></i>支付配置</a></li>
                         </ul>

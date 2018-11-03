@@ -101,7 +101,6 @@
 
         $(".ApplicationIntegra").click(function () {
             var empId = $(this).attr("empId");
-            alert(empId);
             layer.open({
                 type: 2,
                 area: ['700px', '450px'],
