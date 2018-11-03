@@ -48,7 +48,6 @@
          <th>操作</th>
         </thead>
         <tbody>
-
                <c:forEach items="${Opinion}" var="o">
                    <c:if test="${loginUser.position == 3}">
                        <c:if test="${o.audittype == 1}">
@@ -66,11 +65,11 @@
                                <td>${o.intergralchange}</td>
                                <td>${o.changeint}</td>
                                <td><a href="javascript:ovid()" class="Handling_opinions" yjid="${o.integralauditno}"
-                                      empname="${o.empId.empname}" changenum="${o.changeint}" title="处理意见请求">处理</a></td>
+                                      empname="${o.empId.empname}" changenum="${o.changeint}" title="处理意见请求">处理</a>
+                               </td>
                             </tr>
                        </c:if>
                    </c:if>
-
                </c:forEach>
                <c:forEach items="${Opinion}" var="o">
                    <c:if test="${loginUser.position == 4}">
@@ -87,8 +86,6 @@
                        </c:if>
                    </c:if>
                </c:forEach>
-
-
        </tbody>
       </table>
       </div>
