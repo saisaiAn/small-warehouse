@@ -49,7 +49,7 @@
 		    <div class="cations clearfloat">
 				<c:forEach items="${typeList}" var="type">
 					<div class="list clearfloat fl">
-						<a href="/toBeforeList?commoditytypeno=${type.commoditytypeno}">
+						<a href="/Before/toBeforeList?commoditytypeno=${type.commoditytypeno}">
 							<p class="tit over box-s">${type.commoditytypename}</p>
 							<div class="tu">
 								<c:forEach items="${imgList}" var="img">
@@ -67,26 +67,26 @@
 	    <!--尾部区域-->
 		<footer class="page-footer fixed-footer" id="footer">
 			<ul>
-				<li class="active">
-					<a href="/toBeforeIndex">
+				<li>
+					<a href="/Before/toBeforeIndex">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
-				<li>
-					<a href="/toBeforeCation">
+				<li class="active">
+					<a href="/Before/toBeforeCation">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeShopcar">
+					<a href="/Before/toBeforeShopcar">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeCenter">
+					<a href="/Before/toBeforeCenter">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>

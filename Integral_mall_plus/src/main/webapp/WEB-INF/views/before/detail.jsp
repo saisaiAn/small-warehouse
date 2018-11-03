@@ -76,6 +76,11 @@
 		        </div>
 				<!--banner end-->
 				<div class="top clearfloat box-s">
+					<c:forEach items="${imgList}" var="img">
+						<c:if test="${img.imageclassification==3&&img.imagerid==commodity.commodityno}">
+							<img src="${img.imagerurl}" style="float: left;"/>
+						</c:if>
+					</c:forEach>
 					<div class="shang clearfloat">
 						<div class="zuo clearfloat fl over2 box-s">
 							${commodity.commoditytitle}
@@ -86,6 +91,7 @@
 						</div>
 					</div>
 					<div class="xia clearfloat">
+
 						<p class="jifen fl box-s"><samp>${commodity.needintegral}</samp>积分</p>
 						<span class="fr">库存<span class="kc" style="display: inline;">${commodity.commodityinventory}</span> 件</span>
 					</div>
@@ -129,14 +135,14 @@
 			</div>
 			<div class="right clearfloat fl">
 				<span class="btn fl" onClick="toshare()">加入购物车</span>
-				<a href="/toBeforeConfirm" class="btn btnone fl">立即购买</a>
+				<a href="/Before/toBeforeConfirm" class="btn btnone fl">立即购买</a>
 			</div>
 		</div>
 		<!--footerone end-->
 		
 		<!--弹出购物车内容-->
 		<div class="am-share">
-            <form action="/addBeforeShopping" id="carForm" method="post">
+            <form action="/Before/addBeforeShopping" id="carForm" method="post">
 		    <div class="am-share-footer">
 		        <button class="share_btn">
 					<c:forEach items="${imgList}" var="img">
@@ -240,25 +246,25 @@
 		<footer class="page-footer fixed-footer" id="footer">
 			<ul>
 				<li class="active">
-					<a href="/toBeforeIndex">
+					<a href="/Before/toBeforeIndex">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeCation">
+					<a href="/Before/toBeforeCation">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeShopcar">
+					<a href="/Before/toBeforeShopcar">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeCenter">
+					<a href="/Before/toBeforeCenter">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>

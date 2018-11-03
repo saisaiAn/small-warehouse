@@ -44,7 +44,7 @@
                     <div class="u-progress-bar-inner"></div>
                 </div>
             </div>
-            <form class="am-form am-form-horizontal" action="/BeforeUpdateEmpPassword" id="updatePassword" method="post">
+            <form class="am-form am-form-horizontal" action="/Before/BeforeUpdateEmpPassword" id="updatePassword" method="post">
                 <input type="hidden" name="empno" value="${empBefore.empno}">
                 <div class="am-form-group">
                     <label for="user-old-password" class="am-form-label">原密码</label>
@@ -80,11 +80,10 @@
         var e=false;
         $("#user-old-password").change(function(){
             $.ajax({
-                url:"/BeforeOldPassword",
+                url:"/Before/BeforeOldPassword",
                 data:{ empname:'${empBefore.empname}', password:$("#user-old-password").val()} ,
                 type:"POST",
                 success:function (result){
-                    alert(result)
                     if (result=="y"){
                         $("#ts").html("");
                         c=true;
@@ -116,7 +115,7 @@
         })
         $("#sub").click(function(){
             if(c&d&e){
-                $("#updatePassword").submit();``
+                $("#updatePassword").submit();
             }
         })
     })

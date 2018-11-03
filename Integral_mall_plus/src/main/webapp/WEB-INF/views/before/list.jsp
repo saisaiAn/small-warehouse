@@ -56,7 +56,7 @@
 				<div class="bottom clearfloat">
 					<c:forEach items="${commodityList}" var="commodity">
 						<div class="lie clearfloat">
-							<a href="/toBeforeDetail?id=${commodity.commodityno}">
+							<a href="/Before/toBeforeDetail?id=${commodity.commodityno}">
 								<div class="tu clearfloat fl">
 									<c:forEach items="${imgList}" var="img">
 										<c:if test="${img.imageclassification==3&&img.imagerid==commodity.commodityno}">
@@ -66,11 +66,11 @@
 								</div>
 							</a>
 							<div class="right clearfloat fl">
-								<a href="/toBeforeDetail?id=${commodity.commodityno}">
+								<a href="/Before/toBeforeDetail?id=${commodity.commodityno}">
 									<p class="tit">${commodity.commoditydetails}</p>
 								</a>
 								<div class="xia clearfloat">
-									<a href="/toBeforeDetail">
+									<a href="/Before/toBeforeDetail">
 										<p class="jifen fl over">${commodity.needintegral}积分</p>
 									</a>
 
@@ -87,25 +87,25 @@
 		<footer class="page-footer fixed-footer" id="footer">
 			<ul>
 				<li class="active">
-					<a href="/toBeforeIndex">
+					<a href="/Before/toBeforeIndex">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeCation">
+					<a href="/Before/toBeforeCation">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeShopcar">
+					<a href="/Before/toBeforeShopcar">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeCenter">
+					<a href="/Before/toBeforeCenter">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>
