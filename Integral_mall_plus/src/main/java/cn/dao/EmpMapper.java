@@ -25,4 +25,6 @@ public interface EmpMapper {
 
     int updateBeforeEmp(Emp emp);
     Emp selectOldPassword(Emp emp);
+
+    void masterUpd(Emp emp);//校长修改
 }

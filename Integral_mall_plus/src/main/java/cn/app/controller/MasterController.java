@@ -2,8 +2,10 @@ package cn.app.controller;
 
 import cn.app.service.MasterService;
 import cn.bean.Emp;
+import com.sun.org.apache.xpath.internal.SourceTree;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,21 +18,23 @@ public class MasterController {
     @Autowired
     MasterService masterService;
 
+
+
     @ResponseBody
     @RequestMapping(value="masterlogin",method = RequestMethod.POST)
-    public String masterLogin(@RequestParam("username") String username, @RequestParam("pwd") String pwd, HttpSession session){
-        System.out.println("loginMaster");
-        System.out.println(username);
-        System.out.println(pwd);
+    public String masterLogin(@RequestParam("username") String username, @RequestParam("pwd") String pwd, HttpSession session,Model model){
+        //System.out.println("loginMaster");
         Emp emp = new Emp();
         emp.setEmpname(username);
         emp.setPassword(pwd);
         Emp emp1=masterService.loginMaster(emp);
-        //System.out.print(emp1.getPosition()+"*****");
-        System.out.println(emp1);
+        //System.out.println(emp1);
+
         if (emp1!=null){
             //判断是否是校长登录
             if(emp1.getPosition()==4){
+                //保存员工信息
+                session.setAttribute("appEmp",emp1);
                 return "success";
             }else {
                 return "notmaster";
@@ -41,6 +45,10 @@ public class MasterController {
         }
     }
 
+    @RequestMapping(value="/toAppSetting",method = RequestMethod.GET)
+    public String toAppSetting(){
+        return "app/setting";
+    }
     //首页
     @RequestMapping(value="/toAppnIndex")
     public String index(){
@@ -50,6 +58,7 @@ public class MasterController {
     //登录
     @RequestMapping(value="app")
     public String app(){
+        System.out.println("/app");
         return "app/login";
     }
 
@@ -60,14 +69,17 @@ public class MasterController {
     }
 
     //个人设置
-    @RequestMapping(value="toAppSetting")
-    public String setting(){
-        return "app/setting";
+    @RequestMapping(value="appMaster",method = RequestMethod.POST)
+    public String setting( Emp emp){
+       // System.out.println("--------"+emp.getEmpname());
+          masterService.updateMaster(emp);
+        return "forward:/app";
     }
 
     //注销
     @RequestMapping(value = "toAppLogout")
     public String logout(){
+
         return "app/logout";
     }
 }

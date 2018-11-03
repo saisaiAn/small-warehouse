@@ -219,7 +219,14 @@
                                                                                                 <th>积分奖惩</th>
                                                                                             </tr>
                                                                                             </thead>
-                                                                                            <tbody></tbody>
+                                                                                            <tbody>
+                                                                                            <tr>
+                                                                                                <th><input type="checkbox"/></th>
+                                                                                                <th>${appEmpUpdate.id}</th>
+                                                                                                <th>姓名</th>
+                                                                                                <th>积分奖惩</th>
+                                                                                            </tr>
+                                                                                            </tbody>
                                                                                         </table>
                                                                                     </div>
                                                                                 </div>
