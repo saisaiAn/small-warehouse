@@ -26,7 +26,12 @@
             <!-- 最大文件大小，-1为不限制大小 -->
             <property name="maxUploadSize" value="-1"/>
         </bean>
-
+        <mvc:interceptors>
+            <mvc:interceptor>
+                <mvc:mapping path="/Before/*"/>
+                <bean class="cn.interceptor.BeforeInterceptor"></bean>
+            </mvc:interceptor>
+        </mvc:interceptors>
     <mvc:default-servlet-handler/>
         <mvc:annotation-driven/>
 

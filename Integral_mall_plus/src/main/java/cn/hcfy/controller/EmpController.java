@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 
+@RequestMapping("/Before")
 @Controller
 public class EmpController {
 
@@ -39,24 +40,6 @@ public class EmpController {
     @Autowired
     IntegralAuditService integralAuditService;
 
-    @RequestMapping("/BeforeLogin")
-    @ResponseBody
-    public String login(@RequestParam(value="empname",required=false)String empname,
-                     @RequestParam(value="password",required=false) String password,
-                     HttpSession  httpSession){
-        Emp emp=new Emp();
-        emp.setEmpname(empname);
-        emp.setPassword(password);
-        System.out.println("aa==================");
-        Emp empReturn = empService.loginToIndexBefore(emp);
-        if(empReturn==null){ return  "n";}
-        List<Imager> imagerList = imagerService.selectAllImager();
-        httpSession.setAttribute("empBefore",empReturn);
-        httpSession.setAttribute("imgList",imagerList);
-        return "y";
-    }
-
-
     @ResponseBody
     @RequestMapping(value = "/addBeforePay")
     @Transactional(rollbackFor = {Exception.class})
@@ -76,11 +59,10 @@ public class EmpController {
             //增加积分审核
             IntegralAudit integralAudit=new IntegralAudit();
             integralAudit.setEmpno(shoppingCarTwo.getShoppingempno());
-            integralAudit.setReviewer(999);
             integralAudit.setIntergralchange("购买："+shoppingCarTwo.getCommodityId().getCommoditytitle()+";");
             integralAudit.setChangeint(shoppingCarTwo.getCommoditysum()*shoppingCarTwo.getCommodityId().getNeedintegral());
             integralAudit.setIntegraltypeno(3);
-            integralAudit.setAudittype(0);
+            integralAudit.setAudittype(1);
             integralAudit.setAuditopinion("");
             integralAuditService.addIntegralAuditMapper(integralAudit);
             //增加订单
@@ -112,10 +94,10 @@ public class EmpController {
     @RequestMapping("/addBeforeShopping")
     public String addShopCar(shoppingCar shoppingCar){
         int judge= shoppingCarService.insertShoppingCar(shoppingCar);
-        return "forward:/toBeforeShopcar";
+        return "forward:/Before/toBeforeShopcar";
     }
     @ResponseBody
-    @RequestMapping("deleteBeforeShopCar")
+    @RequestMapping("/deleteBeforeShopCar")
     @Transactional(rollbackFor = {Exception.class})
     public String deletBeforeShopCar(@Param("carno")int carno){
         int judge= shoppingCarService.deleteByPrimaryKey(carno);
@@ -142,9 +124,11 @@ public class EmpController {
         }
     }
     @RequestMapping("/BeforeUpdateEmp")
-    public String UpdateEmp(@ModelAttribute Emp emp){
+    public String UpdateEmp(@ModelAttribute Emp emp,HttpSession httpSession){
         empService.updateBeforeEmp(emp);
-        return "forward:/toBeforeUserInfo";
+        Emp empReturn = empService.loginToIndexBefore(emp);
+        httpSession.setAttribute("empBefore",empReturn);
+        return "forward:/Before/toBeforeUserInfo";
     }
     @ResponseBody
     @RequestMapping("/BeforeOldPassword")
@@ -174,7 +158,6 @@ public class EmpController {
         List<Imager> imagerList = imagerService.selectAllImager();
         model.addAttribute("commodityList",commodityList);
         model.addAttribute("typeList",commodityTypeList);
-
         return "/before/index";
     }
 
@@ -227,7 +210,9 @@ public class EmpController {
         Map ByEmpIdMap=new HashMap();
         ByEmpIdMap.put("emp",emp);
         ByEmpIdMap.put("status",status);
-        model.addAttribute("orderList",ordersService.selectOrdersByEmpId(ByEmpIdMap));
+        List<Orders> Orders= ordersService.selectOrdersByEmpId(ByEmpIdMap);
+        model.addAttribute("orderList",Orders);
+        model.addAttribute("status",status);
         return "/before/orders";
     }
     @RequestMapping("/toBeforeUserInfo")

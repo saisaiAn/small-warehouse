@@ -40,7 +40,9 @@ public class OrdersService {
         List<Orders> Orders=ordersMapper.selectOrdersByEmpId(ByEmpIdMap);
         try{
             String cacheString =JSON.toJSONString(Orders);
+            if (cacheString.length()>10){
             jedisClient.set("BeforeOrders",cacheString);
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
