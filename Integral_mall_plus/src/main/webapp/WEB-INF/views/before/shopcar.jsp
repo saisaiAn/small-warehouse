@@ -149,7 +149,7 @@
                        success:function (result) {
                            if (result=="y"){
                           		alert("下单成功！");
-                               location.href="/Before/toBeforeOrders?id=${empBefore.empno}";
+                               location.href="/Before/toBeforeOrders?id=${empBefore.empno}&status=1";
                            }
                        }
                    })
@@ -215,7 +215,7 @@
 				}
 			}
 		</script>
-		
+		<jsp:include   page="session.jsp" flush="true"/>
 	</body>
 
 </html>

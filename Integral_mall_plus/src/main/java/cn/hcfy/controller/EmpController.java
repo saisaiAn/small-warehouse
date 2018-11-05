@@ -40,6 +40,9 @@ public class EmpController {
     @Autowired
     IntegralAuditService integralAuditService;
 
+    @Autowired
+    IntegralScheduleService integralScheduleService;
+
     @ResponseBody
     @RequestMapping(value = "/addBeforePay")
     @Transactional(rollbackFor = {Exception.class})
@@ -60,8 +63,8 @@ public class EmpController {
             IntegralAudit integralAudit=new IntegralAudit();
             integralAudit.setEmpno(shoppingCarTwo.getShoppingempno());
             integralAudit.setIntergralchange("购买："+shoppingCarTwo.getCommodityId().getCommoditytitle()+";");
-            integralAudit.setChangeint(shoppingCarTwo.getCommoditysum()*shoppingCarTwo.getCommodityId().getNeedintegral());
-            integralAudit.setIntegraltypeno(3);
+            integralAudit.setChangeint(-shoppingCarTwo.getCommoditysum()*shoppingCarTwo.getCommodityId().getNeedintegral());
+            integralAudit.setIntegraltypeno(1);
             integralAudit.setAudittype(1);
             integralAudit.setAuditopinion("");
             integralAuditService.addIntegralAuditMapper(integralAudit);
@@ -128,7 +131,7 @@ public class EmpController {
         empService.updateBeforeEmp(emp);
         Emp empReturn = empService.loginToIndexBefore(emp);
         httpSession.setAttribute("empBefore",empReturn);
-        return "forward:/Before/toBeforeUserInfo";
+        return "forward:/Before/toBeforeCenter";
     }
     @ResponseBody
     @RequestMapping("/BeforeOldPassword")
@@ -172,7 +175,10 @@ public class EmpController {
         return "/before/cation";
     }
     @RequestMapping("/toBeforeCenter")
-    public String center(){
+    public String center(Model model,HttpSession httpSession){
+        Emp emp= (Emp) httpSession.getAttribute("empBefore");
+        List<IntegralSchedule>  integralSchedulesList =integralScheduleService.findAllIntegralSheduleByEmp(emp);
+        model.addAttribute("integralScheduleList",integralSchedulesList);
         return "/before/center";
     }
     @RequestMapping("/toBeforeConfirm")
@@ -222,5 +228,24 @@ public class EmpController {
     @RequestMapping("/toBeforePassword")
     public String password(){
         return "/before/password";
+    }
+    @RequestMapping("/BeforeXiaoHui")
+    public String BeforeXiaoHui(HttpSession httpSession){
+        Emp emp=(Emp)httpSession.getAttribute("empBefore");
+        Emp empType=new Emp();
+        empType.setEmpno(emp.getEmpno());
+        empType.setEmptype(0);
+        empService.updateBeforeEmpType(empType);
+        return "y";
+    }
+    @RequestMapping("/BeforeCeHui")
+    public String BeforeCeHui(HttpSession httpSession){
+        System.out.println("aaa");
+        Emp emp=(Emp)httpSession.getAttribute("empBefore");
+        Emp empType=new Emp();
+        empType.setEmpno(emp.getEmpno());
+        empType.setEmptype(1);
+        empService.updateBeforeEmpType(empType);
+        return "y";
     }
 }

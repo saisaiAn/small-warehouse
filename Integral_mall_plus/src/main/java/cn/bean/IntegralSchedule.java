@@ -1,5 +1,7 @@
 package cn.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 //积分明细表
 public class IntegralSchedule {
@@ -12,6 +14,7 @@ public class IntegralSchedule {
 
     private Integer changeint;
 
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd") //出参
     private Date changedate;
 
     private Integer integralno;
