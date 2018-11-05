@@ -38,7 +38,7 @@
     ins.IntegralTypeNo,e.EmpNo,e.EmpName,e.EmpSex,e.IDcard,e.DepartmentNo,e.Positivedates,
     e.EmpPhone,e.intergralNo,e.position,e.empType,e.`Password`,i.IntergralNo,i.TotalIntegral,
     i.HaveIntegral,i.RemainingPoints,i.LastChangeTime
-
+    </sql>
     <insert id="addIntegralSchedule" parameterType="cn.bean.IntegralSchedule">
         INSERT into Integralschedule (empno,intergralchange,changeint,changedate,integralno,reviewer,integraltypeno) VALUES
         (#{empno},#{intergralchange},#{changeint},#{changedate},#{integralno},#{reviewer},#{integraltypeno})

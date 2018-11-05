@@ -13,7 +13,6 @@ public class Commodity {
     private Integer commodityinventory;
 
     private Integer commoditytypeno;
-
     private CommodityType commodityTypeId;//商品分类id
 
     private Integer commoditytype;//商品是否上架

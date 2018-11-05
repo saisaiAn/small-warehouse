@@ -8,22 +8,19 @@
 </head>
 <link href="/static/before/css/admin.css" rel="stylesheet" type="text/css">
 <link href="/static/before/css/amazeui.css" rel="stylesheet" type="text/css">
+
 <link href="/static/before/css/personal.css" rel="stylesheet" type="text/css">
 <link href="/static/before/css/infstyle.css" rel="stylesheet" type="text/css">
 <script src="/static/before/js/jquery.min.js"></script>
 <script src="/static/before/js/amazeui.js"></script>
-<link rel="stylesheet" type="text/css" href="/static/before/css/center.css" />
-<link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
 <body>
     <div class="center">
         <div class="col-main">
             <div class="main-wrap">
                 <div class="user-info">
-
                     <!--标题 -->
                     <div class="am-cf am-padding">
-                        <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong></div>
-                        <div style="float: right;"><strong  class="am-text-danger am-text-lg"><a href="javascript:history.back();"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></strong></div>
+                        <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
                     </div>
                     <hr/>
 
@@ -54,7 +51,7 @@
                             <div class="am-form-group">
                                 <label for="user-name" class="am-form-label">姓名</label>
                                 <div class="am-form-content">
-                                    <input type="text" disabled style="background-color: white;" value="${empBefore.empname}" placeholder="name">
+                                    <input type="text" disabled value="${empBefore.empname}" placeholder="name">
                                 </div>
                             </div>
 
@@ -92,6 +89,5 @@
             </div>
         </div>
     </div>
-    <jsp:include   page="session.jsp" flush="true"/>
 </body>
 </html>

@@ -62,7 +62,7 @@
         select
         <include refid="WithDept_Column_List" />
         from emp e ,department d,integral i
-        where e.departmentno=d.depano
+        where e.departmentno=d.depano and e.intergralno=i.intergralno
     </select>
 
     <!-- 添加员工 -->
@@ -150,14 +150,6 @@
         </where>
 
     </select>
-    <update id="updateBeforeEmpType" parameterType="cn.bean.Emp">
-        update Emp
-        <set>
-            <if test="emptype != null">
-                emptype = #{emptype},
-            </if>
-        </set>
-        where empno = #{empno}
-    </update>
+
 
 </mapper>

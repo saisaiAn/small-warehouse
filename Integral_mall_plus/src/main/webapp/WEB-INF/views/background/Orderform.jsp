@@ -81,7 +81,7 @@
                     <td style="color: #a069c3">待领取</td>
                 </c:if>
                 <c:if test="${o.orderstatus == 3}">
-                    <td>已领取</td>
+                    <td style="color: red">已领取</td>
                 </c:if>
                 <td>${o.emp.empname}</td>
                 <td>${o.ordercommoditysum}</td>

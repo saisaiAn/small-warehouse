@@ -158,12 +158,10 @@
                         success:function (result) {
                             if (result=="y"){
                                 location.href="/Before/toBeforeIndex";
-                            }else if(result=="n") {
+                            }else {
                                 alert("账号或密码不正确");
                                 window.location.reload();
-                            }else if(result=="s"){
-                                alert("该账户已登录，请勿重复登录")
-							}
+                            }
                         }
                     })
             }else{

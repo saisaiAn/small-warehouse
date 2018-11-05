@@ -150,7 +150,6 @@
 				</li>
 			</ul>
 		</footer>
-		<jsp:include   page="session.jsp" flush="true"/>
 		<!--footer end-->
 	</body>
 

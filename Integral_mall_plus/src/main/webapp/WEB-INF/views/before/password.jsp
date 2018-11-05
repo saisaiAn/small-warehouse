@@ -9,7 +9,7 @@
 </head>
 <link href="/static/before/css/admin.css" rel="stylesheet" type="text/css">
 <link href="/static/before/css/amazeui.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+
 <link href="/static/before/css/personal.css" rel="stylesheet" type="text/css">
 <link href="/static/before/css/stepstyle.css" rel="stylesheet" type="text/css">
 
@@ -23,7 +23,6 @@
 
             <div class="am-cf am-padding">
                 <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">修改密码</strong> / <small>Password</small></div>
-                <div style="float: right;"><strong  class="am-text-danger am-text-lg"><a href="javascript:history.back();"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></strong></div>
             </div>
             <hr/>
             <!--进度条-->
@@ -68,7 +67,9 @@
                 <div class="info-btn">
                     <div class="am-btn am-btn-danger" id="sub">保存修改</div>
                 </div>
+
             </form>
+
         </div>
     </div>
 </div>

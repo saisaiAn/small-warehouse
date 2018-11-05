@@ -44,7 +44,4 @@ public class CommodityService {
     public List<Commodity> commodityByType(Integer commodityTypeNo){
         return commodityMapper.commodityByType(commodityTypeNo);
     }
-    public int updateCommoditySum(Commodity commodity){
-        return commodityMapper.updateCommoditySum(commodity);
-    }
 }

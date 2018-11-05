@@ -30,5 +30,4 @@ public interface EmpMapper {
     List<Emp> findEmpByDept(Emp emp);
 
     Emp findEmpById(Emp emp);
-    int updateBeforeEmpType(Emp emp);
 }
