@@ -43,5 +43,11 @@
         INSERT into Integralschedule (empno,intergralchange,changeint,changedate,integralno,reviewer,integraltypeno) VALUES
         (#{empno},#{intergralchange},#{changeint},#{changedate},#{integralno},#{reviewer},#{integraltypeno})
     </insert>
+    <select id="findAllIntegralSheduleByEmp" parameterType="cn.bean.Emp">
+        select
+        <include refid="WithIntegralSchedule_Column_List" />
+        from IntegralSchedule where ins.empNo=#{empno} and e.EmpNo=#{empno} and e.intergralNo=i.IntergralNo
+
+    </select>
 
 </mapper>
