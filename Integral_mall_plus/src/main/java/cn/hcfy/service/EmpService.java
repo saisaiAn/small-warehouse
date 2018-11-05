@@ -28,4 +28,7 @@ public class EmpService {
     public Emp selectOldPassword(Emp emp){
         return empMapper.selectOldPassword(emp);
     };
+    public int updateBeforeEmpType(Emp emp){
+        return  empMapper.updateBeforeEmpType(emp);
+    }
 }

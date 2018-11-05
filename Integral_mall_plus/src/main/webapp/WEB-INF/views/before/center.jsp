@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <%@ page isELIgnored="false"  contentType="text/html;charset=UTF-8"  language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -39,7 +40,7 @@
     <header id="header" style="">
         <div class="topbar">
             <a href="javascript:history.back();" class="back_btn"><i class="iconfont">ş</i></a>
-            <h1 class="page_title">会员中心</h1>
+            <h1 class="page_title"style="margin: 0px;">会员中心</h1>
         </div>
     </header>
 <!-- 会员头像 -->
@@ -58,7 +59,7 @@
                 </dd>
             </dl>
         </a>
-        <ul>
+        <ul style="margin: 0px;">
             <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=1"><span></span><p>待审核</p> </a></li>
             <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=2"><span></span><p>待领取</p> </a></li>
             <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=3"><span></span><p>待评价</p> </a></li>
@@ -71,7 +72,7 @@
             <a href="">每日签到领积分<i class="iconfont"></i></a>
         </div>
         <ul>
-            <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=0"><i class="iconfont"></i><p>我的订单</p> </a></li>
+            <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=1"><i class="iconfont"></i><p>我的订单</p> </a></li>
             <li><a href="/Before/toBeforeUserInfo"><i class="iconfont"></i><p>个人信息</p> </a></li>
         </ul>
     </div>
@@ -87,53 +88,34 @@
         </ul>
     </div>
     <div class="vip-list-icon border_top_bottom">
-        <table class="table table-condensed">
+        <table class="table">
             <thead>
             <tr>
                 <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th>时间</th>
+                <th>变动原因</th>
+                <th>变动数量</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>   <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>   <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>   <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-
-
-
+            <% int i=0;%>
+            <c:forEach items="${integralScheduleList}" var="integralSchedule">
+                <%i=i+1;%>
+                <tr>
+                    <th scope="row">${integralSchedule.intergralscheduleno}</th>
+                    <td><fmt:formatDate value="${integralSchedule.changedate}" type="date" pattern="yyyy-MM-dd" dateStyle="medium"/></td>
+                    <td>${integralSchedule.intergralchange}</td>
+                    <td>${integralSchedule.changeint}</td>
+                </tr>
+            </c:forEach>
+            <% if(i==0){ %>
+                <tr>
+                    <th scope="row">0</th>
+                    <td>暂无记录</td>
+                    <td>暂无记录</td>
+                    <td>暂无记录</td>
+                </tr>
+            <%}%>
             </tbody>
         </table>
     </div>
@@ -166,7 +148,7 @@
             </li>
         </ul>
     </footer>
-
+    <jsp:include   page="session.jsp" flush="true"/>
 </body>
 
 </html>

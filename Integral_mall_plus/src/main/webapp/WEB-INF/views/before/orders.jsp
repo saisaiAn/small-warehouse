@@ -48,9 +48,10 @@
 	    
 	    <div class="warp warptwo clearfloat">
 			<ul class="address-list" style=" width: 100%;">
+				<%int i=0;%>
 				<c:forEach items="${orderList}" var="order">
 					<c:if test="${status==order.orderstatus}">
-					${order.commodityId.commoditytitle}
+						<%i=i+1;%>
 				<li style="display: inline-block;margin-top: 6px;padding: 10px; width: 100%;opacity: 0.9;background-color: #fff;" >
 					<div style=" width: 100%;">
 						<div class="am-share-footer" style="float:left;width:121px;height:121px;padding: 2px;border: #1b6d85 1px solid; margin: 5px; display: inline-block;" >
@@ -79,6 +80,11 @@
 				</li>
 					</c:if>
 					</c:forEach>
+				<% if(i==0){ %>
+					<li style="display: inline-block;margin-top: 6px;padding: 10px; width: 100%;opacity: 0.9;background-color: #fff;" >
+					<span style="font-family:Microsoft YaHei;">暂无订单哦！</span>
+					</li>
+				<%}%>
 			</ul>
 	    </div>
 		<!--footer star-->
@@ -110,6 +116,7 @@
 				</li>
 			</ul>
 		</footer>
+		<jsp:include   page="session.jsp" flush="true"/>
 		<!--footer end-->
 		<script type="text/javascript">
             var clickNum = 0;

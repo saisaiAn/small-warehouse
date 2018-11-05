@@ -117,6 +117,7 @@
             </div>
         </li>
     </ul>
+    <jsp:include   page="session.jsp" flush="true"/>
     <script type="text/javascript">
     window.onload = function() {
         $(".address-list > li > p").click(function(e) {

@@ -44,10 +44,11 @@
 	        <h4>购物车</h4>
 	    </header>
 	    <!--header end-->
-	    
 	    <div class="warp warptwo clearfloat">
 	    	<div class="shopcar clearfloat">
+				<% int i=0;%>
 				<c:forEach items="${shoppingCarList}" var="shoppingCar">
+					<%i=i+1;%>
 					<div class="list clearfloat fl">
 						<div class="xuan clearfloat fl">
 							<div class="radio" >
@@ -57,11 +58,11 @@
 							</div>
 						</div>
 						<a href="javascript:void(0)">
-							<div class="tu clearfloat fl">
+							<div class="tu clearfloat fl"  >
 								<span></span>
 								<c:forEach items="${imgList}" var="img">
 									<c:if test="${img.imageclassification==3&&img.imagerid==shoppingCar.shoppingcommodityno}">
-										<img src="${img.imagerurl}" />
+										<img src="${img.imagerurl}" style="padding-top: 0px;" />
 									</c:if>
 								</c:forEach>
 							</div>
@@ -84,6 +85,11 @@
 						</a>
 					</div>
 				</c:forEach>
+				<% if(i==0){ %>
+				<div class="list clearfloat fl">
+					<span style="font-family:Microsoft YaHei;">购物车暂无商品哦！</span>
+				</div>
+				<%}%>
 	    	</div>
 	    </div>
 	    
@@ -149,7 +155,7 @@
                        success:function (result) {
                            if (result=="y"){
                           		alert("下单成功！");
-                               location.href="/Before/toBeforeOrders?id=${empBefore.empno}";
+                               location.href="/Before/toBeforeOrders?id=${empBefore.empno}&status=1";
                            }
                        }
                    })
@@ -215,7 +221,7 @@
 				}
 			}
 		</script>
-		
+		<jsp:include   page="session.jsp" flush="true"/>
 	</body>
 
 </html>
