@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
     <link rel="stylesheet" href="/static/before/css/swiper.min.css">
     <script src="/static/before/js/rem.js"></script>
-    <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/before/js/jquery-1.8.3.min.js" type="text/javascript"></script>
     <script src="/static/before/js/others.js"></script>
 	<script src="/static/before/js/swiper.jquery.min.js"></script>
 	<script type="text/javascript">
@@ -221,27 +221,28 @@
             })
         </script>
 		<script type="text/javascript">
-			var down = document.getElementById("down");
-		    var count = document.getElementById("count");
-		    var sum=document.getElementById("sum");
-		    window.onload = function(){
-		        down.onclick = function(){
-		            alert(count.innerHTML);
-		            if(count.innerHTML > 1){
-		                count.innerHTML--;
-		            }else{
-		                count.innerHTML = 1;
-		            }
-		        }
-                document.getElementById('up').onclick = function(){
-                        count.innerHTML++;
-                }
-		        $(".middle .xia li").click(function() {
-		            $(this).addClass('cur').siblings().removeClass('cur');
-		        });
+			$(function(){
+                var count = $("#count");
+                var sum=$("#sum");
+                $("#down").click(function(){
+					var a=count.html();
+                    if(count.html() > 1){
+                        count.html(a-1);
+                    }else{
+                        count.html(1);
+                    }
+				})
+				$('#up').click(function(){
+                        var a=parseInt(count.html())+1;
+                    	count.html(a);
+				})
+                    $(".middle .xia li").click(function() {
+                        $(this).addClass('cur').siblings().removeClass('cur');
+                    });
 
-		    }
+			})
 		</script>
+
 		<!--footer star-->
 		<footer class="page-footer fixed-footer" id="footer">
 			<ul>
