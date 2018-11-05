@@ -4,6 +4,7 @@ import cn.bean.Emp;
 import cn.bean.Imager;
 import cn.hcfy.service.EmpService;
 import cn.hcfy.service.ImagerService;
+import cn.hcfy.service.JedisClientImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,8 @@ public class HelloController {
     @Autowired
     ImagerService imagerService;
 
+    @Autowired
+    private JedisClientImp jedisClient;
     @RequestMapping("hello")
     public String hello(){
         return "/before/login";
@@ -41,6 +44,9 @@ public class HelloController {
         emp.setEmpname(empname);
         emp.setPassword(password);
         Emp empReturn = empService.loginToIndexBefore(emp);
+        if(empReturn==null){
+            return  "n";
+        }
         if(empReturn.getEmptype()==1){
             return "s";
         }else{
@@ -49,7 +55,12 @@ public class HelloController {
             empType.setEmptype(1);
             empService.updateBeforeEmpType(empType);
         }
-        if(empReturn==null){ return  "n";}
+        try{
+            jedisClient.del("BeforeOrders");
+            jedisClient.del("BeforeShoppingCars");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         List<Imager> imagerList = imagerService.selectAllImager();
         httpSession.setAttribute("empBefore",empReturn);
         httpSession.setAttribute("imgList",imagerList);

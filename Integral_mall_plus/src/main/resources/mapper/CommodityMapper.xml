@@ -94,6 +94,10 @@
         update commodity set commodityType = 1 where CommodityNo= #{proid}
     </update>
 
+    <!--下订单，商品库存-->
+    <update id="updateCommoditySum" parameterType="cn.bean.Commodity">
+    update commodity set Commodityinventory=Commodityinventory-#{commodityinventory} where CommodityNo= #{commodityno}
+    </update>
 
     <select id="likeProductByProName" resultMap="CommodityResultMap" parameterType="java.lang.String">
         select
