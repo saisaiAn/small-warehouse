@@ -1,15 +1,12 @@
 package cn.background.bgService;
 
-import cn.bean.Attendance;
-import cn.bean.Emp;
-import cn.bean.IntegralAudit;
-import cn.dao.AttendanceMapper;
-import cn.dao.EmpMapper;
-import cn.dao.IntegralAuditMapper;
+import cn.bean.*;
+import cn.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -22,6 +19,15 @@ public class BgIntegralService {
 
     @Autowired
     IntegralAuditMapper integralAuditMapper;
+
+    @Autowired
+    IntegralScheduleMapper integralScheduleMapper;
+
+    @Autowired
+    IntegralMapper integralMapper;
+
+    @Autowired
+    DepartmentMapper departmentMapper;
 
     public List<Emp> findEmpByDept(Emp emp){
         return empMapper.findEmpByDept(emp);
@@ -39,4 +45,27 @@ public class BgIntegralService {
         return integralAuditMapper.findAllIntegralAudit();
     }
 
+    public int updIntegralauditAuditType(Map<Object,Object> map){
+        return integralAuditMapper.updIntegralauditAuditType(map);
+    }
+
+    public int addIntegralSchedule(IntegralSchedule integralSchedule){
+        return integralScheduleMapper.addIntegralSchedule(integralSchedule);
+    }
+
+    public int addProcessingIntegral(Map<Object,Object> map){
+        return integralMapper.addProcessingIntegral(map);
+    }
+
+    public int reduceProcessingIntegral(Map<Object,Object> map){
+        return integralMapper.reduceProcessingIntegral(map);
+    }
+
+    public List<Department> findAllDept(){
+        return departmentMapper.findAllDepartment();
+    }
+
+    public List<IntegralAudit> findAllIntegralAuditByDeptNo(Integer deptno){
+        return  integralAuditMapper.findAllIntegralAuditByDeptNo(deptno);
+    }
 }

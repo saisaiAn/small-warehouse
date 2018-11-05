@@ -33,13 +33,7 @@
 <body>
 <div class="margin clearfix">
  <div class="cover_style" id="cover_style">
-     <div class="search_style">
-     
-      <ul class="search_content clearfix">
-       <li><label class="l_f">用户</label><input name="" type="text" class="text_add" placeholder="用户名称" style=" width:250px"></li>
-       <li style="width:90px;"><button type="button" class="btn_search"><i class="fa fa-search"></i>查询</button></li>
-      </ul>
-    </div>
+
     <!--操作--> 
      <div class="border clearfix">
        <span class="l_f">

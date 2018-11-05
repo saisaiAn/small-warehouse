@@ -85,6 +85,13 @@
                 <result column="depaname" property="depaname"/>
                 <result column="parentdepa" property="parentdepa"/>
             </association>
+            <association property="integralId" javaType="cn.bean.Integral">
+                <id column="intergralno" property="intergralno"/>
+                <result column="totalintegral" property="totalintegral"/>
+                <result column="haveintegral" property="haveintegral"/>
+                <result column="remainingpoints" property="remainingpoints"/>
+                <result column="lastchangetime" property="lastchangetime"/>
+            </association>
         </association>
         <!-- 积分类型 -->
         <association property="integralTypeId" javaType="cn.bean.IntegralType">
@@ -106,6 +113,33 @@
         where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo
         and e.departmentno=d.depano
     </select>
+
+    <!-- 根据部门查询 -->
+    <select id="findAllIntegralAuditByDeptNo" resultMap="WithIntegralAuditResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="findAllIntegralAuditSql"></include>
+        from integralaudit a,emp e,department d,integral i,IntegralType t
+        where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo
+        and e.departmentno=d.depano
+          <if test="deptno!=null and deptno!=''">
+              and e.DepartmentNo =#{deptno}
+          </if>
+
+
+
+    </select>
+
+    <!-- 综合部经理审批意见 吧意见状态修改为 2（申请中转为审核中 提交给校长看见） -->
+    <update id="updIntegralauditAuditType" parameterType="java.util.Map">
+        UPDATE IntegralAudit set AuditType = #{AuditType} , reviewer = #{empid},
+            <if test="sprYj != null">
+                AuditOpinion = #{sprYj}
+            </if>
+           where IntegralAuditNo = #{integralAuditId}
+    </update>
+
+
+
 
 
 

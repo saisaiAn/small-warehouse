@@ -1,5 +1,7 @@
 package cn.bean;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 //积分明细表
 public class IntegralSchedule {

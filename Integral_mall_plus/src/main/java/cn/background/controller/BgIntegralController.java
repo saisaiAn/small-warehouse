@@ -1,16 +1,20 @@
 package cn.background.controller;
 
 import cn.background.bgService.BgIntegralService;
-import cn.bean.Attendance;
-import cn.bean.Emp;
-import cn.bean.IntegralAudit;
+import cn.bean.*;
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class BgIntegralController {
@@ -94,5 +98,118 @@ public class BgIntegralController {
         return "background/Handling_opinions";
     }
 
+    @ResponseBody
+    @RequestMapping(value = "Approval_opinion",method = RequestMethod.POST)
+    public String Approval_opinion(@RequestParam("integralAuditId")Integer integralAuditId,@RequestParam("sprYj") String sprYj ,HttpSession session){
+        /* 综合部经理审批意见*/
+        Map<Object,Object> map = new HashMap<Object, Object>();
+        map.put("integralAuditId",integralAuditId);
+        map.put("sprYj",sprYj);
+        map.put("AuditType",2);
+        Emp emp = (Emp) session.getAttribute("loginUser");
+        int empId = emp.getEmpno();
+        map.put("empid",empId);
+        int x = bgIntegralService.updIntegralauditAuditType(map);
+        if(x>0){
+            return "y";
+        }
+        else {
+            return "n";
+        }
+
+    }
+
+    @ResponseBody
+    @Transactional(rollbackFor = {Exception.class})
+    @RequestMapping(value = "xzApproval_opinion",method = RequestMethod.POST)
+    public String xzApproval_opinion(@RequestParam("empId") Integer empId, //校长批准积分意见 生成积分明细表，结算积分表，删除积分审核表该条积分记录
+                                     @RequestParam("intergralchange") String intergralchange,@RequestParam("changeint") Integer changeint,
+                                     @RequestParam("integralType") Integer integralType,@RequestParam("IntegralNo") Integer IntegralNo,
+                                     @RequestParam("integralauditno")Integer integralauditno,  HttpSession session){
+        IntegralSchedule integralSchedule = new IntegralSchedule();
+        integralSchedule.setEmpno(empId);
+        integralSchedule.setIntergralchange(intergralchange);
+        integralSchedule.setChangeint(changeint);
+        integralSchedule.setIntegraltypeno(integralType);
+        integralSchedule.setIntegralno(IntegralNo);
+        Emp emp = (Emp) session.getAttribute("loginUser");
+        integralSchedule.setReviewer(emp.getEmpno());
+        integralSchedule.setChangedate(new Date());
+        Map<Object,Object> map = new HashMap<Object, Object>();
+        map.put("empid",emp.getEmpno());
+        map.put("AuditType",3);
+        map.put("sprYj","");
+        map.put("integralAuditId",integralauditno);
+        bgIntegralService.updIntegralauditAuditType(map); //修改审核表积分审核状态
+        int result = bgIntegralService.addIntegralSchedule(integralSchedule); //添加积分明细
+        Map<Object,Object> map1 = new HashMap<Object, Object>();
+        map1.put("jfNum",changeint);
+        map1.put("IntergralNo",IntegralNo);
+        if(changeint>0){
+            bgIntegralService.addProcessingIntegral(map1); //结算积分表 加积分
+        }
+        if(changeint<0){
+            bgIntegralService.reduceProcessingIntegral(map1); //结算积分表 减积分
+        }
+        if(result>0){
+            return "y";
+        }else{
+            return "n";
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "General_manager_refuse",method = RequestMethod.POST)
+    public String General_manager_refuse(@RequestParam("integralAuditId")Integer integralAuditId,@RequestParam("sprYj") String sprYj ,HttpSession session){
+        /* 综合部经理审批意见 (拒绝申请)*/
+        Map<Object,Object> map = new HashMap<Object, Object>();
+        map.put("integralAuditId",integralAuditId);
+        map.put("sprYj",sprYj);
+        map.put("AuditType",4);
+        Emp emp = (Emp) session.getAttribute("loginUser");
+        int empId = emp.getEmpno();
+        map.put("empid",empId);
+        int x = bgIntegralService.updIntegralauditAuditType(map);
+        if(x>0){
+            return "y";
+        }
+        else {
+            return "n";
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "The_headmaster_refuses",method = RequestMethod.POST)
+    public String The_headmaster_refuses(@RequestParam("integralAuditId") Integer integralAuditId,HttpSession session){
+        Map<Object,Object> map = new HashMap<Object, Object>();
+        map.put("integralAuditId",integralAuditId);
+        map.put("sprYj","");
+        map.put("AuditType",4);
+        Emp emp = (Emp) session.getAttribute("loginUser");
+        int empId = emp.getEmpno();
+        map.put("empid",empId);
+        int x = bgIntegralService.updIntegralauditAuditType(map);
+        if(x>0){
+            return "y";
+        }
+        else {
+            return "n";
+        }
+    }
+
+    @RequestMapping("Opinion_flow_chart")
+    public String Opinion_flow_chart(Model model){
+        System.out.println("查看意见流程图");
+        model.addAttribute("aud",bgIntegralService.findAll());
+        model.addAttribute("proType",bgIntegralService.findAllDept());
+        return "background/All_Opinion_flow_chart";
+    }
+
+    @RequestMapping(value = "findAllIntegralAuditByDeptNo",method = RequestMethod.POST)
+    public String findAllIntegralAuditByDeptNo(@RequestParam("proTypeNo")Integer proTypeNo,Model model){
+        model.addAttribute("aud",bgIntegralService.findAllIntegralAuditByDeptNo(proTypeNo));
+        model.addAttribute("proType",bgIntegralService.findAllDept());
+        return "background/All_Opinion_flow_chart";
+    }
 
 }

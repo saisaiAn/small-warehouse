@@ -23,4 +23,15 @@
             intergralno=#{intergralno}
         </where>
     </update>
+
+    <!--结算 加积分 -->
+    <update id="addProcessingIntegral" parameterType="java.util.Map">
+        update Integral set TotalIntegral = TotalIntegral + #{jfNum},RemainingPoints = RemainingPoints + #{jfNum} where IntergralNo = #{IntergralNo}
+    </update>
+
+    <!--结算 减少积分 -->
+    <update id="reduceProcessingIntegral" parameterType="java.util.Map">
+        update Integral set RemainingPoints = RemainingPoints + #{jfNum},HaveIntegral = HaveIntegral - #{jfNum} where IntergralNo = #{IntergralNo}
+    </update>
+
 </mapper>
