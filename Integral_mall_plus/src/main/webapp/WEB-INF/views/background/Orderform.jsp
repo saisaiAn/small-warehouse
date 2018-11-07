@@ -86,7 +86,9 @@
                 <td>${o.emp.empname}</td>
                 <td>${o.ordercommoditysum}</td>
                 <td>
+                    <c:if test="${o.orderstatus == 1}">
                     <a href="javascript:ovid()" class="modify_state" style="color: darkorange" orderid="${o.orderno}" title="处理意见请求">修改状态</a>
+                    </c:if>
                     <c:if test="${o.orderstatus == 2}">
                         <a href="javascript:ovid()" class="exchange" style="color: red"  title="处理意见请求">兑换</a>
                     </c:if>

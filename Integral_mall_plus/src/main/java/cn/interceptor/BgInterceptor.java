@@ -7,14 +7,13 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class BeforeInterceptor implements HandlerInterceptor {
-
+public class BgInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        Emp empReturn = (Emp) httpServletRequest.getSession().getAttribute("empBefore");
-        System.out.println("前台拦截器" );
+        Emp empReturn = (Emp) httpServletRequest.getSession().getAttribute("loginUser");
+        System.out.println("后台拦截器");
         if (empReturn==null||empReturn.equals("")){
-            httpServletResponse.sendRedirect("/hello");
+            httpServletResponse.sendRedirect("/view");
             return false;
         }
         return true;
