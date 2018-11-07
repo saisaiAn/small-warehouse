@@ -85,12 +85,24 @@
                 <result column="depaname" property="depaname"/>
                 <result column="parentdepa" property="parentdepa"/>
             </association>
-            <association property="integralId" javaType="cn.bean.Integral">
-                <id column="intergralno" property="intergralno"/>
-                <result column="totalintegral" property="totalintegral"/>
-                <result column="haveintegral" property="haveintegral"/>
-                <result column="remainingpoints" property="remainingpoints"/>
-                <result column="lastchangetime" property="lastchangetime"/>
+        </association>
+        <association property="empReviewer" javaType="cn.bean.Emp">
+            <id column="empno" property="empno"></id>
+            <result column="empname"  property="empname" />
+            <result column="empsex"  property="empsex" />
+            <result column="idcard"  property="idcard" />
+            <result column="departmentno"  property="departmentno" />
+            <result column="positivedates" property="positivedates" />
+            <result column="empphone"  property="empphone" />
+            <result column="intergralno"  property="intergralno" />
+            <result column="position"  property="position" />
+            <result column="emptype"  property="emptype" />
+            <result column="password"  property="password" />
+            <!-- 审核表下员工表下的部门信息 -->
+            <association property="departmentId" javaType="cn.bean.Department">
+                <id column="depano" property="depano"/>
+                <result column="depaname" property="depaname"/>
+                <result column="parentdepa" property="parentdepa"/>
             </association>
         </association>
         <!-- 积分类型 -->
@@ -104,43 +116,24 @@
         e.empno, e.empname, e.empsex, e.idcard, e.departmentno, e.positivedates, e.empphone,
         e.intergralno, e.position, e.emptype, e.password,
         d.depano, d.depaname,d.parentdepa,
+        es.empno, es.empname, es.empsex, es.idcard, es.departmentno, es.positivedates, es.empphone,
+        es.intergralno, es.position, es.emptype, es.password,
+        ds.depano, ds.depaname,ds.parentdepa,
         t.IntegralTypeNo,t.IntegralTypeName
     </sql>
     <select id="findAllIntegralAudit" resultMap="WithIntegralAuditResultMap">
         SELECT
         <include refid="findAllIntegralAuditSql"></include>
-        from integralaudit a,emp e,department d,integral i,IntegralType t
+        from integralaudit a,emp e,department d,integral i,IntegralType t,emp es,department ds
         where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo
-        and e.departmentno=d.depano
+        and e.departmentno=d.depano and a.reviewer=es.empno and es.departmentno=ds.depano
     </select>
-
-    <!-- 根据部门查询 -->
-    <select id="findAllIntegralAuditByDeptNo" resultMap="WithIntegralAuditResultMap" parameterType="java.lang.Integer">
+    <select id="byId" parameterType="cn.bean.IntegralAudit" resultMap="WithIntegralAuditResultMap">
         SELECT
         <include refid="findAllIntegralAuditSql"></include>
         from integralaudit a,emp e,department d,integral i,IntegralType t
-        where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo
-        and e.departmentno=d.depano
-          <if test="deptno!=null and deptno!=''">
-              and e.DepartmentNo =#{deptno}
-          </if>
-
-
-
+        where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo and a.reviewer=es.empno and es.departmentno=ds.depano
+        and e.departmentno=d.depano and integralauditno=#{integralauditno}
     </select>
-
-    <!-- 综合部经理审批意见 吧意见状态修改为 2（申请中转为审核中 提交给校长看见） -->
-    <update id="updIntegralauditAuditType" parameterType="java.util.Map">
-        UPDATE IntegralAudit set AuditType = #{AuditType} , reviewer = #{empid},
-            <if test="sprYj != null">
-                AuditOpinion = #{sprYj}
-            </if>
-           where IntegralAuditNo = #{integralAuditId}
-    </update>
-
-
-
-
-
 
 </mapper>

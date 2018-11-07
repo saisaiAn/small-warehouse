@@ -24,5 +24,4 @@ public interface CommodityMapper {
     List<Commodity> likeProductByProName(String proName);
 
     List<Commodity> commodityByType(@Param("commodityTypeNo") Integer commodityTypeNo);
-    int updateCommoditySum(Commodity commodity);
 }

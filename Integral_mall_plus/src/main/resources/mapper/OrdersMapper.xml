@@ -52,38 +52,6 @@
             </if>
         </where>
     </select>
-
-    <select id="selectOrdersByRedeemCode" parameterType="java.lang.String" resultMap="ordersResultMap" >
-        select
-        <include refid="WithOrders_Column_List" />
-        from orders o ,commodity c,emp e
-        <where>
-            o.ordercommodityno=c.commodityno and o.empno=e.empno and o.OrderExchange=#{RedeemCode}
-        </where>
-    </select>
-
-    <select id="selectOrders" resultMap="ordersResultMap" >
-        select
-        <include refid="WithOrders_Column_List" />
-        from orders o ,commodity c,emp e
-        <where>
-            o.ordercommodityno=c.commodityno and o.empno=e.empno
-        </where>
-    </select>
-
-    <select id="selectOrdersById" parameterType="java.lang.Integer" resultMap="ordersResultMap" >
-        select
-        <include refid="WithOrders_Column_List" />
-        from orders o ,commodity c,emp e
-        <where>
-            o.ordercommodityno=c.commodityno and o.empno=e.empno
-            <if test="id!=null and id!=''">
-                and o.OrderNo=#{id}
-            </if>
-
-        </where>
-    </select>
-
     <insert id="insertOrders" parameterType="cn.bean.Orders" useGeneratedKeys="true" keyProperty="orderno" keyColumn="orderno">
         insert into Orders
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -133,11 +101,4 @@
             </if>
         </trim>
     </insert>
-
-    <update id="updOrderStatus" parameterType="java.util.Map">
-        update orders set OrderStatus =#{OrderStatus} where OrderNo = #{Oid}
-    </update>
-
-
-
 </mapper>

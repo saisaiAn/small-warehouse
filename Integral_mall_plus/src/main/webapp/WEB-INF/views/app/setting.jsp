@@ -52,10 +52,6 @@
                             <li>
                                 <a href="/toAppnIndex" class="waves-effect"><i class="mdi mdi-airplay"></i><span> 首页</span></a>
                             </li>
-
-                            <li>
-                                <a href="/toAppCalendar" class="waves-effect"><i class="mdi mdi-calendar-clock"></i><span> 日历 </span></a>
-                            </li>
                             <li>
                                 <a href="/toAppSetting" class="waves-effect"><i class="mdi mdi-settings"></i><span> 个人设置</span></a>
                             </li>
@@ -85,19 +81,6 @@
                         <nav class="navbar-custom">
 
                             <ul class="list-inline float-right mb-0">
-                                <!-- language-->
-                                <li class="list-inline-item dropdown notification-list hide-phone">
-                                    <a class="nav-link dropdown-toggle arrow-none waves-effect text-white" data-toggle="dropdown" href="#" role="button"
-                                        aria-haspopup="false" aria-expanded="false">
-                                        English <img src="/static/app/assets/images/flags/us_flag.jpg" class="ml-2" height="16" alt=""/>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right language-switch">
-                                        <a class="dropdown-item" href="#"><img src="/static/app/assets/images/flags/italy_flag.jpg" alt="" height="16"/><span> Italian </span></a>
-                                        <a class="dropdown-item" href="#"><img src="/static/app/assets/images/flags/french_flag.jpg" alt="" height="16"/><span> French </span></a>
-                                        <a class="dropdown-item" href="#"><img src="/static/app/assets/images/flags/spain_flag.jpg" alt="" height="16"/><span> Spanish </span></a>
-                                        <a class="dropdown-item" href="#"><img src="/static/app/assets/images/flags/russia_flag.jpg" alt="" height="16"/><span> Russian </span></a>
-                                    </div>
-                                </li>
                                 <li class="list-inline-item dropdown notification-list">
                                     <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button"
                                        aria-haspopup="false" aria-expanded="false">
@@ -136,43 +119,7 @@
                                     </div>
                                 </li>
 
-                                <li class="list-inline-item dropdown notification-list">
-                                    <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button"
-                                       aria-haspopup="false" aria-expanded="false">
-                                        <i class="ti-bell noti-icon"></i>
-                                        <span class="badge badge-success noti-icon-badge">23</span>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
-                                        <!-- item-->
-                                        <div class="dropdown-item noti-title">
-                                            <h5><span class="badge badge-danger float-right">87</span>Notification</h5>
-                                        </div>
 
-                                        <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                            <div class="notify-icon bg-primary"><i class="mdi mdi-cart-outline"></i></div>
-                                            <p class="notify-details"><b>Your order is placed</b><small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
-                                        </a>
-
-                                        <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                            <div class="notify-icon bg-success"><i class="mdi mdi-message"></i></div>
-                                            <p class="notify-details"><b>New Message received</b><small class="text-muted">You have 87 unread messages</small></p>
-                                        </a>
-
-                                        <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                            <div class="notify-icon bg-warning"><i class="mdi mdi-martini"></i></div>
-                                            <p class="notify-details"><b>Your item is shipped</b><small class="text-muted">It is a long established fact that a reader will</small></p>
-                                        </a>
-
-                                        <!-- All-->
-                                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                            View All
-                                        </a>
-
-                                    </div>
-                                </li>
 
                                 <li class="list-inline-item dropdown notification-list">
                                     <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
@@ -240,8 +187,8 @@
                                         <div class="card-body">                                           
                                             <div class=" text-center">                        
                                                 <img src="/static/app/assets/images/users/avatar-1.jpg" alt="" class="rounded-circle img-thumbnail w-50">
-                                                <h4 class="font-16">黄安</h4>
-                                                <a href="" class="text-muted font-14">18821874652</a>
+                                                <h4 class="font-16">${appEmp.empname}</h4>
+                                                <a href="" class="text-muted font-14">${appEmp.empphone}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -250,21 +197,21 @@
                                     <div class="card bg-white m-b-30">
                                         <div class="card-body">
                                             <div class="general-label">
-                                                <form role="form">
+                                                <form role="form" action="/appMaster" method="post">
+                                                    <input type="hidden" name="empno" value="${appEmp.empno}">
                                                     <div class="form-group">
-                                                        <label for="exampleInputName1">全名</label>
-                                                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Full Name">
+                                                        <label for="exampleInputName1">用户名</label>
+                                                        <input type="text" class="form-control" id="exampleInputName1" value="${appEmp.empname}" disabled="disabled">
                                                     </div>
-                                                    
                                                     <div class="form-group">
                                                         <label for="exampleInputPhone">电话</label>
-                                                        <input type="Phone" class="form-control" id="exampleInputPhone" placeholder="phone">
+                                                        <input type="Phone" class="form-control" name="empphone" id="exampleInputPhone" value="${appEmp.empphone}">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="exampleInputPassword1">密码</label>
-                                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                                        <input type="password" class="form-control" name="password" id="exampleInputPassword1" value="${appEmp.password}">
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary">保存</button>
+                                                    <button type="submit" class="btn btn-primary" >保存</button>
                                                 </form>                                    
                                             </div>
                                         </div>
