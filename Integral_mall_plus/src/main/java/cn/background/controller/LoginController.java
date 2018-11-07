@@ -1,16 +1,20 @@
 package cn.background.controller;
 
 import cn.background.bgService.BgLoginService;
+import cn.bean.Commodity;
 import cn.bean.Emp;
+import cn.bean.Orders;
 import cn.dao.EmpMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class LoginController {
@@ -54,8 +58,47 @@ public class LoginController {
         return "/background/index";
     }
     @RequestMapping("home.html")
-    public String home(){//跳转首页
+    public String home(Model model){//跳转首页
         System.out.println("首页");
+        model.addAttribute("allEmp",bgLoginService.findAllEmp());
+        List<Orders> orders = bgLoginService.selectOrders();
+        model.addAttribute("allOrders",orders);
+        int countOrderOrderintegral = 0;
+        int countOrderstatus = 0 ;
+        int countOrderstatus2 =0;
+        int countOrderstatus3 =0;
+        for (Orders o: orders
+             ) {
+            countOrderOrderintegral+=(Integer.parseInt(o.getOrderintegral()));
+            if(o.getOrderstatus()==1){
+                ++ countOrderstatus ;
+            }
+            if(o.getOrderstatus()==2){
+                ++ countOrderstatus2 ;
+            }
+            if(o.getOrderstatus()==3){
+                ++ countOrderstatus3 ;
+            }
+        }
+        model.addAttribute("countOrderOrderintegral",countOrderOrderintegral);
+        model.addAttribute("countOrderstatus",countOrderstatus);
+        model.addAttribute("countOrderstatus2",countOrderstatus2);
+        model.addAttribute("countOrderstatus3",countOrderstatus3);
+        List<Commodity> com = bgLoginService.selectAllCommodity();
+        int shangjia = 0;
+        int xiajia=0;
+        for (Commodity c:com
+             ) {
+            if(c.getCommoditytype()==1){
+                ++shangjia;
+            }
+            if(c.getCommoditytype()==0){
+                ++xiajia;
+            }
+        }
+        model.addAttribute("allComm",com);
+        model.addAttribute("shangjia",shangjia);
+        model.addAttribute("xiajia",xiajia);
         return "/background/home";
     }
 

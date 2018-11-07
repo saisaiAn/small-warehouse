@@ -31,6 +31,24 @@
                 <mvc:mapping path="/Before/*"/>
                 <bean class="cn.interceptor.BeforeInterceptor"></bean>
             </mvc:interceptor>
+
+            <mvc:interceptor>
+                <mvc:mapping path="/**"/>
+                <!--不拦截的请求-->
+                <mvc:exclude-mapping path="/**/fonts/*"/>
+                <mvc:exclude-mapping path="/**/*.css"/>
+                 <mvc:exclude-mapping path="/**/*.js"/>
+                 <mvc:exclude-mapping path="/**/*.png"/>
+                 <mvc:exclude-mapping path="/**/*.gif"/>
+                 <mvc:exclude-mapping path="/**/*.jpg"/>
+                 <mvc:exclude-mapping path="/**/*.jpeg"/>
+                <mvc:exclude-mapping path="/hello"/>
+                <mvc:exclude-mapping path="/app"/>
+                <mvc:exclude-mapping path="/login"/>
+                <mvc:exclude-mapping path="/view"/>
+                <!--定义拦截器的拦截方法-->
+                <bean class="cn.interceptor.BgInterceptor"></bean>
+            </mvc:interceptor>
         </mvc:interceptors>
     <mvc:default-servlet-handler/>
         <mvc:annotation-driven/>

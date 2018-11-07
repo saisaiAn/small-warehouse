@@ -1,4 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -33,7 +36,7 @@
 <div class="page-content clearfix">
     <div class="alert alert-block alert-success">
         <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
-        <i class="icon-ok green"></i>欢迎使用<strong class="green">后台管理系统<small>(v1.2)</small></strong>,你本次登录时间为2016年7月12日13时34分，登录IP:192.168.1.110.
+        <i class="icon-ok green"></i>欢迎使用<strong class="green">后台jf管理系统<small>(v1.2)</small></strong>,你本次登录时间为2016年7月12日13时34分
     </div>
     <div class="state-overview clearfix">
         <div class="col-lg-3 col-sm-6">
@@ -43,30 +46,30 @@
                         <i class="icon-user"></i>
                     </div>
                     <div class="value">
-                        <h1>34522</h1>
+                        <h1>${fn:length(allEmp)}</h1>
                         <p>商城用户</p>
                     </div>
                 </a>
             </section>
         </div>
-        <div class="col-lg-3 col-sm-6">
+       <%-- <div class="col-lg-3 col-sm-6">
             <section class="panel">
                 <div class="symbol red">
                     <i class="icon-tags"></i>
                 </div>
                 <div class="value">
                     <h1>140</h1>
-                    <p>分销记录</p>
+                    <p>永远商城</p>
                 </div>
             </section>
-        </div>
+        </div>--%>
         <div class="col-lg-3 col-sm-6">
             <section class="panel">
                 <div class="symbol yellow">
                     <i class="icon-shopping-cart"></i>
                 </div>
                 <div class="value">
-                    <h1>345</h1>
+                    <h1>${fn:length(allOrders)}</h1>
                     <p>商城订单</p>
                 </div>
             </section>
@@ -77,7 +80,7 @@
                     <i class="icon-bar-chart"></i>
                 </div>
                 <div class="value">
-                    <h1>￥34,500</h1>
+                    <h1>￥${countOrderOrderintegral}积分</h1>
                     <p>交易记录</p>
                 </div>
             </section>
@@ -89,11 +92,9 @@
             <div class="title_name">订单统计信息</div>
             <table class="table table-bordered">
                 <tbody>
-                <tr><td class="name">未处理订单：</td><td class="munber"><a href="#">0</a>&nbsp;个</td></tr>
-                <tr><td class="name">待发货订单：</td><td class="munber"><a href="#">10</a>&nbsp;个</td></tr>
-                <tr><td class="name">待结算订单：</td><td class="munber"><a href="#">13</a>&nbsp;个</td></tr>
-                <tr><td class="name">已成交订单数：</td><td class="munber"><a href="#">26</a>&nbsp;个</td></tr>
-                <tr><td class="name">交易失败：</td><td class="munber"><a href="#">26</a>&nbsp;个</td></tr>
+                <tr><td class="name">未处理订单：</td><td class="munber"><a href="#">${countOrderstatus}</a>&nbsp;个</td></tr>
+                <tr><td class="name">待领取订单：</td><td class="munber"><a href="#">${countOrderstatus2}</a>&nbsp;个</td></tr>
+                <tr><td class="name">以领取订单：</td><td class="munber"><a href="#">${countOrderstatus3}</a>&nbsp;个</td></tr>
                 </tbody>
             </table>
         </div>
@@ -101,16 +102,13 @@
             <div class="title_name">商品统计信息</div>
             <table class="table table-bordered">
                 <tbody>
-                <tr><td class="name">商品总数：</td><td class="munber"><a href="#">340</a>&nbsp;个</td></tr>
-                <tr><td class="name">回收站商品：</td><td class="munber"><a href="#">10</a>&nbsp;个</td></tr>
-                <tr><td class="name">上架商品：</td><td class="munber"><a href="#">13</a>&nbsp;个</td></tr>
-                <tr><td class="name">下架商品：</td><td class="munber"><a href="#">26</a>&nbsp;个</td></tr>
-                <tr><td class="name">商品评论：</td><td class="munber"><a href="#">21s6</a>&nbsp;条</td></tr>
-
+                <tr><td class="name">商品总数：</td><td class="munber"><a href="#">${fn:length(allComm)}</a>&nbsp;个</td></tr>
+                <tr><td class="name">上架商品：</td><td class="munber"><a href="#">${shangjia}</a>&nbsp;个</td></tr>
+                <tr><td class="name">下架商品：</td><td class="munber"><a href="#">${xiajia}</a>&nbsp;个</td></tr>
                 </tbody>
             </table>
         </div>
-        <div class="Order_Statistics">
+       <%-- <div class="Order_Statistics">
             <div class="title_name">会员登录统计信息</div>
             <table class="table table-bordered">
                 <tbody>
@@ -120,7 +118,7 @@
                 <tr><td class="name">QQ会员登录：</td><td class="munber"><a href="#">1130</a>&nbsp;次</td></tr>
                 </tbody>
             </table>
-        </div>
+        </div>--%>
         <!--<div class="t_Record">
           <div id="main" style="height:300px; overflow:hidden; width:100%; overflow:auto" ></div>
          </div> -->
@@ -139,34 +137,34 @@
     <div class="clearfix">
         <div class="home_btn" style="margin-top: 40px;">
             <div>
-                <a href="picture-add.html"  title="添加商品" class="btn  btn-info btn-sm no-radius">
-                    <i class="bigger-200"><img src="/static/background/images/icon-addp.png" /></i>
-                    <h5 class="margin-top">添加商品</h5>
-                </a>
-                <a href="Category_Manage.html"  title="产品分类" class="btn  btn-primary btn-sm no-radius">
-                    <i class="bigger-200"><img src="/static/background/images/icon-cpgl.png" /></i>
-                    <h5 class="margin-top">产品分类</h5>
-                </a>
-                <a href="admin_info.html"  title="个人信息" class="btn  btn-success btn-sm no-radius">
+                <c:if test="${loginUser.position == 3 || loginUser.position == 4  }">
+                    <a href="product/Products_List_html"  title="添加商品" class="btn  btn-info btn-sm no-radius">
+                        <i class="bigger-200"><img src="/static/background/images/icon-addp.png" /></i>
+                        <h5 class="margin-top">查看商品</h5>
+                    </a>
+                </c:if>
+                <a href="admin_info"  title="个人信息" class="btn  btn-success btn-sm no-radius">
                     <i class="bigger-200"><img src="/static/background/images/icon-grxx.png" /></i>
                     <h5 class="margin-top">个人信息</h5>
                 </a>
-                <a href="Systems.html"  title="系统设置" class="btn  btn-info btn-sm no-radius">
+               <%-- <a href="Systems.html"  title="系统设置" class="btn  btn-info btn-sm no-radius">
                     <i class="bigger-200"><img src="/static/background/images/xtsz.png" /></i>
                     <h5 class="margin-top">系统设置</h5>
-                </a>
-                <a href="Order_handling.html"  title="商品订单" class="btn  btn-purple btn-sm no-radius">
+                </a>--%>
+                <c:if test="${loginUser.position == 3 || loginUser.position == 4  }">
+                    <a href="Orderform_html"  title="商品订单" class="btn  btn-purple btn-sm no-radius">
                     <i class="bigger-200"><img src="/static/background/images/icon-gwcc.png" /></i>
                     <h5 class="margin-top">商品订单</h5>
-                </a>
-                <a href="picture-add.html"  title="添加广告" class="btn  btn-pink btn-sm no-radius">
+                    </a>
+                </c:if>
+               <%-- <a href="picture-add.html"  title="添加广告" class="btn  btn-pink btn-sm no-radius">
                     <i class="bigger-200"><img src="/static/background/images/icon-ad.png" /></i>
                     <h5 class="margin-top">添加广告</h5>
                 </a>
                 <a href="article_add.html"  title="添加文章" class="btn  btn-info btn-sm no-radius">
                     <i class="bigger-200"><img src="/static/background/images/icon-addwz.png" /></i>
                     <h5 class="margin-top">添加文章</h5>
-                </a>
+                </a>--%>
             </div>
         </div>
 
