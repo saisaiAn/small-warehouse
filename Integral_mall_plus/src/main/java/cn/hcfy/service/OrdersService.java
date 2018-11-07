@@ -1,7 +1,5 @@
 package cn.hcfy.service;
 
-import cn.bean.CommodityType;
-import cn.bean.Emp;
 import cn.bean.Orders;
 import cn.dao.OrdersMapper;
 import com.alibaba.fastjson.JSON;
@@ -42,7 +40,9 @@ public class OrdersService {
         List<Orders> Orders=ordersMapper.selectOrdersByEmpId(ByEmpIdMap);
         try{
             String cacheString =JSON.toJSONString(Orders);
+            if (cacheString.length()>10){
             jedisClient.set("BeforeOrders",cacheString);
+            }
         }catch (Exception e){
             e.printStackTrace();
         }

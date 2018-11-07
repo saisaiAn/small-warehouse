@@ -10,4 +10,10 @@
         VALUES(null,#{imagerurl},#{imageclassification},#{imagerdescription},#{imagerid});
 
     </insert>
+
+    <update id="updImg" parameterType="cn.bean.Imager">
+        update imager set imagerurl =#{imagerurl} where imagerID =#{imagerid}
+    </update>
+
+
 </mapper>

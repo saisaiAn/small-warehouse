@@ -23,7 +23,6 @@ public class EmpService {
     }
 
     public int updateBeforeEmp(Emp emp){
-        System.out.println(emp);
         return  empMapper.updateBeforeEmp(emp);
     }
     public Emp selectOldPassword(Emp emp){

@@ -86,81 +86,7 @@
 		        
 		      
 		        <!--新品专区-->
-		        <div class="onnew clearfloat">
-		        	<div class="boutit clearfloat">
-		        		<span></span>
-		        		<samp>新品专区</samp>
-		        	</div>
-		        	<div class="content clearfloat">
-		        		<div class="top clearfloat">
-		        			<div class="list clearfloat fl box-s">
-		        				<a href="/toBeforeDetail">
-			        				<div class="zuo clearfloat fl box-s">
-			        					<p class="tit text">单反相机，彰显你的风格</p>
-				        				<p><span>积分:</span><span class="over db red">1000000</span></p>
-			        				</div>
-			        				<div class="tu clearfloat fr">
-			        					<span></span>
-			        					<img src="/static/before/images/xj.jpg"/>
-			        				</div>
-		        				</a>
-		        			</div>
-		        			<div class="list clearfloat fl box-s">
-		        				<a href="/toBeforeDetail">
-			        				<div class="zuo clearfloat fl box-s">
-			        					<p class="tit text">单反相机，彰显你的风格</p>
-				        				<p><span>积分:</span><span class="over db red">1000000</span></p>
-			        				</div>
-			        				<div class="tu clearfloat fr">
-			        					<span></span>
-			        					<img src="/static/before/images/xj.jpg"/>
-			        				</div>
-		        				</a>
-		        			</div>
-		        		</div>
-		        		<div class="bottom clearfloat">
-		        			<div class="list clearfloat fl">
-		        				<a href="/toBeforeDetail">
-		        					
-			        				<div class="tu clearfloat fr">
-			        					<span></span>
-			        					<img src="/static/before/images/dd.jpg"/>
-			        				</div>
-			        				<div class="shang clearfloat fl box-s">
-			        					<p class="tit over">实现梦想的哆啦A梦</p>
-				        				<p><span>积分:</span><span class="over db red">1000</span></p>
-			        				</div>
-		        				</a>
-		        			</div>
-		        			<div class="list clearfloat fl">
-		        				<a href="/toBeforeDetail">
-		        					
-			        				<div class="tu clearfloat fr">
-			        					<span></span>
-			        					<img src="/static/before/images/dd.jpg"/>
-			        				</div>
-			        				<div class="shang clearfloat fl box-s">
-			        					<p class="tit over">实现梦想的哆啦A梦</p>
-				        				<p><span>积分:</span><span class="over db red">1000</span></p>
-			        				</div>
-		        				</a>
-		        			</div>
-		        			<div class="list clearfloat fl">
-		        				<a href="/toBeforeDetail">
-		        					
-			        				<div class="tu clearfloat fr">
-			        					<span></span>
-			        					<img src="/static/before/images/dd.jpg"/>
-			        				</div>
-			        				<div class="shang clearfloat fl box-s">
-			        					<p class="tit over">实现梦想的哆啦A梦</p>
-				        				<p><span>积分:</span><span class="over db red">1000</span></p>
-			        				</div>
-		        				</a>
-		        			</div>
-		        		</div>
-		        	</div>
-		        </div>
+
 				<% int i=1;%>
 		        <!--1F家居用品、电器-->
 			<c:forEach items="${typeList}" var="type">
@@ -171,9 +97,9 @@
 					</div>
 					<div class="content clearfloat">
 						<c:forEach items="${commodityList}" var="commodity">
-							<c:if test="${commodity.commoditytypeno==type.commoditytypeno}">
+							<c:if test="${commodity.commoditytypeno==type.commoditytypeno&&commodity.commoditytype==1}">
 								<div class="list clearfloat fl">
-									<a href="/toBeforeDetail?id=${commodity.commodityno}">
+									<a href="/Before/toBeforeDetail?id=${commodity.commodityno}">
 										<div class="tu clearfloat fr">
 											<span></span>
 											<c:forEach items="${imgList}" var="img">
@@ -199,25 +125,25 @@
 		<footer class="page-footer fixed-footer" id="footer">
 			<ul>
 				<li class="active">
-					<a href="/toBeforeIndex">
+					<a href="/Before/toBeforeIndex">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeCation">
+					<a href="/Before/toBeforeCation">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeShopcar">
+					<a href="/Before/toBeforeShopcar">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeCenter">
+					<a href="/Before/toBeforeCenter">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>

@@ -47,113 +47,46 @@
 	    <!--头部区域结束-->
 	    <div class="warp clearfloat">
 		    <div class="cations clearfloat">
-		    	<div class="list clearfloat fl">
-		    		<a href="/toBeforeList">
-			    		<p class="tit over box-s">家居家纺</p>
-			    		<div class="tu">
-			    			<img src="/static/before/images/jiaju.jpg"/>
-			    		</div>
-		    		</a>
-		    	</div>
-		    	<div class="list clearfloat fl">
-		    		<a href="/toBeforeList">
-			    		<p class="tit over box-s">3C数码</p>
-			    		<div class="tu">
-			    			<img src="/static/before/images/3c.jpg"/>
-			    		</div>
-		    		</a>
-		    	</div>
-		    	<div class="list clearfloat fl">
-		    		<a href="/toBeforeList">
-			    		<p class="tit over box-s">家用电器</p>
-			    		<div class="tu">
-			    			<img src="/static/before/images/dianqi.jpg"/>
-			    		</div>
-		    		</a>
-		    	</div>
-		    	<div class="list clearfloat fl">
-		    		<a href="/toBeforeList">
-			    		<p class="tit over box-s">厨房小电</p>
-			    		<div class="tu">
-			    			<img src="/static/before/images/chufang.jpg"/>
-			    		</div>
-		    		</a>
-		    	</div>
-		    	<div class="list clearfloat fl">
-		    		<a href="/toBeforeList">
-			    		<p class="tit over box-s">零食小吃</p>
-			    		<div class="tu">
-			    			<img src="/static/before/images/lingshi.jpg"/>
-			    		</div>
-		    		</a>
-		    	</div>
-		    	<div class="list clearfloat fl">
-		    		<a href="/toBeforeList">
-			    		<p class="tit over box-s">酒水饮料</p>
-			    		<div class="tu">
-			    			<img src="/static/before/images/4.jpg"/>
-			    		</div>
-		    		</a>
-		    	</div>
-		    	<div class="list clearfloat fl">
-		    		<a href="/toBeforeList">
-			    		<p class="tit over box-s">个护健康</p>
-			    		<div class="tu">
-			    			<img src="/static/before/images/gehu.jpg"/>
-			    		</div>
-		    		</a>
-		    	</div>
-		    	<div class="list clearfloat fl">
-		    		<a href="/toBeforeList">
-			    		<p class="tit over box-s">生活电器</p>
-			    		<div class="tu">
-			    			<img src="/static/before/images/shenghuo.jpg"/>
-			    		</div>
-		    		</a>
-		    	</div>
-		    	
-		    	<div class="list clearfloat fl">
-		    		<a href="/toBeforeList">
-			    		<p class="tit over box-s">服饰</p>
-			    		<div class="tu">
-			    			<img src="/static/before/images/fuzhuang.jpg"/>
-			    		</div>
-		    		</a>
-		    	</div>
-		    	<div class="list clearfloat fl">
-		    		<a href="/toBeforeList">
-			    		<p class="tit over box-s">生鲜水果</p>
-			    		<div class="tu">
-			    			<img src="/static/before/images/sg.jpg"/>
-			    		</div>
-		    		</a>
-		    	</div>
+				<c:forEach items="${typeList}" var="type">
+					<div class="list clearfloat fl">
+						<a href="/Before/toBeforeList?commoditytypeno=${type.commoditytypeno}">
+							<p class="tit over box-s">${type.commoditytypename}</p>
+							<div class="tu">
+								<c:forEach items="${imgList}" var="img">
+									<c:if test="${img.imageclassification==4&&img.imagerid==type.commoditytypeno}">
+										<img src="${img.imagerurl}" />
+									</c:if>
+								</c:forEach>
+							</div>
+						</a>
+					</div>
+				</c:forEach>
 		    </div>
 	    </div>	    
 	    
 	    <!--尾部区域-->
 		<footer class="page-footer fixed-footer" id="footer">
 			<ul>
-				<li class="active">
-					<a href="/toBeforeIndex">
+				<li>
+					<a href="/Before/toBeforeIndex">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
-				<li>
-					<a href="/toBeforeCation">
+				<li class="active">
+					<a href="/Before/toBeforeCation">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeShopcar">
+					<a href="/Before/toBeforeShopcar">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeCenter">
+					<a href="/Before/toBeforeCenter">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>

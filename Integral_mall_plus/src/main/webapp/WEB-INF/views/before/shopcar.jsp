@@ -102,26 +102,26 @@
 		<!--footer star-->
 		<footer class="page-footer fixed-footer" id="footer">
 			<ul>
-				<li class="active">
-					<a href="/toBeforeIndex">
+				<li>
+					<a href="/Before/toBeforeIndex">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeCation">
+					<a href="/Before/toBeforeCation">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
-				<li>
-					<a href="/toBeforeShopcar">
+				<li class="active">
+					<a href="/Before/toBeforeShopcar">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeCenter">
+					<a href="/Before/toBeforeCenter">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>
@@ -143,13 +143,13 @@
                    });
                    count=count.substring(0,count.length-1);
                    $.ajax({
-                       url:"/addBeforePay",
+                       url:"/Before/addBeforePay",
                        data:{ count:count} ,
                        type:"POST",
                        success:function (result) {
                            if (result=="y"){
                           		alert("下单成功！");
-                               location.href="/toBeforeOrders?id=${empBefore.empno}";
+                               location.href="/Before/toBeforeOrders?id=${empBefore.empno}";
                            }
                        }
                    })
@@ -169,7 +169,7 @@
 				}
 				var carno=$(this).attr("carno");
                 $.ajax({
-                    url:"/updateBeforeShopCar",
+                    url:"/Before/updateBeforeShopCar",
                     data:{ carno:carno, commoditySum:vals.html()} ,
                     type:"post",
                     success:function (result) {
@@ -185,15 +185,13 @@
 	                btn: ['确定', '取消'],
 	                yes: function(index) {
                         $.ajax({
-                            url:"/deleteBeforeShopCar",
+                            url:"/Before/deleteBeforeShopCar",
                             data:{ carno:del} ,
                             type:"POST",
                             success:function (result) {
                                 if (result=="y"){
-                                    alert("删除成功");
-                                    location.href="/toBeforeShopcar";
+                                    location.href="/Before/toBeforeShopcar";
                                 }else {
-                                    alert("删除失败");
                                     window.location.reload();
                                 }
                             }

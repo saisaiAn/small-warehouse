@@ -49,7 +49,7 @@
 	    <div class="warp warptwo clearfloat">
 	    	<div class="confirm clearfloat">
 	    		<div class="add clearfloat box-s">
-	    			<a href="/toBeforeAddress">
+	    			<a href="/Before/toBeforeAddress">
 		    			<div class="left clearfloat fl">
 		    				<i class="iconfont icon-dizhi1"></i>
 		    			</div>
@@ -73,12 +73,12 @@
 						</div>
 					</a>
 					<div class="right clearfloat fl">
-						<a href="/toBeforeDetail">
+						<a href="/Before/toBeforeDetail">
 							<p class="tit over">单反相机，彰显你的风格</p>
 							<p class="fu-tit">颜色：蓝色  内存：120G</p>
 						</a>
 						<div class="xia clearfloat">
-							<a href="/toBeforeDetail">
+							<a href="/Before/toBeforeDetail">
 								<p class="jifen fl over">100000积分</p>
 							</a>
 							<span class="fr db">×1</span>
@@ -161,25 +161,25 @@
 	    <footer class="page-footer fixed-footer" id="footer">
 			<ul>
 				<li>
-					<a href="/toBeforeIndex">
+					<a href="/Before/toBeforeIndex">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeCation">
+					<a href="/Before/toBeforeCation">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li class="active">
-					<a href="/toBeforeShopcar">
+					<a href="/Before/toBeforeShopcar">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="/toBeforeCenter">
+					<a href="/Before/toBeforeCenter">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>

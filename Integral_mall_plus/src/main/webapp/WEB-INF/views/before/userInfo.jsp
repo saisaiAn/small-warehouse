@@ -44,8 +44,10 @@
 
                     <!--个人信息 -->
                     <div class="info-main">
-                        <form class="am-form am-form-horizontal" action="/BeforeUpdateEmp" method="post">
+                        <form class="am-form am-form-horizontal" action="/Before/BeforeUpdateEmp" method="post">
                             <input type="hidden" name="empno" value="${empBefore.empno}">
+                            <input type="hidden" name="empname" value="${empBefore.empname}">
+                            <input type="hidden" name="password" value="${empBefore.password}">
                             <div class="am-form-group">
                                 <label for="user-name" class="am-form-label">姓名</label>
                                 <div class="am-form-content">
@@ -73,7 +75,7 @@
                             <div class="am-form-group ">
                                 <label class="am-form-label">登录密码</label>
                                 <div class="am-form-content password">
-                                    <a href="/toBeforePassword">
+                                    <a href="/Before/toBeforePassword">
                                         <span class="am-form-label" style="float: right">修改</span>
                                     </a>
                                 </div>

@@ -4,6 +4,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+<meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
 <html>
 <head>
     <base href="<%=basePath%>">
@@ -14,7 +15,7 @@
     <script src="/static/background/assets/layer/layer.js" type="text/javascript"></script>
 </head>
 <body>
-<form class="form-horizontal" name="proForm" action="" method="post">
+<form class="form-horizontal" action="" method="post">
     <input type="hidden" name="commodityno" id="proid" value="${pro.commodityno}"/>
     <div class="form-group" >
         <label  class="col-sm-2 control-label">商品名称</label>
@@ -70,7 +71,7 @@
                 </c:if>
             </c:forEach>
         </div>
-        <button type="button" class="btn btn-success">修改商品图片</button>
+
     </div>
     <br/>
 
@@ -81,53 +82,90 @@
         </div>
     </div>
 </form>
+<form action="product/updProImage" name="imgForm" enctype="multipart/form-data"  method="post" >
+    <div
+       style="margin-left: 500px;margin-top: 15px;" >
+        <br/>
+        <div class="btn btn-info btn-sm FileDiv" style="width: 150px;height: 30px;">
+            选择图片
+            <input type="file" class="btn btn-info btn-sm" name="img" id="proimg" style="opacity: 0;margin-top: -25px;margin-left: -10px;width: 150px;"/>
 
+        </div>
+
+        <input type="hidden" name="id" id="newproid" value="${pro.commodityno}"/>
+        <button type="button" class="btn btn-success proImgUpd">提交修改</button>
+    </div>
+</form>
 
 
 <script type="text/javascript">
     $(function () {
-        $(".updProduct").css("display","none");
+        $(".updProduct").css("display", "none");
         $(".updReadonly").click(function () {
-            $(".readonly").prop("readonly",false);
-            $(".updProduct").css("display","inline");
+            $(".readonly").prop("readonly", false);
+            $(".updProduct").css("display", "inline");
         })
 
         $(".updProduct").click(function () {
-            if(confirm("确认修改?")){
+            if (confirm("确认修改?")) {
                 var commoditytitle = $("#commoditytitle").val();
                 var price = $("#price").val();
                 var needintegral = $("#needintegral").val();
                 var commodityinventory = $("#commodityinventory").val();
                 var commoditytypeno = $("#commoditytypeno").val();
                 var commoditydetails = $("#commoditydetails").val();
-                var proid=$("#proid").val();
-                if(commoditytitle==""||price==""||needintegral==""||commodityinventory==""||commoditytypeno==0||commoditydetails==""){
+                var proid = $("#proid").val();
+                if (commoditytitle == "" || price == "" || needintegral == "" || commodityinventory == "" || commoditytypeno == 0 || commoditydetails == "") {
                     layer.msg("请填写完整所有内容");
-                }else if(isNaN(price)||isNaN(needintegral)||isNaN(commodityinventory)){
+                } else if (isNaN(price) || isNaN(needintegral) || isNaN(commodityinventory)) {
                     layer.msg("请填写正确的内容(如:商品价格、商品积分、商品库存为数字)");
-                }else{
+                } else {
                     //proForm.submit();
                     $.ajax({
-                        url:"product/udpateProduct",
-                        type:"post",
-                        data:{commoditytitle:commoditytitle,price:price,needintegral:needintegral,commodityinventory:commodityinventory,
-                            commoditytypeno:commoditytypeno,commoditydetails:commoditydetails,commodityno:proid },
-                        success:function (result) {
+                        url: "product/udpateProduct",
+                        type: "post",
+                        data: {
+                            commoditytitle: commoditytitle,
+                            price: price,
+                            needintegral: needintegral,
+                            commodityinventory: commodityinventory,
+                            commoditytypeno: commoditytypeno,
+                            commoditydetails: commoditydetails,
+                            commodityno: proid
+                        },
+                        success: function (result) {
                             layer.msg("修改成功");
                             setTimeout(function () {
-                                parent.location.href="/product/Products_List_html";
-                            },1500);
+                                parent.location.href = "/product/Products_List_html";
+                            }, 1500);
                         }
                     })
                 }
+            }
+
+
+        })
+
+        $(".proImgUpd").click(function () {
+            var file=$("#proimg").val();
+            if(confirm("确认要修改商品图片吗？")){
+                var strs = new Array(); //定义一数组
+                var pic1= file;
+                strs = pic1.split('.');
+                var suffix = strs [strs .length - 1];
+                if (suffix != 'jpg' && suffix != 'gif' && suffix != 'jpeg' && suffix != 'png') {
+                    layer.msg("你选择的不是图片,请选择图片！");
+                }else{
+                    imgForm.submit();
+                }
+
+
             }
         })
 
 
 
-
     })
-
 </script>
 </body>
 </html>

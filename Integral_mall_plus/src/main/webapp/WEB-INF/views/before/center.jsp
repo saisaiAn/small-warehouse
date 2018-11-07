@@ -10,8 +10,10 @@
     <link rel="stylesheet" type="text/css" href="/static/before/css/center.css" />
     <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
     <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
     <script src="/static/before/js/rem.js"></script>
     <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         sessionStorage.url = "confirm";
         $(window).load(function(){
@@ -42,21 +44,24 @@
     </header>
 <!-- 会员头像 -->
     <div class="vip-header">
-        <a href="/toBeforeUserInfo">
+        <a href="/Before/toBeforeUserInfo">
             <dl>
                 <dt>
                     <img src="/static/before/images/user.png" />
                 </dt>
                 <dd>
-                    <h4>${empBefore.empname}<span>普通会员</span></h4>
+                    <c:if test=""></c:if>
+                    <h4><c:if test="${!empty   empBefore.empname}">${empBefore.empname}<span>普通会员</span></c:if>
+                        <c:if test="${ empty  empBefore.empname}"><a href="/hello">请登录</a></c:if>
+                    </h4>
                     <p><span>积分：<i>${empBefore.integralId.remainingpoints}</i></span>&nbsp;&nbsp;<span>红包：<i>0</i></span></p>
                 </dd>
             </dl>
         </a>
         <ul>
-            <li><a href="/toBeforeOrders?id=${empBefore.empno}&status=1"><span></span><p>待审核</p> </a></li>
-            <li><a href="/toBeforeOrders?id=${empBefore.empno}&status=2"><span></span><p>待领取</p> </a></li>
-            <li><a href="/toBeforeOrders?id=${empBefore.empno}&status=3"><span></span><p>待评价</p> </a></li>
+            <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=1"><span></span><p>待审核</p> </a></li>
+            <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=2"><span></span><p>待领取</p> </a></li>
+            <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=3"><span></span><p>待评价</p> </a></li>
         </ul>
     </div>
 <!-- 会员俱乐部 -->
@@ -66,16 +71,14 @@
             <a href="">每日签到领积分<i class="iconfont"></i></a>
         </div>
         <ul>
-            <li><a href="/toBeforeOrders?id=${empBefore.empno}&status=0"><i class="iconfont"></i><p>我的订单</p> </a></li>
-            <li><a href=""><i class="iconfont"></i><p>我的秒杀</p> </a></li>
-            <li><a href=""><i class="iconfont" style="font-size: 28px;"></i><p>我的众筹</p> </a></li>
-            <li><a href=""><i class="iconfont"></i><p>我的预约</p> </a></li>
+            <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=0"><i class="iconfont"></i><p>我的订单</p> </a></li>
+            <li><a href="/Before/toBeforeUserInfo"><i class="iconfont"></i><p>个人信息</p> </a></li>
         </ul>
     </div>
     <div class="vip-club border_top_bottom vip-account">
         <div class="vip-club-title border_bottom">
             <span><i class="iconfont"></i>我的账户</span>
-            <a href="/toBeforeIndex">积分兑换商品<i class="iconfont"></i></a>
+            <a href="/Before/toBeforeIndex">积分兑换商品<i class="iconfont"></i></a>
         </div>
         <ul>
             <li><a href=""><i class="color_f44623">${empBefore.integralId.remainingpoints}</i><p>剩余积分</p> </a></li>
@@ -84,48 +87,79 @@
         </ul>
     </div>
     <div class="vip-list-icon border_top_bottom">
-        <ul>
-            <li class="border_bottom"> 
-                <a href="" class="border_right"><i class="iconfont icon-sousuo"></i><em>维修查询</em></a>
-                <a href=""><i class="iconfont" style="font-size:24px;"></i><em>报修退换</em></a> 
-            </li>
-            <li class="border_bottom">
-                <a href="" class="border_right"><i class="iconfont" style="font-size:24px;"></i><em>物流查询</em></a> 
-                <a href="/toBeforeAddress" onclick="sessionStorage.url = 'center';"><i class="iconfont icon-dizhi1"></i><em>收货地址</em></a>
-            </li>
-            <li class="border_bottom"> 
-                <a href="" class="border_right"><i class="iconfont"></i><em>评价晒单</em></a>
-                <a href=""><i class="iconfont" style="font-size:20px; text-indent:2px;"></i><em>我的投诉</em></a>
-             </li>
-            <li> 
-                <a href="" class="border_right"><i class="iconfont"></i><em>我的咨询</em></a> 
-                <a href=""><i class="iconfont" style="font-size:23px;"></i><em>二手订单</em></a>
-            </li>
-        </ul>
+        <table class="table table-condensed">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>   <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>   <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>   <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>
+
+
+
+            </tbody>
+        </table>
     </div>
     <!--尾部-->
     <footer class="page-footer fixed-footer" id="footer">
         <ul>
-            <li class="active">
-                <a href="/toBeforeIndex">
+            <li>
+                <a href="/Before/toBeforeIndex">
                     <i class="iconfont icon-shouye"></i>
                     <p>首页</p>
                 </a>
             </li>
             <li>
-                <a href="/toBeforeCation">
+                <a href="/Before/toBeforeCation">
                     <i class="iconfont icon-icon04"></i>
                     <p>分类</p>
                 </a>
             </li>
             <li>
-                <a href="/toBeforeShopcar">
+                <a href="/Before/toBeforeShopcar">
                     <i class="iconfont icon-gouwuche"></i>
                     <p>购物车</p>
                 </a>
             </li>
-            <li>
-                <a href="/toBeforeCenter">
+            <li class="active">
+                <a href="/Before/toBeforeCenter">
                     <i class="iconfont icon-yonghuming"></i>
                     <p>我的</p>
                 </a>

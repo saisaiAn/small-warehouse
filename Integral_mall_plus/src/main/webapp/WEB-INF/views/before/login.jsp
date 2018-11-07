@@ -103,7 +103,7 @@
 		</div>
 		<div class="login-content ">
 			<div class="form">
-				<form action="/BeforeLogin" id="loginFrom" method="post" name="loginFrom">
+				<form action="/Before/BeforeLogin" id="loginFrom" method="post" name="loginFrom">
 					<div class="form-group">
 						<div class="col-xs-12  ">
 							<div class="input-group">
@@ -151,23 +151,19 @@
             var empname =$("#empname").val();
             var password = $("#password").val();
             if (empname!=null&&empname.length >=6){
-                if (password !=null&&password.length >=6){
                    $.ajax({
                         url:"/BeforeLogin",
                         data:{ empname:empname, password:password} ,
                         type:"POST",
                         success:function (result) {
                             if (result=="y"){
-                                location.href="/toBeforeIndex";
+                                location.href="/Before/toBeforeIndex";
                             }else {
                                 alert("账号或密码不正确");
                                 window.location.reload();
                             }
                         }
                     })
-                }else{
-                    alert("请填写大于或等于6位的密码");
-                }
             }else{
                 alert("请填写大于或等于6位的用户名");
             }

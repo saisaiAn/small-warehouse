@@ -49,7 +49,15 @@
             and c.commodityno=#{commodityno}
         </where>
     </select>
-
+    <!-- 根据商品类型来查询商品 -->
+    <select id="commodityByType" parameterType="java.lang.Integer" resultMap="CommodityResultMap">
+        select
+        <include refid="WithCommodityType_Column_List" />from commodity c,commoditytype ct,commoditytype sct
+        <where>
+            c.commoditytypeno=ct.commoditytypeno and  ct.supercommoditytype=sct.commoditytypeno
+            and c.commoditytypeno=#{commodityTypeNo}
+        </where>
+    </select>
     <!-- 根据商品类型来查询商品 -->
     <select id="findProByType" parameterType="java.lang.Integer" resultMap="CommodityResultMap">
         select

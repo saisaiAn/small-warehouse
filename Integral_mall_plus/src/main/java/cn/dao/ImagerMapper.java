@@ -10,4 +10,6 @@ public interface ImagerMapper {
     public List<Imager> selectAllImager();
 
     int addImg(Imager imager);
+
+    int updImg(Imager imager);
 }
