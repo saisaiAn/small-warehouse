@@ -215,7 +215,7 @@
 				}
 			}
 		</script>
-		
+		<jsp:include   page="updateEmpType.jsp" flush="true"/>
 	</body>
 
 </html>

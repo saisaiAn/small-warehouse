@@ -138,7 +138,7 @@
             </li>
         </ul>
     </footer>
-
+    <jsp:include   page="updateEmpType.jsp" flush="true"/>
 </body>
 
 </html>

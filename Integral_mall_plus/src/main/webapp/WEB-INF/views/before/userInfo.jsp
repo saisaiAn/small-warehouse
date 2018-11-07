@@ -91,5 +91,6 @@
             </div>
         </div>
     </div>
+    <jsp:include   page="updateEmpType.jsp" flush="true"/>
 </body>
 </html>
