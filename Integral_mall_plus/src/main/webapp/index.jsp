@@ -326,6 +326,7 @@
 <div style="height: 200px;"></div>
 <div class="row">
     <a href="/hello"><div class="col-md-3 bg-success" style="padding:150px 200px; " ><span style="color: #1b6d85; font-size: 100px;font-family:Microsoft YaHei;">前台</span></div></a>
+    <a href="/app">
     <div class="col-md-6 bg-success" >
         <div class="cat">
         <div class="head_content">
@@ -370,6 +371,7 @@
         </div>
     </div>
     </div>
+    </a>
     <a href="/view"><div class="col-md-3 bg-success" style="padding:150px 200px;" ><span style="color: #1b6d85; font-size:100px;font-family:Microsoft YaHei;">后台</span></div></a>
 </div>
 

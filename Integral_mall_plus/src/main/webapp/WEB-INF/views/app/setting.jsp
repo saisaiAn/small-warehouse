@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -44,35 +49,23 @@
 
                     <div id="sidebar-menu">
                         <ul>
+                            <li>
+                                <a href="/toAppnIndex" class="waves-effect"><i class="mdi mdi-airplay"></i><span> 首页</span></a>
+                            </li>
 
                             <li>
-                                <a href="index.html" class="waves-effect"><i class="mdi mdi-airplay"></i><span> Dashboard</span></a>
+                                <a href="/toAppCalendar" class="waves-effect"><i class="mdi mdi-calendar-clock"></i><span> 日历 </span></a>
                             </li>
                             <li>
-                                <a href="exchange.jsp" class="waves-effect"><i class="mdi mdi-swap-horizontal"></i><span> Exchange </span></a>
+                                <a href="/toAppSetting" class="waves-effect"><i class="mdi mdi-settings"></i><span> 个人设置</span></a>
                             </li>
                             <li>
-                                <a href="mywallet.html" class="waves-effect"><i class="mdi mdi-wallet"></i><span> My Wallet </span></a>
-                            </li>                            
-                            <li>
-                                <a href="calendar.jsp" class="waves-effect"><i class="mdi mdi-calendar-clock"></i><span> Calendar </span></a>
+                                <a href="/app" class="waves-effect"><i class="mdi mdi-ungroup"></i><span> 登录 </span></a>
                             </li>
                             <li>
-                                <a href="news.html" class="waves-effect"><i class="mdi mdi-chart-areaspline"></i><span> News </span></a>
+                                <a href="/toAppLogout" class="waves-effect"><i class="mdi mdi-power"></i><span> 注销 </span></a>
                             </li>
-                            <li>
-                                <a href="ico.jsp" class="waves-effect"><i class="mdi mdi-biohazard"></i><span> ICO Landing </span></a>
-                            </li>                            
-                            <li>
-                                <a href="setting.html" class="waves-effect"><i class="mdi mdi-settings"></i><span> Settings </span></a>
-                            </li>                            
-                            <li>
-                                <a href="login.html" class="waves-effect"><i class="mdi mdi-ungroup"></i><span> Log in </span></a>
-                            </li>
-                            <li>
-                                <a href="logout.html" class="waves-effect"><i class="mdi mdi-power"></i><span> Logout </span></a>
-                            </li>
-                            
+
                         </ul>
                     </div>
                     <div class="clearfix"></div>
@@ -247,14 +240,8 @@
                                         <div class="card-body">                                           
                                             <div class=" text-center">                        
                                                 <img src="/static/app/assets/images/users/avatar-1.jpg" alt="" class="rounded-circle img-thumbnail w-50">
-                                                <h4 class="font-16">Steven Meyers</h4>
-                                                <a href="" class="text-muted font-14">StevenMeyers@gmail.com</a>
-                                                <ul class="list-unstyled list-inline mb-0 mt-3">
-                                                    <li class="list-inline-item"><a href="#"><i class="ti-facebook text-primary"></i></a></li>                                                    
-                                                    <li class="list-inline-item"><a href="#"><i class="ti-linkedin text-danger"></i></a></li>
-                                                    <li class="list-inline-item"><a href="#"><i class="ti-twitter-alt text-info"></i></a></li>
-                                                </ul>
-                                                <a href="" class="btn btn-primary btn-sm mt-3">Update Profile</a>
+                                                <h4 class="font-16">黄安</h4>
+                                                <a href="" class="text-muted font-14">18821874652</a>
                                             </div>
                                         </div>
                                     </div>
@@ -265,127 +252,27 @@
                                             <div class="general-label">
                                                 <form role="form">
                                                     <div class="form-group">
-                                                        <label for="exampleInputEmail1">Full Name</label>
+                                                        <label for="exampleInputName1">全名</label>
                                                         <input type="text" class="form-control" id="exampleInputName1" placeholder="Full Name">
                                                     </div>
                                                     
                                                     <div class="form-group">
-                                                        <label for="exampleInputEmail1">Email address</label>
-                                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                                        <label for="exampleInputPhone">电话</label>
+                                                        <input type="Phone" class="form-control" id="exampleInputPhone" placeholder="phone">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="exampleInputPassword1">Password</label>
+                                                        <label for="exampleInputPassword1">密码</label>
                                                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary">Save Change</button>
+                                                    <button type="submit" class="btn btn-primary">保存</button>
                                                 </form>                                    
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-xl-5">
-                                    <div class="card bg-white m-b-30">
-                                        <div class="card-body">
-                                            <div class="general-label">
-                                                <form role="form">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlSelect1">Linked Account</label>
-                                                        <select class="form-control" id="exampleFormControlSelect1">
-                                                            <option>PayPal</option>
-                                                            <option>VISA</option>
-                                                            <option>ICICI</option>
-                                                            <option>HDFC</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlSelect1">Collect Currency</label>
-                                                        <select class="form-control" id="exampleFormControlSelect2">
-                                                            <option>US Dollar</option>
-                                                            <option>Pounds</option>
-                                                            <option>Euro</option>
-                                                            <option>Yen</option>
-                                                        </select>
-                                                    </div>                                                   
-                                                    <div class="form-group">
-                                                        <label for="exampleInputPassword1">Change Wallet Password</label>
-                                                        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-                                                    </div>                                                    
-                                                    <button type="submit" class="btn btn-primary">Save Change</button>
-                                                </form>                                    
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
-                            <div class="row">
-                                <div class="col-md-12 col-xl-4">
-                                    <div class="mini-stat clearfix bg-white">
-                                        <div class="row align-items-center">
-                                            <div class="col-2">
-                                                <span class="mini-stat-icon bg-light"><i class="mdi mdi-cellphone-iphone text-warning"></i></span>
-                                            </div>
-                                            <div class="col-10 text-left">
-                                                <h4 class="counter text-dark m-0 pb-1">SMS Auth</h4>
-                                                <h6>Used for withdrawals and security modifications</h6>
-                                                <div class="mt-3">
-                                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                        <label class="btn btn-primary btn-sm active">
-                                                            <input type="radio" name="options" id="option1" autocomplete="off" checked> Enable
-                                                        </label>
-                                                        
-                                                        <label class="btn btn-primary btn-sm">
-                                                            <input type="radio" name="options" id="option2" autocomplete="off"> Disable
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-xl-4">
-                                    <div class="mini-stat clearfix bg-white">
-                                        <div class="row align-items-center">
-                                            <div class="col-2">
-                                                <span class="mini-stat-icon bg-light"><i class="mdi mdi-google-chrome text-warning"></i></span>
-                                            </div>
-                                            <div class="col-10 text-left">
-                                                <h4 class="counter text-dark m-0 pb-1">Google Auth</h4>
-                                                <h6>Used for withdrawals and security modifications</h6>
-                                                <div class="mt-3">
-                                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                                        <label class="btn btn-primary btn-sm active">
-                                                            <input type="radio" name="options" id="option1" autocomplete="off" checked> Enable
-                                                        </label>
-                                                        
-                                                        <label class="btn btn-primary btn-sm">
-                                                            <input type="radio" name="options" id="option2" autocomplete="off"> Disable
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-xl-4">
-                                    <div class="mini-stat clearfix bg-white">
-                                        <div class="row align-items-center">
-                                            <div class="col-2">
-                                                <span class="mini-stat-icon bg-light"><i class="mdi mdi-security text-warning"></i></span>
-                                            </div>
-                                            <div class="col-10 text-left">
-                                                <h4 class="counter text-dark m-0 pb-1">API</h4>
-                                                <h6>Create API private key can get you access to market.</h6>
-                                                <div class="mt-3">
-                                                    <a href="#" class="btn btn-primary btn-sm">API Setting</a>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
 
                         </div><!-- container -->
 
@@ -393,9 +280,7 @@
 
                 </div> <!-- content -->
 
-                <footer class="footer">
-                    © 2018 Annex by Mannatthemes. 更多模板：<a href="http://www.mycodes.net/" target="_blank">源码之家</a>
-                </footer>
+
 
             </div>
             <!-- End Right content here -->

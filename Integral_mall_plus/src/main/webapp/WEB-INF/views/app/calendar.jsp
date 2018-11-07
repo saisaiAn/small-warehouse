@@ -1,10 +1,15 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 <html>
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <title>Annex - Responsive Bootstrap 4 Admin Dashboard</title>
+        <title>日历</title>
         <meta content="Admin Dashboard" name="description" />
         <meta content="Mannatthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -45,39 +50,27 @@
 
                 <div class="sidebar-inner slimscrollleft">
 
-                    <div id="sidebar-menu">
-                        <ul>
+                    <<div id="sidebar-menu">
+                    <ul>
+                        <li>
+                            <a href="/toAppnIndex" class="waves-effect"><i class="mdi mdi-airplay"></i><span> 首页</span></a>
+                        </li>
 
-                            <li>
-                                <a href="index.html" class="waves-effect"><i class="mdi mdi-airplay"></i><span> Dashboard</span></a>
-                            </li>
-                            <li>
-                                <a href="exchange.jsp" class="waves-effect"><i class="mdi mdi-swap-horizontal"></i><span> Exchange </span></a>
-                            </li>
-                            <li>
-                                <a href="mywallet.html" class="waves-effect"><i class="mdi mdi-wallet"></i><span> My Wallet </span></a>
-                            </li>                            
-                            <li>
-                                <a href="calendar.jsp" class="waves-effect"><i class="mdi mdi-calendar-clock"></i><span> Calendar </span></a>
-                            </li>
-                            <li>
-                                <a href="news.html" class="waves-effect"><i class="mdi mdi-chart-areaspline"></i><span> News </span></a>
-                            </li>
-                            <li>
-                                <a href="ico.jsp" class="waves-effect"><i class="mdi mdi-biohazard"></i><span> ICO Landing </span></a>
-                            </li>                            
-                            <li>
-                                <a href="setting.html" class="waves-effect"><i class="mdi mdi-settings"></i><span> Settings </span></a>
-                            </li>                            
-                            <li>
-                                <a href="login.html" class="waves-effect"><i class="mdi mdi-ungroup"></i><span> Log in </span></a>
-                            </li>
-                            <li>
-                                <a href="logout.html" class="waves-effect"><i class="mdi mdi-power"></i><span> Logout </span></a>
-                            </li>
-                            
-                        </ul>
-                    </div>
+                        <li>
+                            <a href="/toAppCalendar" class="waves-effect"><i class="mdi mdi-calendar-clock"></i><span> 日历 </span></a>
+                        </li>
+                        <li>
+                            <a href="/toAppSetting" class="waves-effect"><i class="mdi mdi-settings"></i><span> 个人设置</span></a>
+                        </li>
+                        <li>
+                            <a href="/app" class="waves-effect"><i class="mdi mdi-ungroup"></i><span> 登录 </span></a>
+                        </li>
+                        <li>
+                            <a href="/toAppLogout" class="waves-effect"><i class="mdi mdi-power"></i><span> 注销 </span></a>
+                        </li>
+
+                    </ul>
+                </div>
                     <div class="clearfix"></div>
                 </div> <!-- end sidebarinner -->
             </div>

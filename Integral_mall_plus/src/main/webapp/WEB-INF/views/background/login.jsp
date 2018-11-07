@@ -146,7 +146,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
               });
           }else{
             $.ajax({
-                url:"login",
+                url:"masterlogin",
                 data:{username:$username,pwd:$pwd},
                 type:"post",
                 success:function (result) {

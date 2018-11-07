@@ -78,6 +78,10 @@
     <delete id="bgdelEmp" parameterType="java.lang.Integer">
          DELETE emp,integral FROM emp,integral where  emp.intergralno=integral.intergralno AND emp.empno=#{id}
     </delete>
+    <!--校长修改-->
+    <update id="masterUpd">
+        update emp set empname=#{empname},empphone=#{empphone},password=#{password} where empno=#{empno}
+    </update>
 
 
 
@@ -150,6 +154,15 @@
         </where>
 
     </select>
+    <update id="updateBeforeEmpType" parameterType="cn.bean.Emp">
+        update Emp
+        <set>
+            <if test="emptype != null">
+                emptype = #{emptype},
+            </if>
+        </set>
+        where empno = #{empno}
+    </update>
 
 
 </mapper>

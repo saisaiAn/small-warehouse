@@ -12,19 +12,20 @@
 
 <link href="/static/before/css/personal.css" rel="stylesheet" type="text/css">
 <link href="/static/before/css/stepstyle.css" rel="stylesheet" type="text/css">
-
+<link href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="/static/before/js/jquery-1.8.3.min.js"></script>
 <script src="/static/before/js/amazeui.js"></script>
+
 
 <body>
 <div class="center">
     <div class="col-main">
         <div class="main-wrap">
-
-            <div class="am-cf am-padding">
-                <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">修改密码</strong> / <small>Password</small></div>
+            <div class="am-cf am-padding" >
+                <div class="am-fl am-cf"style="float: left"><strong class="am-text-danger am-text-lg">修改密码</strong> / <small>Password</small></div>
+                <div class="am-fl am-cf"style="float: right"><a href="javascript:history.back();" class="back_btn"><i class="glyphicon glyphicon-log-out"></i></a></div>
             </div>
-            <hr/>
+                <hr/>
             <!--进度条-->
             <div class="m-progress">
                 <div class="m-progress-list">
@@ -120,5 +121,6 @@
         })
     })
 </script>
+<jsp:include   page="updateEmpType.jsp" flush="true"/>
 </body>
 </html>

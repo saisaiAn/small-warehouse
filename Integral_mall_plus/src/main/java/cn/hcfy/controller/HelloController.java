@@ -41,8 +41,15 @@ public class HelloController {
         emp.setEmpname(empname);
         emp.setPassword(password);
         Emp empReturn = empService.loginToIndexBefore(emp);
+        if (empReturn.getEmptype()>0){
+            return "s";
+        }else{
+        empReturn.setEmptype(1);
+        empService.updateBeforeEmpType(empReturn);
+        }
         if(empReturn==null){ return  "n";}
         List<Imager> imagerList = imagerService.selectAllImager();
+
         httpSession.setAttribute("empBefore",empReturn);
         httpSession.setAttribute("imgList",imagerList);
         return "y";

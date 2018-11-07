@@ -156,9 +156,12 @@
                         data:{ empname:empname, password:password} ,
                         type:"POST",
                         success:function (result) {
-                            if (result=="y"){
+                            if(result="s"){
+                                alert("该账号已 有人登陆");
+                                window.location.reload();
+							}else if (result=="y"){
                                 location.href="/Before/toBeforeIndex";
-                            }else {
+                            }else if(result=="n") {
                                 alert("账号或密码不正确");
                                 window.location.reload();
                             }
