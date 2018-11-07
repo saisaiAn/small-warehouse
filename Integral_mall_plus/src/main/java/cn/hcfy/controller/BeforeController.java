@@ -188,7 +188,9 @@ public class BeforeController {
     public String center(Model model,HttpSession httpSession){
         Emp emp= (Emp) httpSession.getAttribute("empBefore");
         List<IntegralSchedule>  integralSchedulesList =integralScheduleService.findAllIntegralSheduleByEmp(emp);
+        Integral integral=integralService.findIntegralByEmp(emp);
         model.addAttribute("integralScheduleList",integralSchedulesList);
+        model.addAttribute("integral",integral);
         return "/before/center";
     }
     @RequestMapping("/toBeforeConfirm")

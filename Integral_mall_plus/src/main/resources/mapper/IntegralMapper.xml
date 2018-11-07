@@ -5,6 +5,9 @@
         insert INTO  integral(totalintegral,haveintegral,remainingpoints,lastchangetime) values(#{totalintegral},
         #{haveintegral},#{remainingpoints},SYSDATE())
     </insert>
+    <select id="findIntegralByEmp" parameterType="cn.bean.Emp" resultType="cn.bean.Integral">
+      select * from Integral i,Emp e where e.intergralno=i.intergralno and e.empno=#{empno}
+    </select>
     <!--用户下单扣除积分-修改-->
     <update id="updateByExampleIntegral" parameterType="cn.bean.Integral">
         update Integral

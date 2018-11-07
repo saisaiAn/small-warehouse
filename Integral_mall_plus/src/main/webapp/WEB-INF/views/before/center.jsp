@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <%@ page isELIgnored="false"  contentType="text/html;charset=UTF-8"  language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -39,7 +40,7 @@
     <header id="header" style="">
         <div class="topbar">
             <a href="javascript:history.back();" class="back_btn"><i class="iconfont">ş</i></a>
-            <h1 class="page_title">会员中心</h1>
+            <h1 class="page_title" style="margin: 0px;">会员中心</h1>
         </div>
     </header>
 <!-- 会员头像 -->
@@ -54,7 +55,7 @@
                     <h4><c:if test="${!empty   empBefore.empname}">${empBefore.empname}<span>普通会员</span></c:if>
                         <c:if test="${ empty  empBefore.empname}"><a href="/hello">请登录</a></c:if>
                     </h4>
-                    <p><span>积分：<i>${empBefore.integralId.remainingpoints}</i></span>&nbsp;&nbsp;<span>红包：<i>0</i></span></p>
+                    <p><span>积分：<i>${integral.remainingpoints}</i></span>&nbsp;&nbsp;<span>红包：<i>0</i></span></p>
                 </dd>
             </dl>
         </a>
@@ -81,9 +82,9 @@
             <a href="/Before/toBeforeIndex">积分兑换商品<i class="iconfont"></i></a>
         </div>
         <ul>
-            <li><a href=""><i class="color_f44623">${empBefore.integralId.remainingpoints}</i><p>剩余积分</p> </a></li>
-            <li><a href=""><i class="color_f4a425">${empBefore.integralId.totalintegral}</i><p>总积分</p> </a></li>
-            <li><a href=""><i class="color_45a1de">${empBefore.integralId.haveintegral}</i><p>已用积分</p> </a></li>
+            <li><a href=""><i class="color_f44623">${integral.remainingpoints}</i><p>剩余积分</p> </a></li>
+            <li><a href=""><i class="color_f4a425">${integral.totalintegral}</i><p>总积分</p> </a></li>
+            <li><a href=""><i class="color_45a1de">${integral.haveintegral}</i><p>已用积分</p> </a></li>
         </ul>
     </div>
     <div class="vip-list-icon border_top_bottom">
@@ -91,49 +92,20 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th>时间</th>
+                <th>变动原因</th>
+                <th>变动数量</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>   <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>   <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>   <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-
-
-
+            <c:forEach items="${integralScheduleList}" var="integralSchedule">
+                <tr>
+                    <th scope="row">${integralSchedule.intergralscheduleno}</th>
+                    <td><fmt:formatDate value="${integralSchedule.changedate}" pattern="yyyy-MM-dd"/></td>
+                    <td>${integralSchedule.intergralchange}</td>
+                    <td>${integralSchedule.changeint}</td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>
