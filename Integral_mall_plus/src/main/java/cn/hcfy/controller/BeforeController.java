@@ -1,7 +1,6 @@
 package cn.hcfy.controller;
 
 import cn.bean.*;
-import cn.dao.ImagerMapper;
 import cn.hcfy.service.*;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 
 @RequestMapping("/Before")
 @Controller
-public class EmpController {
+public class BeforeController {
 
     @Autowired
     EmpService empService;
@@ -40,10 +42,13 @@ public class EmpController {
     @Autowired
     IntegralAuditService integralAuditService;
 
+    @Autowired
+    IntegralScheduleService integralScheduleService;
+
     @ResponseBody
     @RequestMapping(value = "/addBeforePay")
     @Transactional(rollbackFor = {Exception.class})
-    public String BeforePay(@Param("count")String count){
+    public String BeforePay(@Param("count")String count,HttpSession httpSession){
         String[] carno=count.split(",");
         for (String carId:carno) {
             //通过ID查找购物车的相关属性
@@ -56,15 +61,6 @@ public class EmpController {
             integral.setHaveintegral(shoppingCarTwo.getCommoditysum()*shoppingCarTwo.getCommodityId().getNeedintegral());
             integral.setRemainingpoints(shoppingCarTwo.getCommoditysum()*shoppingCarTwo.getCommodityId().getNeedintegral());
             integralService.updateByExampleIntegral(integral);
-            //增加积分审核
-            IntegralAudit integralAudit=new IntegralAudit();
-            integralAudit.setEmpno(shoppingCarTwo.getShoppingempno());
-            integralAudit.setIntergralchange("购买："+shoppingCarTwo.getCommodityId().getCommoditytitle()+";");
-            integralAudit.setChangeint(shoppingCarTwo.getCommoditysum()*shoppingCarTwo.getCommodityId().getNeedintegral());
-            integralAudit.setIntegraltypeno(3);
-            integralAudit.setAudittype(1);
-            integralAudit.setAuditopinion("");
-            integralAuditService.addIntegralAuditMapper(integralAudit);
             //增加订单
             Orders orders=new Orders();
             orders.setOrdercommodityno(shoppingCarTwo.getShoppingcommodityno());
@@ -78,9 +74,19 @@ public class EmpController {
             ordersService.insertOrders(orders);
             //删除购物车表
             shoppingCarService.deleteByPrimaryKey(Integer.parseInt(carId));
+            //修改商品表
+            Commodity commodity=new Commodity();
+            commodity.setCommodityno(shoppingCarTwo.getShoppingcommodityno());
+            commodity.setCommodityinventory(shoppingCarTwo.getCommoditysum());
+            commodityService.updateCommoditySum(commodity);
+            Emp emp=shoppingCarTwo.getEmpId();
+            System.out.println(emp.getEmpname()+"==="+emp.getPassword());
+            Emp empReturn = empService.loginToIndexBefore(emp);
+            httpSession.setAttribute("empBefore",empReturn);
         }
         return "y";
     }
+    //订单兑换码生成
     public static final String ALLCHAR = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     public static String generateString(int length) {
         StringBuffer sb = new StringBuffer();
@@ -90,12 +96,13 @@ public class EmpController {
         }
         return sb.toString();
     }
-
+    //跳转购物车
     @RequestMapping("/addBeforeShopping")
     public String addShopCar(shoppingCar shoppingCar){
         int judge= shoppingCarService.insertShoppingCar(shoppingCar);
         return "forward:/Before/toBeforeShopcar";
     }
+    //AJAX删除购物车
     @ResponseBody
     @RequestMapping("/deleteBeforeShopCar")
     @Transactional(rollbackFor = {Exception.class})
@@ -108,6 +115,7 @@ public class EmpController {
             return "n";
         }
     }
+    //修改商品购买数量
     @ResponseBody
     @RequestMapping(value = "/updateBeforeShopCar")
     @Transactional(rollbackFor = {Exception.class})
@@ -123,34 +131,37 @@ public class EmpController {
             return "n";
         }
     }
+    //修改员工信息
     @RequestMapping("/BeforeUpdateEmp")
     public String UpdateEmp(@ModelAttribute Emp emp,HttpSession httpSession){
         empService.updateBeforeEmp(emp);
         Emp empReturn = empService.loginToIndexBefore(emp);
         httpSession.setAttribute("empBefore",empReturn);
-        return "forward:/Before/toBeforeUserInfo";
+        return "forward:/Before/toBeforeCenter";
     }
+    //AJAX查询旧密码是否正确
     @ResponseBody
     @RequestMapping("/BeforeOldPassword")
     public String OldPassword(@ModelAttribute Emp emp){
         Emp emp1= empService.selectOldPassword(emp);
-        System.out.println(emp1);
         if(emp1!=null){
             return "y";
         }else{
             return "n";
         }
     }
+    //修改密码
     @RequestMapping("/BeforeUpdateEmpPassword")
     public String UpdateEmpPassword(@ModelAttribute Emp emp){
         empService.updateBeforeEmp(emp);
         return "forward:/hello";
     }
-
+    //跳转登录界面
     @RequestMapping("/toBeforeLogin")
     public String login(){
         return "/before/login";
     }
+    //跳转首页
     @RequestMapping("/toBeforeIndex")
     public String index(Model model){
         List<Commodity> commodityList=commodityService.selectAllCommodity();
@@ -160,25 +171,33 @@ public class EmpController {
         model.addAttribute("typeList",commodityTypeList);
         return "/before/index";
     }
-
+    //跳转地址页面
     @RequestMapping("/toBeforeAddress")
     public String address(){
         return "/before/address";
     }
+    //跳转分类页面
     @RequestMapping("/toBeforeCation")
     public String cation(Model model){
         List<CommodityType> commodityTypeList=commodityTypeService.selectAllCommodityType();
         model.addAttribute("typeList",commodityTypeList);
         return "/before/cation";
     }
+    //跳转个人中心
     @RequestMapping("/toBeforeCenter")
-    public String center(){
+    public String center(Model model,HttpSession httpSession){
+        Emp emp= (Emp) httpSession.getAttribute("empBefore");
+        List<IntegralSchedule>  integralSchedulesList =integralScheduleService.findAllIntegralSheduleByEmp(emp);
+        Integral integral=integralService.findIntegralByEmp(emp);
+        model.addAttribute("integralScheduleList",integralSchedulesList);
+        model.addAttribute("integral",integral);
         return "/before/center";
     }
     @RequestMapping("/toBeforeConfirm")
     public String confirm(){
         return "/before/confirm";
     }
+    //跳转商品详情
     @RequestMapping("/toBeforeDetail")
     public String detail(@RequestParam(value = "id" ,defaultValue = "1")Integer id, Model model){
         Commodity commodity=new Commodity();
@@ -186,12 +205,14 @@ public class EmpController {
         model.addAttribute("commodity",commodityService.selectCommodityById(commodity));
         return "/before/detail";
     }
+    //跳转商品列表
     @RequestMapping("/toBeforeList")
     public String list(@Param("commoditytypeno") Integer commoditytypeno,Model model){
         List<Commodity> commodityList=commodityService.commodityByType(commoditytypeno);
         model.addAttribute("commodityList",commodityList);
         return "/before/list";
     }
+    //跳转购物车
     @RequestMapping("/toBeforeShopcar")
     public String shopcar(HttpSession session,Model model){
         Emp emp=(Emp)session.getAttribute("empBefore");
@@ -203,6 +224,7 @@ public class EmpController {
     public String zhifu(){
         return "/before/zhifu";
     }
+    //跳转订单页面
     @RequestMapping("/toBeforeOrders")
     public String orders(@Param("id")Integer id,@Param("status")Integer status,Model model){
         Emp emp=new Emp();
@@ -215,12 +237,34 @@ public class EmpController {
         model.addAttribute("status",status);
         return "/before/orders";
     }
+    //跳转个人信息
     @RequestMapping("/toBeforeUserInfo")
     public String userInfo(){
         return "/before/userInfo";
     }
+    //跳转密码
     @RequestMapping("/toBeforePassword")
     public String password(){
         return "/before/password";
+    }
+    //登录信息销毁
+    @RequestMapping("/BeforeXiaoHui")
+    public String BeforeXiaoHui(HttpSession httpSession){
+        Emp emp=(Emp)httpSession.getAttribute("empBefore");
+        Emp empType=new Emp();
+        empType.setEmpno(emp.getEmpno());
+        empType.setEmptype(0);
+        empService.updateBeforeEmpType(empType);
+        return "y";
+    }
+    //登录信息撤回
+    @RequestMapping("/BeforeCeHui")
+    public String BeforeCeHui(HttpSession httpSession){
+        Emp emp=(Emp)httpSession.getAttribute("empBefore");
+        Emp empType=new Emp();
+        empType.setEmpno(emp.getEmpno());
+        empType.setEmptype(1);
+        empService.updateBeforeEmpType(empType);
+        return "y";
     }
 }

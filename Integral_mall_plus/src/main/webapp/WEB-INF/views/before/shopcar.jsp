@@ -47,7 +47,9 @@
 	    
 	    <div class="warp warptwo clearfloat">
 	    	<div class="shopcar clearfloat">
+<%int i=0;%>
 				<c:forEach items="${shoppingCarList}" var="shoppingCar">
+					<%i++;%>
 					<div class="list clearfloat fl">
 						<div class="xuan clearfloat fl">
 							<div class="radio" >
@@ -84,6 +86,7 @@
 						</a>
 					</div>
 				</c:forEach>
+				<%if(i==0){%><div class="xuan clearfloat fl">购物车暂无任何商品</div><%}%>
 	    	</div>
 	    </div>
 	    
@@ -149,7 +152,7 @@
                        success:function (result) {
                            if (result=="y"){
                           		alert("下单成功！");
-                               location.href="/Before/toBeforeOrders?id=${empBefore.empno}";
+                               location.href="/Before/toBeforeOrders?id=${empBefore.empno}&status=1";
                            }
                        }
                    })
@@ -215,7 +218,7 @@
 				}
 			}
 		</script>
-		
+		<jsp:include   page="updateEmpType.jsp" flush="true"/>
 	</body>
 
 </html>

@@ -38,19 +38,34 @@
       <div class="info clearfix">
       <table class="table table-bordered">
         <thead>
-         <th  width="150px">意见编号</th>
-         <th width="100px">意见状态</th>
-         <th width="100px">意见等级</th>
-         <th width="150px">员工姓名</th>
-         <th width="150px">员工所在部门</th>
-         <th >积分变动原因</th>
-         <th width="100px">积分变动数量</th>
-         <th>操作</th>
+            <c:if test="${loginUser.position == 3}">
+                <%-- 综合部经理所能看见的 --%>
+                 <th  width="150px">意见编号</th>
+                 <th width="100px">意见状态</th>
+                 <th width="100px">意见等级</th>
+                 <th width="150px">员工姓名</th>
+                 <th width="150px">员工所在部门</th>
+                 <th >积分变动原因</th>
+                 <th width="100px">积分变动数量</th>
+                 <th>操作</th>
+            </c:if>
+            <c:if test="${loginUser.position == 4}">
+                <%-- 校长所能看见的 --%>
+                <th  width="150px">意见编号</th>
+                <th width="100px">意见状态</th>
+                <th width="100px">意见等级</th>
+                <th width="150px">员工姓名</th>
+                <th width="150px">员工所在部门</th>
+                <th >积分变动原因</th>
+                <th >审核人意见</th>
+                <th width="100px">积分变动数量</th>
+                <th>操作</th>
+            </c:if>
         </thead>
         <tbody>
                <c:forEach items="${Opinion}" var="o">
                    <c:if test="${loginUser.position == 3}">
-                       <c:if test="${o.audittype == 1}">
+                       <c:if test="${o.audittype == 1 && o.integralTypeId.integraltypeno!=3}">
                             <tr>
                                <td>${o.integralauditno}</td>
                                <td style="color: green">申请中</td>
@@ -71,17 +86,32 @@
                        </c:if>
                    </c:if>
                </c:forEach>
+
                <c:forEach items="${Opinion}" var="o">
                    <c:if test="${loginUser.position == 4}">
                        <c:if test="${o.audittype == 2}">
                            <tr>
                                <td>${o.integralauditno}</td>
-                               <td>审批中</td>
+                               <td style="color: #a069c3">审批中</td>
+                               <c:if test="${o.integralTypeId.integraltypeno == 1}">
+                                   <td>普通</td>
+                               </c:if>
+                               <c:if test="${o.integralTypeId.integraltypeno == 2}">
+                                   <td style="color:red;">重要</td>
+                               </c:if>
                                <td>${o.empId.empname}</td>
                                <td>${o.empId.departmentId.depaname}</td>
                                <td>${o.intergralchange}</td>
+                               <td>${o.auditopinion}</td>
                                <td>${o.changeint}</td>
-                               <td><a href="javascript:ovid()"  name="" title="在线支付配置">配置</a></td>
+                               <td>
+                                   <a href="javascript:ovid()" class="XZHandling_opinions" style="color: green" title="处理意见请求"
+                                   empId = ${o.empId.empno} intergralchange=${o.intergralchange} changeint=${o.changeint}
+                                        integralauditno = ${o.integralauditno}  integralType = ${o.integralTypeId.integraltypeno}
+                                              IntegralNo = ${o.empId.integralId.intergralno}>同意</a>
+                                   <a href="javascript:ovid()" class="XZrefuse_opinions Theheadmasterrefuses"  title="处理意见请求"
+                                      integralauditno = ${o.integralauditno}>拒绝</a>
+                               </td>
                            </tr>
                        </c:if>
                    </c:if>
@@ -90,46 +120,7 @@
       </table>
       </div>
     </div><!--其他配置-->
-  <div class="Other_style">
-    <div class="title_name">其他配置信息</div>
-    <div style="margin:5px;">
-     <ul class="invoice deploy">
-      <li class="name">发票</li>
-      <li class="operating">  
-       <span class=""><label><input name="radio" type="radio" class="ace" onclick="Enable()"><span class="lbl">启用</span></label>&nbsp;&nbsp;&nbsp;&nbsp;
-       <label><input name="radio" type="radio" class="ace" onclick="closes()"><span class="lbl">关闭</span></label></span>   
-        <div class="Reply_style">
-          <span class="title">选择发票类型</span>
-         <p><label><input name="form-field-checkbox" type="checkbox" class="ace"><span class="lbl">普通纸质发票</span></label></p>
-          <p><label><input name="form-field-checkbox" type="checkbox" class="ace"><span class="lbl">增值税发票</span></label></p>
-          <p><label><input name="form-field-checkbox" type="checkbox" class="ace"><span class="lbl">电子发票</span></label></p>
-        </div>
-         </li>
-      <li class="info">发票是指一切单位和个人在购销商品、提供或接受服务以及从事其他经营活动中，所开具和收取的业务凭证，是会计核算的原始依据，也是审计机关、税务机关执法     </li>
-     </ul>
-      <ul class="invoice deploy">
-      <li class="name">优惠劵</li>
-      <li class="operating">  
-       <span class="">
-       <label><input name="radio1" type="radio" class="ace" ><span class="lbl">启用</span></label>&nbsp;&nbsp;&nbsp;&nbsp;
-       <label><input name="radio1" type="radio" class="ace" ><span class="lbl">关闭</span></label></span>          
-         </li>
-      <li class="info">发票是指一切单位和个人在购销商品、提供或接受服务以及从事其他经营活动中，所开具和收取的业务凭证，是会计核算的原始依据，也是审计机关、税务机关执法     </li>
-     </ul>
-     <ul class="invoice deploy">
-      <li class="name">代收人</li>
-      <li class="operating">  
-       <span class="">
-       <label><input name="radio2" type="radio" class="ace" title="启用"><span class="lbl">启用</span></label>&nbsp;&nbsp;&nbsp;&nbsp;
-       <label><input name="radio2" type="radio" class="ace" title="关闭"><span class="lbl">关闭</span></label></span>          
-         </li>
-      <li class="info">是否启用代收人操作，一次只能填写一次。如不在家可填写代收人的地址作为收货地址</li>
-     </ul>
-  </div>
-  </div>
- </div>
- 
-</div>
+
 
 <div class="DivHandling_opinions" id="update_menber_style" style="display:none">
     <ul class=" page-content">
@@ -142,12 +133,19 @@
             <br/><br/><br/>
             <li><label class="label_name">积分变动数量：</label><span class="add_name">
                 <input  name="changeint" id="changeint" type="text" disabled="disabled" class="text_add"/></span><div class="prompt r_f"></div></li>
-
+            <br/>
+            <br/>
+            <div class="form-group"  >
+                <label  class="col-sm-2 control-label">您的意见:</label>
+                <div class="col-sm-10" >
+                    <textarea class="form-control" id="sprYj" rows="3" style="width: 200px;"></textarea>
+                </div>
+            </div>
             </span><div class="prompt r_f"></div></li>
             <br/>
             <br/>
-            <button type="button" class="btn btn-success updemp" style="margin-left: 150px;">批准</button>
-            <button type="button" class="btn btn-danger updemp" style="margin-left: 100px;">拒绝</button>
+            <button type="button" class="btn btn-success Approval" style="margin-left: 150px;">批准</button>
+            <button type="button" class="btn btn-danger refuse" style="margin-left: 100px;">拒绝</button>
             <br/>
             <br/>
         </form>
@@ -166,13 +164,116 @@
             $("#changeint").val(changeint);
             layer.open({
                 type: 1,
-                title: '添加用户',
+                title: '处理',
+                offset: '180px',
                 maxmin: true,
                 shadeClose: true, //点击遮罩关闭层
                 area : ['600px' , ''],
                 content:$('.DivHandling_opinions'),
             });
         })
+
+        $(".Approval").click(function () {
+            var integralAuditId = $("#integralauditno").val();
+            var sprYj = $("#sprYj").val();
+            $.ajax({
+                url:"Approval_opinion",
+                type:"post",
+                data:{integralAuditId:integralAuditId,sprYj:sprYj},
+                success:function (result) {
+                    if(result=="y"){
+                        layer.msg("提交成功");
+                        setTimeout(function () {
+                            location.href="handling_opinions";
+                        },1000)
+                    }else{
+                        layer.msg("提交失败");
+                        setTimeout(function () {
+                            location.href="handling_opinions";
+                        },1000)
+                    }
+                }
+
+            })
+
+        })
+
+        $(".XZHandling_opinions").click(function () {
+            var empId = $(this).attr("empId"); //员工编号
+            var intergralchange = $(this).attr("intergralchange"); //积分变动原因
+            var changeint = $(this).attr("changeint"); //积分变动数量
+            var integralType = $(this).attr("integralType"); //积分表变动所属类型
+            var IntegralNo = $(this).attr("IntegralNo"); //积分表编号
+            var integralauditno = $(this).attr("integralauditno");
+            $.ajax({
+                url:"xzApproval_opinion",
+                type:"post",
+                data:{empId:empId,intergralchange:intergralchange,changeint:changeint,integralType:integralType,IntegralNo:IntegralNo,integralauditno:integralauditno},
+                success:function (result) {
+                    if(result=="y"){
+                        layer.msg("批准成功");
+                        setTimeout(function () {
+                            location.href="handling_opinions";
+                        },1000)
+                    }else{
+                        layer.msg("批准失败");
+                        setTimeout(function () {
+                            location.href="handling_opinions";
+                        },1000)
+                    }
+                }
+            })
+
+        })
+
+        $(".refuse").click(function () {
+            var integralAuditId = $("#integralauditno").val();
+            var sprYj = $("#sprYj").val();
+            $.ajax({
+                url:"General_manager_refuse",
+                type:"post",
+                data:{integralAuditId:integralAuditId,sprYj:sprYj},
+                success:function (result) {
+                    if(result=="y"){
+                        layer.msg("拒绝成功");
+                        setTimeout(function () {
+                            location.href="handling_opinions";
+                        },1000)
+                    }else{
+                        layer.msg("拒绝失败");
+                        setTimeout(function () {
+                            location.href="handling_opinions";
+                        },1000)
+                    }
+                }
+
+            })
+        })
+
+        $(".Theheadmasterrefuses").click(function () {
+            var integralauditno = $(this).attr("integralauditno");
+            $.ajax({
+                url:"The_headmaster_refuses",
+                type:"post",
+                data:{integralAuditId:integralauditno},
+                success:function (result) {
+                    if(result=="y"){
+                        layer.msg("拒绝成功");
+                        setTimeout(function () {
+                            location.href="handling_opinions";
+                        },1000)
+                    }else{
+                        layer.msg("拒绝失败");
+                        setTimeout(function () {
+                            location.href="handling_opinions";
+                        },1000)
+                    }
+                }
+
+            })
+
+        })
+
     })
 
 </script>

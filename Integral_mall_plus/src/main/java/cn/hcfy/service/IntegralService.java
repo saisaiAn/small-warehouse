@@ -1,5 +1,6 @@
 package cn.hcfy.service;
 
+import cn.bean.Emp;
 import cn.bean.Integral;
 import cn.dao.IntegralMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,5 +14,8 @@ public class IntegralService {
 
     public int updateByExampleIntegral(Integral integral){
         return integralMapper.updateByExampleIntegral(integral);
+    };
+    public Integral findIntegralByEmp(Emp emp){
+        return integralMapper.findIntegralByEmp(emp);
     };
 }

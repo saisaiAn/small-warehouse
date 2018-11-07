@@ -55,6 +55,7 @@
 				</div>
 				<div class="bottom clearfloat">
 					<c:forEach items="${commodityList}" var="commodity">
+						<c:if test="${commodity.commoditytype==1}">
 						<div class="lie clearfloat">
 							<a href="/Before/toBeforeDetail?id=${commodity.commodityno}">
 								<div class="tu clearfloat fl">
@@ -77,6 +78,7 @@
 								</div>
 							</div>
 						</div>
+						</c:if>
 					</c:forEach>
 				</div>
 			</div>
@@ -112,5 +114,6 @@
 				</li>
 			</ul>
 		</footer>
+		<jsp:include   page="updateEmpType.jsp" flush="true"/>
 	</body>
 </html>

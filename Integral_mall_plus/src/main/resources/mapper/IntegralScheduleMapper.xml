@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.dao.IntegralScheduleMapper">
+    <resultMap type="cn.bean.IntegralSchedule" id="WithEmpResultMap">
+        <id column="intergralScheduleNo" jdbcType="INTEGER" property="intergralscheduleno" />
+        <result column="empno" jdbcType="INTEGER" property="empno" />
+        <result column="intergralchange" jdbcType="VARCHAR" property="intergralchange" />
+        <result column="changeint" jdbcType="INTEGER" property="changeint" />
+        <result column="changedate" jdbcType="DATE" property="changedate" />
+        <result column="integralno" jdbcType="INTEGER" property="integralno" />
+        <result column="reviewer" jdbcType="INTEGER" property="reviewer" />
+        <result column="integraltypeno" jdbcType="INTEGER" property="integraltypeno" />
+        <!-- 指定联合查询出的部门字段的封装 -->
+        <association property="empId" javaType="cn.bean.Emp">
+            <id column="empno" property="empno"/>
+            <result column="empname" property="empname"/>
+            <result column="empsex" property="empsex"/>
+            <result column="idcard" property="idcard"/>
+            <result column="departmentno" property="departmentno"/>
+            <result column="positivedates" property="positivedates"/>
+            <result column="empphone" property="empphone"/>
+            <result column="intergralno" property="intergralno"/>
+            <result column="position" property="position"/>
+            <result column="emptype" property="emptype"/>
+            <result column="password" property="password"/>
+        </association>
+        <association property="integralId" javaType="cn.bean.Integral">
+            <id column="intergralno" property="intergralno"/>
+            <result column="totalintegral" property="totalintegral"/>
+            <result column="haveintegral" property="haveintegral"/>
+            <result column="remainingpoints" property="remainingpoints"/>
+            <result column="lastchangetime" property="lastchangetime"/>
+        </association>
+    </resultMap>
+    <sql id="WithIntegralSchedule_Column_List">
+  	ins.intergralScheduleNo,ins.empNo,ins.intergralChange,
+    ins.Changeint,ins.ChangeDate,ins.IntegralNo,ins.reviewer,
+    ins.IntegralTypeNo,e.EmpNo,e.EmpName,e.EmpSex,e.IDcard,e.DepartmentNo,e.Positivedates,
+    e.EmpPhone,e.intergralNo,e.position,e.empType,e.`Password`,i.IntergralNo,i.TotalIntegral,
+    i.HaveIntegral,i.RemainingPoints,i.LastChangeTime
+    </sql>
+    <insert id="addIntegralSchedule" parameterType="cn.bean.IntegralSchedule">
+        INSERT into Integralschedule (empno,intergralchange,changeint,changedate,integralno,reviewer,integraltypeno) VALUES
+        (#{empno},#{intergralchange},#{changeint},#{changedate},#{integralno},#{reviewer},#{integraltypeno})
+    </insert>
+    <select id="findAllIntegralSheduleByEmp" parameterType="cn.bean.Emp" resultMap="WithEmpResultMap">
+        select
+        <include refid="WithIntegralSchedule_Column_List" />
+        from IntegralSchedule ins,Emp e,Integral i where ins.empNo=#{empno} and e.EmpNo=#{empno} and e.intergralNo=i.IntergralNo
+
+    </select>
 
 </mapper>

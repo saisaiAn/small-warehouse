@@ -11,6 +11,7 @@
 
 <link href="/static/before/css/personal.css" rel="stylesheet" type="text/css">
 <link href="/static/before/css/infstyle.css" rel="stylesheet" type="text/css">
+<link href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <script src="/static/before/js/jquery.min.js"></script>
 <script src="/static/before/js/amazeui.js"></script>
 <body>
@@ -19,8 +20,9 @@
             <div class="main-wrap">
                 <div class="user-info">
                     <!--标题 -->
-                    <div class="am-cf am-padding">
-                        <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
+                    <div class="am-cf am-padding" >
+                        <div class="am-fl am-cf" style="float: left"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
+                        <div class="am-fl am-cf" style="float: right"><a href="javascript:history.back();" class="back_btn"><i class="glyphicon glyphicon-log-out"></i></a></div>
                     </div>
                     <hr/>
 
@@ -89,5 +91,6 @@
             </div>
         </div>
     </div>
+    <jsp:include   page="updateEmpType.jsp" flush="true"/>
 </body>
 </html>
