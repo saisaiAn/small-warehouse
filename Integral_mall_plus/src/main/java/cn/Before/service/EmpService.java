@@ -1,14 +1,9 @@
-package cn.hcfy.service;
+package cn.Before.service;
 
 import cn.bean.Emp;
 import cn.dao.EmpMapper;
-import cn.dao.JedisClient;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import jdk.nashorn.internal.runtime.JSONListAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 @Service
 public class EmpService {
@@ -16,10 +11,7 @@ public class EmpService {
     EmpMapper empMapper;
 
     public Emp loginToIndexBefore(Emp emp){
-
-        Emp emp1=empMapper.loginToIndexBefore(emp);
-
-        return emp1;
+        return empMapper.loginToIndexBefore(emp);
     }
 
     public int updateBeforeEmp(Emp emp){
@@ -29,6 +21,6 @@ public class EmpService {
         return empMapper.selectOldPassword(emp);
     };
     public int updateBeforeEmpType(Emp emp){
-        return empMapper.updateBeforeEmp(emp);
+        return empMapper.updateBeforeEmpType(emp);
     }
 }

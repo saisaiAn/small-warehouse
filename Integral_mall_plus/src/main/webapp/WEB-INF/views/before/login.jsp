@@ -156,7 +156,7 @@
                         data:{ empname:empname, password:password} ,
                         type:"POST",
                         success:function (result) {
-                            if(result="s"){
+                            if(result=="s"){
                                 alert("该账号已 有人登陆");
                                 window.location.reload();
 							}else if (result=="y"){

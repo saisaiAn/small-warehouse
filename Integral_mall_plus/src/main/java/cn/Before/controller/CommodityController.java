@@ -1,7 +1,7 @@
-package cn.hcfy.controller;
+package cn.Before.controller;
 
 
-import cn.hcfy.service.CommodityService;
+import cn.Before.service.CommodityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

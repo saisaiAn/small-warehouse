@@ -1,4 +1,4 @@
-package cn.hcfy.Test;
+package cn.Before.Test;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

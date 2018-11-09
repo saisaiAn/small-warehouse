@@ -1,4 +1,4 @@
-package cn.hcfy.service;
+package cn.Before.service;
 
 import cn.bean.Emp;
 import cn.bean.Integral;
