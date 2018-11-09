@@ -105,7 +105,4 @@
         </where>
     </select>
 
-    <update id="updateCommoditySum" parameterType="cn.bean.Commodity">/*上架商品*/
-        update commodity set commodityinventory = commodityinventory-#{commodityinventory} where commodityno= #{commodityno}
-    </update>
 </mapper>

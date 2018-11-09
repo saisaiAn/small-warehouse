@@ -35,14 +35,13 @@
             <result column="intergralno" jdbcType="INTEGER" property="intergralno" />
             <result column="position" jdbcType="INTEGER" property="position" />
             <result column="emptype" jdbcType="INTEGER" property="emptype" />
-            <result column="password" jdbcType="VARCHAR" property="password" />
         </association>
     </resultMap>
     <sql id="WithCommodityType_Column_List">
           s.carno,s.shoppingempno,s.shoppingcommodityno,s.commoditysum,s.commodityNote,
           c.commodityno,c.price,c.needintegral,c.commoditytitle,c.commoditydetails,c.commodityinventory,c.commoditytypeno,c.commoditytype,
           ct.commoditytypeno,ct.commoditytypename,ct.supercommoditytype,ct.commodityrank,
-          e.empno,e.empname,e.empsex,e.departmentno,e.positivedates,e.empphone,e.intergralno,e.position,e.emptype,e.password
+          e.empno,e.empname,e.empsex,e.departmentno,e.positivedates,e.empphone,e.intergralno,e.position,e.emptype
     </sql>
     <select id="selectShoppingCarByEmpId" parameterType="cn.bean.Emp" resultMap="shoppingCarResultMap">
         select

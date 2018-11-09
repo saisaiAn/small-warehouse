@@ -2,7 +2,9 @@ package cn.app.controller;
 
 import cn.app.service.MasterService;
 import cn.bean.Emp;
+import cn.bean.IntegralAudit;
 import com.sun.org.apache.xpath.internal.SourceTree;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,10 +53,17 @@ public class MasterController {
     }
     //首页
     @RequestMapping(value="/toAppnIndex")
-    public String index(){
+    public String index(Model model){
+        model.addAttribute("IntegralAudit",masterService.findAll());
         return "app/index";
     }
-
+    @ResponseBody
+    @RequestMapping(value="/toAppFind")
+    public IntegralAudit toAppFind(@Param("integralauditno") Integer integralauditno, Model model){
+        IntegralAudit integralAudit=new IntegralAudit();
+        integralAudit.setIntegralauditno(integralauditno);
+        return masterService.findIntegral(integralAudit);
+    }
     //登录
     @RequestMapping(value="app")
     public String app(){
@@ -79,7 +88,6 @@ public class MasterController {
     //注销
     @RequestMapping(value = "toAppLogout")
     public String logout(){
-
         return "app/logout";
     }
 }
