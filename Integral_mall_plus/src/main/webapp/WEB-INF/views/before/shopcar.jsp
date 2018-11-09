@@ -153,7 +153,9 @@
                            if (result=="y"){
                           		alert("下单成功！");
                                location.href="/Before/toBeforeOrders?id=${empBefore.empno}&status=1";
-                           }
+                           }else{
+                               alert("下单失败");
+						   }
                        }
                    })
                }else{

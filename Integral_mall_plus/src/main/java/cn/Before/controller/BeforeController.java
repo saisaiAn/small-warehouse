@@ -45,8 +45,9 @@ public class BeforeController {
 
     @ResponseBody
     @RequestMapping(value = "/addBeforePay")
-    @Transactional(rollbackFor = {Exception.class})
-    public String BeforePay(@Param("count")String count,HttpSession httpSession){
+    @Transactional(rollbackFor = {RuntimeException.class,Exception.class})
+    public synchronized String BeforePay(@Param("count")String count,HttpSession httpSession){
+
         String[] carno=count.split(",");
         for (String carId:carno) {
             //通过ID查找购物车的相关属性
@@ -81,6 +82,8 @@ public class BeforeController {
             System.out.println(emp.getEmpname()+"==="+emp.getPassword());
             Emp empReturn = empService.loginToIndexBefore(emp);
             httpSession.setAttribute("empBefore",empReturn);
+            Commodity commodity1= commodityService.selectCommodityById(commodity);
+            int comsum = commodity1.getCommodityinventory()-shoppingCarTwo.getCommoditysum();
         }
         return "y";
     }
