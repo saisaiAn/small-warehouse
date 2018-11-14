@@ -123,8 +123,8 @@
 											</c:forEach>
 										</div>
 										<div class="shang clearfloat fl box-s">
-											<p class="tit over">${commodity.commoditytitle}</p>
-											<p><span>积分:</span><span class="over db red">${commodity.needintegral}</span></p>
+											<p class="tit over" style="font-size: 13px;">${commodity.commoditytitle}</p>
+											<p><span>积分:</span><span class="over db red" style="font-weight: bold;">${commodity.needintegral}</span></p>
 										</div>
 									</a>
 								</div>

@@ -56,7 +56,7 @@
 				<div class="bottom clearfloat">
 					<c:forEach items="${commodityList}" var="commodity">
 						<c:if test="${commodity.commoditytype==1}">
-						<div class="lie clearfloat">
+						<div class="lie clearfloat" style="overflow: auto;">
 							<a href="/Before/toBeforeDetail?id=${commodity.commodityno}">
 								<div class="tu clearfloat fl">
 									<c:forEach items="${imgList}" var="img">
@@ -66,16 +66,17 @@
 									</c:forEach>
 								</div>
 							</a>
-							<div class="right clearfloat fl">
-								<a href="/Before/toBeforeDetail?id=${commodity.commodityno}">
-									<p class="tit">${commodity.commoditydetails}</p>
+							<div class="right clearfloat fl" style="float: right;width: 240px;">
+								<a href="/Before/toBeforeDetail?id=${commodity.commodityno}" style="width: 200px;">
+									<p class="tit" style="width: 200px;margin: 0px;padding: 0px;">${commodity.commoditydetails}</p>
 								</a>
-								<div class="xia clearfloat">
-									<a href="/Before/toBeforeDetail">
+								<div class="xia clearfloat" style="width: 200px;">
+									<a href="/Before/toBeforeDetail?id=${commodity.commodityno}">
 										<p class="jifen fl over">${commodity.needintegral}积分</p>
 									</a>
-
 								</div>
+								<div class=" clearfloat" style="width: 200px;"><p style="font-size: 15px;"><span style="font-size: 14px;">库存</span>：${commodity.commodityinventory}</p></div>
+								<div class="xia clearfloat" style="width: 200px;"><p style="font-size: 15px;">${commodity.commoditydetails}</p></div>
 							</div>
 						</div>
 						</c:if>

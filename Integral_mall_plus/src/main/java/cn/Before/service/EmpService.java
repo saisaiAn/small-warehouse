@@ -9,8 +9,18 @@ import org.springframework.stereotype.Service;
 public class EmpService {
     @Autowired
     EmpMapper empMapper;
-
+    @Autowired
+    private JedisClientImp jedisClient;
     public Emp loginToIndexBefore(Emp emp){
+        try{
+            jedisClient.del("BeforeShoppingCars");
+            jedisClient.del("BeforeCommodityTypes");
+            jedisClient.del("BeforeCommoditys");
+            jedisClient.del("BeforeImagers");
+            jedisClient.del("BeforeOrders");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return empMapper.loginToIndexBefore(emp);
     }
 

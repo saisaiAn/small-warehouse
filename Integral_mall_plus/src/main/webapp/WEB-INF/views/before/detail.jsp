@@ -92,12 +92,12 @@
 				<div class="top clearfloat box-s">
 					<c:forEach items="${imgList}" var="img">
 						<c:if test="${img.imageclassification==3&&img.imagerid==commodity.commodityno}">
-							<img src="${img.imagerurl}" style="float: left;"/>
+							<img src="${img.imagerurl}" style="float: left; margin-bottom: 30px;"/>
 						</c:if>
 					</c:forEach>
 					<div class="shang clearfloat">
 						<div class="zuo clearfloat fl over2 box-s">
-							${commodity.commoditytitle}
+							<span style="font-size: 18px;">${commodity.commoditytitle}</span>
 						</div>
 						<div class="you clearfloat fr">
 							<i class="iconfont icon-fenxiang"></i>
@@ -106,20 +106,18 @@
 					</div>
 					<div class="xia clearfloat">
 
-						<p class="jifen fl box-s"><samp>${commodity.needintegral}</samp>积分</p>
+						<p class="jifen fl box-s"><samp style="font-weight: bold;">${commodity.needintegral}</samp>积分</p>
 						<span class="fr">库存<span class="kc" style="display: inline;">${commodity.commodityinventory}</span> 件</span>
 					</div>
 				</div>
 				<div class="middle clearfloat box-s">
 					<a href="#">
 						<span class="fl">商品详情</span>
-						<i class="iconfont icon-jiantou1 fr"></i>
 					</a>
 				</div>
 				<div class="middle clearfloat box-s">
 					<a href="#">
-						<span class="fl">商品评价</span>
-						<i class="iconfont icon-jiantou1 fr"></i>
+						<span style="font-size: 13px;">${commodity.commoditydetails}</span>
 					</a>
 				</div>
 			</div>
@@ -149,11 +147,38 @@
 			</div>
 			<div class="right clearfloat fl">
 				<span class="btn fl" onClick="toshare()">加入购物车</span>
-				<a href="/Before/toBeforeConfirm" class="btn btnone fl">立即购买</a>
+				<a class="btn btnone fl" id="Pay">立即购买</a>
 			</div>
 		</div>
 		<!--footerone end-->
-		
+		<script>
+			$(function(){
+                $("#Pay").click(function(){
+                    if (confirm("您确认购买当前商品吗？")){
+                    if (${commodity.needintegral}<${empBefore.integralId.remainingpoints}){
+                        $.ajax({
+                            url:"/Before/addBeforePayByCommodity",
+                            data:{ count:${commodity.commodityno}} ,
+                            type:"POST",
+                            success:function (result) {
+                                if (result=="y"){
+                                    alert("下单成功！");
+                                    location.href="/Before/toBeforeOrders?id=${empBefore.empno}&status=1";
+                                }else if(result=="s"){
+                                    alert("所选中商品库存不足");
+                                }else{
+                                    alert("下单失败")
+                                }
+                            }
+                        })
+                    }else{
+                        alert("用户积分不足");
+                    }
+                }
+					});
+
+			})
+		</script>
 		<!--弹出购物车内容-->
 		<div class="am-share">
             <form action="" id="carForm" method="post">
