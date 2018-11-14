@@ -2,6 +2,7 @@ package cn.background.controller;
 
 import cn.background.bgService.BgLoginService;
 import cn.background.bgService.BgProductService;
+import cn.background.bgService.PictureServiceImpl;
 import cn.bean.Commodity;
 import cn.bean.Imager;
 import org.apache.commons.io.FilenameUtils;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.util.Map;
 import java.util.UUID;
 
 /*
@@ -57,26 +59,14 @@ public class BgProductController {
     @Transactional(rollbackFor = {Exception.class})
     @RequestMapping(value = "add_Product",method = RequestMethod.POST)
     public String add_product(Commodity commodity,@RequestParam("img") MultipartFile img,
-                              HttpServletRequest request) throws Exception{//添加商品页面
+                              HttpServletRequest request){//添加商品页面
         int proId = bgProductService.addPro(commodity);//添加商品
         System.out.println("商品id"+commodity.getCommodityno());
-        //使用uuid给图片重命名，并且去掉四个-
-        String name = UUID.randomUUID().toString().replace("-","");
-        //获取文件的扩展名
-        String ext = FilenameUtils.getExtension(img.getOriginalFilename());
-        //设置图片上传路径
-        String url = request.getSession().getServletContext().getRealPath("/static/before/images");
-        System.out.println(url+"-----*****");
-        //以绝对路径保存重命名后的图片
-        File file = new File(url+"/"+name + "." + ext);
-        img.transferTo(file);
-        System.out.println(file+"路径");
-        String img1 = file.toString();
-        String imgUrl = img1.substring(img1.length()-58);
-        System.out.println(imgUrl+"******");
+        PictureServiceImpl pictureService = new PictureServiceImpl();
+        Map<String,Object> map = pictureService.uploadPicture(img);
         //吧图片路径保存刀数据库
         Imager imager = new Imager();
-        imager.setImagerurl(imgUrl);
+        imager.setImagerurl(map.get("url").toString());
         imager.setImageclassification("3");
         imager.setImagerdescription(commodity.getCommoditytitle());
         imager.setImagerid(commodity.getCommodityno());
@@ -129,13 +119,14 @@ public class BgProductController {
         return "/background/Products_List";
     }
 
+    @Transactional(rollbackFor = {Exception.class})
     @RequestMapping(value = "updProImage",method = RequestMethod.POST)
     public  String updProImage(@RequestParam("img") MultipartFile img,@RequestParam("id")Integer id ,HttpServletRequest request,Model model) throws Exception{
         System.out.println("修改商品图片");
         System.out.println(img);
         System.out.println(id);
         //使用uuid给图片重命名，并且去掉四个-
-        String name = UUID.randomUUID().toString().replace("-","");
+       /* String name = UUID.randomUUID().toString().replace("-","");
         //获取文件的扩展名
         String ext = FilenameUtils.getExtension(img.getOriginalFilename());
         //设置图片上传路径
@@ -147,10 +138,12 @@ public class BgProductController {
         System.out.println(file+"路径");
         String img1 = file.toString();
         String imgUrl = img1.substring(img1.length()-58);
-        System.out.println(imgUrl+"******");
+        System.out.println(imgUrl+"******");*/
         //吧图片路径保存刀数据库
+        PictureServiceImpl pictureService = new PictureServiceImpl();
+        Map<String,Object> map = pictureService.uploadPicture(img);
         Imager imager = new Imager();
-        imager.setImagerurl(imgUrl);
+        imager.setImagerurl(map.get("url").toString());
         imager.setImagerid(id);
         bgProductService.updImg(imager);//修改图片路径
         model.addAttribute("img",bgLoginService.findAllImg());
