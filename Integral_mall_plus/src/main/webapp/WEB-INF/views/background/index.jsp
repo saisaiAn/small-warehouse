@@ -250,20 +250,20 @@
                         <i class="icon-caret-down"></i>
                     </a>
                     <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                        <li><a href="javascript:void(0)" name="Systems.html" title="系统设置" class="iframeurl"><i
-                                class="icon-cog"></i>网站设置</a></li>
+                        <%--<li><a href="javascript:void(0)" name="Systems.html" title="系统设置" class="iframeurl"><i
+                                class="icon-cog"></i>网站设置</a></li>--%>
                         <li><a href="javascript:void(0)" name="admin_info" title="个人信息" class="iframeurl"><i
                                 class="icon-user"></i>个人资料</a></li>
                         <li class="divider"></li>
-                        <li><a href="javascript:ovid(0)" id="Exit_system"><i class="icon-off"></i>退出</a></li>
+                        <li><a href="Sign_out" id=""><i class="icon-off"></i>退出</a></li>
                     </ul>
                 </li>
-                <li class="purple">
+                <%--<li class="purple">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-bell-alt"></i><span
                             class="badge badge-important">8</span></a>
                     <ul class="pull-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-                        <li class="dropdown-header"><i class="icon-warning-sign"></i>8条通知</li>
-                        <li>
+                        <li class="dropdown-header"><i class="icon-warning-sign"></i>通知</li>
+                       &lt;%&ndash; <li>
                             <a href="#">
                                 <div class="clearfix">
 											<span class="pull-left">
@@ -281,9 +281,9 @@
                                 切换为编辑登录..
                             </a>
                         </li>
-
+&ndash;%&gt;
                         <li>
-                            <a href="#">
+                            <a href="Orderform_html">
                                 <div class="clearfix">
 											<span class="pull-left">
 												<i class="btn btn-xs no-hover btn-success icon-shopping-cart"></i>
@@ -294,7 +294,7 @@
                             </a>
                         </li>
 
-                        <li>
+                      &lt;%&ndash;  <li>
                             <a href="#">
                                 <div class="clearfix">
 											<span class="pull-left">
@@ -311,12 +311,12 @@
                                 查看所有通知
                                 <i class="icon-arrow-right"></i>
                             </a>
-                        </li>
+                        </li>&ndash;%&gt;
                     </ul>
                 </li>
 
 
-            </ul>
+            </ul>--%>
             <!-- <div class="right_info">
 
                <div class="get_time" ><span id="time" class="time"></span>欢迎光临,管理员</span></div>
@@ -409,19 +409,19 @@
                             <a href="#" class="dropdown-toggle"><i class="icon-list"></i><span
                                     class="menu-text"> 交易管理 </span><b class="arrow icon-angle-down"></b></a>
                             <ul class="submenu">
-                                <li class="home"><a href="javascript:void(0)" name="transaction.html" title="交易信息"
+                               <%-- <li class="home"><a href="javascript:void(0)" name="transaction.html" title="交易信息"
                                                     class="iframeurl"><i class="icon-double-angle-right"></i>交易信息</a></li>
                                 <li class="home"><a href="javascript:void(0)" name="Order_Chart.html" title="交易订单（图）"
                                                     class="iframeurl"><i class="icon-double-angle-right"></i>交易订单(图)</a>
-                                </li>
+                                </li>--%>
                                 <li class="home"><a href="javascript:void(0)" name="Orderform_html" title="订单管理"
                                                     class="iframeurl"><i class="icon-double-angle-right"></i>订单管理</a></li>
-                                <li class="home"><a href="javascript:void(0)" name="Amounts.html" title="交易金额"
+                               <%-- <li class="home"><a href="javascript:void(0)" name="Amounts.html" title="交易金额"
                                                     class="iframeurl"><i class="icon-double-angle-right"></i>交易金额</a></li>
                                 <li class="home"><a href="javascript:void(0)" name="Order_handling.html" title="订单处理"
                                                     class="iframeurl"><i class="icon-double-angle-right"></i>订单处理</a></li>
                                 <li class="home"><a href="javascript:void(0)" name="Refund.html" title="退款管理"
-                                                    class="iframeurl"><i class="icon-double-angle-right"></i>退款管理</a></li>
+                                                    class="iframeurl"><i class="icon-double-angle-right"></i>退款管理</a></li>--%>
                             </ul>
                         </li>
                     </c:if>

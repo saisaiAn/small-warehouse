@@ -9,11 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 public class BgInterceptor implements HandlerInterceptor {
     @Override
-    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
+    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse response, Object o) throws Exception {
         Emp empReturn = (Emp) httpServletRequest.getSession().getAttribute("loginUser");
         System.out.println("后台拦截器");
         if (empReturn==null||empReturn.equals("")){
-            httpServletResponse.sendRedirect("/view");
+            response.sendRedirect("/view");
+           /* response.write("<script>window.parent.location.href='';</script>");*/
             return false;
         }
         return true;

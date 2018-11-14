@@ -57,8 +57,9 @@ public class LoginController {
     public String jumpIndex(){//跳转index页面
         return "/background/index";
     }
+
     @RequestMapping("home.html")
-    public String home(Model model){//跳转首页
+    public String home(Model model) throws Exception{//跳转首页
         System.out.println("首页");
         model.addAttribute("allEmp",bgLoginService.findAllEmp());
         List<Orders> orders = bgLoginService.selectOrders();
@@ -69,6 +70,7 @@ public class LoginController {
         int countOrderstatus3 =0;
         for (Orders o: orders
              ) {
+            System.out.println(o.getOrderintegral()+"***156464");
             countOrderOrderintegral+=(Integer.parseInt(o.getOrderintegral()));
             if(o.getOrderstatus()==1){
                 ++ countOrderstatus ;
@@ -100,6 +102,13 @@ public class LoginController {
         model.addAttribute("shangjia",shangjia);
         model.addAttribute("xiajia",xiajia);
         return "/background/home";
+    }
+
+    @RequestMapping("Sign_out")
+    public String Signout(HttpSession session){
+        System.out.println("退出清空session");
+        session.removeAttribute("loginUser");
+        return "redirect:/view";
     }
 
 }

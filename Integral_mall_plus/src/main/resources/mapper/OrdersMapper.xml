@@ -67,7 +67,8 @@
         <include refid="WithOrders_Column_List" />
         from orders o ,commodity c,emp e
         <where>
-            o.ordercommodityno=c.commodityno and o.empno=e.empno
+            o.ordercommodityno=c.commodityno and o.empno=e.empno order by
+            o.orderstatus asc
         </where>
     </select>
 
@@ -80,7 +81,8 @@
             <if test="id!=null and id!=''">
                 and o.OrderNo=#{id}
             </if>
-
+            order by
+            o.orderstatus asc
         </where>
     </select>
 

@@ -105,6 +105,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </body>
 </html>
 
+<script language="JavaScript">
+
+    if (window != top)
+
+        top.location.href = location.href;
+
+</script>
+
 <script >
 
 /*$('#login_btn').on('click', function(){
@@ -146,7 +154,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
               });
           }else{
             $.ajax({
-                url:"masterlogin",
+                url:"login",
                 data:{username:$username,pwd:$pwd},
                 type:"post",
                 success:function (result) {

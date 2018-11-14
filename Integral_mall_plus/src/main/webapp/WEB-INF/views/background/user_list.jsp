@@ -192,12 +192,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             <li><label class="label_name">身&nbsp;份&nbsp;证：</label><span class="add_name"><input name="idcard" id="updcard" type="text" style="width: 200px;margin-left: 0px;" class="text_add"/></span><div class="prompt r_f"></div></li>
             <li><label class="label_name">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</label><span class="add_name"><input name="empphone" id="updphone" type="text"  class="text_add"/></span><div class="prompt r_f"></div></li>
             <li><label class="label_name">职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位：</label><span class="add_name">
-            <select class="form-control" style="width: 200px;" name="position" id="updposition">
+            <select class="form-control" style="width: 200px;"  id="updposition" disabled="disabled">
                 <option value="1">普通员工</option>
                 <option value="2">经理</option>
                 <option value="3">综合部经理</option>
                 <option value="4">校长</option>
             </select>
+                <input type="hidden" name="position" id="updpositionHidden"/>
             </span><div class="prompt r_f"></div></li>
             <button type="button" class="btn btn-success updemp" style="margin-left: 100px;">提交</button>
             <br/>
@@ -222,6 +223,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             $("#updcard").val(idcard);
             $("#updphone").val(empphone);
             $("#updposition").val(position);
+            $("#updpositionHidden").val(position);
             $("#empno").attr("value",id);
             if(sex=="男"){
                 $("#nan").attr("checked","checked");
