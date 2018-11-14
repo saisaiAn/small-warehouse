@@ -17,4 +17,5 @@ public interface IntegralAuditMapper {
     public int updIntegralauditAuditType(Map<Object,Object> map);
 
     public List<IntegralAudit> findAllIntegralAuditByDeptNo(@Param("deptno") Integer deptno);
+    IntegralAudit byId (IntegralAudit integralAudit);
 }

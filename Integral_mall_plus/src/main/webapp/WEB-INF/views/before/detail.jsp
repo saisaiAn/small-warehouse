@@ -20,7 +20,21 @@
 		$(window).load(function(){
 			$(".loading").addClass("loader-chanage")
 			$(".loading").fadeOut(300)
+            $.ajax({
+                url:"/Before/BeforeCeHui",
+                data:{},
+                type:"POST",
+                success:function (result) {}
+            })
 		})
+        window.onbeforeunload = function() {
+            $.ajax({
+                url:"/Before/BeforeXiaoHui",
+                data:{},
+                type:"POST",
+                success:function (result) {}
+            })
+        };
 		function toshare(){
 			$(".am-share").addClass("am-modal-active");	
 			if($(".sharebg").length>0){
@@ -142,7 +156,7 @@
 		
 		<!--弹出购物车内容-->
 		<div class="am-share">
-            <form action="/Before/addBeforeShopping" id="carForm" method="post">
+            <form action="" id="carForm" method="post">
 		    <div class="am-share-footer">
 		        <button class="share_btn">
 					<c:forEach items="${imgList}" var="img">
@@ -202,21 +216,26 @@
                 <input type="hidden" id="commodityId" name="shoppingcommodityno" value="${commodity.commodityno}" />
                 <input type="hidden" id="commodityNote" name="commodityNote"/>
                 <input type="hidden" id="shoppingempno" name="shoppingempno" value="${empBefore.empno}"/>
-                <button id="sub" class="shop-btn db">确定</button>
+                <span id="sub" class="shop-btn db">确定</span>
             </form>
 		</div>
         <script type="text/javascript">
             $(function(){
                 $("#sub").click(function(){
-                    var result='';
-                    $(".cur").each(function(){
-                        result=result+ $(this).html()+',';
-                    });
-                    $("#commodityNote").val(result);
                     $("#sum").val($("#count").html());
-                    if($(".kc").html>0){
-                        $("#carForm").submit;
-                    }
+                    $("#commodityNote").val(result);
+                        var result='';
+                        $(".cur").each(function(){
+                            result=result+ $(this).html()+',';
+                        });
+                        $("#commodityNote").val(result);
+                        $("#sum").val($("#count").html());
+                        if($(".kc").html>$("#count").html()){
+                            $("#carForm").attr("action","/Before/addBeforeShopping");
+                            $("#carForm").submit();
+                        }else{
+                            alert("库存不足");
+                        }
                 });
             })
         </script>
@@ -272,7 +291,7 @@
 				</li>
 			</ul>
 		</footer>
-		<jsp:include   page="updateEmpType.jsp" flush="true"/>
+		<%--<jsp:include   page="updateEmpType.jsp" flush="true"/>--%>
 	</body>
 	
 </html>

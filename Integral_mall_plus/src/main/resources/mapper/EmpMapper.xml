@@ -62,7 +62,7 @@
         select
         <include refid="WithDept_Column_List" />
         from emp e ,department d,integral i
-        where e.departmentno=d.depano and e.intergralno=i.intergralno
+        where e.departmentno=d.depano
     </select>
 
     <!-- 添加员工 -->
@@ -80,7 +80,7 @@
     </delete>
     <!--校长修改-->
     <update id="masterUpd">
-        update emp set empname=#{empname},empphone=#{empphone},password=#{password} where empno=#{empno}
+        update emp set empphone=#{empphone},password=#{password} where empno=#{empno}
     </update>
 
 

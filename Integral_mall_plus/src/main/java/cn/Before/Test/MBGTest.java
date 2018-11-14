@@ -1,4 +1,4 @@
-package cn.hcfy.Test;
+package cn.Before.Test;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;

@@ -59,7 +59,7 @@
                 </dd>
             </dl>
         </a>
-        <ul>
+        <ul style="margin-bottom: 0px;">
             <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=1"><span></span><p>待审核</p> </a></li>
             <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=2"><span></span><p>待领取</p> </a></li>
             <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=3"><span></span><p>待评价</p> </a></li>

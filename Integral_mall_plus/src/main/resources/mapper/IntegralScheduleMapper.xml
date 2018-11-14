@@ -47,7 +47,6 @@
         select
         <include refid="WithIntegralSchedule_Column_List" />
         from IntegralSchedule ins,Emp e,Integral i where ins.empNo=#{empno} and e.EmpNo=#{empno} and e.intergralNo=i.IntergralNo
-
     </select>
 
 </mapper>

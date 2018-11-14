@@ -9,7 +9,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <title>最高级管理系统</title>
+        <title>超级管理系统</title>
         <meta content="Admin Dashboard" name="description" />
         <meta content="Mannatthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -22,12 +22,56 @@
         <link href="/static/app/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="/static/app/assets/css/icons.css" rel="stylesheet" type="text/css">
         <link href="/static/app/assets/css/style.css" rel="stylesheet" type="text/css">
+       <script src="/static/background/assets/layer/layer.js" type="text/javascript"></script>
 
     </head>
 
 
     <body class="fixed-left">
+    <%--模态框--%>
+    <div class="modal fade" id="model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">详情</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group"  style="width: 40%; display: inline-block; float: left;margin:0 5%;">
+                            <label for="recipient-name" class="control-label">申请人</label>
+                            <input type="text" class="form-control empId" id="recipient-name" disabled="disabled" value="">
+                        </div>
+                        <div class="form-group"  style="width: 40%; display: inline-block; float: left;margin:0 5%;">
+                            <label for="recipient-name" class="control-label">审核人</label>
+                            <input type="text" class="form-control empReviewer" disabled="disabled">
+                        </div>
+                        <div class="form-group" style="width: 40%; display: inline-block; float: left;margin:0 5%;">
+                            <label for="recipient-name" class="control-label">申请原因</label>
+                            <textarea class="form-control intergralchange" rows="7" id="message-text" disabled="disabled"></textarea>
+                        </div>
+                        <div class="form-group"style="width: 40%; display: inline-block; float: left;margin:0 5%;">
+                            <label for="message-text" class="control-label">审核原因</label>
+                            <textarea class="form-control auditopinion" rows="7" id="message-txt" disabled="disabled"></textarea>
+                        </div>
+                        <div class="form-group" style="width: 40%; display: inline-block; float: left;margin:0 5%;">
+                            <label for="recipient-name" class="control-label" disabled="disabled">申请积分</label>
+                            <input type="text" class="form-control changeint" disabled="disabled">
+                        </div>
 
+                        <div class="form-group" style="width: 40%; display: inline-block; float: left;margin:0 5%;">
+                            <label for="recipient-name" class="control-label">审核状态</label>
+                            <input type="text" class="form-control audittype" disabled="disabled">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">同意</button>
+                </div>
+            </div>
+        </div>
+    </div>
         <!-- Loader -->
         <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
 
@@ -43,10 +87,11 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="text-center">
-                        <a href="index.html" class="logo"><i class="mdi mdi-assistant"></i> admin</a>
+                        <a href="/toAppnIndex" class="logo"><i class="mdi mdi-assistant"></i> Annex</a>
                         <!-- <a href="index.html" class="logo"><img src="assets/images/logo.png" height="24" alt="logo"></a> -->
                     </div>
                 </div>
+
 
                 <div class="sidebar-inner slimscrollleft">
 
@@ -56,9 +101,7 @@
                                 <a href="/toAppnIndex" class="waves-effect"><i class="mdi mdi-airplay"></i><span> 首页</span></a>
                             </li>
 
-                            <li>
-                                <a href="/toAppCalendar" class="waves-effect"><i class="mdi mdi-calendar-clock"></i><span> 日历 </span></a>
-                            </li>
+
                             <li>
                                 <a href="/toAppSetting" class="waves-effect"><i class="mdi mdi-settings"></i><span> 个人设置</span></a>
                             </li>                            
@@ -89,13 +132,14 @@
 
                             <ul class="list-inline float-right mb-0">
 
-                                </li>
+
                                 <li class="list-inline-item dropdown notification-list">
                                     <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button"
                                        aria-haspopup="false" aria-expanded="false">
                                         <i class="ti-email noti-icon"></i>
                                         <span class="badge badge-danger noti-icon-badge">5</span>
                                     </a>
+
                                     <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
                                         <!-- item-->
                                         <div class="dropdown-item noti-title">
@@ -220,18 +264,22 @@
                                                                                             </tr>
                                                                                             </thead>
                                                                                             <tbody>
+                                                                                            <c:forEach items="${IntegralAudit}" var="integral">
+                                                                                                <c:if test="${integral.audittype==2}">
                                                                                             <tr>
                                                                                                 <th><input type="checkbox"/></th>
-                                                                                                <th>${appEmpUpdate.id}</th>
-                                                                                                <th>姓名</th>
-                                                                                                <th>积分奖惩</th>
+                                                                                                <th class="integralauditno">${integral.integralauditno}</th>
+                                                                                                <th>${integral.empId.empname}</th>
+                                                                                                <th>${integral.intergralchange}</th>
                                                                                             </tr>
+                                                                                                </c:if>
+                                                                                            </c:forEach>
                                                                                             </tbody>
                                                                                         </table>
                                                                                     </div>
                                                                                 </div>
 
-
+                </div></div></div>
 
         <!-- END wrapper -->
 
@@ -272,6 +320,27 @@
             $("#boxscroll").niceScroll({cursorborder:"",cursorcolor:"#cecece",boxzoom:true});
             $("#boxscroll2").niceScroll({cursorborder:"",cursorcolor:"#cecece",boxzoom:true}); 
             });
+            //获得
+
+            $("tr").on('click',function(){
+                //alert("sdf");
+                var integralauditno=$(this).children(".integralauditno").html();
+               // alert(integralauditno);
+                $.ajax({
+                    url:"/toAppFind",
+                    data:{integralauditno:integralauditno},
+                    type:"post",
+                    success:function(result){
+                        $(".empId").val(result.empId.empname);
+                        $(".empReviewer").val(result.empReviewer.empname);
+                        $(".intergralchange").html(result.intergralchange);
+                        $(".auditopinion").html(result.auditopinion);
+                        $(".audittype").val(result.audittype);
+                        $(".changeint").val(result.changeint);
+                    }
+                })
+                $('#model').modal('show');
+            })
 
         </script>
 

@@ -21,7 +21,21 @@
 		$(window).load(function(){
 			$(".loading").addClass("loader-chanage")
 			$(".loading").fadeOut(300)
+            $.ajax({
+                url:"/Before/BeforeCeHui",
+                data:{},
+                type:"POST",
+                success:function (result) {}
+            })
 		})
+        window.onbeforeunload = function() {
+            $.ajax({
+                url:"/Before/BeforeXiaoHui",
+                data:{},
+                type:"POST",
+                success:function (result) {}
+            })
+        };
 	</script>
 </head>
 
@@ -150,7 +164,7 @@
 				</li>
 			</ul>
 		</footer>
-		<jsp:include   page="updateEmpType.jsp" flush="true"/>
+		<!--footer end-->
 	</body>
 
 </html>

@@ -31,6 +31,8 @@ public interface EmpMapper {
 
     Emp findEmpById(Emp emp);
 
+    int masterUpd(Emp emp);
+    
     int updateBeforeEmpType(Emp emp);
 
     int masterUpd(Emp emp);

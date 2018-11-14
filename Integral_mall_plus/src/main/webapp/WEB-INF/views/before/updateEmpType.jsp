@@ -11,6 +11,7 @@
     <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
+
     <script type="text/javascript">
          window.onload = function() {
              $.ajax({

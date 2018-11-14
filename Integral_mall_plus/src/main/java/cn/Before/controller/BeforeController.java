@@ -1,7 +1,7 @@
-package cn.hcfy.controller;
+package cn.Before.controller;
 
 import cn.bean.*;
-import cn.hcfy.service.*;
+import cn.Before.service.*;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,8 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 
@@ -47,8 +45,9 @@ public class BeforeController {
 
     @ResponseBody
     @RequestMapping(value = "/addBeforePay")
-    @Transactional(rollbackFor = {Exception.class})
-    public String BeforePay(@Param("count")String count,HttpSession httpSession){
+    @Transactional(rollbackFor = {RuntimeException.class,Exception.class})
+    public synchronized String BeforePay(@Param("count")String count,HttpSession httpSession){
+
         String[] carno=count.split(",");
         for (String carId:carno) {
             //通过ID查找购物车的相关属性
@@ -83,6 +82,8 @@ public class BeforeController {
             System.out.println(emp.getEmpname()+"==="+emp.getPassword());
             Emp empReturn = empService.loginToIndexBefore(emp);
             httpSession.setAttribute("empBefore",empReturn);
+            Commodity commodity1= commodityService.selectCommodityById(commodity);
+            int comsum = commodity1.getCommodityinventory()-shoppingCarTwo.getCommoditysum();
         }
         return "y";
     }

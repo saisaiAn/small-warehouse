@@ -6,7 +6,7 @@ import cn.bean.Imager;
 import cn.dao.CommodityMapper;
 import cn.dao.CommodityTypeMapper;
 import cn.dao.ImagerMapper;
-import cn.hcfy.service.JedisClientImp;
+import cn.Before.service.JedisClientImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

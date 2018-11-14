@@ -1,8 +1,6 @@
-package cn.hcfy.service;
+package cn.Before.service;
 
 import cn.bean.Commodity;
-import cn.bean.CommodityType;
-import cn.bean.Imager;
 import cn.dao.CommodityMapper;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
