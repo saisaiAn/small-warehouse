@@ -161,7 +161,13 @@
                 emptype = #{emptype},
             </if>
         </set>
-        where empno = #{empno}
+        where
+        <if test="empno != null">
+            empno = #{empno}
+        </if>
+        <if test="empno == null">
+            empno = 0
+        </if>
     </update>
 
 

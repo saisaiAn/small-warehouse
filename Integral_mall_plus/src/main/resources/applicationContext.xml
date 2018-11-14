@@ -77,8 +77,10 @@
     <!--Jedis客户端单机版-->
     <bean id="redisClient" class="redis.clients.jedis.JedisPool">
         <constructor-arg name="poolConfig" ref="jedisPoolConfig"></constructor-arg>
-        <constructor-arg name="host" value="127.0.0.1"></constructor-arg>
+        <constructor-arg name="host" value="47.107.135.170"></constructor-arg>
         <constructor-arg name="port" value="6379"></constructor-arg>
+        <constructor-arg name="password" value="mengyuan"></constructor-arg>
+        <constructor-arg name="timeout" value="1500"></constructor-arg>
     </bean>
     <bean id="JedisClient" class="cn.Before.service.JedisClientImp"/>
 </beans>

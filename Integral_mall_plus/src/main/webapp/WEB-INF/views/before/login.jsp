@@ -140,10 +140,6 @@
 		</div>
 	</div>
 </div>
-
-<div style="text-align:center;">
-	<p>来源：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
-</div>
 <script type="text/javascript" src="/static/js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript">
     $(function(){
