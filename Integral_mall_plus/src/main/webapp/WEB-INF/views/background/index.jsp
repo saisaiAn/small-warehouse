@@ -626,7 +626,19 @@
 </div>
 <!-- /.main-container -->
 <!-- basic scripts -->
+<script type="text/javascript">
+    $(function () {
+        setInterval(function () {
+            $.ajax({
+                url:"/redisBeOverdue",
+                type:"post",
+                success:function (result) {
+                }
+            })
+        },20000);
+    })
 
+</script>
 </body>
 </html>
 

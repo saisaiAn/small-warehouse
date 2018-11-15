@@ -163,14 +163,16 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 type:"post",
                 success:function (result) {
                     if(result==0){
-                        layer.msg("登陆成功");
+						layer.msg("登陆成功");
                         setTimeout(function () {location.href="jumpindex";},1000);
                     }else if(result==1){
                         layer.alert('登陆失败，帐号或者密码错误！',{
                             title: '提示框',
                             icon:1,
                         });
-                    }else{
+                    }else if(result=="ydl"){
+                        layer.msg("登陆失败，该账号以有人登陆！");
+					}else{
                         layer.alert('登陆失败，权限不够！',{
                             title: '提示框',
                             icon:1,
