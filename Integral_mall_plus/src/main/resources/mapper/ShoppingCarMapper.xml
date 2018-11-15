@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.dao.shoppingCarMapper">
+<mapper namespace="cn.dao.ShoppingCarMapper">
     <!--前台购物车列表查询-->
-    <resultMap type="cn.bean.shoppingCar" id="shoppingCarResultMap">
+    <resultMap type="cn.bean.ShoppingCar" id="shoppingCarResultMap">
         <id column="carno" jdbcType="INTEGER" property="carno" />
         <result column="shoppingempno" jdbcType="INTEGER" property="shoppingempno" />
         <result column="shoppingcommodityno" jdbcType="INTEGER" property="shoppingcommodityno" />
@@ -52,7 +52,7 @@
               s.shoppingcommodityno=c.commodityno and c.commoditytypeno=ct.commoditytypeno and s.shoppingempno=e.empno and e.empno=#{empno}
         </where>
     </select>
-    <select id="selectShoppingCarByCarId" parameterType="cn.bean.shoppingCar" resultMap="shoppingCarResultMap">
+    <select id="selectShoppingCarByCarId" parameterType="cn.bean.ShoppingCar" resultMap="shoppingCarResultMap">
         select
         <include refid="WithCommodityType_Column_List" />
         from shoppingcar s, commodity c,commoditytype ct,emp e
@@ -60,7 +60,7 @@
             s.shoppingcommodityno=c.commodityno and c.commoditytypeno=ct.commoditytypeno and s.shoppingempno=e.empno and s.carno=#{carno}
         </where>
     </select>
-    <insert id="insertShoppingCar" parameterType="cn.bean.shoppingCar" useGeneratedKeys="true" keyProperty="carno" keyColumn="carno">
+    <insert id="insertShoppingCar" parameterType="cn.bean.ShoppingCar" useGeneratedKeys="true" keyProperty="carno" keyColumn="carno">
         insert into shoppingCar
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="shoppingempno != null">
@@ -95,7 +95,7 @@
       delete from shoppingCar
       where carno = #{carno,jdbcType=INTEGER}
     </delete>
-    <update id="updateByExampleSelective" parameterType="cn.bean.shoppingCar">
+    <update id="updateByExampleSelective" parameterType="cn.bean.ShoppingCar">
         update shoppingcar
         <set>
             <if test="shoppingcar.shoppingempno != null">

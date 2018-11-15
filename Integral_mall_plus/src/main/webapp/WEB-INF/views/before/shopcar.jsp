@@ -6,15 +6,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>购物车</title>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/shopcar.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/mui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/sourse/layer/mobile/need/layer.css">
-    <script src="/static/before/js/rem.js"></script>
-    <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
-    <script src="/static/before/sourse/layer/mobile/layer.js"></script>
+	<%
+		request.setAttribute("path", request.getContextPath());
+	%>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/shopcar.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/loading.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/sourse/layer/mobile/need/layer.css">
+	<link rel="shortcut icon" href="${path}/static/before/images/mall.png" type="image/x-icon"/>
+    <script src="${path}/static/before/js/rem.js"></script>
+    <script src="${path}/static/before/js/jquery.min.js" type="text/javascript"></script>
+    <script src="${path}/static/before/sourse/layer/mobile/layer.js"></script>
 	<script type="text/javascript">
 		$(window).load(function(){
 			$(".loading").addClass("loader-chanage")
@@ -63,7 +67,7 @@
 								<span></span>
 								<c:forEach items="${imgList}" var="img">
 									<c:if test="${img.imageclassification==3&&img.imagerid==shoppingCar.shoppingcommodityno}">
-										<img src="${img.imagerurl}" />
+										<img style="padding: 0px;" src="${img.imagerurl}" />
 									</c:if>
 								</c:forEach>
 							</div>
@@ -74,9 +78,9 @@
 								<div class="bottom clearfloat">
 									<div class="zuo clearfloat fl">
 										<ul>
-											<li><img src="/static/before/images/jian.jpg" carno="${shoppingCar.carno}"/></li>
+											<li><img src="${path}/static/before/images/jian.jpg" carno="${shoppingCar.carno}"/></li>
 											<li>${shoppingCar.commoditysum}</li>
-											<li><img src="/static/before/images/jia.jpg" carno="${shoppingCar.carno}"/></li>
+											<li><img src="${path}/static/before/images/jia.jpg" carno="${shoppingCar.carno}"/></li>
 										</ul>
 									</div>
 									<i class="iconfont icon-lajixiang fr "></i>
@@ -106,25 +110,25 @@
 		<footer class="page-footer fixed-footer" id="footer">
 			<ul>
 				<li>
-					<a href="/Before/toBeforeIndex">
+					<a href="${path}/Before/toBeforeIndex">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
 				<li>
-					<a href="/Before/toBeforeCation">
+					<a href="${path}/Before/toBeforeCation">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li class="active">
-					<a href="/Before/toBeforeShopcar">
+					<a href="${path}/Before/toBeforeShopcar">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="/Before/toBeforeCenter">
+					<a href="${path}/Before/toBeforeCenter">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>
@@ -146,13 +150,13 @@
                    });
                    count=count.substring(0,count.length-1);
                    $.ajax({
-                       url:"/Before/addBeforePay",
+                       url:"${path}/Before/addBeforePay",
                        data:{ count:count} ,
                        type:"POST",
                        success:function (result) {
                            if (result=="y"){
                           		alert("下单成功！");
-                               location.href="/Before/toBeforeOrders?id=${empBefore.empno}&status=1";
+                               location.href="${path}/Before/toBeforeOrders?id=${empBefore.empno}&status=1";
                            }else if(result=="s"){
                                alert("所选中商品库存不足");
 						   }else{
@@ -176,7 +180,7 @@
 				}
 				var carno=$(this).attr("carno");
                 $.ajax({
-                    url:"/Before/updateBeforeShopCar",
+                    url:"${path}/Before/updateBeforeShopCar",
                     data:{ carno:carno, commoditySum:vals.html()} ,
                     type:"post",
                     success:function (result) {
@@ -192,12 +196,12 @@
 	                btn: ['确定', '取消'],
 	                yes: function(index) {
                         $.ajax({
-                            url:"/Before/deleteBeforeShopCar",
+                            url:"${path}/Before/deleteBeforeShopCar",
                             data:{ carno:del} ,
                             type:"POST",
                             success:function (result) {
                                 if (result=="y"){
-                                    location.href="/Before/toBeforeShopcar";
+                                    location.href="${path}/Before/toBeforeShopcar";
                                 }else {
                                     window.location.reload();
                                 }

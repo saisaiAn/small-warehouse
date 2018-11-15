@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/static/before/css/zhifu.css"/>
     <link rel="stylesheet" type="text/css" href="/static/before/css/mui.min.css"/>
     <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
+	<link rel="shortcut icon" href="/static/before/images/mall.png" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
     <script src="/static/before/js/rem.js"></script>
     <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>

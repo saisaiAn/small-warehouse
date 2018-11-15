@@ -64,14 +64,29 @@ public class BgProductService {
     }
 
     public void updatePro(Commodity commodity){//修改商品信息
+        try{
+            jedisClient.del("BeforeCommoditys");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         commodityMapper.updatePro(commodity);
     }
 
     public int bg_undercarriage_product(Integer proid){//下架商品
+        try{
+            jedisClient.del("BeforeCommoditys");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return commodityMapper.bg_undercarriage_product(proid);
     }
 
     public int bg_grounding_product(Integer proid){//上架商品
+        try{
+            jedisClient.del("BeforeCommoditys");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return commodityMapper.bg_grounding_product(proid);
     }
 
@@ -80,6 +95,11 @@ public class BgProductService {
     }
 
     public int updImg(Imager imager){
+        try{
+            jedisClient.del("BeforeImagers");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return imagerMapper.updImg(imager);
     }
 

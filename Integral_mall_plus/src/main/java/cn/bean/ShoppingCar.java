@@ -1,6 +1,6 @@
 package cn.bean;
 //购物车表
-public class shoppingCar {
+public class ShoppingCar {
     private Integer carno;
 
     private Integer shoppingempno;
@@ -69,14 +69,14 @@ public class shoppingCar {
         this.commodityNote = commodityNote;
     }
 
-    public shoppingCar(Integer shoppingempno, Integer shoppingcommodityno, Integer commoditysum, String commodityNote) {
+    public ShoppingCar(Integer shoppingempno, Integer shoppingcommodityno, Integer commoditysum, String commodityNote) {
         this.shoppingempno = shoppingempno;
         this.shoppingcommodityno = shoppingcommodityno;
         this.commoditysum = commoditysum;
         this.commodityNote = commodityNote;
     }
 
-    public shoppingCar(Integer carno, Integer shoppingempno, Emp empId, Integer shoppingcommodityno, Commodity commodityId, Integer commoditysum, String commodityNote) {
+    public ShoppingCar(Integer carno, Integer shoppingempno, Emp empId, Integer shoppingcommodityno, Commodity commodityId, Integer commoditysum, String commodityNote) {
         this.carno = carno;
         this.shoppingempno = shoppingempno;
         this.empId = empId;
@@ -87,7 +87,7 @@ public class shoppingCar {
     }
 
 
-    public shoppingCar() {
+    public ShoppingCar() {
     }
 
     @Override

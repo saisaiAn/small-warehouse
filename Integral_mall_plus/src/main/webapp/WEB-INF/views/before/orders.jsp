@@ -6,16 +6,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>订单列表</title>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/shopcar.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/mui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
-	<link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/sourse/layer/mobile/need/layer.css">
-    <script src="/static/before/js/rem.js"></script>
-    <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
-    <script src="/static/before/sourse/layer/mobile/layer.js"></script>
+	<%
+		request.setAttribute("path", request.getContextPath());
+	%>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/shopcar.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/loading.css"/>
+	<link rel="stylesheet" type="text/css" href="${path}/static/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/sourse/layer/mobile/need/layer.css">
+	<link rel="shortcut icon" href="${path}/static/before/images/mall.png" type="image/x-icon"/>
+    <script src="${path}/static/before/js/rem.js"></script>
+    <script src="${path}/static/before/js/jquery.min.js" type="text/javascript"></script>
+    <script src="${path}/static/before/sourse/layer/mobile/layer.js"></script>
 	<script type="text/javascript">
 		$(window).load(function(){
 			$(".loading").addClass("loader-chanage")
@@ -62,7 +66,7 @@
 								</c:forEach>
 						</div>
 						<div style="float: left;display: inline-block;margin-left: 15px;">
-							<h5 style="font-family:Microsoft YaHei;color: #0f0f0f;">${order.commodityId.commoditytitle}</h5>
+							<h5 style="font-family:Microsoft YaHei;color: #0f0f0f; display: inline-block;">${order.commodityId.commoditytitle}</h5><p class="over" style="font-size: 12px;">订单编号:<span class="text-success" style="font-size: 12px;">${order.orderno}</span>
 							<p class=" over" style="font-size: 12px;">积分:<span class="text-success" style="font-size: 12px;">${order.commodityId.needintegral}</span>&nbsp;&nbsp;&nbsp;价格:<span class="text-success" style="font-size: 12px;">${order.commodityId.price}</span></p>
 							<p class="text-info">${order.commodityId.commoditydetails}</p>
 							<h5 style="font-family:Microsoft YaHei;color: #00be67;">数量：<span style="color: #7b3f25;">${order.ordercommoditysum}</span></h5>
@@ -87,25 +91,25 @@
 		<footer class="page-footer fixed-footer" id="footer">
 			<ul>
 				<li class="active">
-					<a href="/Before/toBeforeIndex">
+					<a href="${path}/Before/toBeforeIndex">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
 				<li>
-					<a href="/Before/toBeforeCation">
+					<a href="${path}/Before/toBeforeCation">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li>
-					<a href="/Before/toBeforeShopcar">
+					<a href="${path}/Before/toBeforeShopcar">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="/Before/toBeforeCenter">
+					<a href="${path}/Before/toBeforeCenter">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>
@@ -141,13 +145,13 @@
                    });
                    count=count.substring(0,count.length-1);
                    $.ajax({
-                       url:"/Before/addBeforePay",
+                       url:"${path}/Before/addBeforePay",
                        data:{ count:count} ,
                        type:"POST",
                        success:function (result) {
                            if (result=="y"){
                           		alert("下单成功！");
-                               location.href="/Before/toBeforeShopcar";
+                               location.href="${path}/Before/toBeforeShopcar";
                            }
                        }
                    })
@@ -166,9 +170,8 @@
 					vals.html(vals.html() > 1 ? parseInt(vals.html()) - 1 : 1);
 				}
 				var carno=$(this).attr("carno");
-				alert(carno+"==="+vals.html());
                 $.ajax({
-                    url:"/Before/updateBeforeShopCar",
+                    url:"${path}/Before/updateBeforeShopCar",
                     data:{ carno:carno, commoditySum:vals.html()} ,
                     type:"post",
                     success:function (result) {
@@ -185,13 +188,13 @@
 	                btn: ['确定', '取消'],
 	                yes: function(index) {
                         $.ajax({
-                            url:"/Before/deleteBeforeShopCar",
+                            url:"${path}/Before/deleteBeforeShopCar",
                             data:{ carno:del} ,
                             type:"POST",
                             success:function (result) {
                                 if (result=="y"){
                                     alert("删除成功");
-                                    location.href="/Before/toBeforeShopcar";
+                                    location.href="${path}/Before/toBeforeShopcar";
                                 }else {
                                     alert("删除失败");
                                     window.location.reload();

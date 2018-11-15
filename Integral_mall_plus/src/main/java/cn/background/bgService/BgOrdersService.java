@@ -1,5 +1,6 @@
 package cn.background.bgService;
 
+import cn.Before.service.JedisClientImp;
 import cn.bean.IntegralSchedule;
 import cn.bean.Orders;
 import cn.dao.IntegralMapper;
@@ -24,6 +25,9 @@ public class BgOrdersService {
     @Autowired
     IntegralMapper integralMapper;
 
+    @Autowired
+    private JedisClientImp jedisClient;
+
     public List<Orders> selectOrders(){
         return ordersMapper.selectOrders();
     }
@@ -33,6 +37,11 @@ public class BgOrdersService {
     }
 
     public int updOrderStatus(Map<Object,Object> Oid){
+        try{
+            jedisClient.del("BeforeOrders");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return ordersMapper.updOrderStatus(Oid);
     }
 

@@ -4,47 +4,50 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+<%
+    request.setAttribute("path", request.getContextPath());
+%>
 <html>
 <head>
     <meta charset="utf-8"/>
     <title>积分商城后台管理系统 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="/static/background/assets/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/static/background/assets/css/font-awesome.min.css"/>
-    <!--[if IE 7]>
-    <link rel="stylesheet" href="/static/background/assets/css/font-awesome-ie7.min.css"/>
+    <link href="${path}/static/background/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="${path}/static/background/assets/css/font-awesome.min.css"/>
+    <!--[if IE 7]><!---->
+    <link rel="stylesheet" href="${path}/static/background/assets/css/font-awesome-ie7.min.css"/>
     <![endif]-->
-    <link rel="stylesheet" href="/static/background/assets/css/ace.min.css"/>
-    <link rel="stylesheet" href="/static/background/assets/css/ace-rtl.min.css"/>
-    <link rel="stylesheet" href="/static/background/assets/css/ace-skins.min.css"/>
-    <link rel="stylesheet" href="/static/background/css/style.css"/>
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="/static/background/assets/css/ace-ie.min.css"/>
+    <link rel="stylesheet" href="${path}/static/background/assets/css/ace.min.css"/>
+    <link rel="stylesheet" href="${path}/static/background/assets/css/ace-rtl.min.css"/>
+    <link rel="stylesheet" href="${path}/static/background/assets/css/ace-skins.min.css"/>
+    <link rel="stylesheet" href="${path}/static/background/css/style.css"/>
+    <!--[if lte IE 8]><!---->
+    <link rel="stylesheet" href="${path}/static/background/assets/css/ace-ie.min.css"/>
     <![endif]-->
-    <script src="/static/background/assets/js/ace-extra.min.js"></script>
-    <!--[if lt IE 9]>
-    <script src="/static/background/assets/js/html5shiv.js"></script>
-    <script src="/static/background/assets/js/respond.min.js"></script>
+    <script src="${path}/static/background/assets/js/ace-extra.min.js"></script>
+    <!--[if lt IE 9]><!---->
+    <script src="${path}/static/background/assets/js/html5shiv.js"></script>
+    <script src="${path}/static/background/assets/js/respond.min.js"></script>
     <![endif]-->
     <!--[if !IE]> -->
-    <script src="/static/background/js/jquery-1.9.1.min.js"></script>
+    <script src="${path}/static/background/js/jquery-1.9.1.min.js"></script>
     <!-- <![endif]-->
-    <!--[if IE]>
-    <script type="text/javascript">window.jQuery || document.write("<script src='/static/background/assets/js/jquery-1.10.2.min.js'>" + "<" + "script>");</script>
-    <![endif]-->
+    <!--[if IE]><!---->
+    <script type="text/javascript">window.jQuery || document.write("<script src='${path}/static/background/assets/js/jquery-1.10.2.min.js'>" + "<" + "script>");</script>
+    <%--<![endif]-->--%>
     <script type="text/javascript">
-        if ("ontouchend" in document) document.write("<script src='/static/background/assets/js/jquery.mobile.custom.min.js'>" + "<" + "script>");
+        if ("ontouchend" in document) document.write("<script src='${path}/static/background/assets/js/jquery.mobile.custom.min.js'>" + "<" + "script>");
     </script>
-    <script src="/static/background/assets/js/bootstrap.min.js"></script>
-    <script src="/static/background/assets/js/typeahead-bs2.min.js"></script>
-    <!--[if lte IE 8]>
-    <script src="/static/background/assets/js/excanvas.min.js"></script>
+    <script src="${path}/static/background/assets/js/bootstrap.min.js"></script>
+    <script src="${path}/static/background/assets/js/typeahead-bs2.min.js"></script>
+    <!--[if lte IE 8]><!---->
+    <script src="${path}/static/background/assets/js/excanvas.min.js"></script>
     <![endif]-->
-    <script src="/static/background/assets/js/ace-elements.min.js"></script>
-    <script src="/static/background/assets/js/ace.min.js"></script>
-    <script src="/static/background/assets/layer/layer.js" type="text/javascript"></script>
-    <script src="/static/background/assets/laydate/laydate.js" type="text/javascript"></script>
-    <script src="/static/background/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="${path}/static/background/assets/js/ace-elements.min.js"></script>
+    <script src="${path}/static/background/assets/js/ace.min.js"></script>
+    <script src="${path}/static/background/assets/layer/layer.js" type="text/javascript"></script>
+    <script src="${path}/static/background/assets/laydate/laydate.js" type="text/javascript"></script>
+    <script src="${path}/static/background/js/jquery.nicescroll.js" type="text/javascript"></script>
 
     <script type="text/javascript">
         $(function () {
@@ -234,7 +237,7 @@
         <div class="navbar-header pull-left">
             <a href="#" class="navbar-brand">
                 <small>
-                    <img src="/static/background/images/logo.png" width="470px">
+                    <img src="${path}/static/background/images/logo.png" width="470px">
                 </small>
             </a><!-- /.brand -->
         </div><!-- /.navbar-header -->

@@ -4,6 +4,9 @@
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+<%
+	request.setAttribute("path", request.getContextPath());
+%>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -16,14 +19,14 @@
 	<script type="text/javascript" src="/static/background/js/respond.min.js"></script>
 	<script type="text/javascript" src="/static/background/js/PIE_IE678.js"></script>
 	<![endif]-->
-	<link href="/static/background/assets/css/bootstrap.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="/static/background/css/style.css"/>
-	<link href="/static/background/assets/css/codemirror.css" rel="stylesheet">
-	<link rel="stylesheet" href="/static/background/assets/css/ace.min.css" />
+	<link href="${path}/static/background/assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="${path}/static/background/css/style.css"/>
+	<link href="${path}/static/background/assets/css/codemirror.css" rel="stylesheet">
+	<link rel="stylesheet" href="${path}/static/background/assets/css/ace.min.css" />
 	<%--<link rel="stylesheet" href="Widget/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">--%>
-	<link rel="stylesheet" href="/static/background/assets/css/font-awesome.min.css" />
-	<!--[if IE 7]>
-	<link rel="stylesheet" href="/static/background/assets/css/font-awesome-ie7.min.css" />
+	<link rel="stylesheet" href="${path}/static/background/assets/css/font-awesome.min.css" />
+	<!--[if IE 7]><!---->
+	<link rel="stylesheet" href="${path}/static/background/assets/css/font-awesome-ie7.min.css" />
 	<![endif]-->
 <%--	<link href="Widget/icheck/icheck.css" rel="stylesheet" type="text/css" />
 	<link href="Widget/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />--%>

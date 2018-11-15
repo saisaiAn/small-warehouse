@@ -3,6 +3,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+    <link rel="shortcut icon" href="/static/before/images/mall.png" type="image/x-icon"/>
 </head>
 <style>
     .cat{
@@ -324,7 +325,7 @@
 </style>
 <body>
 <div style="height: 200px;"></div>
-<div class="row">
+<div class="row"style="margin: 0 auto;">
     <a href="/hello"><div class="col-md-3 bg-success" style="padding:150px 200px; " ><span style="color: #1b6d85; font-size: 100px;font-family:Microsoft YaHei;">前台</span></div></a>
     <a href="/app">
     <div class="col-md-6 bg-success" >

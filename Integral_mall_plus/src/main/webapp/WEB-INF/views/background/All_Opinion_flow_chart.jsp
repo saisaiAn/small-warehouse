@@ -6,6 +6,9 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+<%
+    request.setAttribute("path", request.getContextPath());
+%>
 <html>
 <head>
     <title>ystep流程、步骤插件 —— Powerd By YangYuan</title>
@@ -13,11 +16,11 @@
     <meta name="description" content="ystep,jQuery流程、步骤插件"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/background/css/style.css"/>
+    <link rel="stylesheet" href="${path}/static/background/css/style.css"/>
 
 <!-- 引入ystep样式 -->
-    <link href="/static/background/assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/static/background/css/ystep.css">
+    <link href="${path}/static/background/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="${path}/static/background/css/ystep.css">
 </head>
 <body>
 <div class="search_style">
@@ -51,9 +54,9 @@
 </c:forEach>
 
 <!-- 引入jquery -->
-<script src="/static/background/js/jquery.min.js"></script>
+<script src="${path}/static/background/js/jquery.min.js"></script>
 <!-- 引入ystep插件 -->
-<script src="/static/background/js/ystep.js"></script>
+<script src="${path}/static/background/js/ystep.js"></script>
 <script type="text/javascript">
     $(function () {
         //根据jQuery选择器找到需要加载ystep的容器

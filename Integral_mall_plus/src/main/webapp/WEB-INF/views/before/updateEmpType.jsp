@@ -8,14 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
+    <%
+        request.setAttribute("path", request.getContextPath());
+    %>
+    <script src="${path}/static/before/js/jquery.min.js" type="text/javascript"></script>
+    <link rel="shortcut icon" href="${path}/static/before/images/mall.png" type="image/x-icon"/>
 </head>
 <body>
 
     <script type="text/javascript">
          window.onload = function() {
              $.ajax({
-                 url:"/Before/BeforeCeHui",
+                 url:"${path}/Before/BeforeCeHui",
                  data:{},
                  type:"POST",
                  success:function (result) {}
@@ -23,7 +27,7 @@
              };
          window.onbeforeunload = function() {
              $.ajax({
-                 url:"/Before/BeforeXiaoHui",
+                 url:"${path}/Before/BeforeXiaoHui",
                  data:{},
                  type:"POST",
                  success:function (result) {}

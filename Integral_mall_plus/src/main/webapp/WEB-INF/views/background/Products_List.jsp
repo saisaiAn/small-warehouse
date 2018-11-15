@@ -4,6 +4,9 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+<%
+    request.setAttribute("path", request.getContextPath());
+%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -12,30 +15,30 @@
     <meta name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <link href="/static/background/assets/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/static/background/css/style.css"/>
-    <link rel="stylesheet" href="/static/background/assets/css/ace.min.css"/>
-    <link rel="stylesheet" href="/static/background/assets/css/font-awesome.min.css"/>
+    <link href="${path}/static/background/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="${path}/static/background/css/style.css"/>
+    <link rel="stylesheet" href="${path}/static/background/assets/css/ace.min.css"/>
+    <link rel="stylesheet" href="${path}/static/background/assets/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="Widget/zTree/css/zTreeStyle/zTreeStyle.css" type="text/css">
     <link href="Widget/icheck/icheck.css" rel="stylesheet" type="text/css"/>
     <!--[if IE 7]>
-    <link rel="stylesheet" href="/static/background/assets/css/font-awesome-ie7.min.css"/>
+    <link rel="stylesheet" href="${path}/static/background/assets/css/font-awesome-ie7.min.css"/>
     <![endif]-->
     <!--[if lte IE 8]>
-    <link rel="stylesheet" href="/static/background/assets/css/ace-ie.min.css"/>
+    <link rel="stylesheet" href="${path}/static/background/assets/css/ace-ie.min.css"/>
     <![endif]-->
-    <script src="/static/background/js/jquery-1.9.1.min.js"></script>
-    <script src="/static/background/assets/js/bootstrap.min.js"></script>
-    <script src="/static/background/assets/js/typeahead-bs2.min.js"></script>
+    <script src="${path}/static/background/js/jquery-1.9.1.min.js"></script>
+    <script src="${path}/static/background/assets/js/bootstrap.min.js"></script>
+    <script src="${path}/static/background/assets/js/typeahead-bs2.min.js"></script>
     <!-- page specific plugin scripts -->
-    <script src="/static/background/assets/js/jquery.dataTables.min.js"></script>
-    <script src="/static/background/assets/js/jquery.dataTables.bootstrap.js"></script>
-    <script type="text/javascript" src="/static/background/js/H-ui.js"></script>
-    <script type="text/javascript" src="/static/background/js/H-ui.admin.js"></script>
-    <script src="/static/background/assets/layer/layer.js" type="text/javascript"></script>
-    <script src="/static/background/assets/laydate/laydate.js" type="text/javascript"></script>
+    <script src="${path}/static/background/assets/js/jquery.dataTables.min.js"></script>
+    <script src="${path}/static/background/assets/js/jquery.dataTables.bootstrap.js"></script>
+    <script type="text/javascript" src="${path}/static/background/js/H-ui.js"></script>
+    <script type="text/javascript" src="${path}/static/background/js/H-ui.admin.js"></script>
+    <script src="${path}/static/background/assets/layer/layer.js" type="text/javascript"></script>
+    <script src="${path}/static/background/assets/laydate/laydate.js" type="text/javascript"></script>
     <script type="text/javascript" src="Widget/zTree/js/jquery.ztree.all-3.5.min.js"></script>
-    <script src="/static/background/js/lrtk.js" type="text/javascript"></script>
+    <script src="${path}q/static/background/js/lrtk.js" type="text/javascript"></script>
     <title>产品列表</title>
 </head>
 <body>

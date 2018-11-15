@@ -6,30 +6,33 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+<%
+    request.setAttribute("path", request.getContextPath());
+%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/static/background/assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/static/background/css/style.css"/>
-    <link rel="stylesheet" href="/static/background/assets/css/ace.min.css" />
-    <link rel="stylesheet" href="/static/background/assets/css/font-awesome.min.css" />
-    <link href="/static/background/assets/css/codemirror.css" rel="stylesheet">
-    <!--[if IE 7]>
-    <link rel="stylesheet" href="/static/background/assets/css/font-awesome-ie7.min.css" />
+    <link href="${path}/static/background/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="${path}/static/background/css/style.css"/>
+    <link rel="stylesheet" href="${path}/static/background/assets/css/ace.min.css" />
+    <link rel="stylesheet" href="${path}/static/background/assets/css/font-awesome.min.css" />
+    <link href="${path}/static/background/assets/css/codemirror.css" rel="stylesheet">
+    <!--[if IE 7]><!---->
+    <link rel="stylesheet" href="${path}/static/background/assets/css/font-awesome-ie7.min.css" />
     <![endif]-->
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="/static/background/assets/css/ace-ie.min.css" />
+
+    <link rel="stylesheet" href="${path}/static/background/assets/css/ace-ie.min.css" />
     <![endif]-->
-    <script src="/static/background/assets/js/ace-extra.min.js"></script>
-    <!--[if lt IE 9]>
-    <script src="/static/background/assets/js/html5shiv.js"></script>
-    <script src="/static/background/assets/js/respond.min.js"></script>
+    <script src="${path}/static/background/assets/js/ace-extra.min.js"></script>
+
+    <script src="${path}/static/background/assets/js/html5shiv.js"></script>
+    <script src="${path}/static/background/assets/js/respond.min.js"></script>
     <![endif]-->
     <!--[if !IE]> -->
-    <script src="/static/background/assets/js/jquery.min.js"></script>
+    <script src="${path}/static/background/assets/js/jquery.min.js"></script>
     <!-- <![endif]-->
-    <script src="/static/background/assets/dist/echarts.js"></script>
-    <script src="/static/background/assets/js/bootstrap.min.js"></script>
+    <script src="${path}/static/background/assets/dist/echarts.js"></script>
+    <script src="${path}/static/background/assets/js/bootstrap.min.js"></script>
     <title></title>
 </head>
 <body>

@@ -7,14 +7,18 @@
 <head>
     <meta charset="UTF-8" />
     <title>会员中心</title>
+    <%
+        request.setAttribute("path", request.getContextPath());
+    %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <link rel="stylesheet" type="text/css" href="/static/before/css/center.css" />
-    <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
-    <script src="/static/before/js/rem.js"></script>
-    <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
-    <script src="/static/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/center.css" />
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/loading.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+    <link rel="shortcut icon" href="${path}/static/before/images/mall.png" type="image/x-icon"/>
+    <script src="${path}/static/before/js/rem.js"></script>
+    <script src="${path}/static/before/js/jquery.min.js" type="text/javascript"></script>
+    <script src="${path}/static/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         sessionStorage.url = "confirm";
         $(window).load(function(){
@@ -45,10 +49,10 @@
     </header>
 <!-- 会员头像 -->
     <div class="vip-header">
-        <a href="/Before/toBeforeUserInfo">
+        <a href="${path}/Before/toBeforeUserInfo">
             <dl>
                 <dt>
-                    <img src="/static/before/images/user.png" />
+                    <img src="${path}/static/before/images/user.png" />
                 </dt>
                 <dd>
                     <c:if test=""></c:if>
@@ -60,9 +64,9 @@
             </dl>
         </a>
         <ul style="margin-bottom: 0px;">
-            <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=1"><span></span><p>待审核</p> </a></li>
-            <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=2"><span></span><p>待领取</p> </a></li>
-            <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=3"><span></span><p>待评价</p> </a></li>
+            <li><a href="${path}/Before/toBeforeOrders?id=${empBefore.empno}&status=1"><span></span><p>待审核</p> </a></li>
+            <li><a href="${path}/Before/toBeforeOrders?id=${empBefore.empno}&status=2"><span></span><p>待领取</p> </a></li>
+            <li><a href="${path}/Before/toBeforeOrders?id=${empBefore.empno}&status=3"><span></span><p>待评价</p> </a></li>
         </ul>
     </div>
 <!-- 会员俱乐部 -->
@@ -72,14 +76,14 @@
             <a href="">每日签到领积分<i class="iconfont"></i></a>
         </div>
         <ul>
-            <li><a href="/Before/toBeforeOrders?id=${empBefore.empno}&status=0"><i class="iconfont"></i><p>我的订单</p> </a></li>
-            <li><a href="/Before/toBeforeUserInfo"><i class="iconfont"></i><p>个人信息</p> </a></li>
+            <li><a href="${path}/Before/toBeforeOrders?id=${empBefore.empno}&status=0"><i class="iconfont"></i><p>我的订单</p> </a></li>
+            <li><a href="${path}/Before/toBeforeUserInfo"><i class="iconfont"></i><p>个人信息</p> </a></li>
         </ul>
     </div>
     <div class="vip-club border_top_bottom vip-account">
         <div class="vip-club-title border_bottom">
             <span><i class="iconfont"></i>我的账户</span>
-            <a href="/Before/toBeforeIndex">积分兑换商品<i class="iconfont"></i></a>
+            <a href="${path}/Before/toBeforeIndex">积分兑换商品<i class="iconfont"></i></a>
         </div>
         <ul>
             <li><a href=""><i class="color_f44623">${integral.remainingpoints}</i><p>剩余积分</p> </a></li>
@@ -113,25 +117,25 @@
     <footer class="page-footer fixed-footer" id="footer">
         <ul>
             <li>
-                <a href="/Before/toBeforeIndex">
+                <a href="${path}/Before/toBeforeIndex">
                     <i class="iconfont icon-shouye"></i>
                     <p>首页</p>
                 </a>
             </li>
             <li>
-                <a href="/Before/toBeforeCation">
+                <a href="${path}/Before/toBeforeCation">
                     <i class="iconfont icon-icon04"></i>
                     <p>分类</p>
                 </a>
             </li>
             <li>
-                <a href="/Before/toBeforeShopcar">
+                <a href="${path}/Before/toBeforeShopcar">
                     <i class="iconfont icon-gouwuche"></i>
                     <p>购物车</p>
                 </a>
             </li>
             <li class="active">
-                <a href="/Before/toBeforeCenter">
+                <a href="${path}/Before/toBeforeCenter">
                     <i class="iconfont icon-yonghuming"></i>
                     <p>我的</p>
                 </a>

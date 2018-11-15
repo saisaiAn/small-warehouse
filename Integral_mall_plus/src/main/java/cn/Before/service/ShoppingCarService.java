@@ -1,8 +1,8 @@
 package cn.Before.service;
 
 import cn.bean.Emp;
-import cn.bean.shoppingCar;
-import cn.dao.shoppingCarMapper;
+import cn.bean.ShoppingCar;
+import cn.dao.ShoppingCarMapper;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +12,13 @@ import org.springframework.util.StringUtils;
 import java.util.List;
 
 @Service
-public class shoppingCarService {
+public class ShoppingCarService {
 
     @Autowired
-    shoppingCarMapper shoppingCarMapper;
+    ShoppingCarMapper shoppingCarMapper;
     @Autowired
     private JedisClientImp jedisClient;
-    public int insertShoppingCar(shoppingCar shoppingCar){
+    public int insertShoppingCar(ShoppingCar shoppingCar){
         try{
             jedisClient.del("BeforeShoppingCars");
         }catch (Exception e){
@@ -26,17 +26,17 @@ public class shoppingCarService {
         }
         return shoppingCarMapper.insertShoppingCar(shoppingCar);
     };
-    public List<shoppingCar> selectShoppingCarByEmpId(Emp emp){
+    public List<ShoppingCar> selectShoppingCarByEmpId(Emp emp){
         try{
             String result=jedisClient.get("BeforeShoppingCars");
             if (!StringUtils.isEmpty(result)){
-                List<shoppingCar> shoppingCars= JSONObject.parseArray(result,shoppingCar.class);
+                List<ShoppingCar> shoppingCars= JSONObject.parseArray(result,ShoppingCar.class);
                 return shoppingCars;
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-        List<shoppingCar> shoppingCars=shoppingCarMapper.selectShoppingCarByEmpId(emp);
+        List<ShoppingCar> shoppingCars=shoppingCarMapper.selectShoppingCarByEmpId(emp);
         try{
             String cacheString =JSON.toJSONString(shoppingCars);
             jedisClient.set("BeforeShoppingCars",cacheString);
@@ -45,7 +45,7 @@ public class shoppingCarService {
         }
         return shoppingCars;
     };
-    public shoppingCar selectShoppingCarByCarId(shoppingCar shoppingCar){ return  shoppingCarMapper.selectShoppingCarByCarId(shoppingCar);};
+    public ShoppingCar selectShoppingCarByCarId(ShoppingCar shoppingCar){ return  shoppingCarMapper.selectShoppingCarByCarId(shoppingCar);};
     public int deleteByPrimaryKey(Integer carno){
         try{
             jedisClient.del("BeforeShoppingCars");
@@ -54,7 +54,7 @@ public class shoppingCarService {
         }
         return  shoppingCarMapper.deleteByPrimaryKey(carno);
     };
-    public int updateByExampleSelective(shoppingCar shoppingcar){
+    public int updateByExampleSelective(ShoppingCar shoppingcar){
         try{
             jedisClient.del("BeforeShoppingCars");
         }catch (Exception e){

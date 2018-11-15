@@ -29,7 +29,7 @@ public class BeforeController {
     ImagerService imagerService;
 
     @Autowired
-    shoppingCarService shoppingCarService;
+    ShoppingCarService shoppingCarService;
 
     @Autowired
     OrdersService ordersService;
@@ -51,9 +51,9 @@ public class BeforeController {
         String[] carno=count.split(",");
         for (String carId:carno) {
             //通过ID查找购物车的相关属性
-            shoppingCar shoppingCar=new shoppingCar();
+            ShoppingCar shoppingCar=new ShoppingCar();
             shoppingCar.setCarno(Integer.parseInt(carId));
-            shoppingCar shoppingCarTwo=shoppingCarService.selectShoppingCarByCarId(shoppingCar);
+            ShoppingCar shoppingCarTwo=shoppingCarService.selectShoppingCarByCarId(shoppingCar);
             Commodity commodity1= commodityService.selectCommodityById(shoppingCarTwo.getCommodityId());
             int comsum = commodity1.getCommodityinventory()-shoppingCarTwo.getCommoditysum();
             if(comsum<0){
@@ -140,7 +140,7 @@ public class BeforeController {
     }
     //跳转购物车
     @RequestMapping("/addBeforeShopping")
-    public String addShopCar(shoppingCar shoppingCar){
+    public String addShopCar(ShoppingCar shoppingCar){
         int judge= shoppingCarService.insertShoppingCar(shoppingCar);
         return "forward:/Before/toBeforeShopcar";
     }
@@ -163,7 +163,7 @@ public class BeforeController {
     @Transactional(rollbackFor = {Exception.class})
     public String updateBeforeShopCar(@Param("carno")int carno,@Param("commoditySum") int commoditySum){
         System.out.println(commoditySum+"==cars");
-        shoppingCar shoppingCar=new shoppingCar();
+        ShoppingCar shoppingCar=new ShoppingCar();
         shoppingCar.setCarno(carno);
         shoppingCar.setCommoditysum(commoditySum);
         int judge= shoppingCarService.updateByExampleSelective(shoppingCar);
@@ -258,7 +258,7 @@ public class BeforeController {
     @RequestMapping("/toBeforeShopcar")
     public String shopcar(HttpSession session,Model model){
         Emp emp=(Emp)session.getAttribute("empBefore");
-        List<shoppingCar> shoppingCarList= shoppingCarService.selectShoppingCarByEmpId(emp);//查询属于当前用户的购物车信息
+        List<ShoppingCar> shoppingCarList= shoppingCarService.selectShoppingCarByEmpId(emp);//查询属于当前用户的购物车信息
         model.addAttribute("shoppingCarList",shoppingCarList);
         return "/before/shopcar";
     }

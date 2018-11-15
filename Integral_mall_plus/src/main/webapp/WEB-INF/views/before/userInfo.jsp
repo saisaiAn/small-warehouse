@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
     <title>个人中心</title>
 </head>
-<link href="/static/before/css/admin.css" rel="stylesheet" type="text/css">
-<link href="/static/before/css/amazeui.css" rel="stylesheet" type="text/css">
-
-<link href="/static/before/css/personal.css" rel="stylesheet" type="text/css">
-<link href="/static/before/css/infstyle.css" rel="stylesheet" type="text/css">
-<link href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<script src="/static/before/js/jquery.min.js"></script>
-<script src="/static/before/js/amazeui.js"></script>
+<%
+    request.setAttribute("path", request.getContextPath());
+%>
+<link href="${path}/static/before/css/admin.css" rel="stylesheet" type="text/css">
+<link href="${path}/static/before/css/amazeui.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="${path}/static/before/images/mall.png" type="image/x-icon"/>
+<link href="${path}/static/before/css/personal.css" rel="stylesheet" type="text/css">
+<link href="${path}/static/before/css/infstyle.css" rel="stylesheet" type="text/css">
+<link href="${path}/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<script src="${path}/static/before/js/jquery.min.js"></script>
+<script src="${path}/static/before/js/amazeui.js"></script>
 <body>
     <div class="center">
         <div class="col-main">
@@ -31,7 +34,7 @@
 
                         <div class="filePic">
                             <input type="file" class="inputPic" allowexts="gif,jpeg,jpg,png,bmp" accept="image/*">
-                            <img class="am-circle am-img-thumbnail" src="/static/before/images/getAvatar.do.jpg" alt="" />
+                            <img class="am-circle am-img-thumbnail" src="${path}/static/before/images/getAvatar.do.jpg" alt="" />
                         </div>
 
                         <p class="am-form-help">头像</p>
@@ -46,7 +49,7 @@
 
                     <!--个人信息 -->
                     <div class="info-main">
-                        <form class="am-form am-form-horizontal" action="/Before/BeforeUpdateEmp" method="post">
+                        <form class="am-form am-form-horizontal" action="${path}/Before/BeforeUpdateEmp" method="post">
                             <input type="hidden" name="empno" value="${empBefore.empno}">
                             <input type="hidden" name="empname" value="${empBefore.empname}">
                             <input type="hidden" name="password" value="${empBefore.password}">
@@ -77,7 +80,7 @@
                             <div class="am-form-group ">
                                 <label class="am-form-label">登录密码</label>
                                 <div class="am-form-content password">
-                                    <a href="/Before/toBeforePassword">
+                                    <a href="${path}/Before/toBeforePassword">
                                         <span class="am-form-label" style="float: right">修改</span>
                                     </a>
                                 </div>

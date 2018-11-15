@@ -4,15 +4,18 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+<%
+    request.setAttribute("path", request.getContextPath());
+%>
 <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
 <html>
 <head>
     <base href="<%=basePath%>">
     <title>商品详情</title>
-    <link href="/static/background/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="${path}/static/background/assets/css/bootstrap.min.css" rel="stylesheet"/>
 
-    <script src="/static/background/js/jquery-1.9.1.min.js"></script>
-    <script src="/static/background/assets/layer/layer.js" type="text/javascript"></script>
+    <script src="${path}/static/background/js/jquery-1.9.1.min.js"></script>
+    <script src="${path}/static/background/assets/layer/layer.js" type="text/javascript"></script>
 </head>
 <body>
 <br/>
