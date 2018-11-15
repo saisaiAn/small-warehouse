@@ -1,6 +1,7 @@
 package cn.app.controller;
 
 import cn.app.service.MasterService;
+import cn.background.bgService.BgIntegralService;
 import cn.bean.Emp;
 import cn.bean.IntegralAudit;
 import com.sun.org.apache.xpath.internal.SourceTree;
@@ -15,17 +16,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
+@RequestMapping("/app")
 @Controller
 public class MasterController {
     @Autowired
     MasterService masterService;
+    @Autowired
+    BgIntegralService bgIntegralService;
+
 
 
 
     @ResponseBody
     @RequestMapping(value="masterlogin",method = RequestMethod.POST)
     public String masterLogin(@RequestParam("username") String username, @RequestParam("pwd") String pwd, HttpSession session,Model model){
-        //System.out.println("loginMaster");
+        System.out.println("loginMaster");
         Emp emp = new Emp();
         emp.setEmpname(username);
         emp.setPassword(pwd);
@@ -82,7 +87,7 @@ public class MasterController {
     public String setting( Emp emp){
        // System.out.println("--------"+emp.getEmpname());
           masterService.updateMaster(emp);
-        return "forward:/app";
+        return "forward:/app/app";
     }
 
     //注销
@@ -90,4 +95,12 @@ public class MasterController {
     public String logout(){
         return "app/logout";
     }
+
+    //拒绝批准
+    @RequestMapping(value="appDisagree",method = RequestMethod.POST)
+    public String appDisagree(@RequestParam ("id") Integer id){
+
+        return "";
+    }
+
 }

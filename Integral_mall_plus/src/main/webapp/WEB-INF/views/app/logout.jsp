@@ -14,11 +14,11 @@
         <meta content="Mannatthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <link rel="shortcut icon" href="/static/app/assets/images/favicon.ico">
+        <link rel="shortcut icon" href="${path}/static/app/assets/images/favicon.ico">
 
-        <link href="/static/app/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="/static/app/assets/css/icons.css" rel="stylesheet" type="text/css">
-        <link href="/static/app/assets/css/style.css" rel="stylesheet" type="text/css">
+        <link href="${path}/static/app/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="${path}/static/app/assets/css/icons.css" rel="stylesheet" type="text/css">
+        <link href="${path}/static/app/assets/css/style.css" rel="stylesheet" type="text/css">
 
     </head>
 
@@ -34,7 +34,7 @@
                 <div class="card-body">
 
                     <h3 class="text-center mt-0 m-b-15">
-                        <a href="index.html" class="logo logo-admin"><img src="/static/app/assets/images/logo.png" height="24" alt="logo"></a>
+                        <a href="#" class="logo logo-admin"><img src="${path}/static/app/assets/images/logo.png" height="24" alt="logo"></a>
                     </h3>
 
                     <div class="p-3">
@@ -56,17 +56,17 @@
 
 
         <!-- jQuery  -->
-        <script src="/static/app/assets/js/jquery.min.js"></script>
-        <script src="/static/app/assets/js/popper.min.js"></script>
-        <script src="/static/app/assets/js/bootstrap.min.js"></script>
-        <script src="/static/app/assets/js/modernizr.min.js"></script>
-        <script src="/static/app/assets/js/waves.js"></script>
-        <script src="/static/app/assets/js/jquery.slimscroll.js"></script>
-        <script src="/static/app/assets/js/jquery.nicescroll.js"></script>
-        <script src="/static/app/assets/js/jquery.scrollTo.min.js"></script>
+        <script src="${path}/static/app/assets/js/jquery.min.js"></script>
+        <script src="${path}/static/app/assets/js/popper.min.js"></script>
+        <script src="${path}/static/app/assets/js/bootstrap.min.js"></script>
+        <script src="${path}/static/app/assets/js/modernizr.min.js"></script>
+        <script src="${path}/static/app/assets/js/waves.js"></script>
+        <script src="${path}/static/app/assets/js/jquery.slimscroll.js"></script>
+        <script src="${path}/static/app/assets/js/jquery.nicescroll.js"></script>
+        <script src="${path}/static/app/assets/js/jquery.scrollTo.min.js"></script>
 
         <!-- App js -->
-        <script src="/static/app/assets/js/app.js"></script>
+        <script src="${path}/static/app/assets/js/app.js"></script>
 
     </body>
 </html>

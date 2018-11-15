@@ -131,7 +131,7 @@
     <select id="byId" parameterType="cn.bean.IntegralAudit" resultMap="WithIntegralAuditResultMap">
         SELECT
         <include refid="findAllIntegralAuditSql"></include>
-        from integralaudit a,emp e,department d,integral i,IntegralType t
+        from integralaudit a,emp e,department d,integral i,IntegralType t,emp es,department ds
         where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo and a.reviewer=es.empno and es.departmentno=ds.depano
         and e.departmentno=d.depano and integralauditno=#{integralauditno}
     </select>
