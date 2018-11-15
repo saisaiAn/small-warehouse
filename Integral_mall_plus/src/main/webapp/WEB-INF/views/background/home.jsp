@@ -142,12 +142,12 @@
             <div>
                 <c:if test="${loginUser.position == 3 || loginUser.position == 4  }">
                     <a href="product/Products_List_html"  title="添加商品" class="btn  btn-info btn-sm no-radius">
-                        <i class="bigger-200"><img src="/static/background/images/icon-addp.png" /></i>
+                        <i class="bigger-200"><img src="${path}/static/background/images/icon-addp.png" /></i>
                         <h5 class="margin-top">查看商品</h5>
                     </a>
                 </c:if>
                 <a href="admin_info"  title="个人信息" class="btn  btn-success btn-sm no-radius">
-                    <i class="bigger-200"><img src="/static/background/images/icon-grxx.png" /></i>
+                    <i class="bigger-200"><img src="${path}/static/background/images/icon-grxx.png" /></i>
                     <h5 class="margin-top">个人信息</h5>
                 </a>
                <%-- <a href="Systems.html"  title="系统设置" class="btn  btn-info btn-sm no-radius">
@@ -156,7 +156,7 @@
                 </a>--%>
                 <c:if test="${loginUser.position == 3 || loginUser.position == 4  }">
                     <a href="Orderform_html"  title="商品订单" class="btn  btn-purple btn-sm no-radius">
-                    <i class="bigger-200"><img src="/static/background/images/icon-gwcc.png" /></i>
+                    <i class="bigger-200"><img src="${path}/static/background/images/icon-gwcc.png" /></i>
                     <h5 class="margin-top">商品订单</h5>
                     </a>
                 </c:if>

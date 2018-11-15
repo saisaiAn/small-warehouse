@@ -10,6 +10,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
+    <link rel="shortcut icon" href="${path}/static/background/images/logotitle.png" />
     <title>积分商城后台管理系统 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="${path}/static/background/assets/css/bootstrap.min.css" rel="stylesheet"/>

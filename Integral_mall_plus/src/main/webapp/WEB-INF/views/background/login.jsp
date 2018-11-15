@@ -9,6 +9,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="${path}/static/background/images/logotitle.png" />
 		<link href="${path}/static/background/assets/css/bootstrap.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="${path}/static/background/assets/css/font-awesome.min.css" />
 		<!--[if IE 7]><!---->
@@ -43,13 +44,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <div class="loginbody">
 <div class="login-container">
 	<div class="center">
-	     <img src="${path}/static/background/images/logo1.png" />
+	     <%--<img src="${path}/static/background/images/" />--%>
 							</div>
 
 							<div class="space-6"></div>
 
 							<div class="position-relative">
-								<div id="login-box" class="login-box widget-box no-border visible">
+								<div id="login-box" class="login-box widget-box no-border visible" style="height: 380px;margin-top: 150px;">
 									<div class="widget-body">
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
