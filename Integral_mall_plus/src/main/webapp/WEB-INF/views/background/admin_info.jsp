@@ -5,27 +5,30 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+<%
+    request.setAttribute("path", request.getContextPath());
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
- <link href="/static/background/assets/css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="/static/background/css/style.css"/>
-        <link href="/static/background/assets/css/codemirror.css" rel="stylesheet">
-        <link rel="stylesheet" href="/static/background/assets/css/ace.min.css" />
-        <link rel="stylesheet" href="/static/background/font/css/font-awesome.min.css" />
+ <link href="${path}/static/background/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="${path}/static/background/css/style.css"/>
+        <link href="${path}/static/background/assets/css/codemirror.css" rel="stylesheet">
+        <link rel="stylesheet" href="${path}/static/background/assets/css/ace.min.css" />
+        <link rel="stylesheet" href="${path}/static/background/font/css/font-awesome.min.css" />
         <!--[if lte IE 8]>
-		  <link rel="stylesheet" href="/static/background/assets/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="${path}/static/background/assets/css/ace-ie.min.css" />
 		<![endif]-->
-		<script src="/static/background/js/jquery-1.9.1.min.js"></script>
-		<script src="/static/background/assets/layer/layer.js" type="text/javascript" ></script>
-        <script src="/static/background/assets/laydate/laydate.js" type="text/javascript"></script>
-        <script src="/static/background/assets/js/bootstrap.min.js"></script>
-		<script src="/static/background/assets/js/typeahead-bs2.min.js"></script>
-		<script src="/static/background/assets/js/jquery.dataTables.min.js"></script>
-		<script src="/static/background/assets/js/jquery.dataTables.bootstrap.js"></script>
+		<script src="${path}/static/background/js/jquery-1.9.1.min.js"></script>
+		<script src="${path}/static/background/assets/layer/layer.js" type="text/javascript" ></script>
+        <script src="${path}/static/background/assets/laydate/laydate.js" type="text/javascript"></script>
+        <script src="${path}/static/background/assets/js/bootstrap.min.js"></script>
+		<script src="${path}/static/background/assets/js/typeahead-bs2.min.js"></script>
+		<script src="${path}/static/background/assets/js/jquery.dataTables.min.js"></script>
+		<script src="${path}/static/background/assets/js/jquery.dataTables.bootstrap.js"></script>
                       
 <title>个人信息管理</title>
 </head>

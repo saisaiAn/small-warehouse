@@ -4,47 +4,51 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+<%
+    request.setAttribute("path", request.getContextPath());
+%>
 <html>
 <head>
     <meta charset="utf-8"/>
+    <link rel="shortcut icon" href="${path}/static/background/images/logotitle.png" />
     <title>积分商城后台管理系统 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="/static/background/assets/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/static/background/assets/css/font-awesome.min.css"/>
-    <!--[if IE 7]>
-    <link rel="stylesheet" href="/static/background/assets/css/font-awesome-ie7.min.css"/>
+    <link href="${path}/static/background/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="${path}/static/background/assets/css/font-awesome.min.css"/>
+    <!--[if IE 7]><!---->
+    <link rel="stylesheet" href="${path}/static/background/assets/css/font-awesome-ie7.min.css"/>
     <![endif]-->
-    <link rel="stylesheet" href="/static/background/assets/css/ace.min.css"/>
-    <link rel="stylesheet" href="/static/background/assets/css/ace-rtl.min.css"/>
-    <link rel="stylesheet" href="/static/background/assets/css/ace-skins.min.css"/>
-    <link rel="stylesheet" href="/static/background/css/style.css"/>
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="/static/background/assets/css/ace-ie.min.css"/>
+    <link rel="stylesheet" href="${path}/static/background/assets/css/ace.min.css"/>
+    <link rel="stylesheet" href="${path}/static/background/assets/css/ace-rtl.min.css"/>
+    <link rel="stylesheet" href="${path}/static/background/assets/css/ace-skins.min.css"/>
+    <link rel="stylesheet" href="${path}/static/background/css/style.css"/>
+    <!--[if lte IE 8]><!---->
+    <link rel="stylesheet" href="${path}/static/background/assets/css/ace-ie.min.css"/>
     <![endif]-->
-    <script src="/static/background/assets/js/ace-extra.min.js"></script>
-    <!--[if lt IE 9]>
-    <script src="/static/background/assets/js/html5shiv.js"></script>
-    <script src="/static/background/assets/js/respond.min.js"></script>
+    <script src="${path}/static/background/assets/js/ace-extra.min.js"></script>
+    <!--[if lt IE 9]><!---->
+    <script src="${path}/static/background/assets/js/html5shiv.js"></script>
+    <script src="${path}/static/background/assets/js/respond.min.js"></script>
     <![endif]-->
     <!--[if !IE]> -->
-    <script src="/static/background/js/jquery-1.9.1.min.js"></script>
+    <script src="${path}/static/background/js/jquery-1.9.1.min.js"></script>
     <!-- <![endif]-->
-    <!--[if IE]>
-    <script type="text/javascript">window.jQuery || document.write("<script src='/static/background/assets/js/jquery-1.10.2.min.js'>" + "<" + "script>");</script>
-    <![endif]-->
+    <!--[if IE]><!---->
+    <script type="text/javascript">window.jQuery || document.write("<script src='${path}/static/background/assets/js/jquery-1.10.2.min.js'>" + "<" + "script>");</script>
+    <%--<![endif]-->--%>
     <script type="text/javascript">
-        if ("ontouchend" in document) document.write("<script src='/static/background/assets/js/jquery.mobile.custom.min.js'>" + "<" + "script>");
+        if ("ontouchend" in document) document.write("<script src='${path}/static/background/assets/js/jquery.mobile.custom.min.js'>" + "<" + "script>");
     </script>
-    <script src="/static/background/assets/js/bootstrap.min.js"></script>
-    <script src="/static/background/assets/js/typeahead-bs2.min.js"></script>
-    <!--[if lte IE 8]>
-    <script src="/static/background/assets/js/excanvas.min.js"></script>
+    <script src="${path}/static/background/assets/js/bootstrap.min.js"></script>
+    <script src="${path}/static/background/assets/js/typeahead-bs2.min.js"></script>
+    <!--[if lte IE 8]><!---->
+    <script src="${path}/static/background/assets/js/excanvas.min.js"></script>
     <![endif]-->
-    <script src="/static/background/assets/js/ace-elements.min.js"></script>
-    <script src="/static/background/assets/js/ace.min.js"></script>
-    <script src="/static/background/assets/layer/layer.js" type="text/javascript"></script>
-    <script src="/static/background/assets/laydate/laydate.js" type="text/javascript"></script>
-    <script src="/static/background/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="${path}/static/background/assets/js/ace-elements.min.js"></script>
+    <script src="${path}/static/background/assets/js/ace.min.js"></script>
+    <script src="${path}/static/background/assets/layer/layer.js" type="text/javascript"></script>
+    <script src="${path}/static/background/assets/laydate/laydate.js" type="text/javascript"></script>
+    <script src="${path}/static/background/js/jquery.nicescroll.js" type="text/javascript"></script>
 
     <script type="text/javascript">
         $(function () {
@@ -234,7 +238,7 @@
         <div class="navbar-header pull-left">
             <a href="#" class="navbar-brand">
                 <small>
-                    <img src="/static/background/images/logo.png" width="470px">
+                    <img src="${path}/static/background/images/logo.png" width="470px">
                 </small>
             </a><!-- /.brand -->
         </div><!-- /.navbar-header -->
@@ -250,20 +254,20 @@
                         <i class="icon-caret-down"></i>
                     </a>
                     <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                        <li><a href="javascript:void(0)" name="Systems.html" title="系统设置" class="iframeurl"><i
-                                class="icon-cog"></i>网站设置</a></li>
+                        <%--<li><a href="javascript:void(0)" name="Systems.html" title="系统设置" class="iframeurl"><i
+                                class="icon-cog"></i>网站设置</a></li>--%>
                         <li><a href="javascript:void(0)" name="admin_info" title="个人信息" class="iframeurl"><i
                                 class="icon-user"></i>个人资料</a></li>
                         <li class="divider"></li>
-                        <li><a href="javascript:ovid(0)" id="Exit_system"><i class="icon-off"></i>退出</a></li>
+                        <li><a href="Sign_out" id=""><i class="icon-off"></i>退出</a></li>
                     </ul>
                 </li>
-                <li class="purple">
+                <%--<li class="purple">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="icon-bell-alt"></i><span
                             class="badge badge-important">8</span></a>
                     <ul class="pull-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-                        <li class="dropdown-header"><i class="icon-warning-sign"></i>8条通知</li>
-                        <li>
+                        <li class="dropdown-header"><i class="icon-warning-sign"></i>通知</li>
+                       &lt;%&ndash; <li>
                             <a href="#">
                                 <div class="clearfix">
 											<span class="pull-left">
@@ -281,9 +285,9 @@
                                 切换为编辑登录..
                             </a>
                         </li>
-
+&ndash;%&gt;
                         <li>
-                            <a href="#">
+                            <a href="Orderform_html">
                                 <div class="clearfix">
 											<span class="pull-left">
 												<i class="btn btn-xs no-hover btn-success icon-shopping-cart"></i>
@@ -294,7 +298,7 @@
                             </a>
                         </li>
 
-                        <li>
+                      &lt;%&ndash;  <li>
                             <a href="#">
                                 <div class="clearfix">
 											<span class="pull-left">
@@ -311,12 +315,12 @@
                                 查看所有通知
                                 <i class="icon-arrow-right"></i>
                             </a>
-                        </li>
+                        </li>&ndash;%&gt;
                     </ul>
                 </li>
 
 
-            </ul>
+            </ul>--%>
             <!-- <div class="right_info">
 
                <div class="get_time" ><span id="time" class="time"></span>欢迎光临,管理员</span></div>
@@ -409,19 +413,19 @@
                             <a href="#" class="dropdown-toggle"><i class="icon-list"></i><span
                                     class="menu-text"> 交易管理 </span><b class="arrow icon-angle-down"></b></a>
                             <ul class="submenu">
-                                <li class="home"><a href="javascript:void(0)" name="transaction.html" title="交易信息"
+                               <%-- <li class="home"><a href="javascript:void(0)" name="transaction.html" title="交易信息"
                                                     class="iframeurl"><i class="icon-double-angle-right"></i>交易信息</a></li>
                                 <li class="home"><a href="javascript:void(0)" name="Order_Chart.html" title="交易订单（图）"
                                                     class="iframeurl"><i class="icon-double-angle-right"></i>交易订单(图)</a>
-                                </li>
+                                </li>--%>
                                 <li class="home"><a href="javascript:void(0)" name="Orderform_html" title="订单管理"
                                                     class="iframeurl"><i class="icon-double-angle-right"></i>订单管理</a></li>
-                                <li class="home"><a href="javascript:void(0)" name="Amounts.html" title="交易金额"
+                               <%-- <li class="home"><a href="javascript:void(0)" name="Amounts.html" title="交易金额"
                                                     class="iframeurl"><i class="icon-double-angle-right"></i>交易金额</a></li>
                                 <li class="home"><a href="javascript:void(0)" name="Order_handling.html" title="订单处理"
                                                     class="iframeurl"><i class="icon-double-angle-right"></i>订单处理</a></li>
                                 <li class="home"><a href="javascript:void(0)" name="Refund.html" title="退款管理"
-                                                    class="iframeurl"><i class="icon-double-angle-right"></i>退款管理</a></li>
+                                                    class="iframeurl"><i class="icon-double-angle-right"></i>退款管理</a></li>--%>
                             </ul>
                         </li>
                     </c:if>
@@ -622,7 +626,19 @@
 </div>
 <!-- /.main-container -->
 <!-- basic scripts -->
+<script type="text/javascript">
+    $(function () {
+        setInterval(function () {
+            $.ajax({
+                url:"/redisBeOverdue",
+                type:"post",
+                success:function (result) {
+                }
+            })
+        },20000);
+    })
 
+</script>
 </body>
 </html>
 

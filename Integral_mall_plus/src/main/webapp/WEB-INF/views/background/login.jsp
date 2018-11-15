@@ -1,30 +1,34 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+<%
+	request.setAttribute("path", request.getContextPath());
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link href="/static/background/assets/css/bootstrap.min.css" rel="stylesheet" />
-		<link rel="stylesheet" href="/static/background/assets/css/font-awesome.min.css" />
-		<!--[if IE 7]>
-		  <link rel="stylesheet" href="/static/background/assets/css/font-awesome-ie7.min.css" />
+		<link rel="shortcut icon" href="${path}/static/background/images/logotitle.png" />
+		<link href="${path}/static/background/assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="${path}/static/background/assets/css/font-awesome.min.css" />
+		<!--[if IE 7]><!---->
+		  <link rel="stylesheet" href="${path}/static/background/assets/css/font-awesome-ie7.min.css" />
 		<![endif]-->
-		<link rel="stylesheet" href="/static/background/assets/css/ace.min.css" />
-		<link rel="stylesheet" href="/static/background/assets/css/ace-rtl.min.css" />
-		<link rel="stylesheet" href="/static/background/assets/css/ace-skins.min.css" />
-        <link rel="stylesheet" href="/static/background/css/style.css"/>
+		<link rel="stylesheet" href="${path}/static/background/assets/css/ace.min.css" />
+		<link rel="stylesheet" href="${path}/static/background/assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="${path}/static/background/assets/css/ace-skins.min.css" />
+        <link rel="stylesheet" href="${path}/static/background/css/style.css"/>
 		<!--[if lte IE 8]>
-		  <link rel="stylesheet" href="/static/background/assets/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="${path}/static/background/assets/css/ace-ie.min.css" />
 		<![endif]-->
-		<script src="/static/background/assets/js/ace-extra.min.js"></script>
+		<script src="${path}/static/background/assets/js/ace-extra.min.js"></script>
 		<!--[if lt IE 9]>
-		<script src="/static/background/assets/js/html5shiv.js"></script>
-		<script src="/static/background/assets/js/respond.min.js"></script>
+		<script src="${path}/static/background/assets/js/html5shiv.js"></script>
+		<script src="${path}/static/background/assets/js/respond.min.js"></script>
 		<![endif]-->
-		<script src="/static/background/js/jquery-1.9.1.min.js"></script>
-        <script src="/static/background/assets/layer/layer.js" type="text/javascript"></script>
+		<script src="${path}/static/background/js/jquery-1.9.1.min.js"></script>
+        <script src="${path}/static/background/assets/layer/layer.js" type="text/javascript"></script>
 <title>登录</title>
 </head>
 
@@ -40,13 +44,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <div class="loginbody">
 <div class="login-container">
 	<div class="center">
-	     <img src="/static/background/images/logo1.png" />
+	     <%--<img src="${path}/static/background/images/" />--%>
 							</div>
 
 							<div class="space-6"></div>
 
 							<div class="position-relative">
-								<div id="login-box" class="login-box widget-box no-border visible">
+								<div id="login-box" class="login-box widget-box no-border visible" style="height: 380px;margin-top: 150px;">
 									<div class="widget-body">
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
@@ -54,7 +58,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 												管理员登录
 											</h4>
 
-											<div class="login_icon"><img src="/static/background/images/login.png" /></div>
+											<div class="login_icon"><img src="${path}/static/background/images/login.png" /></div>
 
 											<form   method="post" name="table">
 												<fieldset>
@@ -105,6 +109,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </body>
 </html>
 
+<script language="JavaScript">
+
+    if (window != top)
+
+        top.location.href = location.href;
+
+</script>
+
 <script >
 
 /*$('#login_btn').on('click', function(){
@@ -146,19 +158,21 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
               });
           }else{
             $.ajax({
-                url:"masterlogin",
+                url:"login",
                 data:{username:$username,pwd:$pwd},
                 type:"post",
                 success:function (result) {
                     if(result==0){
-                        layer.msg("登陆成功");
+						layer.msg("登陆成功");
                         setTimeout(function () {location.href="jumpindex";},1000);
                     }else if(result==1){
                         layer.alert('登陆失败，帐号或者密码错误！',{
                             title: '提示框',
                             icon:1,
                         });
-                    }else{
+                    }else if(result=="ydl"){
+                        layer.msg("登陆失败，该账号以有人登陆！");
+					}else{
                         layer.alert('登陆失败，权限不够！',{
                             title: '提示框',
                             icon:1,

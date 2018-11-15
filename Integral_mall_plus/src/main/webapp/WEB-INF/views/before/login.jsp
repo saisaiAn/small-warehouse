@@ -6,8 +6,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
 	<title>积分商城登录</title>
-
-	<link rel="stylesheet" type="text/css" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+	<%
+		request.setAttribute("path", request.getContextPath());
+	%>
+	<link rel="shortcut icon" href="${path}/static/before/images/mall.png" type="image/x-icon"/>
+	<link rel="stylesheet" type="text/css" href="${path}/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
 
 	<style type="text/css">
 		html,body {
@@ -27,13 +30,14 @@
 			height: 100%;
 		}
 		.login-box {
-			width: 100%;
-			max-width:500px;
-			height: 400px;
+			width: 80%;
+			max-width:400px;
+			height: 300px;
 			position: absolute;
 			top: 50%;
-
-			margin-top: -200px;
+            margin-right: 10%;
+            margin-left: 10%;
+			margin-top: -150px;
 			/*设置负值，为要定位子盒子的一半高度*/
 
 		}
@@ -47,22 +51,22 @@
 
 		.form {
 			width: 100%;
-			max-width:500px;
-			height: 275px;
-			margin: 25px auto 0px auto;
+			max-width:400px;
+			height: 220px;
+			margin: 0px auto 0px auto;
 			padding-top: 25px;
 		}
 		.login-content {
-			height: 300px;
+			height: 200px;
 			width: 100%;
-			max-width:500px;
+			max-width:400px;
 			background-color: rgba(255, 250, 2550, .6);
 			float: left;
 		}
 
 
 		.input-group {
-			margin: 0px 0px 30px 0px !important;
+			margin: 0px 0px 15px 0px !important;
 		}
 		.form-control,
 		.input-group {
@@ -73,11 +77,12 @@
 			margin-bottom: 0px !important;
 		}
 		.login-title {
-			padding: 20px 10px;
+			padding: 20px 5px;
 			background-color: rgba(0, 0, 0, .6);
 		}
 		.login-title h1 {
-			margin-top: 10px !important;
+			margin-top: 0px !important;
+            margin-bottom: 0px !important;
 		}
 		.login-title small {
 			color: #fff;
@@ -97,13 +102,13 @@
 
 <body>
 <div class="box">
-	<div class="login-box" >
+	<div class="login-box">
 		<div class="login-title text-center">
 			<h1><small>登录</small></h1>
 		</div>
 		<div class="login-content ">
 			<div class="form">
-				<form action="/Before/BeforeLogin" id="loginFrom" method="post" name="loginFrom">
+				<form action="${path}/Before/BeforeLogin" id="loginFrom" method="post" name="loginFrom">
 					<div class="form-group">
 						<div class="col-xs-12  ">
 							<div class="input-group">
@@ -121,11 +126,11 @@
 						</div>
 					</div>
 					<div class="form-group form-actions">
-						<div class="col-xs-4 col-xs-offset-4 ">
+						<div  style="margin-left:35%;">
 							<button type="button" id="submit" class="btn btn-sm btn-info"><span class="glyphicon glyphicon-off"></span> 登录</button>
 						</div>
 					</div>
-					<div class="form-group">
+			<%--		<div class="form-group">
 						<div class="col-xs-6 link">
 							<p class="text-center remove-margin"><small>忘记密码？</small> <a href="javascript:void(0)" ><small>找回</small></a>
 							</p>
@@ -134,17 +139,13 @@
 							<p class="text-center remove-margin"><small>还没注册?</small> <a href="javascript:void(0)" ><small>注册</small></a>
 							</p>
 						</div>
-					</div>
+					</div>--%>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
-
-<div style="text-align:center;">
-	<p>来源：<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
-</div>
-<script type="text/javascript" src="/static/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="${path}/static/js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript">
     $(function(){
         $("#submit").click(function(){
@@ -152,15 +153,14 @@
             var password = $("#password").val();
             if (empname!=null&&empname.length >=6){
                    $.ajax({
-                        url:"/BeforeLogin",
+                        url:"${path}/BeforeLogin",
                         data:{ empname:empname, password:password} ,
                         type:"POST",
-                        success:function (result) {
-                            if(result="s"){
-                                alert("该账号已 有人登陆");
-                                window.location.reload();
+                        success:function (result){
+                            if(result=="s"){
+                                alert("该账号已有人登陆");
 							}else if (result=="y"){
-                                location.href="/Before/toBeforeIndex";
+                                location.href="${path}/Before/toBeforeIndex";
                             }else if(result=="n") {
                                 alert("账号或密码不正确");
                                 window.location.reload();

@@ -7,14 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
     <title>密码管理</title>
 </head>
-<link href="/static/before/css/admin.css" rel="stylesheet" type="text/css">
-<link href="/static/before/css/amazeui.css" rel="stylesheet" type="text/css">
-
-<link href="/static/before/css/personal.css" rel="stylesheet" type="text/css">
-<link href="/static/before/css/stepstyle.css" rel="stylesheet" type="text/css">
-<link href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="/static/before/js/jquery-1.8.3.min.js"></script>
-<script src="/static/before/js/amazeui.js"></script>
+<%
+    request.setAttribute("path", request.getContextPath());
+%>
+<link href="${path}/static/before/css/admin.css" rel="stylesheet" type="text/css">
+<link href="${path}/static/before/css/amazeui.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="${path}/static/before/images/mall.png" type="image/x-icon"/>
+<link href="${path}/static/before/css/personal.css" rel="stylesheet" type="text/css">
+<link href="${path}/static/before/css/stepstyle.css" rel="stylesheet" type="text/css">
+<link href="${path}/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${path}/static/before/js/jquery-1.8.3.min.js"></script>
+<script src="${path}/static/before/js/amazeui.js"></script>
 
 
 <body>
@@ -45,7 +48,7 @@
                     <div class="u-progress-bar-inner"></div>
                 </div>
             </div>
-            <form class="am-form am-form-horizontal" action="/Before/BeforeUpdateEmpPassword" id="updatePassword" method="post">
+            <form class="am-form am-form-horizontal" action="${path}/Before/BeforeUpdateEmpPassword" id="updatePassword" method="post">
                 <input type="hidden" name="empno" value="${empBefore.empno}">
                 <div class="am-form-group">
                     <label for="user-old-password" class="am-form-label">原密码</label>
@@ -81,7 +84,7 @@
         var e=false;
         $("#user-old-password").change(function(){
             $.ajax({
-                url:"/Before/BeforeOldPassword",
+                url:"${path}/Before/BeforeOldPassword",
                 data:{ empname:'${empBefore.empname}', password:$("#user-old-password").val()} ,
                 type:"POST",
                 success:function (result){
@@ -121,6 +124,18 @@
         })
     })
 </script>
-<jsp:include   page="updateEmpType.jsp" flush="true"/>
+<script type="text/javascript">
+    $(function(){
+        setInterval(function(){
+            $.ajax({
+                url:"${path}/Before/BeforeType",
+                data:{},
+                type:"POST",
+                success:function (result) {
+                }
+            })
+        },10000)
+    })
+</script>
 </body>
 </html>

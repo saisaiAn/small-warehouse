@@ -2,8 +2,10 @@ package cn.dao;
 
 
 import cn.bean.IntegralAudit;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IntegralAuditMapper {
     public int addIntegralAuditMapper(IntegralAudit integralAudit);
@@ -12,5 +14,8 @@ public interface IntegralAuditMapper {
 
     public List<IntegralAudit> findAllIntegralAudit();
 
-    public IntegralAudit byId(IntegralAudit integralAudit);
+    public int updIntegralauditAuditType(Map<Object,Object> map);
+
+    public List<IntegralAudit> findAllIntegralAuditByDeptNo(@Param("deptno") Integer deptno);
+    IntegralAudit byId (IntegralAudit integralAudit);
 }

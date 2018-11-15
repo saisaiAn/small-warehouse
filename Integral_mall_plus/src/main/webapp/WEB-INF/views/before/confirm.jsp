@@ -6,13 +6,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>确认订单</title>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/confirm.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/mui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
-	<script src="/static/before/js/rem.js"></script>
-    <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
+	<%
+		request.setAttribute("path", request.getContextPath());
+	%>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/confirm.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/loading.css"/>
+	<link rel="shortcut icon" href="${path}/static/before/images/mall.png" type="image/x-icon"/>
+	<script src="${path}/static/before/js/rem.js"></script>
+    <script src="${path}/static/before/js/jquery.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		sessionStorage.url = "confirm";
 		$(window).load(function(){
@@ -49,7 +53,7 @@
 	    <div class="warp warptwo clearfloat">
 	    	<div class="confirm clearfloat">
 	    		<div class="add clearfloat box-s">
-	    			<a href="/Before/toBeforeAddress">
+	    			<a href="${path}/Before/toBeforeAddress">
 		    			<div class="left clearfloat fl">
 		    				<i class="iconfont icon-dizhi1"></i>
 		    			</div>

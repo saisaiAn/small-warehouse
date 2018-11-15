@@ -2,7 +2,7 @@
 <%@ page isELIgnored="false" contentType="text/html;charset=UTF-8"  language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-
+<link rel="shortcut icon" href="/static/before/images/mall.png" type="image/x-icon"/>
 <head>
     <meta charset="utf-8">
     <title>管理收货地址</title>

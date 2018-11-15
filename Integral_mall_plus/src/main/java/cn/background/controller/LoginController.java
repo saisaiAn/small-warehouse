@@ -1,10 +1,12 @@
 package cn.background.controller;
 
 import cn.background.bgService.BgLoginService;
+import cn.background.bgService.JedisClientImp;
 import cn.bean.Commodity;
 import cn.bean.Emp;
 import cn.bean.Orders;
 import cn.dao.EmpMapper;
+import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,9 @@ public class LoginController {
 
     @Autowired
     BgLoginService bgLoginService;
+
+    @Autowired
+    JedisClientImp jedisClientImp;
 
     @RequestMapping("view")
     public String test(){//进入后台模式
@@ -40,10 +45,24 @@ public class LoginController {
             if(emp1.getPosition()==1){
                 return "2";
             }else if(emp1.getPosition()!=1){
-                //登陆成功 保存session
                 System.out.println(emp1.getEmpname()+"登陆");
+                String res = "";
+                try{
+                    res = jedisClientImp.get("id"+emp1.getEmpno());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                if(res!=""&&res!=null){
+                    return "ydl";
+                }
+                try { //登陆成功 吧id存入redis
+                    String id = JSON.toJSONString(emp1.getEmpno().toString()) ;
+                    jedisClientImp.set("id"+emp1.getEmpno(),id);
+                   jedisClientImp.expire("id"+emp1.getEmpno(),30);  //redis过期
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
                 session.setAttribute("loginUser",emp1);
-               // session.setAttribute("img",bgLoginService.findAllImg());
                 session.setMaxInactiveInterval(1800);
                 return "0";
             }
@@ -53,12 +72,29 @@ public class LoginController {
         }
         return "3";
     }
+
+    @RequestMapping("redisBeOverdue")
+    public void redisBeOverdue(HttpSession session){
+        System.out.println("reids过期删除");
+        Emp emp = (Emp) session.getAttribute("loginUser");
+        try {
+            String id = JSON.toJSONString(emp.getEmpno().toString()) ;
+            jedisClientImp.set("id"+emp.getEmpno(),id);
+            jedisClientImp.expire("id"+emp.getEmpno(),10);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+
     @RequestMapping("jumpindex")
     public String jumpIndex(){//跳转index页面
         return "/background/index";
     }
+
     @RequestMapping("home.html")
-    public String home(Model model){//跳转首页
+    public String home(Model model) throws Exception{//跳转首页
         System.out.println("首页");
         model.addAttribute("allEmp",bgLoginService.findAllEmp());
         List<Orders> orders = bgLoginService.selectOrders();
@@ -69,6 +105,7 @@ public class LoginController {
         int countOrderstatus3 =0;
         for (Orders o: orders
              ) {
+            System.out.println(o.getOrderintegral()+"***156464");
             countOrderOrderintegral+=(Integer.parseInt(o.getOrderintegral()));
             if(o.getOrderstatus()==1){
                 ++ countOrderstatus ;
@@ -100,6 +137,13 @@ public class LoginController {
         model.addAttribute("shangjia",shangjia);
         model.addAttribute("xiajia",xiajia);
         return "/background/home";
+    }
+
+    @RequestMapping("Sign_out")
+    public String Signout(HttpSession session){
+        System.out.println("退出清空session");
+        session.removeAttribute("loginUser");
+        return "redirect:/view";
     }
 
 }

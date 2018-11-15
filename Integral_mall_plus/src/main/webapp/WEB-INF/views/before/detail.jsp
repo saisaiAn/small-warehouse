@@ -6,21 +6,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>详情页</title>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/detail.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/mui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
-    <link rel="stylesheet" href="/static/before/css/swiper.min.css">
-    <script src="/static/before/js/rem.js"></script>
-    <script src="/static/before/js/jquery-1.8.3.min.js" type="text/javascript"></script>
-    <script src="/static/before/js/others.js"></script>
-	<script src="/static/before/js/swiper.jquery.min.js"></script>
+	<%
+		request.setAttribute("path", request.getContextPath());
+	%>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/detail.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/loading.css"/>
+    <link rel="stylesheet" href="${path}/static/before/css/swiper.min.css">
+	<link rel="shortcut icon" href="${path}/static/before/images/mall.png" type="image/x-icon"/>
+    <script src="${path}/static/before/js/rem.js"></script>
+    <script src="${path}/static/before/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="${path}/static/before/js/others.js"></script>
+	<script src="${path}/static/before/js/swiper.jquery.min.js"></script>
 	<script type="text/javascript">
 		$(window).load(function(){
 			$(".loading").addClass("loader-chanage")
 			$(".loading").fadeOut(300)
 		})
+
 		function toshare(){
 			$(".am-share").addClass("am-modal-active");	
 			if($(".sharebg").length>0){
@@ -37,6 +42,19 @@
 				},300);
 			})
 		}
+	</script>
+	<script type="text/javascript">
+        $(function(){
+            setInterval(function(){
+                $.ajax({
+                    url:"${path}/Before/BeforeType",
+                    data:{},
+                    type:"POST",
+                    success:function (result) {
+                    }
+                })
+            },10000)
+        })
 	</script>
 </head>
 <!--loading页开始-->
@@ -64,7 +82,7 @@
 		
 		<div class="warp warptwo clearfloat">
 			<div class="detail clearfloat">
-				<!--banner star-->
+				<%--<!--banner star-->
 				<div class="banner swiper-container">
 		            <div class="swiper-wrapper">
 		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="images/xj3.jpg" alt=""></a></div>
@@ -73,17 +91,17 @@
 		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="images/xj3.jpg" alt=""></a></div>
 		            </div>
 		            <div class="swiper-pagination"></div>
-		        </div>
+		        </div>--%>
 				<!--banner end-->
 				<div class="top clearfloat box-s">
 					<c:forEach items="${imgList}" var="img">
 						<c:if test="${img.imageclassification==3&&img.imagerid==commodity.commodityno}">
-							<img src="${img.imagerurl}" style="float: left;"/>
+							<img src="${img.imagerurl}" style="float: left; margin-bottom: 30px;width: 100%;max-width: 400px;height:400px;"/>
 						</c:if>
 					</c:forEach>
 					<div class="shang clearfloat">
 						<div class="zuo clearfloat fl over2 box-s">
-							${commodity.commoditytitle}
+							<span style="font-size: 18px;">${commodity.commoditytitle}</span>
 						</div>
 						<div class="you clearfloat fr">
 							<i class="iconfont icon-fenxiang"></i>
@@ -92,20 +110,18 @@
 					</div>
 					<div class="xia clearfloat">
 
-						<p class="jifen fl box-s"><samp>${commodity.needintegral}</samp>积分</p>
+						<p class="jifen fl box-s"><samp style="font-weight: bold;">${commodity.needintegral}</samp>&nbsp;积分</p>
 						<span class="fr">库存<span class="kc" style="display: inline;">${commodity.commodityinventory}</span> 件</span>
 					</div>
 				</div>
 				<div class="middle clearfloat box-s">
 					<a href="#">
 						<span class="fl">商品详情</span>
-						<i class="iconfont icon-jiantou1 fr"></i>
 					</a>
 				</div>
 				<div class="middle clearfloat box-s">
 					<a href="#">
-						<span class="fl">商品评价</span>
-						<i class="iconfont icon-jiantou1 fr"></i>
+						<span style="font-size: 13px;">${commodity.commoditydetails}</span>
 					</a>
 				</div>
 			</div>
@@ -135,14 +151,41 @@
 			</div>
 			<div class="right clearfloat fl">
 				<span class="btn fl" onClick="toshare()">加入购物车</span>
-				<a href="/Before/toBeforeConfirm" class="btn btnone fl">立即购买</a>
+				<a class="btn btnone fl" id="Pay">立即购买</a>
 			</div>
 		</div>
 		<!--footerone end-->
-		
+		<script>
+			$(function(){
+                $("#Pay").click(function(){
+                    if (confirm("您确认购买当前商品吗？")){
+                    if (${commodity.needintegral}<${empBefore.integralId.remainingpoints}){
+                        $.ajax({
+                            url:"${path}/Before/addBeforePayByCommodity",
+                            data:{ count:${commodity.commodityno}} ,
+                            type:"POST",
+                            success:function (result) {
+                                if (result=="y"){
+                                    alert("下单成功！");
+                                    location.href="${path}/Before/toBeforeOrders?id=${empBefore.empno}&status=1";
+                                }else if(result=="s"){
+                                    alert("所选中商品库存不足");
+                                }else{
+                                    alert("下单失败")
+                                }
+                            }
+                        })
+                    }else{
+                        alert("用户积分不足");
+                    }
+                }
+					});
+
+			})
+		</script>
 		<!--弹出购物车内容-->
 		<div class="am-share">
-            <form action="/Before/addBeforeShopping" id="carForm" method="post">
+            <form action="" id="carForm" method="post">
 		    <div class="am-share-footer">
 		        <button class="share_btn">
 					<c:forEach items="${imgList}" var="img">
@@ -190,9 +233,9 @@
 		                <p class="fl">购买数量</p>
 		                <div class="you clearfloat fr">
 		                    <ul>
-		                        <li id="down"><img src="/static/before/images/jian.jpg" /></li>
+		                        <li id="down"><img src="${path}/static/before/images/jian.jpg" /></li>
 		                        <li id="count">1</li>
-		                        <li id="up"><img src="/static/before/images/jia.jpg" /></li>
+		                        <li id="up"><img src="${path}/static/before/images/jia.jpg" /></li>
 		                    </ul>
 		                </div>
 		            </div>
@@ -202,21 +245,26 @@
                 <input type="hidden" id="commodityId" name="shoppingcommodityno" value="${commodity.commodityno}" />
                 <input type="hidden" id="commodityNote" name="commodityNote"/>
                 <input type="hidden" id="shoppingempno" name="shoppingempno" value="${empBefore.empno}"/>
-                <button id="sub" class="shop-btn db">确定</button>
+                <span id="sub" class="shop-btn db">确定</span>
             </form>
 		</div>
         <script type="text/javascript">
             $(function(){
                 $("#sub").click(function(){
-                    var result='';
-                    $(".cur").each(function(){
-                        result=result+ $(this).html()+',';
-                    });
-                    $("#commodityNote").val(result);
                     $("#sum").val($("#count").html());
-                    if($(".kc").html>0){
-                        $("#carForm").submit;
-                    }
+                    $("#commodityNote").val(result);
+                        var result='';
+                        $(".cur").each(function(){
+                            result=result+ $(this).html()+',';
+                        });
+                        $("#commodityNote").val(result);
+                        $("#sum").val($("#count").html());
+                        if($(".kc").html>$("#count").html()){
+                            $("#carForm").attr("action","${path}/Before/addBeforeShopping");
+                            $("#carForm").submit();
+                        }else{
+                            alert("库存不足");
+                        }
                 });
             })
         </script>
@@ -247,32 +295,32 @@
 		<footer class="page-footer fixed-footer" id="footer">
 			<ul>
 				<li class="active">
-					<a href="/Before/toBeforeIndex">
+					<a href="${path}/Before/toBeforeIndex">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
 				<li>
-					<a href="/Before/toBeforeCation">
+					<a href="${path}/Before/toBeforeCation">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li>
-					<a href="/Before/toBeforeShopcar">
+					<a href="${path}/Before/toBeforeShopcar">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="/Before/toBeforeCenter">
+					<a href="${path}/Before/toBeforeCenter">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>
 				</li>
 			</ul>
 		</footer>
-		<jsp:include   page="updateEmpType.jsp" flush="true"/>
+		<%--<jsp:include   page="updateEmpType.jsp" flush="true"/>--%>
 	</body>
 	
 </html>

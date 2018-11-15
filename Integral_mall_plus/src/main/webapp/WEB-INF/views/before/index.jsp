@@ -7,21 +7,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>首页</title>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/index.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/mui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
-    <link rel="stylesheet" href="/static/before/css/swiper.min.css">
-    <script src="/static/before/js/rem.js"></script>
-    <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
-    <script src="/static/before/js/others.js"></script>
-	<script src="/static/before/js/swiper.jquery.min.js"></script>
+	<%
+		request.setAttribute("path", request.getContextPath());
+	%>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/loading.css"/>
+    <link rel="stylesheet" href="${path}/static/before/css/swiper.min.css">
+	<link rel="shortcut icon" href="${path}/static/before/images/mall.png" type="image/x-icon"/>
+    <script src="${path}/static/before/js/rem.js"></script>
+    <script src="${path}/static/before/js/jquery.min.js" type="text/javascript"></script>
+    <script src="${path}/static/before/js/others.js"></script>
+	<script src="${path}/static/before/js/swiper.jquery.min.js"></script>
 	<script type="text/javascript">
-		$(window).load(function(){
-			$(".loading").addClass("loader-chanage")
-			$(".loading").fadeOut(300)
-		})
+        $(window).load(function(){
+            $(".loading").addClass("loader-chanage")
+            $(".loading").fadeOut(300)
+        })
 	</script>
 </head>
 
@@ -48,9 +52,9 @@
 				<!--banner开始-->
 				<div class="banner swiper-container">
 		            <div class="swiper-wrapper">
-		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="/static/before/images/banner4.jpg" alt=""></a></div>
-		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="/static/before/images/banner1.jpg" alt=""></a></div>
-		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="/static/before/images/banner3.jpg" alt=""></a></div>
+		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="${path}/static/before/images/banner4.jpg" alt=""></a></div>
+		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="${path}/static/before/images/banner1.jpg" alt=""></a></div>
+		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="${path}/static/before/images/banner3.jpg" alt=""></a></div>
 		            </div>
 		        </div>
 		        <!--第一栏分类开始-->
@@ -58,25 +62,25 @@
 		        	<ul>
 		        		<li>
 		        			<a href="#">
-		        				<img src="/static/before/images/ico5.png"/>
+		        				<img src="${path}/static/before/images/ico5.png"/>
 		        				<p>新品专区</p>
 		        			</a>
 		        		</li>
 		        		<li>
 		        			<a href="#">
-		        				<img src="/static/before/images/ico2.png"/>
+		        				<img src="${path}/static/before/images/ico2.png"/>
 		        				<p>送礼首选</p>
 		        			</a>
 		        		</li>
 		        		<li>
 		        			<a href="#">
-		        				<img src="/static/before/images/ico3.png"/>
+		        				<img src="${path}/static/before/images/ico3.png"/>
 		        				<p>积分获取</p>
 		        			</a>
 		        		</li>
 		        		<li>
 		        			<a href="#">
-		        				<img src="/static/before/images/ico4.png"/>
+		        				<img src="${path}/static/before/images/ico4.png"/>
 		        				<p>私人定制</p>
 		        			</a>
 		        		</li>
@@ -99,7 +103,7 @@
 						<c:forEach items="${commodityList}" var="commodity">
 							<c:if test="${commodity.commoditytypeno==type.commoditytypeno&&commodity.commoditytype==1}">
 								<div class="list clearfloat fl">
-									<a href="/Before/toBeforeDetail?id=${commodity.commodityno}">
+									<a href="${path}/Before/toBeforeDetail?id=${commodity.commodityno}">
 										<div class="tu clearfloat fr">
 											<span></span>
 											<c:forEach items="${imgList}" var="img">
@@ -109,8 +113,8 @@
 											</c:forEach>
 										</div>
 										<div class="shang clearfloat fl box-s">
-											<p class="tit over">${commodity.commoditytitle}</p>
-											<p><span>积分:</span><span class="over db red">${commodity.needintegral}</span></p>
+											<p class="tit over" style="font-size: 13px;">${commodity.commoditytitle}</p>
+											<p><span>积分:</span><span class="over db red" style="font-weight: bold;">${commodity.needintegral}</span></p>
 										</div>
 									</a>
 								</div>
@@ -125,32 +129,45 @@
 		<footer class="page-footer fixed-footer" id="footer">
 			<ul>
 				<li class="active">
-					<a href="/Before/toBeforeIndex">
+					<a href="${path}/Before/toBeforeIndex">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
 				<li>
-					<a href="/Before/toBeforeCation">
+					<a href="${path}/Before/toBeforeCation">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li>
-					<a href="/Before/toBeforeShopcar">
+					<a href="${path}/Before/toBeforeShopcar">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="/Before/toBeforeCenter">
+					<a href="${path}/Before/toBeforeCenter">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>
 				</li>
 			</ul>
 		</footer>
-		<jsp:include   page="updateEmpType.jsp" flush="true"/>
+		<!--footer end-->
+		<script type="text/javascript">
+            $(function(){
+                setInterval(function(){
+                    $.ajax({
+                        url:"${path}/Before/BeforeType",
+                        data:{},
+                        type:"POST",
+                        success:function (result) {
+                        }
+                    })
+                },10000)
+            })
+		</script>
 	</body>
 
 </html>

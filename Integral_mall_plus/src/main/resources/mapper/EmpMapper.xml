@@ -154,6 +154,21 @@
         </where>
 
     </select>
+    <update id="updateBeforeEmpType" parameterType="cn.bean.Emp">
+        update Emp
+        <set>
+            <if test="emptype != null">
+                emptype = #{emptype},
+            </if>
+        </set>
+        where
+        <if test="empno != null">
+            empno = #{empno}
+        </if>
+        <if test="empno == null">
+            empno = 0
+        </if>
+    </update>
 
 
 </mapper>

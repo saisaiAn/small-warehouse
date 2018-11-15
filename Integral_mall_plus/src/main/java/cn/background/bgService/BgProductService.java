@@ -6,9 +6,12 @@ import cn.bean.Imager;
 import cn.dao.CommodityMapper;
 import cn.dao.CommodityTypeMapper;
 import cn.dao.ImagerMapper;
-import cn.hcfy.service.JedisClientImp;
+import cn.Before.service.JedisClientImp;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -26,7 +29,24 @@ public class BgProductService {
     private JedisClientImp jedisClient;
 
     public List<Commodity> findAllCommodity(){
-        return commodityMapper.selectAllCommodity();
+        try{
+            String result=jedisClient.get("BgCommodity");
+            if (!StringUtils.isEmpty(result)){
+                System.out.println(result+"============");
+                List<Commodity> commodities= JSONObject.parseArray(result,Commodity.class);
+                return commodities;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        List<Commodity> commodities = commodityMapper.selectAllCommodity();
+        try{
+            String commodityString = JSON.toJSONString(commodities);
+            jedisClient.set("BgCommodity",commodityString);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return commodities;
     }
 
     public int findCountCommodity(){
@@ -44,6 +64,7 @@ public class BgProductService {
     public int addPro(Commodity commodity){
         try{
             jedisClient.del("BeforeCommoditys");
+            jedisClient.del("BgCommodity");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -53,6 +74,7 @@ public class BgProductService {
     public int addImg(Imager imager){
         try{
             jedisClient.del("BeforeImagers");
+            jedisClient.del("BgCommodity");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -64,14 +86,32 @@ public class BgProductService {
     }
 
     public void updatePro(Commodity commodity){//修改商品信息
+        try{
+            jedisClient.del("BeforeCommoditys");
+            jedisClient.del("BgCommodity");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         commodityMapper.updatePro(commodity);
     }
 
     public int bg_undercarriage_product(Integer proid){//下架商品
+        try{
+            jedisClient.del("BeforeCommoditys");
+            jedisClient.del("BgCommodity");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return commodityMapper.bg_undercarriage_product(proid);
     }
 
     public int bg_grounding_product(Integer proid){//上架商品
+        try{
+            jedisClient.del("BeforeCommoditys");
+            jedisClient.del("BgCommodity");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return commodityMapper.bg_grounding_product(proid);
     }
 
@@ -80,6 +120,12 @@ public class BgProductService {
     }
 
     public int updImg(Imager imager){
+        try{
+            jedisClient.del("BeforeImagers");
+            jedisClient.del("BgCommodity");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return imagerMapper.updImg(imager);
     }
 

@@ -6,8 +6,11 @@ import cn.bean.Integral;
 import cn.dao.DepartmentMapper;
 import cn.dao.EmpMapper;
 import cn.dao.IntegralMapper;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -21,9 +24,31 @@ public class BgEmpService {
     @Autowired
     IntegralMapper integralMapper;
 
-    public List<Emp> findEmpAll(){//查询所有员工
-        return empMapper.findEmpAll();
+/*    @Autowired
+    JedisClientImp jedisClientImp;*/
+
+    public List<Emp> findEmpAll(){//查询所有员工  员工经常变动，不加入redis
+        /*try {
+            String result = jedisClientImp.get("BgEmpAll");
+            if(!StringUtils.isEmpty(result)){
+                List<Emp> emps = JSONObject.parseArray(result,Emp.class);
+                return emps;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }*/
+        List<Emp> emps = empMapper.findEmpAll();
+        /*try {
+            String emp = JSON.toJSONString(emps);
+            jedisClientImp.set("BgEmpAll",emp);
+        }catch (Exception e){
+            e.printStackTrace();
+        }*/
+        return emps;
     }
+
+
+
     public List<Department> findAllDepartment(){//查询部门信息
         return departmentMapper.findAllDepartment();
     };

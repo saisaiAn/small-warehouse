@@ -2,7 +2,6 @@ package cn.dao;
 
 
 import cn.bean.Emp;
-import cn.bean.IntegralAudit;
 
 import java.util.List;
 import java.util.Map;
@@ -32,6 +31,8 @@ public interface EmpMapper {
 
     Emp findEmpById(Emp emp);
 
-    void masterUpd(Emp emp);
+    int masterUpd(Emp emp);
+    
+    int updateBeforeEmpType(Emp emp);
 
 }

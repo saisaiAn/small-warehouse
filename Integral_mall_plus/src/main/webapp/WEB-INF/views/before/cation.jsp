@@ -6,13 +6,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>分类</title>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/cation.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/mui.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/loaders.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/before/css/loading.css"/>
-    <script src="/static/before/js/rem.js"></script>
-    <script src="/static/before/js/jquery.min.js" type="text/javascript"></script>
+	<%
+		request.setAttribute("path", request.getContextPath());
+	%>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/cation.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/loaders.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${path}/static/before/css/loading.css"/>
+	<link rel="shortcut icon" href="${path}/static/before/images/mall.png" type="image/x-icon"/>
+    <script src="${path}/static/before/js/rem.js"></script>
+    <script src="${path}/static/before/js/jquery.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(window).load(function(){
 			$(".loading").addClass("loader-chanage")
@@ -49,7 +53,7 @@
 		    <div class="cations clearfloat">
 				<c:forEach items="${typeList}" var="type">
 					<div class="list clearfloat fl">
-						<a href="/Before/toBeforeList?commoditytypeno=${type.commoditytypeno}">
+						<a href="${path}/Before/toBeforeList?commoditytypeno=${type.commoditytypeno}">
 							<p class="tit over box-s">${type.commoditytypename}</p>
 							<div class="tu">
 								<c:forEach items="${imgList}" var="img">
@@ -68,32 +72,44 @@
 		<footer class="page-footer fixed-footer" id="footer">
 			<ul>
 				<li>
-					<a href="/Before/toBeforeIndex">
+					<a href="${path}/Before/toBeforeIndex">
 						<i class="iconfont icon-shouye"></i>
 						<p>首页</p>
 					</a>
 				</li>
 				<li class="active">
-					<a href="/Before/toBeforeCation">
+					<a href="${path}/Before/toBeforeCation">
 						<i class="iconfont icon-icon04"></i>
 						<p>分类</p>
 					</a>
 				</li>
 				<li>
-					<a href="/Before/toBeforeShopcar">
+					<a href="${path}/Before/toBeforeShopcar">
 						<i class="iconfont icon-gouwuche"></i>
 						<p>购物车</p>
 					</a>
 				</li>
 				<li>
-					<a href="/Before/toBeforeCenter">
+					<a href="${path}/Before/toBeforeCenter">
 						<i class="iconfont icon-yonghuming"></i>
 						<p>我的</p>
 					</a>
 				</li>
 			</ul>
 		</footer>
-		<jsp:include   page="updateEmpType.jsp" flush="true"/>
+		<script type="text/javascript">
+            $(function(){
+                setInterval(function(){
+                    $.ajax({
+                        url:"${path}/Before/BeforeType",
+                        data:{},
+                        type:"POST",
+                        success:function (result) {
+                        }
+                    })
+                },10000)
+            })
+		</script>
 	</body>
 	
 </html>

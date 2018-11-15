@@ -37,14 +37,17 @@
                 <!--不拦截的请求-->
                 <mvc:exclude-mapping path="/**/fonts/*"/>
                 <mvc:exclude-mapping path="/**/*.css"/>
-                 <mvc:exclude-mapping path="/**/*.js"/>
-                 <mvc:exclude-mapping path="/**/*.png"/>
-                 <mvc:exclude-mapping path="/**/*.gif"/>
-                 <mvc:exclude-mapping path="/**/*.jpg"/>
-                 <mvc:exclude-mapping path="/**/*.jpeg"/>
+                <mvc:exclude-mapping path="/**/*.js"/>
+                <mvc:exclude-mapping path="/**/*.png"/>
+                <mvc:exclude-mapping path="/**/*.gif"/>
+                <mvc:exclude-mapping path="/**/*.jpg"/>
+                <mvc:exclude-mapping path="/**/*.jpeg"/>
                 <mvc:exclude-mapping path="/hello"/>
                 <mvc:exclude-mapping path="/app"/>
                 <mvc:exclude-mapping path="/login"/>
+                <mvc:exclude-mapping path="/Before/*"/>
+                <mvc:exclude-mapping path="/SSMDemo1/Before/*"/>
+                <mvc:exclude-mapping path="/BeforeLogin"/>
                 <mvc:exclude-mapping path="/view"/>
                 <!--定义拦截器的拦截方法-->
                 <bean class="cn.interceptor.BgInterceptor"></bean>

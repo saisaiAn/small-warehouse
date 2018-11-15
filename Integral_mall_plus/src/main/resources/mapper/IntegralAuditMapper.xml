@@ -128,12 +128,37 @@
         where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo
         and e.departmentno=d.depano and a.reviewer=es.empno and es.departmentno=ds.depano
     </select>
-    <select id="byId" parameterType="cn.bean.IntegralAudit" resultMap="WithIntegralAuditResultMap">
+
+    <!-- 根据部门查询 -->
+    <select id="findAllIntegralAuditByDeptNo" resultMap="WithIntegralAuditResultMap" parameterType="java.lang.Integer">
         SELECT
         <include refid="findAllIntegralAuditSql"></include>
+        from integralaudit a,emp e,department d,integral i,IntegralType t
+        where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo
+        and e.departmentno=d.depano
+          <if test="deptno!=null and deptno!=''">
+              and e.DepartmentNo =#{deptno}
+          </if>
+
+
+
         from integralaudit a,emp e,department d,integral i,IntegralType t,emp es,department ds
         where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo and a.reviewer=es.empno and es.departmentno=ds.depano
         and e.departmentno=d.depano and integralauditno=#{integralauditno}
     </select>
+
+    <!-- 综合部经理审批意见 吧意见状态修改为 2（申请中转为审核中 提交给校长看见） -->
+    <update id="updIntegralauditAuditType" parameterType="java.util.Map">
+        UPDATE IntegralAudit set AuditType = #{AuditType} , reviewer = #{empid},
+            <if test="sprYj != null">
+                AuditOpinion = #{sprYj}
+            </if>
+           where IntegralAuditNo = #{integralAuditId}
+    </update>
+
+
+
+
+
 
 </mapper>
