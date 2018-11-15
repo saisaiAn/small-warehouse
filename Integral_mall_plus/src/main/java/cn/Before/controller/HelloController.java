@@ -51,20 +51,24 @@ public class HelloController {
         emp.setPassword(password);
         Emp empReturn = empService.loginToIndexBefore(emp);
         if(empReturn==null){ return  "n";}
-            if (empReturn.getEmptype()>0){
+           /*if (empReturn.getEmptype()>0){
                 return "s";
-        }
-        JedisClientImp jedisClientImp=new JedisClientImp();
-        Emp empe=new Emp();
-        empe.setEmptype(1);
-        empe.setEmpno(empReturn.getEmpno());
-        empService.updateBeforeEmpType(empe);
+        }*/
+          String a="";
+          try{
+              a=jedisClient.get(empReturn.getEmpno().toString());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            if(a!=""&&a!=null){
+                return "s";
+            }
         try{
-            jedisClient.set("empNo",empReturn.getEmpno().toString());
+            jedisClient.set(empReturn.getEmpno().toString(),empReturn.getEmpno().toString());
+            jedisClient.expire(empReturn.getEmpno().toString(),30);
         }catch (Exception e){
             e.printStackTrace();
         }
-
         List<Imager> imagerList = imagerService.selectAllImager();
         httpSession.setAttribute("empBefore",empReturn);
         httpSession.setAttribute("imgList",imagerList);

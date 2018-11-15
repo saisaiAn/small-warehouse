@@ -43,6 +43,9 @@ public class BeforeController {
     @Autowired
     IntegralScheduleService integralScheduleService;
 
+    @Autowired
+    private JedisClientImp jedisClient;
+
     @ResponseBody
     @RequestMapping(value = "/addBeforePay")
     @Transactional(rollbackFor = {RuntimeException.class,Exception.class})
@@ -289,26 +292,16 @@ public class BeforeController {
     public String password(){
         return "/before/password";
     }
-    //登录信息销毁
     @ResponseBody
-    @RequestMapping("/BeforeXiaoHui")
-    public String BeforeXiaoHui(HttpSession httpSession){
+    @RequestMapping("/BeforeType")
+    public String BeforeRedis(HttpSession httpSession){
         Emp emp=(Emp)httpSession.getAttribute("empBefore");
-        Emp empType=new Emp();
-        empType.setEmpno(emp.getEmpno());
-        empType.setEmptype(0);
-        empService.updateBeforeEmpType(empType);
-        return "y";
-    }
-    //登录信息撤回
-    @ResponseBody
-    @RequestMapping("/BeforeCeHui")
-    public String BeforeCeHui(HttpSession httpSession){
-        Emp emp=(Emp)httpSession.getAttribute("empBefore");
-        Emp empType=new Emp();
-        empType.setEmpno(emp.getEmpno());
-        empType.setEmptype(1);
-        empService.updateBeforeEmpType(empType);
-        return "y";
+        try{
+            jedisClient.set(emp.getEmpno().toString(),emp.getEmpno().toString());
+            jedisClient.expire(emp.getEmpno().toString(),30);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "s";
     }
 }

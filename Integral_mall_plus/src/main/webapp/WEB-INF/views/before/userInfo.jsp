@@ -94,6 +94,18 @@
             </div>
         </div>
     </div>
-    <jsp:include   page="updateEmpType.jsp" flush="true"/>
+    <script type="text/javascript">
+        $(function(){
+            setInterval(function(){
+                $.ajax({
+                    url:"${path}/Before/BeforeType",
+                    data:{},
+                    type:"POST",
+                    success:function (result) {
+                    }
+                })
+            },10000)
+        })
+    </script>
 </body>
 </html>

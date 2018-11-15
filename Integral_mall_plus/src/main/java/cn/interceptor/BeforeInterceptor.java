@@ -31,7 +31,7 @@ public class BeforeInterceptor implements HandlerInterceptor {
             empe.setEmptype(0);
             empe.setEmpno(Integer.parseInt(empNo));
             empService.updateBeforeEmpType(empe);
-            httpServletResponse.sendRedirect("/hello");
+            httpServletResponse.sendRedirect("/SSMDemo1/hello");
             return false;
         }
         return true;
