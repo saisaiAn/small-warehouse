@@ -62,7 +62,7 @@
         select
         <include refid="WithDept_Column_List" />
         from emp e ,department d,integral i
-        where e.departmentno=d.depano
+        where e.departmentno=d.depano and e.intergralno = i.intergralno
     </select>
 
     <!-- 添加员工 -->

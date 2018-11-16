@@ -103,8 +103,7 @@ public class BeforeController {
             Commodity commodity1= commodityService.selectCommodityById(commodity);
             Emp emp=(Emp)httpSession.getAttribute("empBefore");
             int comsum = commodity1.getCommodityinventory()-1;
-            if(comsum<0){
-                return "s";//查询商品库存并返回库存不足
+            if(comsum<0){return "s";//查询商品库存并返回库存不足
             }
             //用户积分扣除
             Integral integral=new Integral();
@@ -113,7 +112,6 @@ public class BeforeController {
             integral.setRemainingpoints(commodity1.getNeedintegral());
             integralService.updateByExampleIntegral(integral);
             //增加订单
-        System.out.println();
             Orders orders=new Orders();
             orders.setOrdercommodityno(commodity1.getCommodityno());
             orders.setOrderintegral(commodity1.getNeedintegral()+"");
@@ -165,7 +163,6 @@ public class BeforeController {
     @RequestMapping(value = "/updateBeforeShopCar")
     @Transactional(rollbackFor = {Exception.class})
     public String updateBeforeShopCar(@Param("carno")int carno,@Param("commoditySum") int commoditySum){
-        System.out.println(commoditySum+"==cars");
         ShoppingCar shoppingCar=new ShoppingCar();
         shoppingCar.setCarno(carno);
         shoppingCar.setCommoditysum(commoditySum);
@@ -188,8 +185,8 @@ public class BeforeController {
     @ResponseBody
     @RequestMapping("/BeforeOldPassword")
     public String OldPassword(@ModelAttribute Emp emp){
-        Emp emp1= empService.selectOldPassword(emp);
-        if(emp1!=null){
+        Emp emps= empService.selectOldPassword(emp);
+        if(emps!=null){
             return "y";
         }else{
             return "n";
@@ -261,6 +258,7 @@ public class BeforeController {
     @RequestMapping("/toBeforeShopcar")
     public String shopcar(HttpSession session,Model model){
         Emp emp=(Emp)session.getAttribute("empBefore");
+        //System.out.println(emp.getEmptype());
         List<ShoppingCar> shoppingCarList= shoppingCarService.selectShoppingCarByEmpId(emp);//查询属于当前用户的购物车信息
         model.addAttribute("shoppingCarList",shoppingCarList);
         return "/before/shopcar";
@@ -274,11 +272,11 @@ public class BeforeController {
     public String orders(@Param("id")Integer id,@Param("status")Integer status,Model model){
         Emp emp=new Emp();
         emp.setEmpno(id);
-        Map ByEmpIdMap=new HashMap();
-        ByEmpIdMap.put("emp",emp);
-        ByEmpIdMap.put("status",status);
-        List<Orders> Orders= ordersService.selectOrdersByEmpId(ByEmpIdMap);
-        model.addAttribute("orderList",Orders);
+        Map byEmpIdMap=new HashMap();
+        byEmpIdMap.put("emp",emp);
+        byEmpIdMap.put("status",status);
+        List<Orders> orders= ordersService.selectOrdersByEmpId(byEmpIdMap);
+        model.addAttribute("orderList",orders);
         model.addAttribute("status",status);
         return "/before/orders";
     }

@@ -49,6 +49,7 @@
                 <mvc:exclude-mapping path="/SSMDemo1/Before/*"/>
                 <mvc:exclude-mapping path="/BeforeLogin"/>
                 <mvc:exclude-mapping path="/view"/>
+                <mvc:exclude-mapping path="/error"/>
                 <!--定义拦截器的拦截方法-->
                 <bean class="cn.interceptor.BgInterceptor"></bean>
             </mvc:interceptor>

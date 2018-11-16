@@ -124,10 +124,20 @@
           <if test="deptno!=null and deptno!=''">
               and e.DepartmentNo =#{deptno}
           </if>
-
-
-
     </select>
+
+    <!--根据意见id查询-->
+    <select id="findAllIntegralAuditByIntegralauditno" resultMap="WithIntegralAuditResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="findAllIntegralAuditSql"></include>
+        from integralaudit a,emp e,department d,integral i,IntegralType t
+        where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo
+        and e.departmentno=d.depano
+        <if test="integralauditno!=null and integralauditno!=''">
+            and a.integralauditno =#{integralauditno}
+        </if>
+    </select>
+
 
     <!-- 综合部经理审批意见 吧意见状态修改为 2（申请中转为审核中 提交给校长看见） -->
     <update id="updIntegralauditAuditType" parameterType="java.util.Map">

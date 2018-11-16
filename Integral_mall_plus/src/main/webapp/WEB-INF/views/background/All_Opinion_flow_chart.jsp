@@ -17,10 +17,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${path}/static/background/css/style.css"/>
-
 <!-- 引入ystep样式 -->
     <link href="${path}/static/background/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="${path}/static/background/css/ystep.css">
+    <script src="${path}/static/background/assets/layer/layer.js" type="text/javascript" ></script>
 </head>
 <body>
 <div class="search_style">
@@ -37,6 +37,14 @@
                 &nbsp;&nbsp;&nbsp;
                 <button type="submit" class="btn btn-info btn-sm" style="display: inline-block;">查询</button>
             </form>
+            <br/>
+            <form action="findAllIntegralAuditByIntegralauditno" name="idSelectTable" method="post">
+                <div class="form-group" style="display: inline-block;width: 250px;">
+                    <input type="text" class="form-control" name="Integralauditno" id="yjId" placeholder="请输入意见编号">
+                </div>
+                <button type="button" class="btn btn-default yjbhselect" style="display: inline-block;margin-top: -26px;margin-left: 20px;">查询</button>
+            </form>
+
         </div>
     </ul>
 </div>
@@ -45,6 +53,7 @@
     <c:if test="${a.integralTypeId.integraltypeno!=3}">
         <div style="margin-top: 45px;margin-left: 75px;display: inline-block">
             <span style="font-size: 18px;color: #8C8C00">
+                意见编号:<span  style="font-size: 18px;color: #FFD306">${a.integralauditno}</span>
                 员工姓名:<span  style="font-size: 18px;color: #FFD306">${a.empId.empname}</span>
                 <span style="color:#C48888;">部门名称:</span><span  style="font-size: 18px;color: #9393FF">${a.empId.departmentId.depaname}</span>
             </span>
@@ -94,8 +103,22 @@
         })
 
     })
-
-
+</script>
+<script type="text/javascript">
+    $(function () {
+        $(".yjbhselect").click(function () {
+            var yjI = $("#yjId").val();
+            if(yjI==""||yjI==null){
+                alert("请输入意见id查询");
+            }else{
+                if(!isNaN(yjI)){
+                    idSelectTable.submit();
+                }else{
+                    alert("请输入正确的意见编号");
+                }
+            }
+        })
+    })
 </script>
 </body>
 </html>

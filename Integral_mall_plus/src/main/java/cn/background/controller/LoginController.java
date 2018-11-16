@@ -80,7 +80,7 @@ public class LoginController {
         try {
             String id = JSON.toJSONString(emp.getEmpno().toString()) ;
             jedisClientImp.set("id"+emp.getEmpno(),id);
-            jedisClientImp.expire("id"+emp.getEmpno(),10);
+            jedisClientImp.expire("id"+emp.getEmpno(),25);
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -446,10 +446,10 @@
                                 <li class="home"><a href="javascript:void(0)" name="handling_opinions" title="审批意见"
                                                     class="iframeurl"><i class="icon-double-angle-right"></i>审批意见</a></li>
                             </c:if>
-                            <c:if test="${loginUser.position == 3 || loginUser.position == 4  }">
+                            <%--<c:if test="${loginUser.position == 3 || loginUser.position == 4  }">--%>
                                <li class="home"><a href="javascript:void(0)" name="Opinion_flow_chart" title="意见流程图"
                                                     class="iframeurl"><i class="icon-double-angle-right"></i>意见流程图</a></li>
-                            </c:if>
+                            <%--</c:if>--%>
                         </ul>
                     </li>
                     <c:if test="${loginUser.position == 3 || loginUser.position == 4  }">

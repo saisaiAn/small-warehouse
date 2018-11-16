@@ -68,4 +68,7 @@ public class BgIntegralService {
     public List<IntegralAudit> findAllIntegralAuditByDeptNo(Integer deptno){
         return  integralAuditMapper.findAllIntegralAuditByDeptNo(deptno);
     }
+    public List<IntegralAudit> findAllIntegralAuditByIntegralauditno(Integer integralauditno){
+        return  integralAuditMapper.findAllIntegralAuditByIntegralauditno(integralauditno);
+    }
 }

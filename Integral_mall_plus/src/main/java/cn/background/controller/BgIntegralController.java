@@ -204,10 +204,17 @@ public class BgIntegralController {
         model.addAttribute("proType",bgIntegralService.findAllDept());
         return "background/All_Opinion_flow_chart";
     }
-
+   //根据部门查询意见流程图
     @RequestMapping(value = "findAllIntegralAuditByDeptNo",method = RequestMethod.POST)
     public String findAllIntegralAuditByDeptNo(@RequestParam("proTypeNo")Integer proTypeNo,Model model){
         model.addAttribute("aud",bgIntegralService.findAllIntegralAuditByDeptNo(proTypeNo));
+        model.addAttribute("proType",bgIntegralService.findAllDept());
+        return "background/All_Opinion_flow_chart";
+    }
+    //根据意见id查询意见流程图
+    @RequestMapping(value = "findAllIntegralAuditByIntegralauditno",method = RequestMethod.POST)
+    public String findAllIntegralAuditByIntegralauditno(@RequestParam("Integralauditno")Integer integralauditno,Model model){
+        model.addAttribute("aud",bgIntegralService.findAllIntegralAuditByIntegralauditno(integralauditno));
         model.addAttribute("proType",bgIntegralService.findAllDept());
         return "background/All_Opinion_flow_chart";
     }

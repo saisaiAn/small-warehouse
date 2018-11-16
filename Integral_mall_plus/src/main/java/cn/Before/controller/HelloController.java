@@ -46,15 +46,15 @@ public class HelloController {
     public String login(@RequestParam(value="empname",required=false)String empname,
                         @RequestParam(value="password",required=false) String password,
                         HttpSession httpSession){
+        //创建EMP对象放到sql中查询
         Emp emp=new Emp();
         emp.setEmpname(empname);
         emp.setPassword(password);
         Emp empReturn = empService.loginToIndexBefore(emp);
+        //登陆判断 是否存在用户
         if(empReturn==null){ return  "n";}
-           /*if (empReturn.getEmptype()>0){
-                return "s";
-        }*/
-          String a="";
+        //重复登录限制
+        String a="";
           try{
               a=jedisClient.get(empReturn.getEmpno().toString());
             }catch (Exception e){
@@ -63,12 +63,14 @@ public class HelloController {
             if(a!=""&&a!=null){
                 return "s";
             }
+            //redis键生成,用于判断重复登录
         try{
             jedisClient.set(empReturn.getEmpno().toString(),empReturn.getEmpno().toString());
             jedisClient.expire(empReturn.getEmpno().toString(),30);
         }catch (Exception e){
             e.printStackTrace();
         }
+        //图片加载
         List<Imager> imagerList = imagerService.selectAllImager();
         httpSession.setAttribute("empBefore",empReturn);
         httpSession.setAttribute("imgList",imagerList);

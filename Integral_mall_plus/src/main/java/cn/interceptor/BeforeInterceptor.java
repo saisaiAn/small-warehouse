@@ -18,7 +18,6 @@ public class BeforeInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         Emp empReturn = (Emp) httpServletRequest.getSession().getAttribute("empBefore");
-        System.out.println("前台拦截器" );
         if (empReturn==null||empReturn.equals("")){
             String empNo="";
             try{
