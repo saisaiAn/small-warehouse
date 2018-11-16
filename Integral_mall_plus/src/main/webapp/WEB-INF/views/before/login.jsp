@@ -156,10 +156,9 @@
                         url:"${path}/BeforeLogin",
                         data:{ empname:empname, password:password} ,
                         type:"POST",
-                        success:function (result) {
+                        success:function (result){
                             if(result=="s"){
-                                alert("该账号已 有人登陆");
-                                window.location.reload();
+                                alert("该账号已有人登陆");
 							}else if (result=="y"){
                                 location.href="${path}/Before/toBeforeIndex";
                             }else if(result=="n") {

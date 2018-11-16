@@ -22,24 +22,10 @@
     <script src="${path}/static/before/js/others.js"></script>
 	<script src="${path}/static/before/js/swiper.jquery.min.js"></script>
 	<script type="text/javascript">
-		$(window).load(function(){
-			$(".loading").addClass("loader-chanage")
-			$(".loading").fadeOut(300)
-            $.ajax({
-                url:"/Before/BeforeCeHui",
-                data:{},
-                type:"POST",
-                success:function (result) {}
-            })
-		})
-        window.onbeforeunload = function() {
-            $.ajax({
-                url:"/Before/BeforeXiaoHui",
-                data:{},
-                type:"POST",
-                success:function (result) {}
-            })
-        };
+        $(window).load(function(){
+            $(".loading").addClass("loader-chanage")
+            $(".loading").fadeOut(300)
+        })
 	</script>
 </head>
 
@@ -169,6 +155,19 @@
 			</ul>
 		</footer>
 		<!--footer end-->
+		<script type="text/javascript">
+            $(function(){
+                setInterval(function(){
+                    $.ajax({
+                        url:"${path}/Before/BeforeType",
+                        data:{},
+                        type:"POST",
+                        success:function (result) {
+                        }
+                    })
+                },10000)
+            })
+		</script>
 	</body>
 
 </html>

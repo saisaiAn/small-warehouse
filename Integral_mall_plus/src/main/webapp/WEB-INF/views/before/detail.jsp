@@ -24,21 +24,8 @@
 		$(window).load(function(){
 			$(".loading").addClass("loader-chanage")
 			$(".loading").fadeOut(300)
-            $.ajax({
-                url:"${path}/Before/BeforeCeHui",
-                data:{},
-                type:"POST",
-                success:function (result) {}
-            })
 		})
-        window.onbeforeunload = function() {
-            $.ajax({
-                url:"${path}/Before/BeforeXiaoHui",
-                data:{},
-                type:"POST",
-                success:function (result) {}
-            })
-        };
+
 		function toshare(){
 			$(".am-share").addClass("am-modal-active");	
 			if($(".sharebg").length>0){
@@ -55,6 +42,19 @@
 				},300);
 			})
 		}
+	</script>
+	<script type="text/javascript">
+        $(function(){
+            setInterval(function(){
+                $.ajax({
+                    url:"${path}/Before/BeforeType",
+                    data:{},
+                    type:"POST",
+                    success:function (result) {
+                    }
+                })
+            },10000)
+        })
 	</script>
 </head>
 <!--loading页开始-->

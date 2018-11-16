@@ -14,11 +14,11 @@
         <meta content="Mannatthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <link rel="shortcut icon" href="/static/app/assets/images/favicon.ico">
+        <link rel="shortcut icon" href="${path}/static/app/assets/images/favicon.ico">
 
-        <link href="/static/app/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="/static/app/assets/css/icons.css" rel="stylesheet" type="text/css">
-        <link href="/static/app/assets/css/style.css" rel="stylesheet" type="text/css">
+        <link href="${path}/static/app/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="${path}/static/app/assets/css/icons.css" rel="stylesheet" type="text/css">
+        <link href="${path}/static/app/assets/css/style.css" rel="stylesheet" type="text/css">
 
     </head>
 
@@ -40,7 +40,7 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="text-center">
-                        <a href="index.html" class="logo"><i class="mdi mdi-assistant"></i> Annex</a>
+                        <a href="#" class="logo"><i class="mdi mdi-assistant"></i> Annex</a>
                         <!-- <a href="index.html" class="logo"><img src="assets/images/logo.png" height="24" alt="logo"></a> -->
                     </div>
                 </div>
@@ -50,16 +50,16 @@
                     <div id="sidebar-menu">
                         <ul>
                             <li>
-                                <a href="/toAppnIndex" class="waves-effect"><i class="mdi mdi-airplay"></i><span> 首页</span></a>
+                                <a href="/app/toAppnIndex" class="waves-effect"><i class="mdi mdi-airplay"></i><span> 首页</span></a>
                             </li>
                             <li>
-                                <a href="/toAppSetting" class="waves-effect"><i class="mdi mdi-settings"></i><span> 个人设置</span></a>
+                                <a href="/app/toAppSetting" class="waves-effect"><i class="mdi mdi-settings"></i><span> 个人设置</span></a>
                             </li>
                             <li>
-                                <a href="/app" class="waves-effect"><i class="mdi mdi-ungroup"></i><span> 登录 </span></a>
+                                <a href="/app/app" class="waves-effect"><i class="mdi mdi-ungroup"></i><span> 登录 </span></a>
                             </li>
                             <li>
-                                <a href="/toAppLogout" class="waves-effect"><i class="mdi mdi-power"></i><span> 注销 </span></a>
+                                <a href="/app/toAppLogout" class="waves-effect"><i class="mdi mdi-power"></i><span> 注销 </span></a>
                             </li>
 
                         </ul>
@@ -95,19 +95,19 @@
 
                                         <!-- item-->
                                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                            <div class="notify-icon"><img src="/static/app/assets/images/users/avatar-2.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
+                                            <div class="notify-icon"><img src="${path}/static/app/assets/images/users/avatar-2.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
                                             <p class="notify-details"><b>Charles M. Jones</b><small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
                                         </a>
 
                                         <!-- item-->
                                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                            <div class="notify-icon"><img src="/static/app/assets/images/users/avatar-3.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
+                                            <div class="notify-icon"><img src="${path}/static/app/assets/images/users/avatar-3.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
                                             <p class="notify-details"><b>Thomas J. Mimms</b><small class="text-muted">You have 87 unread messages</small></p>
                                         </a>
 
                                         <!-- item-->
                                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                            <div class="notify-icon"><img src="/static/app/assets/images/users/avatar-4.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
+                                            <div class="notify-icon"><img src="${path}/static/app/assets/images/users/avatar-4.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
                                             <p class="notify-details"><b>Luis M. Konrad</b><small class="text-muted">It is a long established fact that a reader will</small></p>
                                         </a>
 
@@ -124,7 +124,7 @@
                                 <li class="list-inline-item dropdown notification-list">
                                     <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
                                        aria-haspopup="false" aria-expanded="false">
-                                        <img src="/static/app/assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
+                                        <img src="${path}/static/app/assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                         <!-- item-->
@@ -186,7 +186,7 @@
                                     <div class="card m-b-30">
                                         <div class="card-body">                                           
                                             <div class=" text-center">                        
-                                                <img src="/static/app/assets/images/users/avatar-1.jpg" alt="" class="rounded-circle img-thumbnail w-50">
+                                                <img src="${path}/static/app/assets/images/users/avatar-1.jpg" alt="" class="rounded-circle img-thumbnail w-50">
                                                 <h4 class="font-16">${appEmp.empname}</h4>
                                                 <a href="" class="text-muted font-14">${appEmp.empphone}</a>
                                             </div>
@@ -197,7 +197,7 @@
                                     <div class="card bg-white m-b-30">
                                         <div class="card-body">
                                             <div class="general-label">
-                                                <form role="form" action="/appMaster" method="post">
+                                                <form role="form" action="/app/appMaster" method="post">
                                                     <input type="hidden" name="empno" value="${appEmp.empno}">
                                                     <div class="form-group">
                                                         <label for="exampleInputName1">用户名</label>
@@ -237,20 +237,20 @@
 
 
         <!-- jQuery  -->
-        <script src="/static/app/assets/js/jquery.min.js"></script>
-        <script src="/static/app/assets/js/popper.min.js"></script>
-        <script src="/static/app/assets/js/bootstrap.min.js"></script>
-        <script src="/static/app/assets/js/modernizr.min.js"></script>
-        <script src="/static/app/assets/js/detect.js"></script>
-        <script src="/static/app/assets/js/fastclick.js"></script>
-        <script src="/static/app/assets/js/jquery.slimscroll.js"></script>
-        <script src="/static/app/assets/js/jquery.blockUI.js"></script>
-        <script src="/static/app/assets/js/waves.js"></script>
-        <script src="/static/app/assets/js/jquery.nicescroll.js"></script>
-        <script src="/static/app/assets/js/jquery.scrollTo.min.js"></script>
+        <script src="${path}/static/app/assets/js/jquery.min.js"></script>
+        <script src="${path}/static/app/assets/js/popper.min.js"></script>
+        <script src="${path}/static/app/assets/js/bootstrap.min.js"></script>
+        <script src="${path}/static/app/assets/js/modernizr.min.js"></script>
+        <script src="${path}/static/app/assets/js/detect.js"></script>
+        <script src="${path}/static/app/assets/js/fastclick.js"></script>
+        <script src="${path}/static/app/assets/js/jquery.slimscroll.js"></script>
+        <script src="${path}/static/app/assets/js/jquery.blockUI.js"></script>
+        <script src="${path}/static/app/assets/js/waves.js"></script>
+        <script src="${path}/static/app/assets/js/jquery.nicescroll.js"></script>
+        <script src="${path}/static/app/assets/js/jquery.scrollTo.min.js"></script>
 
         <!-- App js -->
-        <script src="/static/app/assets/js/app.js"></script>
+        <script src="${path}/static/app/assets/js/app.js"></script>
 
     </body>
 </html>

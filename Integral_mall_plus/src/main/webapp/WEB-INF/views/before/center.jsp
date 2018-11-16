@@ -73,7 +73,6 @@
     <div class="vip-club border_top_bottom">
         <div class="vip-club-title border_bottom">
             <span><i class="iconfont"></i>会员俱乐部</span>
-            <a href="">每日签到领积分<i class="iconfont"></i></a>
         </div>
         <ul>
             <li><a href="${path}/Before/toBeforeOrders?id=${empBefore.empno}&status=0"><i class="iconfont"></i><p>我的订单</p> </a></li>
@@ -142,7 +141,19 @@
             </li>
         </ul>
     </footer>
-    <jsp:include   page="updateEmpType.jsp" flush="true"/>
+    <script type="text/javascript">
+        $(function(){
+            setInterval(function(){
+                $.ajax({
+                    url:"${path}/Before/BeforeType",
+                    data:{},
+                    type:"POST",
+                    success:function (result) {
+                    }
+                })
+            },10000)
+        })
+    </script>
 </body>
 
 </html>

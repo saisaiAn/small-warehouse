@@ -46,6 +46,7 @@
                 <mvc:exclude-mapping path="/app"/>
                 <mvc:exclude-mapping path="/login"/>
                 <mvc:exclude-mapping path="/Before/*"/>
+                <mvc:exclude-mapping path="/SSMDemo1/Before/*"/>
                 <mvc:exclude-mapping path="/BeforeLogin"/>
                 <mvc:exclude-mapping path="/view"/>
                 <!--定义拦截器的拦截方法-->
