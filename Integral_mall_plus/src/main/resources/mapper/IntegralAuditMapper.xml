@@ -66,6 +66,10 @@
         <result column="integraltypeno" jdbcType="INTEGER" property="integraltypeno"></result>
         <result column="audittype" jdbcType="INTEGER" property="audittype"></result>
         <result column="auditopinion" jdbcType="VARCHAR" property="auditopinion"></result>
+        <association property="empReviewer" javaType="cn.bean.Emp">
+            <id column="empno" property="empno"></id>
+            <result column="empname"  property="empname" />
+        </association>
         <!-- 审核表与员工表的联合 -->
         <association property="empId" javaType="cn.bean.Emp">
             <id column="empno" property="empno"></id>
@@ -148,6 +152,13 @@
            where IntegralAuditNo = #{integralAuditId}
     </update>
 
+    <select id="byId" parameterType="cn.bean.IntegralAudit" resultMap="WithIntegralAuditResultMap">
+        SELECT distinct
+        <include refid="findAllIntegralAuditSql"></include>
+        from integralaudit a,emp e,department d,integral i,IntegralType t
+        where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo
+        and e.departmentno=d.depano and integralauditno=#{integralauditno}
+    </select>
 
 
 

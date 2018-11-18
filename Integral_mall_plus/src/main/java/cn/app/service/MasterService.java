@@ -25,7 +25,7 @@ public class MasterService {
     public List<Emp> findMaster(){return empMapper.findEmpAll(); }
     //积分奖惩情况
     public List<IntegralAudit> findAll(){return integralAuditMapper.findAllIntegralAudit();}
-        //修改校长信息
+    //修改校长信息
     public void updateMaster(Emp emp){ empMapper.masterUpd(emp); }
     //通过审核id获得信息
     public IntegralAudit findIntegral(IntegralAudit integralAudit){return integralAuditMapper.byId(integralAudit);};

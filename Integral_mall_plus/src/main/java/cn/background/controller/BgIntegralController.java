@@ -122,7 +122,7 @@ public class BgIntegralController {
     @ResponseBody
     @Transactional(rollbackFor = {Exception.class})
     @RequestMapping(value = "xzApproval_opinion",method = RequestMethod.POST)
-    public String xzApproval_opinion(@RequestParam("empId") Integer empId, //校长批准积分意见 生成积分明细表，结算积分表，删除积分审核表该条积分记录
+    public String xzApproval_opinion(@RequestParam("empId") Integer empId, //校长批准积分意见 生成积分明细表，结算积分表，修改积分审核表该条积分记录状态
                                      @RequestParam("intergralchange") String intergralchange,@RequestParam("changeint") Integer changeint,
                                      @RequestParam("integralType") Integer integralType,@RequestParam("IntegralNo") Integer IntegralNo,
                                      @RequestParam("integralauditno")Integer integralauditno,  HttpSession session){

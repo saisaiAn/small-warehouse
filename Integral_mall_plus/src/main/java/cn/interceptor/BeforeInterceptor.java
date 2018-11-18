@@ -26,10 +26,6 @@ public class BeforeInterceptor implements HandlerInterceptor {
             }catch (Exception e){
                 e.printStackTrace();
             }
-            Emp empe=new Emp();
-            empe.setEmptype(0);
-            empe.setEmpno(Integer.parseInt(empNo));
-            empService.updateBeforeEmpType(empe);
             httpServletResponse.sendRedirect("/SSMDemo1/hello");
             return false;
         }

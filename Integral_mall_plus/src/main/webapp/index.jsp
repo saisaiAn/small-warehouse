@@ -330,7 +330,7 @@
 <div style="height: 200px;"></div>
 <div class="row"style="margin: 0 auto;">
     <a href="${path}/hello"><div class="col-md-3 bg-success" style="padding:150px 200px; " ><span style="color: #1b6d85; font-size: 100px;font-family:Microsoft YaHei;">前台</span></div></a>
-    <a href="${path}/app">
+    <a href="${path}/app/app">
     <div class="col-md-6 bg-success" >
         <div class="cat">
         <div class="head_content">
