@@ -17,14 +17,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <link rel="shortcut icon" href="${path}/static/app/assets/images/favicon.ico">
-        <link rel="shortcut icon" href="${path}/static/app/assets/images/favicon.ico">
 
     <link href="${path}/static/app/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="${path}/static/app/assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="${path}/static/app/assets/css/style.css" rel="stylesheet" type="text/css">
-        <link href="${path}/static/app/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="${path}/static/app/assets/css/icons.css" rel="stylesheet" type="text/css">
-        <link href="${path}/static/app/assets/css/style.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -42,9 +38,6 @@
             <h3 class="text-center mt-0 m-b-15">
                 <a href="#" class="logo logo-admin"><img src="/static/app/assets/images/logo.png" height="24" alt="logo"></a>
             </h3>
-                    <h3 class="text-center mt-0 m-b-15">
-                        <a href="#" class="logo logo-admin"><img src="/static/app/assets/images/logo.png" height="24" alt="logo"></a>
-                    </h3>
 
             <div class="p-3">
                 <form class="form-horizontal m-t-20" action="index.html">
@@ -93,21 +86,9 @@
 <script src="${path}/static/app/assets/js/jquery.nicescroll.js"></script>
 <script src="${path}/static/app/assets/js/jquery.scrollTo.min.js"></script>
 <script src="${path}/static/background/assets/layer/layer.js" type="text/javascript"></script>
-        <!-- jQuery  -->
-        <script src="${path}/static/app/assets/js/jquery.min.js"></script>
-        <script src="${path}/static/app/assets/js/popper.min.js"></script>
-        <script src="${path}/static/app/assets/js/bootstrap.min.js"></script>
-        <script src="${path}/static/app/assets/js/modernizr.min.js"></script>
-        <script src="${path}/static/app/assets/js/waves.js"></script>
-        <script src="${path}/static/app/assets/js/jquery.slimscroll.js"></script>
-        <script src="${path}/static/app/assets/js/jquery.nicescroll.js"></script>
-        <script src="${path}/static/app/assets/js/jquery.scrollTo.min.js"></script>
-        <script src="${path}/static/background/assets/layer/layer.js" type="text/javascript"></script>
 
 <!-- App js -->
 <script src="${path}/static/app/assets/js/app.js"></script>
-        <!-- App js -->
-        <script src="${path}/static/app/assets/js/app.js"></script>
 
 
 <script >
@@ -145,41 +126,6 @@
             }
         })
     })
-    <script >
-        $(document).ready(function(){
-                //登录
-            $("#login").click(function(){
-                var username=$("#username").val();//获得用户名
-                var pwd=$("#pwd").val();//获得用户密码
-                if(username==""||pwd==""){
-                    layer.alert('用户名或者密码不能为空！',{
-                        title: '提示框',
-                        icon:1,
-                    });
-                }else {
-                    //ffalert(1231)
-                    $.ajax({
-                        url:"/app/masterlogin",
-                        data:{username:username,pwd:pwd},
-                        type:"post",
-                        success:function(result){
-                            //alert(result);
-                            if(result=="success"){
-                                layer.msg("登陆成功");
-                                setTimeout(function () {location.href="toAppnIndex";},1000);
-                            }else if (result=="notmaster"){
-                                layer.alert('登陆失败，权限不够！',{
-                                    title: '提示框',
-                                    icon:1,
-                                });
-                            }else if (result=="error"){
-                                layer.msg('登陆失败，帐号或者密码错误！');
-                            }
-                        }
-                    })
-                }
-            })
-        })
 
 </script>
 

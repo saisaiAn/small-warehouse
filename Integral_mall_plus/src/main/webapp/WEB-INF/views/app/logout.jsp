@@ -10,20 +10,16 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>超级管理系统</title>
+    <title>Annex - Responsive Bootstrap 4 Admin Dashboard</title>
     <meta content="Admin Dashboard" name="description" />
     <meta content="Mannatthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <link rel="shortcut icon" href="${path}/static/app/assets/images/favicon.ico">
-        <link rel="shortcut icon" href="${path}/static/app/assets/images/favicon.ico">
 
     <link href="${path}/static/app/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="${path}/static/app/assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="${path}/static/app/assets/css/style.css" rel="stylesheet" type="text/css">
-        <link href="${path}/static/app/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="${path}/static/app/assets/css/icons.css" rel="stylesheet" type="text/css">
-        <link href="${path}/static/app/assets/css/style.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -41,9 +37,6 @@
             <h3 class="text-center mt-0 m-b-15">
                 <a href="#" class="logo logo-admin"><img src="${path}/static/app/assets/images/logo.png" height="24" alt="logo"></a>
             </h3>
-                    <h3 class="text-center mt-0 m-b-15">
-                        <a href="#" class="logo logo-admin"><img src="${path}/static/app/assets/images/logo.png" height="24" alt="logo"></a>
-                    </h3>
 
             <div class="p-3">
                 <div class="text-center">
@@ -72,20 +65,9 @@
 <script src="${path}/static/app/assets/js/jquery.slimscroll.js"></script>
 <script src="${path}/static/app/assets/js/jquery.nicescroll.js"></script>
 <script src="${path}/static/app/assets/js/jquery.scrollTo.min.js"></script>
-        <!-- jQuery  -->
-        <script src="${path}/static/app/assets/js/jquery.min.js"></script>
-        <script src="${path}/static/app/assets/js/popper.min.js"></script>
-        <script src="${path}/static/app/assets/js/bootstrap.min.js"></script>
-        <script src="${path}/static/app/assets/js/modernizr.min.js"></script>
-        <script src="${path}/static/app/assets/js/waves.js"></script>
-        <script src="${path}/static/app/assets/js/jquery.slimscroll.js"></script>
-        <script src="${path}/static/app/assets/js/jquery.nicescroll.js"></script>
-        <script src="${path}/static/app/assets/js/jquery.scrollTo.min.js"></script>
 
 <!-- App js -->
 <script src="${path}/static/app/assets/js/app.js"></script>
-        <!-- App js -->
-        <script src="${path}/static/app/assets/js/app.js"></script>
 
 </body>
 </html>

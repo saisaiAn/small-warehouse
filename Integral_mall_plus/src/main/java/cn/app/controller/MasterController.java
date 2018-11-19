@@ -31,34 +31,6 @@ public class MasterController {
     BgIntegralService bgIntegralService;
 
 
-
-
-
-    @ResponseBody
-    @RequestMapping(value="masterlogin",method = RequestMethod.POST)
-    public String masterLogin(@RequestParam("username") String username, @RequestParam("pwd") String pwd, HttpSession session,Model model){
-        //System.out.println("loginMaster");
-        Emp emp = new Emp();
-        emp.setEmpname(username);
-        emp.setPassword(pwd);
-        Emp emp1=masterService.loginMaster(emp);
-        //System.out.println(emp1);
-
-        if (emp1!=null){
-            //判断是否是校长登录
-            if(emp1.getPosition()==4){
-                //保存员工信息
-                session.setAttribute("appEmp",emp1);
-                return "success";
-            }else {
-                return "notmaster";
-            }
-        }else{
-            //用户名和密码为空登录失败
-            return "error";
-        }
-    }
-
     @RequestMapping(value="/toAppSetting",method = RequestMethod.GET)
     public String toAppSetting(){
         return "app/setting";
