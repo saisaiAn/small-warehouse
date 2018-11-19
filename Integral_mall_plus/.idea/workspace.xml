@@ -9,23 +9,8 @@
     <list default="true" id="c1f87d0c-c503-42dd-92ec-87303bfce5d9" name="默认的" comment="11/15 16:08：">
       <change afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/app/controller/MasterLoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/interceptor/appInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/Before/controller/BeforeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/Before/controller/BeforeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/Before/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/Before/controller/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/Before/service/OrdersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/Before/service/OrdersService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/app/controller/MasterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/app/controller/MasterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/interceptor/BgInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/interceptor/BgInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcherServlet-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcherServlet-servlet.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/app/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/app/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/app/logout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/app/logout.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/app/setting.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/app/setting.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/before/cation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/before/cation.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/before/detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/before/detail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/before/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/before/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/before/orders.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/before/orders.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/before/shopcar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/before/shopcar.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -56,13 +41,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MasterLoginController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MasterLoginController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/app/controller/MasterLoginController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-251">
               <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MasterController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/app/controller/MasterController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+              <folding>
+                <element signature="e#3119#3135#0" expanded="true" />
+                <element signature="e#4692#4708#0" expanded="true" />
+                <element signature="e#5071#5087#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -135,7 +134,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/app/logout.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/app/setting.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/interceptor/BgInterceptor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/app/controller/MasterController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/app/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/app/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/app/controller/MasterLoginController.java" />
@@ -149,6 +147,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/before/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/before/detail.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/before/orders.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/app/controller/MasterController.java" />
       </list>
     </option>
   </component>
@@ -542,7 +541,7 @@
       <workItem from="1542527727829" duration="4879000" />
       <workItem from="1542533202626" duration="1663000" />
       <workItem from="1542587799240" duration="7984000" />
-      <workItem from="1542607030500" duration="347000" />
+      <workItem from="1542607030500" duration="1154000" />
     </task>
     <task id="LOCAL-00001" summary="11/09 9:27：优化补充">
       <created>1541726944191</created>
@@ -600,17 +599,24 @@
       <option name="project" value="LOCAL" />
       <updated>1542532491049</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="11/19 14:03：完成版">
+      <created>1542607448118</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1542607448118</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87975000" />
+    <option name="totallyTimeSpent" value="88782000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="17" sideWeight="0.31982943" side_tool="true" weight="0.30769232" />
+      <window_info anchor="bottom" id="Event Log" order="17" sideWeight="0.5053305" side_tool="true" visible="true" weight="0.276273" />
       <window_info anchor="bottom" id="Application Servers" order="7" sideWeight="0.49785408" weight="0.3295583" />
       <window_info anchor="right" id="Maven Projects" order="10" visible="true" weight="0.21801706" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
@@ -626,13 +632,13 @@
       <window_info id="Image Layers" order="3" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.49520257" weight="0.12567714" />
+      <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.4946695" visible="true" weight="0.276273" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6801706" weight="0.41386783" />
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49840087" weight="0.32936078" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.9230769" visible="true" weight="0.19722815" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.9221557" visible="true" weight="0.19722815" />
       <window_info anchor="right" id="Bean Validation" order="9" />
-      <window_info id="Web" order="6" sideWeight="0.07692308" side_tool="true" visible="true" weight="0.19722815" />
+      <window_info id="Web" order="6" sideWeight="0.077844314" side_tool="true" visible="true" weight="0.19722815" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="设计师" order="7" />
@@ -665,7 +671,8 @@
     <MESSAGE value="11/15 16:08：项目bug修复" />
     <MESSAGE value="11/16 15:51：优化 404 页面替换" />
     <MESSAGE value="11/18 总结修改 以及后台手机端的校长审批功能完结，项目大体完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="11/18 总结修改 以及后台手机端的校长审批功能完结，项目大体完成" />
+    <MESSAGE value="11/19 14:03：完成版" />
+    <option name="LAST_COMMIT_MESSAGE" value="11/19 14:03：完成版" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/font-awesome.min.css">
@@ -892,13 +899,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/app/controller/MasterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-81">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/background/assets/layer/layer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
@@ -1005,6 +1005,18 @@
           <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/app/controller/MasterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#3119#3135#0" expanded="true" />
+            <element signature="e#4692#4708#0" expanded="true" />
+            <element signature="e#5071#5087#0" expanded="true" />
           </folding>
         </state>
       </provider>

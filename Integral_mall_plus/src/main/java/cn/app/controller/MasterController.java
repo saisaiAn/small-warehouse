@@ -29,8 +29,7 @@ public class MasterController {
     MasterService masterService;
     @Autowired
     BgIntegralService bgIntegralService;
-    @Autowired
-    BgIntegralService bgIntegralService;
+
 
 
 
@@ -38,7 +37,7 @@ public class MasterController {
     @ResponseBody
     @RequestMapping(value="masterlogin",method = RequestMethod.POST)
     public String masterLogin(@RequestParam("username") String username, @RequestParam("pwd") String pwd, HttpSession session,Model model){
-        System.out.println("loginMaster");
+        //System.out.println("loginMaster");
         Emp emp = new Emp();
         emp.setEmpname(username);
         emp.setPassword(pwd);
@@ -74,7 +73,6 @@ public class MasterController {
     @ResponseBody
     @RequestMapping(value="/toAppFind")
     public IntegralAudit toAppFind(@Param("integralauditno") Integer integralauditno, Model model){
-        System.out.println(integralauditno);
         IntegralAudit integralAudit=new IntegralAudit();
         integralAudit.setIntegralauditno(integralauditno);
         return masterService.findIntegral(integralAudit);
@@ -95,9 +93,6 @@ public class MasterController {
     //个人设置
     @RequestMapping(value="appMaster",method = RequestMethod.POST)
     public String setting( Emp emp){
-        // System.out.println("--------"+emp.getEmpname());
-        masterService.updateMaster(emp);
-        return "forward:/app/app";
        // System.out.println("--------"+emp.getEmpname());
           masterService.updateMaster(emp);
         return "forward:/app/app";
@@ -175,15 +170,6 @@ public class MasterController {
         }else{
             return "n";
         }
-    }
-
-
-
-    //拒绝批准
-    @RequestMapping(value="appDisagree",method = RequestMethod.POST)
-    public String appDisagree(@RequestParam ("id") Integer id){
-
-        return "";
     }
 
 }
