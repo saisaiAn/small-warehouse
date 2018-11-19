@@ -7,13 +7,13 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class BgInterceptor implements HandlerInterceptor {
+public class appInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse response, Object o) throws Exception {
-        Emp empReturn = (Emp) httpServletRequest.getSession().getAttribute("loginUser");
+        Emp empReturn = (Emp) httpServletRequest.getSession().getAttribute("appEmp");
+        System.out.println("app拦截");
         if (empReturn==null||empReturn.equals("")){
-            response.sendRedirect("/SSMDemo1/view");
-           /* response.write("<script>window.parent.location.href='';</script>");*/
+            response.sendRedirect("/SSMDemo1/app");
             return false;
         }
         return true;

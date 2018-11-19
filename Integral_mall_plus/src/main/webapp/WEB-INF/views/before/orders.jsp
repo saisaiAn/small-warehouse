@@ -20,6 +20,7 @@
     <script src="${path}/static/before/js/rem.js"></script>
     <script src="${path}/static/before/js/jquery.min.js" type="text/javascript"></script>
     <script src="${path}/static/before/sourse/layer/mobile/layer.js"></script>
+	<script src="${path}/static/background/assets/layer/layer.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(window).load(function(){
 			$(".loading").addClass("loader-chanage")
@@ -59,11 +60,13 @@
 				<li style="display: inline-block;margin-top: 6px;padding: 10px; width: 100%;opacity: 0.9;background-color: #fff;" >
 					<div style=" width: 100%;">
 						<div class="am-share-footer" style="float:left;width:121px;height:121px;padding: 2px;border: #1b6d85 1px solid; margin: 5px; display: inline-block;" >
+							<a href="${path}/Before/toBeforeDetail?id=${order.ordercommodityno}">
 								<c:forEach items="${imgList}" var="img">
 									<c:if test="${img.imageclassification==3&&img.imagerid==order.ordercommodityno}">
 										<img  style="width:115px;height:115px;" src="${img.imagerurl}"/>
 									</c:if>
 								</c:forEach>
+							</a>
 						</div>
 						<div style="float: left;display: inline-block;margin-left: 15px;">
 							<h5 style="font-family:Microsoft YaHei;color: #0f0f0f; display: inline-block;">${order.commodityId.commoditytitle}</h5><p class="over" style="font-size: 12px;">订单编号:<span class="text-success" style="font-size: 12px;">${order.orderno}</span>
@@ -150,13 +153,13 @@
                        type:"POST",
                        success:function (result) {
                            if (result=="y"){
-                          		alert("下单成功！");
+                               layer.msg("下单成功！", {time: 1500});
                                location.href="${path}/Before/toBeforeShopcar";
                            }
                        }
                    })
                }else{
-                   alert("用户积分不足");
+                   layer.msg("用户积分不足！", {time: 1500});
                }
             });
 			$('input[type="checkbox"]').click(function() { // 找到勾选按钮，绑定事件
@@ -175,7 +178,7 @@
                     data:{ carno:carno, commoditySum:vals.html()} ,
                     type:"post",
                     success:function (result) {
-                        alert(result);
+                        layer.msg(result, {time: 1500});
                     }
                 })
 				tatol();
@@ -193,10 +196,10 @@
                             type:"POST",
                             success:function (result) {
                                 if (result=="y"){
-                                    alert("删除成功");
+                                    layer.msg("删除成功", {time: 1500});
                                     location.href="${path}/Before/toBeforeShopcar";
                                 }else {
-                                    alert("删除失败");
+                                    layer.msg("删除失败", {time: 1500});
                                     window.location.reload();
                                 }
                             }

@@ -20,6 +20,7 @@
     <script src="${path}/static/before/js/jquery-1.8.3.min.js" type="text/javascript"></script>
     <script src="${path}/static/before/js/others.js"></script>
 	<script src="${path}/static/before/js/swiper.jquery.min.js"></script>
+	<script src="${path}/static/background/assets/layer/layer.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(window).load(function(){
 			$(".loading").addClass("loader-chanage")
@@ -82,16 +83,7 @@
 		
 		<div class="warp warptwo clearfloat">
 			<div class="detail clearfloat">
-				<%--<!--banner star-->
-				<div class="banner swiper-container">
-		            <div class="swiper-wrapper">
-		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="images/xj3.jpg" alt=""></a></div>
-		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="images/xj3.jpg" alt=""></a></div>
-		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="images/xj3.jpg" alt=""></a></div>
-		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="images/xj3.jpg" alt=""></a></div>
-		            </div>
-		            <div class="swiper-pagination"></div>
-		        </div>--%>
+
 				<!--banner end-->
 				<div class="top clearfloat box-s">
 					<c:forEach items="${imgList}" var="img">
@@ -133,7 +125,7 @@
 				<ul>
 					<li style="display: flex;justify-content: center; align-items: center;padding-top: 0;">
 						<div>
-							<a href="#">
+							<a href="${path}/Before/toBeforeIndex">
 								<i class="iconfont icon-shangcheng"></i>
 								<p>商城</p>
 							</a>
@@ -141,9 +133,9 @@
 					</li>
 					<li style="display: flex;justify-content: center; align-items: center;padding-top: 0;">
 						<div>
-							<a href="#">
+							<a href="${path}/Before/toBeforeCenter">
 								<i class="iconfont icon-kefu1"></i>
-								<p>客服</p>
+								<p>个人</p>
 							</a>
 						</div>
 					</li>				
@@ -166,17 +158,17 @@
                             type:"POST",
                             success:function (result) {
                                 if (result=="y"){
-                                    alert("下单成功！");
+                                    layer.msg("下单成功！", {time: 1500});
                                     location.href="${path}/Before/toBeforeOrders?id=${empBefore.empno}&status=1";
                                 }else if(result=="s"){
-                                    alert("所选中商品库存不足");
+                                    layer.msg("所选中商品库存不足", {time: 1500});
                                 }else{
-                                    alert("下单失败")
+                                    layer.msg("下单失败", {time: 1500});
                                 }
                             }
                         })
                     }else{
-                        alert("用户积分不足");
+                            layer.msg("用户积分不足", {time: 1500});
                     }
                 }
 					});
@@ -220,15 +212,6 @@
 		                    </ul>
 		                </div>
 		            </div>
-		            <div class="middle clearfloat">
-		                <p>机身内存</p>
-		                <div class="xia clearfloat">
-		                    <ul>
-		                        <li class="ra3 cur">120G</li>
-		                        <li class="ra3">60G</li>
-		                    </ul>
-		                </div>
-		            </div>
 		            <div class="bottom clearfloat">
 		                <p class="fl">购买数量</p>
 		                <div class="you clearfloat fr">
@@ -263,7 +246,7 @@
                             $("#carForm").attr("action","${path}/Before/addBeforeShopping");
                             $("#carForm").submit();
                         }else{
-                            alert("库存不足");
+                            layer.msg("库存不足", {time: 1500});
                         }
                 });
             })

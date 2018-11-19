@@ -11,7 +11,7 @@
 	%>
 	<link rel="shortcut icon" href="${path}/static/before/images/mall.png" type="image/x-icon"/>
 	<link rel="stylesheet" type="text/css" href="${path}/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
-
+	<script src="${path}/static/background/assets/layer/layer.js" type="text/javascript"></script>
 	<style type="text/css">
 		html,body {
 			height: 100%;
@@ -158,17 +158,17 @@
                         type:"POST",
                         success:function (result){
                             if(result=="s"){
-                                alert("该账号已有人登陆");
+                                layer.msg("该账号已有人登陆", {time: 1500});
 							}else if (result=="y"){
                                 location.href="${path}/Before/toBeforeIndex";
                             }else if(result=="n") {
-                                alert("账号或密码不正确");
+                                layer.msg("账号或密码不正确", {time: 1500});
                                 window.location.reload();
                             }
                         }
                     })
             }else{
-                alert("请填写大于或等于6位的用户名");
+                layer.msg("请填写大于或等于6位的用户名", {time: 1500});
             }
         })
     })

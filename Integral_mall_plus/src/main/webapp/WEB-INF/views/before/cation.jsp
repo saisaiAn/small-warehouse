@@ -17,6 +17,7 @@
 	<link rel="shortcut icon" href="${path}/static/before/images/mall.png" type="image/x-icon"/>
     <script src="${path}/static/before/js/rem.js"></script>
     <script src="${path}/static/before/js/jquery.min.js" type="text/javascript"></script>
+	<script src="${path}/static/background/assets/layer/layer.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(window).load(function(){
 			$(".loading").addClass("loader-chanage")

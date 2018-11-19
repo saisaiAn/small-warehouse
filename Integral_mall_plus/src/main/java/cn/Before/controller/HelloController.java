@@ -66,7 +66,7 @@ public class HelloController {
             //redis键生成,用于判断重复登录
         try{
             jedisClient.set(empReturn.getEmpno().toString(),empReturn.getEmpno().toString());
-            jedisClient.expire(empReturn.getEmpno().toString(),30);
+            jedisClient.expire(empReturn.getEmpno().toString(),20);
         }catch (Exception e){
             e.printStackTrace();
         }

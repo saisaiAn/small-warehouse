@@ -20,7 +20,7 @@ public class OrdersService {
     private JedisClientImp jedisClient;
 
     public int insertOrders(Orders orders){
-        try{
+       try{
             jedisClient.del("BeforeOrders");
         }catch (Exception e){
             e.printStackTrace();
@@ -28,7 +28,7 @@ public class OrdersService {
         return ordersMapper.insertOrders(orders);
     }
     public List<Orders>selectOrdersByEmpId(Map ByEmpIdMap){
-        try{
+       try{
             String result=jedisClient.get("BeforeOrders");
             if (!StringUtils.isEmpty(result)){
                 List<Orders> Orders= JSONObject.parseArray(result,Orders.class);

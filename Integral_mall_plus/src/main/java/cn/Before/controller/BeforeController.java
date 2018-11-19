@@ -274,7 +274,7 @@ public class BeforeController {
         emp.setEmpno(id);
         Map byEmpIdMap=new HashMap();
         byEmpIdMap.put("emp",emp);
-        byEmpIdMap.put("status",status);
+        byEmpIdMap.put("status",0);
         List<Orders> orders= ordersService.selectOrdersByEmpId(byEmpIdMap);
         model.addAttribute("orderList",orders);
         model.addAttribute("status",status);
@@ -296,7 +296,7 @@ public class BeforeController {
         Emp emp=(Emp)httpSession.getAttribute("empBefore");
         try{
             jedisClient.set(emp.getEmpno().toString(),emp.getEmpno().toString());
-            jedisClient.expire(emp.getEmpno().toString(),30);
+            jedisClient.expire(emp.getEmpno().toString(),20);
         }catch (Exception e){
             e.printStackTrace();
         }
