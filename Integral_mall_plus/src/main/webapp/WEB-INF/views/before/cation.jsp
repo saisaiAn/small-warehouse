@@ -55,7 +55,7 @@
 				<c:forEach items="${typeList}" var="type">
 					<div class="list clearfloat fl">
 						<a href="${path}/Before/toBeforeList?commoditytypeno=${type.commoditytypeno}">
-							<p class="tit over box-s">${type.commoditytypename}</p>
+							<p class="tit over box-s" style="font-weight: bold;font-family: '微软雅黑 Light' ;">${type.commoditytypename}</p>
 							<div class="tu">
 								<c:forEach items="${imgList}" var="img">
 									<c:if test="${img.imageclassification==4&&img.imagerid==type.commoditytypeno}">

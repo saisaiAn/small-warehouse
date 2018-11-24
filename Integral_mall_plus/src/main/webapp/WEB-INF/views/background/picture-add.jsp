@@ -15,9 +15,9 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<!--[if lt IE 9]>
-	<script type="text/javascript" src="/static/background/js/html5.js"></script>
-	<script type="text/javascript" src="/static/background/js/respond.min.js"></script>
-	<script type="text/javascript" src="/static/background/js/PIE_IE678.js"></script>
+	<script type="text/javascript" src="${path}/static/background/js/html5.js"></script>
+	<script type="text/javascript" src="${path}/static/background/js/respond.min.js"></script>
+	<script type="text/javascript" src="${path}/static/background/js/PIE_IE678.js"></script>
 	<![endif]-->
 	<link href="${path}/static/background/assets/css/bootstrap.min.css" rel="stylesheet" />
 	<link rel="stylesheet" href="${path}/static/background/css/style.css"/>
@@ -53,7 +53,7 @@
 	</div>
 	<div class="page_right_style">
 		<div class="type_title">添加商品</div>
-		<form action="/product/add_Product" enctype="multipart/form-data"  method="post" class="form form-horizontal" id="form-article-add" name="proform">
+		<form action="${path}/product/add_Product" enctype="multipart/form-data"  method="post" class="form form-horizontal" id="form-article-add" name="proform">
 			<div class="clearfix cl">
 				<label class="form-label col-2"><span class="c-red">*</span>商品标题：</label>
 				<div class="formControls col-10"><input type="text" class="input-text" value="" placeholder="" id="commoditytitle"  name="commoditytitle"></div>
@@ -129,7 +129,7 @@
 			</div>
 			</div>
 			</div>
-			<script src="/static/background/js/jquery-1.9.1.min.js"></script>
+        <script src="${path}/static/background/js/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript">
 			$(function () {
 				$(".submitForm").click(function () {

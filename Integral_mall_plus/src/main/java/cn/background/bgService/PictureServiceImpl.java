@@ -30,7 +30,7 @@ public class PictureServiceImpl implements PictureService {
    // @Value("${FTP_BASE_PATH}")
     private String FTP_BASE_PATH="/Integral_images";//ftp图片路径
    // @Value("${IMAGE_BASE_URL}")
-    private String IMAGE_BASE_URL="http://47.107.135.170/Integral_images";//http图片路径
+    private String IMAGE_BASE_URL="http://47.107.135.170:8080/Integral_images";//http图片路径
     @Override
     public Map uploadPicture(MultipartFile uploadFile) {
         Map resultMap =  new HashMap<>();

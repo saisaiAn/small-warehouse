@@ -93,7 +93,7 @@
 					</c:forEach>
 					<div class="shang clearfloat">
 						<div class="zuo clearfloat fl over2 box-s">
-							<span style="font-size: 18px;">${commodity.commoditytitle}</span>
+							<span style="font-size: 18px;font-weight: bold;font-family: '微软雅黑 Light' ;">${commodity.commoditytitle}</span>
 						</div>
 						<div class="you clearfloat fr">
 							<i class="iconfont icon-fenxiang"></i>

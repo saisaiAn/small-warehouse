@@ -5,13 +5,17 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0" />
-	<title>积分商城登录</title>
+	<title>乐兑商城登录</title>
 	<%
 		request.setAttribute("path", request.getContextPath());
 	%>
 	<link rel="shortcut icon" href="${path}/static/before/images/mall.png" type="image/x-icon"/>
 	<link rel="stylesheet" type="text/css" href="${path}/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+	<script src="${path}/static/before/js/rem.js"></script>
+	<script src="${path}/static/before/js/jquery-1.8.3.min.js" type="text/javascript"></script>
 	<script src="${path}/static/background/assets/layer/layer.js" type="text/javascript"></script>
+
+
 	<style type="text/css">
 		html,body {
 			height: 100%;
@@ -103,8 +107,8 @@
 <body>
 <div class="box">
 	<div class="login-box">
-		<div class="login-title text-center">
-			<h1><small>登录</small></h1>
+		<div class="login-title text-center" style="padding: 5px;">
+			<h1><img src="${path}/static/app/assets/images/logo.png" height="30" alt="logo">&nbsp;<small style="line-height: 30px;">乐兑商城</small></h1>
 		</div>
 		<div class="login-content ">
 			<div class="form">
@@ -145,33 +149,30 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript" src="${path}/static/js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript">
-    $(function(){
         $("#submit").click(function(){
             var empname =$("#empname").val();
             var password = $("#password").val();
-            if (empname!=null&&empname.length >=6){
                    $.ajax({
                         url:"${path}/BeforeLogin",
                         data:{ empname:empname, password:password} ,
                         type:"POST",
                         success:function (result){
                             if(result=="s"){
-                                layer.msg("该账号已有人登陆", {time: 1500});
+                                layer.msg("该账号已有人登陆",{time: 1500});
 							}else if (result=="y"){
                                 location.href="${path}/Before/toBeforeIndex";
                             }else if(result=="n") {
-                                layer.msg("账号或密码不正确", {time: 1500});
-                                window.location.reload();
+                                layer.msg("账号或密码不正确",{time: 1500});
+                                setTimeout(function () {
+                                    window.location.reload();
+                                }, 2000);
+
                             }
                         }
                     })
-            }else{
-                layer.msg("请填写大于或等于6位的用户名", {time: 1500});
-            }
+
         })
-    })
 </script>
 </body>
 

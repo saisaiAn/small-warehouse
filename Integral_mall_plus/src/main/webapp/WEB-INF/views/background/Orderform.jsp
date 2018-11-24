@@ -152,6 +152,7 @@
                 type: 1,
                 title: '兑换商品',
                 maxmin: true,
+                offset: '250px',
                 shadeClose: true, //点击遮罩关闭层
                 area : ['500px' , ''],
                 content:$('#update_menber_style'),

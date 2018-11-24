@@ -1,9 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-%>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -93,7 +89,7 @@
         <!-- LOGO -->
         <div class="topbar-left">
             <div class="text-center">
-                <a href="/app/toAppnIndex" class="logo"><i class="mdi mdi-assistant"></i> Annex</a>
+                <a href="${path}/app/toAppnIndex" class="logo"><img src="${path}/static/app/assets/images/logo.png" height="24" alt="logo"> 乐兑</a>
                 <!-- <a href="index.html" class="logo"><img src="assets/images/logo.png" height="24" alt="logo"></a> -->
             </div>
         </div>
@@ -104,18 +100,18 @@
             <div id="sidebar-menu">
                 <ul>
                     <li>
-                        <a href="/app/toAppnIndex" class="waves-effect"><i class="mdi mdi-airplay"></i><span> 首页</span></a>
+                        <a href="${path}/app/toAppnIndex" class="waves-effect"><i class="mdi mdi-airplay"></i><span> 首页</span></a>
                     </li>
 
 
                     <li>
-                        <a href="/app/toAppSetting" class="waves-effect"><i class="mdi mdi-settings"></i><span> 个人设置</span></a>
+                        <a href="${path}/app/toAppSetting" class="waves-effect"><i class="mdi mdi-settings"></i><span> 个人设置</span></a>
                     </li>
                     <li>
-                        <a href="/app/app" class="waves-effect"><i class="mdi mdi-ungroup"></i><span> 登录 </span></a>
+                        <a href="${path}/app/app" class="waves-effect"><i class="mdi mdi-ungroup"></i><span> 登录 </span></a>
                     </li>
                     <li>
-                        <a href="/app/toAppLogout" class="waves-effect"><i class="mdi mdi-power"></i><span> 注销 </span></a>
+                        <a href="${path}/app/toAppLogout" class="waves-effect"><i class="mdi mdi-power"></i><span> 注销 </span></a>
                     </li>
 
                 </ul>
@@ -137,31 +133,38 @@
                 <nav class="navbar-custom">
 
                     <ul class="list-inline float-right mb-0">
-
-
-
-
-
-
+                        <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="false" aria-expanded="false">
+                            <%--           <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                           <!-- item-->
+                                           <div class="dropdown-item noti-title">
+                                               <h5>Welcome</h5>
+                                           </div>
+                                           <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
+                                           <a class="dropdown-item" href="#"><i class="mdi mdi-wallet m-r-5 text-muted"></i> My Wallet</a>
+                                           <a class="dropdown-item" href="#"><span class="badge badge-success float-right">5</span><i class="mdi mdi-settings m-r-5 text-muted"></i> Settings</a>
+                                           <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5 text-muted"></i> Lock screen</a>
+                                           <div class="dropdown-divider"></div>
+                                           <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
+                                       </div>--%>
+                            <img src="${path}/static/app/assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
+                        </a>
                         <li class="list-inline-item dropdown notification-list">
-                            <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
-                               aria-haspopup="false" aria-expanded="false">
-                                <img src="${path}/static/app/assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                                <!-- item-->
-                                <div class="dropdown-item noti-title">
-                                    <h5>Welcome</h5>
-                                </div>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-wallet m-r-5 text-muted"></i> My Wallet</a>
-                                <a class="dropdown-item" href="#"><span class="badge badge-success float-right">5</span><i class="mdi mdi-settings m-r-5 text-muted"></i> Settings</a>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5 text-muted"></i> Lock screen</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
-                            </div>
                         </li>
 
+                    </ul>
+                    <ul class="list-inline menu-left mb-0">
+                        <li class="float-left">
+                            <button class="button-menu-mobile open-left waves-light waves-effect">
+                                <i class="mdi mdi-menu"></i>
+                            </button>
+                                </li>
+                        <li class="hide-phone app-search">
+                            <form role="search" class="">
+                                <input type="text" placeholder="Search..." class="form-control">
+                                <a href=""><i class="fa fa-search"></i></a>
+                            </form>
+                            </li>
                     </ul>
 
 
@@ -175,10 +178,9 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <table class="table table-hover" id="emps_table">
+                    <table class="table table-hover" id="emps_table" style="margin-top: 5px;">
                         <thead>
-                        <tr>
-                            <th><input type="checkbox" id="check-all"/></th>
+                        <tr style="line-height: 10px;">
                             <th>#</th>
                             <th>姓名</th>
                             <th>积分奖惩</th>
@@ -188,7 +190,6 @@
                         <c:forEach items="${IntegralAudit}" var="integral">
                             <c:if test="${integral.audittype==2}">
                                 <tr sid="${integral.integralauditno}">
-                                    <th><input type="checkbox"/></th>
                                     <th class="integralauditno">${integral.integralauditno}</th>
                                     <th>${integral.empId.empname}</th>
                                     <th>${integral.intergralchange}</th>
@@ -251,7 +252,7 @@
         $(".audittype").val("");
         $(".changeint").val("");
         $.ajax({
-            url:"/app/toAppFind",
+            url:"${path}/app/toAppFind",
             data:{integralauditno:integralauditno},
             type:"post",
             success:function(result){
@@ -272,7 +273,7 @@
             if(confirm("确定拒绝批准吗？")){
                 var $id = $("#shId").val();
                 $.ajax({
-                    url:"/app/appDisagree",
+                    url:"${path}/app/appDisagree",
                     data:{id:$id},
                     type:"post",
                     success:function (result) {
@@ -280,13 +281,13 @@
                             //layer.msg();
                             alert("拒绝成功")
                            /* setTimeout(function () {*/
-                                location.href="toAppnIndex";
+                                location.href="${path}/app/toAppnIndex";
                           /*  },1000)*/
                         }else{
                            // layer.msg("拒绝失败");
                             alert("拒绝失败")
                           /*  setTimeout(function () {*/
-                                location.href="toAppnIndex";
+                                location.href="${path}/app/toAppnIndex";
                            /* },1000)*/
                         }
                     }
@@ -304,7 +305,7 @@
         var integralauditno = $(this).attr("integralauditno");*/
         var $id = $("#shId").val();
         $.ajax({
-            url:"/app/AppXZApproval_opinion",
+            url:"${path}/app/AppXZApproval_opinion",
             type:"post",
             data:{id:$id},
             success:function (result) {
@@ -312,13 +313,13 @@
                     //layer.msg();
                     alert("同意成功")
                     /* setTimeout(function () {*/
-                    location.href="toAppnIndex";
+                    location.href="${path}/app/toAppnIndex";
                     /*  },1000)*/
                 }else{
                     // layer.msg("拒绝失败");
                     alert("同意失败")
                     /*  setTimeout(function () {*/
-                    location.href="toAppnIndex";
+                    location.href="${path}/app/toAppnIndex";
                     /* },1000)*/
                 }
             }

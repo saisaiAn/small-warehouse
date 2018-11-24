@@ -9,11 +9,13 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>Annex - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>超级管理系统</title>
     <meta content="Admin Dashboard" name="description" />
     <meta content="Mannatthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+    <%
+        request.setAttribute("path", request.getContextPath());
+    %>
     <link rel="shortcut icon" href="${path}/static/app/assets/images/favicon.ico">
 
     <link href="${path}/static/app/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -40,7 +42,7 @@
         <!-- LOGO -->
         <div class="topbar-left">
             <div class="text-center">
-                <a href="#" class="logo"><i class="mdi mdi-assistant"></i> Annex</a>
+                <a href="#" class="logo"><img src="${path}/static/app/assets/images/logo.png" height="24" alt="logo"> 乐兑</a>
                 <!-- <a href="index.html" class="logo"><img src="assets/images/logo.png" height="24" alt="logo"></a> -->
             </div>
         </div>
@@ -50,16 +52,16 @@
             <div id="sidebar-menu">
                 <ul>
                     <li>
-                        <a href="/app/toAppnIndex" class="waves-effect"><i class="mdi mdi-airplay"></i><span> 首页</span></a>
+                        <a href="${path}/app/toAppnIndex" class="waves-effect"><i class="mdi mdi-airplay"></i><span> 首页</span></a>
                     </li>
                     <li>
-                        <a href="/app/toAppSetting" class="waves-effect"><i class="mdi mdi-settings"></i><span> 个人设置</span></a>
+                        <a href="${path}/app/toAppSetting" class="waves-effect"><i class="mdi mdi-settings"></i><span> 个人设置</span></a>
                     </li>
                     <li>
-                        <a href="/app/app" class="waves-effect"><i class="mdi mdi-ungroup"></i><span> 登录 </span></a>
+                        <a href="${path}/app/app" class="waves-effect"><i class="mdi mdi-ungroup"></i><span> 登录 </span></a>
                     </li>
                     <li>
-                        <a href="/app/toAppLogout" class="waves-effect"><i class="mdi mdi-power"></i><span> 注销 </span></a>
+                        <a href="${path}/app/toAppLogout" class="waves-effect"><i class="mdi mdi-power"></i><span> 注销 </span></a>
                     </li>
 
                 </ul>
@@ -79,69 +81,6 @@
             <div class="topbar">
 
                 <nav class="navbar-custom">
-
-                    <ul class="list-inline float-right mb-0">
-                        <li class="list-inline-item dropdown notification-list">
-                            <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button"
-                               aria-haspopup="false" aria-expanded="false">
-                                <i class="ti-email noti-icon"></i>
-                                <span class="badge badge-danger noti-icon-badge">5</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
-                                <!-- item-->
-                                <div class="dropdown-item noti-title">
-                                    <h5><span class="badge badge-danger float-right">745</span>Messages</h5>
-                                </div>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon"><img src="${path}/static/app/assets/images/users/avatar-2.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
-                                    <p class="notify-details"><b>Charles M. Jones</b><small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon"><img src="${path}/static/app/assets/images/users/avatar-3.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
-                                    <p class="notify-details"><b>Thomas J. Mimms</b><small class="text-muted">You have 87 unread messages</small></p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon"><img src="${path}/static/app/assets/images/users/avatar-4.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
-                                    <p class="notify-details"><b>Luis M. Konrad</b><small class="text-muted">It is a long established fact that a reader will</small></p>
-                                </a>
-
-                                <!-- All-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    View All
-                                </a>
-
-                            </div>
-                        </li>
-
-
-
-                        <li class="list-inline-item dropdown notification-list">
-                            <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
-                               aria-haspopup="false" aria-expanded="false">
-                                <img src="${path}/static/app/assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                                <!-- item-->
-                                <div class="dropdown-item noti-title">
-                                    <h5>Welcome</h5>
-                                </div>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-wallet m-r-5 text-muted"></i> My Wallet</a>
-                                <a class="dropdown-item" href="#"><span class="badge badge-success float-right">5</span><i class="mdi mdi-settings m-r-5 text-muted"></i> Settings</a>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5 text-muted"></i> Lock screen</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
-                            </div>
-                        </li>
-
-                    </ul>
-
                     <ul class="list-inline menu-left mb-0">
                         <li class="float-left">
                             <button class="button-menu-mobile open-left waves-light waves-effect">
@@ -197,7 +136,7 @@
                             <div class="card bg-white m-b-30">
                                 <div class="card-body">
                                     <div class="general-label">
-                                        <form role="form" action="/app/appMaster" method="post">
+                                        <form role="form" action="${path}/app/appMaster" method="post">
                                             <input type="hidden" name="empno" value="${appEmp.empno}">
                                             <div class="form-group">
                                                 <label for="exampleInputName1">用户名</label>

@@ -42,7 +42,7 @@ public class BgIntegralService {
         return integralAuditMapper.bgAddzdyJfApply(integralAudit);
     }
     public List<IntegralAudit> findAll(){
-        return integralAuditMapper.findAllIntegralAudit();
+        return integralAuditMapper.BgfindAllIntegralAudit();
     }
 
     public int updIntegralauditAuditType(Map<Object,Object> map){

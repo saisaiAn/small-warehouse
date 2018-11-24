@@ -45,7 +45,8 @@
 	<body>
 		<!--头部区域-->
 	    <header class="mui-bar mui-bar-nav" id="header">
-	        <h4>积分商城</h4>
+			<a class="back_btn"><img src="${path}/static/app/assets/images/logo.png" height="36" alt="logo"></a>
+	        <h4>乐兑商城</h4>
 	    </header>
 		<div id="main" class="clearfloat warp">			
 		    <div class="mui-content">
@@ -57,7 +58,7 @@
 		                <div class="swiper-slide"><a href="javascript:void(0)"><img class="swiper-lazy" data-src="${path}/static/before/images/banner3.jpg" alt=""></a></div>
 		            </div>
 		        </div>
-		        <!--第一栏分类开始-->
+		      <%--  <!--第一栏分类开始-->
 		        <div class="cation clearfloat box-s">
 		        	<ul>
 		        		<li>
@@ -86,23 +87,21 @@
 		        		</li>
 		        	</ul>
 		        </div>
-		        <!--第一栏分类结束-->
+		        <!--第一栏分类结束-->--%>
 		        
 		      
 		        <!--新品专区-->
 
-				<% int i=1;%>
 		        <!--1F家居用品、电器-->
 			<c:forEach items="${typeList}" var="type">
 				<div class="theme clearfloat">
-					<div class="boutit clearfloat">
-						<span></span>
-						<samp><%=i++%>F${type.commoditytypename}</samp>
+					<div class="boutit clearfloat" style="margin: 10px 0px 0px 0px;">
+						<samp style="float: left;background-color: #03A9F4;font-weight: bold;font-family: '微软雅黑 Light';height: 43px;padding:0px 20px;color: white; ">${type.commoditytypename}</samp>
 					</div>
-					<div class="content clearfloat">
+					<div class="content clearfloat" style="background-color: rgba(0,0,0,0);border-top: #03A9F4 solid 4px; ">
 						<c:forEach items="${commodityList}" var="commodity">
 							<c:if test="${commodity.commoditytypeno==type.commoditytypeno&&commodity.commoditytype==1}">
-								<div class="list clearfloat fl">
+								<div class="list clearfloat fl" style="background-color:white;padding-top: 10px;">
 									<a href="${path}/Before/toBeforeDetail?id=${commodity.commodityno}">
 										<div class="tu clearfloat fr">
 											<span></span>
@@ -113,7 +112,7 @@
 											</c:forEach>
 										</div>
 										<div class="shang clearfloat fl box-s">
-											<p class="tit over" style="font-size: 13px;">${commodity.commoditytitle}</p>
+											<p class="tit over" style="font-size: 13px;font-weight: bold;font-family: '微软雅黑 Light' ;">${commodity.commoditytitle}</p>
 											<p><span>积分:</span><span class="over db red" style="font-weight: bold;">${commodity.needintegral}</span></p>
 										</div>
 									</a>

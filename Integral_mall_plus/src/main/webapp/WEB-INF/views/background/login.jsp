@@ -34,7 +34,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 <body class="login-layout Reg_log_style">
 <div class="logintop">    
-    <span>欢迎后台管理界面平台</span>    
+    <span><img src="${path}/static/app/assets/images/logo.png" height="30" alt="logo">&nbsp;欢迎登录乐兑后台管理平台</span>
     <ul>
     <li><a href="#">返回首页</a></li>
     <li><a href="#">帮助</a></li>
@@ -105,7 +105,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 							</div><!-- /position-relative -->
 						</div>
                         </div>
-                        <div class="loginbm">版权所有  2016  <a href="">南京思美软件系统有限公司</a> </div><strong></strong>
+
 </body>
 </html>
 

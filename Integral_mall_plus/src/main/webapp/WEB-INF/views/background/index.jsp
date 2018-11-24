@@ -237,9 +237,7 @@
     <div class="navbar-container" id="navbar-container">
         <div class="navbar-header pull-left">
             <a href="#" class="navbar-brand">
-                <small>
-                    <img src="${path}/static/background/images/logo.png" width="470px">
-                </small>
+                    <small style="line-height: 60px;font-size: 30px;font-family:'YouYuan';"><img src="${path}/static/app/assets/images/logo.png" height="46" alt="logo">&nbsp;乐兑商城管理平台</small>
             </a><!-- /.brand -->
         </div><!-- /.navbar-header -->
         <div class="navbar-header operating pull-left">
@@ -506,10 +504,10 @@
                             class="menu-text"> 管理员管理 </span><b class="arrow icon-angle-down"></b></a>
                         <ul class="submenu">
 
-                            <li class="home"><a href="javascript:void(0)" name="admin_Competence.html" title="权限管理"
+                           <%-- <li class="home"><a href="javascript:void(0)" name="admin_Competence.html" title="权限管理"
                                                 class="iframeurl"><i class="icon-double-angle-right"></i>权限管理</a></li>
                             <li class="home"><a href="javascript:void(0)" name="administrator.html" title="管理员列表"
-                                                class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>
+                                                class="iframeurl"><i class="icon-double-angle-right"></i>管理员列表</a></li>--%>
                             <li class="home"><a href="javascript:void(0)" name="admin_info.html" title="个人信息"
                                                 class="iframeurl"><i class="icon-double-angle-right"></i>个人信息</a></li>
                         </ul>
@@ -630,7 +628,7 @@
     $(function () {
         setInterval(function () {
             $.ajax({
-                url:"/redisBeOverdue",
+                url:"${path}/redisBeOverdue",
                 type:"post",
                 success:function (result) {
                 }

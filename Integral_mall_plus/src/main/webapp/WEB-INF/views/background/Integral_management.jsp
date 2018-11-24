@@ -103,6 +103,7 @@
                 area: ['700px', '450px'],
                 fixed: false, //不固定
                 maxmin: true,
+                offset:'200px',
                 content: 'ApplicationIntegra/'+empId
             });
         })

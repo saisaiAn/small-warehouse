@@ -36,7 +36,7 @@
         <div class="card-body">
 
             <h3 class="text-center mt-0 m-b-15">
-                <a href="#" class="logo logo-admin"><img src="/static/app/assets/images/logo.png" height="24" alt="logo"></a>
+                <a href="#" class="logo logo-admin"><img src="${path}/static/app/assets/images/logo.png" height="48" alt="logo"></a>
             </h3>
 
             <div class="p-3">
@@ -105,7 +105,7 @@
             }else {
                 //ffalert(1231)
                 $.ajax({
-                    url:"/masterlogin",
+                    url:"${path}/masterlogin",
                     data:{username:username,pwd:pwd},
                     type:"post",
                     success:function(result){

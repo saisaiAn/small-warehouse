@@ -66,9 +66,6 @@
         <result column="integraltypeno" jdbcType="INTEGER" property="integraltypeno"></result>
         <result column="audittype" jdbcType="INTEGER" property="audittype"></result>
         <result column="auditopinion" jdbcType="VARCHAR" property="auditopinion"></result>
-        <association property="empReviewer" javaType="cn.bean.Emp">
-            <id column="empno" property="empno"></id>
-        </association>
         <!-- 审核表与员工表的联合 -->
         <association property="empId" javaType="cn.bean.Emp">
             <id column="empno" property="empno"></id>
@@ -96,6 +93,15 @@
                 <result column="lastchangetime" property="lastchangetime"/>
             </association>
         </association>
+        <association property="empReviewer" javaType="cn.bean.Emp">
+            <id column="Rempno" property="empno"></id>
+            <result column="Rempname"  property="empname" />
+            <result column="Rempsex"  property="empsex" />
+            <result column="Ridcard"  property="idcard" />
+            <result column="Rdepartmentno"  property="departmentno" />
+            <result column="Rpositivedates" property="positivedates" />
+            <result column="Rempphone"  property="empphone" />
+        </association>
         <!-- 积分类型 -->
         <association property="integralTypeId" javaType="cn.bean.IntegralType">
             <id column="integraltypeno" property="integraltypeno"></id>
@@ -106,23 +112,34 @@
         a.IntegralAuditNo,a.empNo,a.intergralChange,a.Changeint,a.reviewer,a.IntegralTypeNo,a.AuditType,a.AuditOpinion,
         e.empno, e.empname, e.empsex, e.idcard, e.departmentno, e.positivedates, e.empphone,
         e.intergralno, e.position, e.emptype, e.password,
+        es.empno as Rempno, es.empname as Rempname, es.empsex as Rempsex, es.idcard as Ridcard, es.departmentno as Rdepartmentno, es.positivedates as Rpositivedates, es.empphone as Rempphone,
         d.depano, d.depaname,d.parentdepa,
         t.IntegralTypeNo,t.IntegralTypeName
     </sql>
     <select id="findAllIntegralAudit" resultMap="WithIntegralAuditResultMap">
         SELECT
         <include refid="findAllIntegralAuditSql"></include>
-        from integralaudit a,emp e,department d,integral i,IntegralType t
+        from integralaudit a,emp e,department d,integral i,IntegralType t,emp es
+        where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo and a.reviewer=es.empno
+        and e.departmentno=d.depano
+    </select>
+
+    <select id="BgfindAllIntegralAudit" resultMap="WithIntegralAuditResultMap">
+        SELECT
+        <include refid="findAllIntegralAuditSql"></include>
+        from integralaudit a,emp e,department d,integral i,IntegralType t,emp es
         where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo
         and e.departmentno=d.depano
     </select>
+
+
 
     <!-- 根据部门查询 -->
     <select id="findAllIntegralAuditByDeptNo" resultMap="WithIntegralAuditResultMap" parameterType="java.lang.Integer">
         SELECT
         <include refid="findAllIntegralAuditSql"></include>
-        from integralaudit a,emp e,department d,integral i,IntegralType t
-        where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo
+        from integralaudit a,emp e,department d,integral i,IntegralType t,emp es
+        where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo and a.reviewer=es.empno
         and e.departmentno=d.depano
           <if test="deptno!=null and deptno!=''">
               and e.DepartmentNo =#{deptno}
@@ -133,8 +150,8 @@
     <select id="findAllIntegralAuditByIntegralauditno" resultMap="WithIntegralAuditResultMap" parameterType="java.lang.Integer">
         SELECT
         <include refid="findAllIntegralAuditSql"></include>
-        from integralaudit a,emp e,department d,integral i,IntegralType t
-        where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo
+        from integralaudit a,emp e,department d,integral i,IntegralType t,emp es
+        where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo and a.reviewer=es.empno
         and e.departmentno=d.depano
         <if test="integralauditno!=null and integralauditno!=''">
             and a.integralauditno =#{integralauditno}
@@ -154,8 +171,8 @@
     <select id="byId" parameterType="cn.bean.IntegralAudit" resultMap="WithIntegralAuditResultMap">
         SELECT distinct
         <include refid="findAllIntegralAuditSql"></include>
-        from integralaudit a,emp e,department d,integral i,IntegralType t
-        where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo
+        from integralaudit a,emp e,department d,integral i,IntegralType t,emp es
+        where a.empno=e.empno  and a.IntegralTypeNo=t.IntegralTypeNo and a.reviewer=es.empno
         and e.departmentno=d.depano and integralauditno=#{integralauditno}
     </select>
 

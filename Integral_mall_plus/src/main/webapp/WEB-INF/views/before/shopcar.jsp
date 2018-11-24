@@ -72,8 +72,9 @@
 									</c:if>
 								</c:forEach>
 							</div>
+						</a>
 							<div class="right clearfloat fl">
-								<p class="tit over">${shoppingCar.commodityId.commoditytitle}</p>
+								<p class="tit over"  style="font-weight: bold;font-family: '微软雅黑 Light' ;">${shoppingCar.commodityId.commoditytitle}</p>
 								<p class="fu-tit over">${shoppingCar.commodityNote}</p>
 								<p class=" over"><span class="jifen">${shoppingCar.commodityId.needintegral}</span>积分</p>
 								<div class="bottom clearfloat">
@@ -88,7 +89,7 @@
 									<input type="hidden"  class="carno" value="${shoppingCar.carno}"/>
 								</div>
 							</div>
-						</a>
+
 					</div>
 				</c:forEach>
 				<%if(i==0){%><div class="xuan clearfloat fl">购物车暂无任何商品</div><%}%>

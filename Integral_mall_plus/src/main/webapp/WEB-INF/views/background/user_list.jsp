@@ -371,6 +371,7 @@ jQuery(function($) {
         type: 1,
         title: '添加用户',
 		maxmin: true,
+        offset:'200px',
 		shadeClose: true, //点击遮罩关闭层
         area : ['800px' , ''],
         content:$('#add_menber_style'),

@@ -44,7 +44,7 @@
     <header id="header" style="">
         <div class="topbar">
             <a href="javascript:history.back();" class="back_btn"><i class="iconfont">ş</i></a>
-            <h1 class="page_title" style="margin: 0px;">会员中心</h1>
+            <h4 class="page_title" style="margin: 0px;font-weight: bold;">会员中心</h4>
         </div>
     </header>
 <!-- 会员头像 -->
@@ -91,9 +91,9 @@
         </ul>
     </div>
     <div class="vip-list-icon border_top_bottom">
-        <table class="table table-condensed">
+        <table class="table table-condensed" id="tables" style="margin-bottom: 50px;">
             <thead>
-            <tr>
+            <tr class="trs">
                 <th>#</th>
                 <th>时间</th>
                 <th>变动原因</th>
@@ -152,6 +152,42 @@
                     }
                 })
             },10000)
+        })
+    </script>
+    <script type="text/javascript">
+        function SortTb()
+
+        {
+
+            var tb = $("#tables tbody").find("tr");
+
+            var total = tb.length;
+
+            //外层循环，共要进行arr.length次求最大值操作
+
+            for (var i = 0; i < total; i++)
+
+            {
+
+                //内层循环，找到第i大的元素，并将其和第i个元素交换
+
+                for (var j = i; j < total ; j++)
+
+                {
+
+                    $(tb).eq(j).insertBefore($(tb).eq(i));
+
+                    $(tb).eq(i).insertAfter($(tb).eq(j));
+
+                }
+
+            }
+
+            return;
+
+        }
+        $("#tables .trs").click(function(){
+            SortTb()
         })
     </script>
 </body>

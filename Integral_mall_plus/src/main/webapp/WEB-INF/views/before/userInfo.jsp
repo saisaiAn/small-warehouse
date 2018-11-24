@@ -24,7 +24,7 @@
                 <div class="user-info">
                     <!--标题 -->
                     <div class="am-cf am-padding" >
-                        <div class="am-fl am-cf" style="float: left"><strong class="am-text-danger am-text-lg">个人资料</strong> / <small>Personal&nbsp;information</small></div>
+                        <div class="am-fl am-cf" style="float: left"><strong class="am-text-danger am-text-lg">个人资料</strong></div>
                         <div class="am-fl am-cf" style="float: right"><a href="javascript:history.back();" class="back_btn"><i class="glyphicon glyphicon-log-out"></i></a></div>
                     </div>
                     <hr/>
