@@ -1,6 +1,11 @@
 package cn.dao;
 
 
-public interface CommodityReviewMapper {
+import cn.bean.CommodityReview;
 
+import java.util.List;
+
+public interface CommodityReviewMapper {
+    int addCommodityReview(CommodityReview commodityReview);
+    List<CommodityReview> selectCommodityReviewById(CommodityReview commodityReview);
 }

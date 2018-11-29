@@ -1,6 +1,7 @@
 package cn.Before.controller;
 
 import cn.Before.service.JedisClientImp;
+import cn.Utils.MD5Util;
 import cn.bean.Emp;
 import cn.bean.Imager;
 import cn.Before.service.EmpService;
@@ -30,10 +31,7 @@ public class HelloController {
 
     @RequestMapping("hello")
     public String hello(@Param("empno") Integer empNo){
-        Emp empe=new Emp();
-        empe.setEmptype(1);
-        empe.setEmpno(empNo);
-        empService.updateBeforeEmpType(empe);
+
         return "/before/login";
     }
     @RequestMapping("findUser")

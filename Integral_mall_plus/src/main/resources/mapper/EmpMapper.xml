@@ -12,7 +12,7 @@
         <result column="empphone" jdbcType="VARCHAR" property="empphone" />
         <result column="intergralno" jdbcType="INTEGER" property="intergralno" />
         <result column="position" jdbcType="INTEGER" property="position" />
-        <result column="emptype" jdbcType="INTEGER" property="emptype" />
+        <result column="emptype" jdbcType="TIMESTAMP" property="emptype" />
         <result column="password" jdbcType="VARCHAR" property="password" />
         <!-- 指定联合查询出的部门字段的封装 -->
         <association property="departmentId" javaType="cn.bean.Department">
@@ -67,12 +67,16 @@
 
     <!-- 添加员工 -->
     <insert id="bgaddEmp" parameterType="cn.bean.Emp">
-        insert into emp(empname,empsex,idcard,departmentno,positivedates,empphone,intergralno,position,emptype,password) VALUES (#{empname},
-          #{empsex},#{idcard},#{departmentno},SYSDATE(),#{empphone},#{intergralno},#{position},0,233)
+        insert into emp(empname,empsex,idcard,departmentno,positivedates,empphone,intergralno,position,password) VALUES (#{empname},
+          #{empsex},#{idcard},#{departmentno},SYSDATE(),#{empphone},#{intergralno},#{position},'582A365C292ABED5A8A5873BDA934274')
     </insert>
     <!-- 修改用户 -->
     <update id="bgupdEmp" parameterType="cn.bean.Emp">
           update emp set empname = #{empname},empsex=#{empsex},idcard=#{idcard},departmentno=#{departmentno},empphone=#{empphone},position=#{position} where empno = #{empno}
+    </update>
+    <!--员工转正-->
+    <update id="emp_Become_a_regular_worker" parameterType="java.lang.Integer">
+        update emp set empType = SYSDATE()  where empno = #{empId}
     </update>
     <!--删除用户同时删除绑定的积分-->
     <delete id="bgdelEmp" parameterType="java.lang.Integer">

@@ -13,7 +13,6 @@ public interface OrdersMapper {
     List<Orders> selectOrdersByEmpId(Map ByEmpIdMap);
     List<Orders> selectOrders();
     List<Orders> selectOrdersById(@Param("id") Integer id);
-
     int updOrderStatus(Map<Object,Object> Oid);
 
     Orders selectOrdersByRedeemCode(String RedeemCode);

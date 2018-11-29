@@ -37,6 +37,7 @@
                 <mvc:exclude-mapping path="/app/app"/>
                 <bean class="cn.interceptor.appInterceptor"></bean>
             </mvc:interceptor>
+
             <mvc:interceptor>
                 <mvc:mapping path="/**"/>
                 <!--不拦截的请求-->

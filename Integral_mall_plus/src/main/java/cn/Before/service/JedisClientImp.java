@@ -9,7 +9,7 @@ public class JedisClientImp implements JedisClient {
 
     @Autowired
     private JedisPool jedisPool;
-
+    //获取内容
     @Override
     public String get(String key) {
         Jedis jedis=jedisPool.getResource();
@@ -17,7 +17,7 @@ public class JedisClientImp implements JedisClient {
         jedis.close();
         return string;
     }
-
+//设置内容
     @Override
     public String set(String key, String value) {
         Jedis jedis=jedisPool.getResource();
@@ -25,7 +25,7 @@ public class JedisClientImp implements JedisClient {
         jedis.close();
         return string;
     }
-
+//哈希数据获取
     @Override
     public String hget(String hkey, String key) {
         Jedis jedis=jedisPool.getResource();
@@ -33,11 +33,19 @@ public class JedisClientImp implements JedisClient {
         jedis.close();
         return string;
     }
-
+//哈希数据设置
     @Override
     public long hset(String hkey, String key, String value) {
         Jedis jedis=jedisPool.getResource();
         long aLong=jedis.hset(hkey,key,value);
+        jedis.close();
+        return aLong;
+    }
+    //过期时间设置
+    @Override
+    public long expire(String key, int second) {
+        Jedis jedis=jedisPool.getResource();
+        long aLong=jedis.expire(key,second);
         jedis.close();
         return aLong;
     }
@@ -50,15 +58,7 @@ public class JedisClientImp implements JedisClient {
         return aLong;
     }
 
-    @Override
-    public long expire(String key, int second) {
-        Jedis jedis=jedisPool.getResource();
-        long aLong=jedis.expire(key,second);
-        jedis.close();
-        return aLong;
-    }
-
-
+    //返回剩余时间
     @Override
     public long ttl(String key) {
         Jedis jedis=jedisPool.getResource();
@@ -66,7 +66,7 @@ public class JedisClientImp implements JedisClient {
         jedis.close();
         return aLong;
     }
-
+//删除键对应的值
     @Override
     public long del(String key) {
         Jedis jedis=jedisPool.getResource();

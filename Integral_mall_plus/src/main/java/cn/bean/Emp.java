@@ -23,7 +23,7 @@ public class Emp {
 
     private Integer position;
 
-    private Integer emptype;
+    private Date emptype; //入职日期 后期修改
 
     private String password;
 
@@ -115,11 +115,11 @@ public class Emp {
         this.position = position;
     }
 
-    public Integer getEmptype() {
+    public Date getEmptype() {
         return emptype;
     }
 
-    public void setEmptype(Integer emptype) {
+    public void setEmptype(Date emptype) {
         this.emptype = emptype;
     }
 

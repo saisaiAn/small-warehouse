@@ -102,8 +102,9 @@
                     <li>
                         <a href="${path}/app/toAppnIndex" class="waves-effect"><i class="mdi mdi-airplay"></i><span> 首页</span></a>
                     </li>
-
-
+                    <li>
+                        <a href="${path}/app/toAppico" class="waves-effect"><i class="mdi mdi-face-profile"></i><span> 员工管理</span></a>
+                    </li>
                     <li>
                         <a href="${path}/app/toAppSetting" class="waves-effect"><i class="mdi mdi-settings"></i><span> 个人设置</span></a>
                     </li>

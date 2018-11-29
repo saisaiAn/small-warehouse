@@ -52,8 +52,8 @@
     </insert>
 
     <insert id="bgAddzdyJfApply" parameterType="cn.bean.IntegralAudit">/*自定义积分申请*/
-        insert into IntegralAudit(empno,intergralchange, changeint,integraltypeno,audittype) VALUES
-        (#{empno},#{intergralchange},#{changeint},#{integraltypeno},#{audittype})
+        insert into IntegralAudit(empno,intergralchange, changeint,integraltypeno,audittype,reviewer) VALUES
+        (#{empno},#{intergralchange},#{changeint},#{integraltypeno},#{audittype},#{reviewer})
     </insert>
 
 <!-- 查询所有审查信息 -->

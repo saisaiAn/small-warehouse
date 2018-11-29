@@ -64,11 +64,25 @@ public class MasterController {
     //个人设置
     @RequestMapping(value="appMaster",method = RequestMethod.POST)
     public String setting( Emp emp){
-       // System.out.println("--------"+emp.getEmpname());
-          masterService.updateMaster(emp);
+        // System.out.println("--------"+emp.getEmpname());
+        masterService.updateMaster(emp);
         return "forward:/app/app";
     }
-
+    //to员工管理
+    @RequestMapping(value="toAppico")
+    public String Appico(Model model){
+        List<Emp> empList= masterService.findMaster();
+        model.addAttribute("emplist",empList);
+        return "app/ico";
+    }
+    @ResponseBody
+    @RequestMapping("findEmpById")
+    public Emp findEmpById(@Param("empno") Integer empno){
+        Emp emps=new Emp();
+        emps.setEmpno(empno);
+        Emp emp = masterService.findEmpById(emps);
+        return emp;
+    }
     //注销
     @RequestMapping(value = "toAppLogout")
     public String logout(){

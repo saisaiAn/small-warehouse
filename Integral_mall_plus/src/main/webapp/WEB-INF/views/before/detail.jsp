@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page isELIgnored="false" contentType="text/html;charset=UTF-8"  language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
@@ -107,14 +108,25 @@
 					</div>
 				</div>
 				<div class="middle clearfloat box-s">
-					<a href="#">
 						<span class="fl">商品详情</span>
-					</a>
+						<i style="float:right;" class="iconfont icon-fanhui " id="xq"></i>
 				</div>
-				<div class="middle clearfloat box-s">
+				<div class="middle clearfloat box-s xqbody" style="background-color:whitesmoke;display: none;">
 					<a href="#">
 						<span style="font-size: 13px;">${commodity.commoditydetails}</span>
 					</a>
+				</div>
+				<div class="middle clearfloat box-s">
+						<span class="fl">商品评价</span>
+						<i style="float:right;" class="iconfont icon-fanhui " id="pj"></i>
+				</div>
+				<div style="display: none; width: 100%;" class="pjbody">
+				<c:forEach items="${commodityReviews}" var="commodityReview">
+					<div class="middle clearfloat box-s" style="height: 100%;background-color:whitesmoke;">
+						<span style="display: block;font-size: 14px;height: 30px;">${commodityReview.empId.departmentId.depaname}:${commodityReview.empId.empname};<span style="font-size: 10px;margin-left: 30px;">时间：<fmt:formatDate value="${commodityReview.reviewtime}" pattern="yyyy-MM-dd HH:mm:ss"/></span></span>
+						<span style="font-size: 15px;margin-left:20px;width: 100%;"><span style="font-size: 13px;color: #2c5976;">评论内容：</span>${commodityReview.reviewcontent}</span>
+					</div>
+				</c:forEach>
 				</div>
 			</div>
 		</div>
@@ -149,6 +161,7 @@
 		<!--footerone end-->
 		<script>
 			$(function(){
+
                 $("#Pay").click(function(){
                     if (confirm("您确认购买当前商品吗？")){
                     if (${commodity.needintegral}<${empBefore.integralId.remainingpoints}){
@@ -172,7 +185,30 @@
                     }
                 }
 					});
-
+					var i=0;
+                var j=0;
+                $("#pj").click(function(){
+						if(j==0){
+							$(".pjbody").css('display','inline-block');
+							$(this).attr("class","iconfont icon-xiala");
+                            j=1;
+						}else if (j==1){
+							$(".pjbody").css('display','none');
+							$(this).attr("class","iconfont icon-fanhui");
+                            j=0;
+						}
+                })
+                $("#xq").click(function(){
+                    if(i==0){
+                        $(".xqbody").css('display','inline-block');
+                        $(this).attr("class","iconfont icon-xiala");
+						i=1;
+                    }else if (i==1){
+                        $(".xqbody").css('display','none');
+                        $(this).attr("class","iconfont icon-fanhui");
+						i=0;
+                    }
+                })
 			})
 		</script>
 		<!--弹出购物车内容-->

@@ -1,5 +1,6 @@
 package cn.background.bgService;
 
+import cn.Utils.MD5Util;
 import cn.bean.Commodity;
 import cn.bean.Emp;
 import cn.bean.Imager;
@@ -28,6 +29,8 @@ public class BgLoginService {
     CommodityMapper commodityMapper;
 
     public Emp LoginByUsernameAndPassword(Emp emp){
+        String pwd=MD5Util.encryptPassword(emp.getPassword());
+        emp.setPassword(pwd);
         return empMapper.loginToIndexBefore(emp);
     }
 

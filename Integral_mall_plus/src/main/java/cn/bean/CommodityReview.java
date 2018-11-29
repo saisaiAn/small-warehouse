@@ -15,7 +15,7 @@ public class CommodityReview {
 
     private Date reviewtime;
 
-    private Integer imagerno;
+    private Integer OrderNo;
 
     public Commodity getCommodityId() {
         return commodityId;
@@ -73,11 +73,11 @@ public class CommodityReview {
         this.reviewtime = reviewtime;
     }
 
-    public Integer getImagerno() {
-        return imagerno;
+    public Integer getOrderNo() {
+        return OrderNo;
     }
 
-    public void setImagerno(Integer imagerno) {
-        this.imagerno = imagerno;
+    public void setOrderNo(Integer orderNo) {
+        OrderNo = orderNo;
     }
 }

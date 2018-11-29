@@ -40,13 +40,16 @@ public class BgIntegralController {
 
     @ResponseBody
     @RequestMapping(value = "zdyJfApply",method = RequestMethod.POST) /*自定义*/
-    public String zdyJfApply(@RequestParam("userId") Integer userId ,@RequestParam("zdyNR") String zdyNR,@RequestParam("zdyJfNum") Integer zdyJfNum){
+    public String zdyJfApply(@RequestParam("userId") Integer userId ,@RequestParam("zdyNR") String zdyNR,
+                             @RequestParam("zdyJfNum") Integer zdyJfNum,HttpSession session){
         IntegralAudit integralAudit = new IntegralAudit();
         integralAudit.setEmpno(userId);
         integralAudit.setIntergralchange(zdyNR);
         integralAudit.setChangeint(zdyJfNum);
         integralAudit.setIntegraltypeno(2);
         integralAudit.setAudittype(1);
+        Emp emp = (Emp) session.getAttribute("loginUser");
+        integralAudit.setReviewer(emp.getEmpno());
         int a = bgIntegralService.bgAddzdyJfApply(integralAudit);
         if(a>0){
             return "y";
@@ -57,13 +60,16 @@ public class BgIntegralController {
 
     @ResponseBody
     @RequestMapping(value = "checkJfApply",method = RequestMethod.POST) //考勤表
-    public String checkJfApply(@RequestParam("userId") Integer userId ,@RequestParam("checkJfNr") String checkJfNr,@RequestParam("checkJfNum") Integer checkJfNum){
+    public String checkJfApply(@RequestParam("userId") Integer userId ,@RequestParam("checkJfNr") String checkJfNr,
+                               @RequestParam("checkJfNum") Integer checkJfNum,HttpSession session){
         IntegralAudit integralAudit = new IntegralAudit();
         integralAudit.setEmpno(userId);
         integralAudit.setIntergralchange(checkJfNr);
         integralAudit.setChangeint(checkJfNum);
         integralAudit.setIntegraltypeno(1);
         integralAudit.setAudittype(1);
+        Emp emp = (Emp) session.getAttribute("loginUser");
+        integralAudit.setReviewer(emp.getEmpno());
         int a = bgIntegralService.bgAddzdyJfApply(integralAudit);
         if(a>0){
             return "y";
@@ -75,7 +81,7 @@ public class BgIntegralController {
     @ResponseBody
     @RequestMapping(value = "allJfApply",method = RequestMethod.POST) //自定义 考勤表 一起提交
     public String allJfApply(@RequestParam("userId") Integer userId ,@RequestParam("checkJfNr") String checkJfNr,@RequestParam("checkJfNum") Integer checkJfNum,
-                             @RequestParam("zdyNR") String zdyNR,@RequestParam("zdyJfNum") Integer zdyJfNum){
+                             @RequestParam("zdyNR") String zdyNR,@RequestParam("zdyJfNum") Integer zdyJfNum,HttpSession session){
         String nr = checkJfNr+","+zdyNR;
         Integer num = checkJfNum+zdyJfNum;
         IntegralAudit integralAudit = new IntegralAudit();
@@ -84,6 +90,8 @@ public class BgIntegralController {
         integralAudit.setChangeint(num);
         integralAudit.setIntegraltypeno(2);
         integralAudit.setAudittype(1);
+        Emp emp = (Emp) session.getAttribute("loginUser");
+        integralAudit.setReviewer(emp.getEmpno());
         int a = bgIntegralService.bgAddzdyJfApply(integralAudit);
         if(a>0){
             return "y";
@@ -122,33 +130,41 @@ public class BgIntegralController {
     @ResponseBody
     @Transactional(rollbackFor = {Exception.class})
     @RequestMapping(value = "xzApproval_opinion",method = RequestMethod.POST)
-    public String xzApproval_opinion(@RequestParam("empId") Integer empId, //校长批准积分意见 生成积分明细表，结算积分表，修改积分审核表该条积分记录状态
-                                     @RequestParam("intergralchange") String intergralchange,@RequestParam("changeint") Integer changeint,
-                                     @RequestParam("integralType") Integer integralType,@RequestParam("IntegralNo") Integer IntegralNo,
-                                     @RequestParam("integralauditno")Integer integralauditno,  HttpSession session){
+    public String xzApproval_opinion(@RequestParam("audiId") Integer audiId, //校长批准积分意见 生成积分明细表，结算积分表，修改积分审核表该条积分记录状态
+                                      @RequestParam("Boss_opinion")String Boss_opinion, HttpSession session){
+        List<IntegralAudit> integralAudit = bgIntegralService.findAllIntegralAuditByIntegralauditno(audiId);
+        System.out.println(integralAudit.size()+"大小");
         IntegralSchedule integralSchedule = new IntegralSchedule();
-        integralSchedule.setEmpno(empId);
-        integralSchedule.setIntergralchange(intergralchange);
-        integralSchedule.setChangeint(changeint);
-        integralSchedule.setIntegraltypeno(integralType);
-        integralSchedule.setIntegralno(IntegralNo);
+        for (IntegralAudit i:integralAudit
+                ) {
+            integralSchedule.setEmpno(i.getEmpno());
+            integralSchedule.setIntergralchange(i.getIntergralchange());
+            integralSchedule.setChangeint(i.getChangeint());
+            integralSchedule.setIntegraltypeno(i.getIntegraltypeno());
+            integralSchedule.setIntegralno(i.getEmpId().getIntergralno());
+        }
         Emp emp = (Emp) session.getAttribute("loginUser");
         integralSchedule.setReviewer(emp.getEmpno());
         integralSchedule.setChangedate(new Date());
         Map<Object,Object> map = new HashMap<Object, Object>();
         map.put("empid",emp.getEmpno());
         map.put("AuditType",3);
-        map.put("sprYj","");
-        map.put("integralAuditId",integralauditno);
+        map.put("sprYj",Boss_opinion);
+        map.put("integralAuditId",audiId);
         bgIntegralService.updIntegralauditAuditType(map); //修改审核表积分审核状态
         int result = bgIntegralService.addIntegralSchedule(integralSchedule); //添加积分明细
         Map<Object,Object> map1 = new HashMap<Object, Object>();
-        map1.put("jfNum",changeint);
-        map1.put("IntergralNo",IntegralNo);
-        if(changeint>0){
+        int a = 0;
+        for (IntegralAudit i:integralAudit
+                ) {
+            map1.put("jfNum",i.getChangeint());
+            map1.put("IntergralNo",i.getEmpId().getIntergralno());
+            a = i.getChangeint();
+        }
+        if(a>0){
             bgIntegralService.addProcessingIntegral(map1); //结算积分表 加积分
         }
-        if(changeint<0){
+        if(a<0){
             bgIntegralService.reduceProcessingIntegral(map1); //结算积分表 减积分
         }
         if(result>0){
@@ -160,11 +176,11 @@ public class BgIntegralController {
 
     @ResponseBody
     @RequestMapping(value = "General_manager_refuse",method = RequestMethod.POST)
-    public String General_manager_refuse(@RequestParam("integralAuditId")Integer integralAuditId,@RequestParam("sprYj") String sprYj ,HttpSession session){
+    public String General_manager_refuse(@RequestParam("audiId")Integer integralAuditId,@RequestParam("Boss_opinion") String Boss_opinion ,HttpSession session){
         /* 综合部经理审批意见 (拒绝申请)*/
         Map<Object,Object> map = new HashMap<Object, Object>();
         map.put("integralAuditId",integralAuditId);
-        map.put("sprYj",sprYj);
+        map.put("sprYj",Boss_opinion);
         map.put("AuditType",4);
         Emp emp = (Emp) session.getAttribute("loginUser");
         int empId = emp.getEmpno();

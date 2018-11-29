@@ -431,7 +431,10 @@
                         <a href="#" class="dropdown-toggle"><i class="icon-credit-card"></i><span class="menu-text"> 积分管理 </span><b
                                 class="arrow icon-angle-down"></b></a>
                         <ul class="submenu">
-
+                            <c:if test="${loginUser.position == 3 || loginUser.position == 4 }"><%-- 综合部经理 --%>
+                                <li class="home"><a href="javascript:void(0)" name="background/Go_Attendance" title="审批意见"
+                                                    class="iframeurl"><i class="icon-double-angle-right"></i>考勤制度管理</a></li>
+                            </c:if>
                             <c:if test="${loginUser.position != 4  }"><%-- 综合部经理 --%>
                                 <li class="home"><a href="javascript:void(0)" name="Integral_management_html" title="账户管理"
                                                     class="iframeurl"><i class="icon-double-angle-right"></i>部门用户</a></li>

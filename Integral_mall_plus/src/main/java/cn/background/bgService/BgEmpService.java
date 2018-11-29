@@ -1,5 +1,6 @@
 package cn.background.bgService;
 
+import cn.Utils.MD5Util;
 import cn.bean.Department;
 import cn.bean.Emp;
 import cn.bean.Integral;
@@ -58,10 +59,12 @@ public class BgEmpService {
     }
 
     public void addEmp(Emp emp){
+
         empMapper.bgaddEmp(emp);
     }
 
     public void updEmp(Emp emp){
+
         empMapper.bgupdEmp(emp);
     }
 
@@ -74,10 +77,20 @@ public class BgEmpService {
     }
 
     public int bgupdEmpPwd(Map<String,Object> map){
+        String pwd=MD5Util.encryptPassword(map.get("pwd")+"");
+        map.put("pwd",pwd);
         return empMapper.bgupdEmpPwd(map);
     }
 
     public int bgBatchdeleting_emp(List arrs){
         return empMapper.bgBatchdeleting_emp(arrs);
+    }
+
+    public int emp_Become_a_regular_worker(Integer empId){
+        return empMapper.emp_Become_a_regular_worker(empId);
+    }
+
+    public List<Emp> findEmpByDept(Emp emp){
+        return empMapper.findEmpByDept(emp);
     }
 }

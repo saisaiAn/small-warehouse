@@ -45,7 +45,7 @@
 	<body>
 		<!--头部区域-->
 	    <header class="mui-bar mui-bar-nav" id="header">
-			<a class="back_btn"><img src="${path}/static/app/assets/images/logo.png" height="36" alt="logo"></a>
+			<a class="back_btn" ><img src="${path}/static/app/assets/images/logo.png" height="36" alt="logo"></a>
 	        <h4>乐兑商城</h4>
 	    </header>
 		<div id="main" class="clearfloat warp">			

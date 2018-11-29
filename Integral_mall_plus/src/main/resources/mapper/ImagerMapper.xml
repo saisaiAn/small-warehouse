@@ -14,6 +14,8 @@
     <update id="updImg" parameterType="cn.bean.Imager">
         update imager set imagerurl =#{imagerurl} where imagerID =#{imagerid}
     </update>
-
+    <select id="selectImagerById" parameterType="cn.bean.Imager" resultType="cn.bean.Imager" >
+        select * from imager where imageclassification=#{imageclassification} and imagerid=#{imagerid}
+    </select>
 
 </mapper>

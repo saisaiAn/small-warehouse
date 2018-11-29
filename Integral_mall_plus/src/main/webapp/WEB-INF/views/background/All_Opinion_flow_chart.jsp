@@ -51,11 +51,15 @@
 <!-- ystep容器 -->
 <c:forEach items="${aud}" var="a">
     <c:if test="${a.integralTypeId.integraltypeno!=3}">
-        <div style="margin-top: 45px;margin-left: 75px;display: inline-block">
+        <div style="margin-top: 45px;margin-left: 100px;display: inline-block;width: 400px;">
             <span style="font-size: 18px;color: #8C8C00">
-                意见编号:<span  style="font-size: 18px;color: #FFD306">${a.integralauditno}</span>
-                员工姓名:<span  style="font-size: 18px;color: #FFD306">${a.empId.empname}</span>
+                意见编号:<span  style="font-size: 16px;color: #FFD306">${a.integralauditno}</span>
+                员工姓名:<span  style="font-size: 16px;color: #FFD306">${a.empId.empname}</span>
                 <span style="color:#C48888;">部门名称:</span><span  style="font-size: 18px;color: #9393FF">${a.empId.departmentId.depaname}</span>
+                <br>
+                <c:if test="${not empty a.auditopinion}">
+                    意见内容:<span  style="font-size: 16px;color: #FFD306">${a.auditopinion}</span>
+                </c:if>
             </span>
             <div class="ystep1" w="${a.audittype}"></div>
         </div>

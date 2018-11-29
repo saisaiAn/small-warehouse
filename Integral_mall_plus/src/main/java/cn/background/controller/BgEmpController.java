@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +32,7 @@ public class BgEmpController {
         return "/background/user_list";
     }
 
+    @Transactional(rollbackFor = {Exception.class})
     @RequestMapping(value = "bgAddEmp",method = RequestMethod.POST)
     public String addEMp(Emp emp){//添加员工 同时为该员工添加一个积分信息
         System.out.println("添加员工");
@@ -73,6 +75,17 @@ public class BgEmpController {
         return "/background/user_list";
     }
 
+    @RequestMapping(value = "LikeSelectByDeptName",method = RequestMethod.POST)
+    public String LikeSelectByDeptName(@RequestParam("selectDeptName")Integer selectDeptName,Model model){
+        //根据部门查询员工信息
+        System.out.println("根据部门查询:");
+        Emp emp = new Emp();
+        emp.setDepartmentno(selectDeptName);
+        model.addAttribute("empList",bgEmpService.findEmpByDept(emp));
+        model.addAttribute("deptList",bgEmpService.findAllDepartment());
+        return "/background/user_list";
+    }
+
     @RequestMapping("admin_info")
     public String admin_info(){//跳转个人资料页面
         return "/background/admin_info";
@@ -106,7 +119,15 @@ public class BgEmpController {
 
     }
 
-
+    @ResponseBody
+    @RequestMapping(value = "emp_Become_a_regular_worker",method = RequestMethod.POST)
+    public String emp_Become_a_regular_worker(@RequestParam("empId")Integer empId){
+        if(bgEmpService.emp_Become_a_regular_worker(empId)>0){
+            return "y";
+        }else {
+            return "n";
+        }
+    }
 
 
 }

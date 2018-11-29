@@ -1,4 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.dao.CommodityReviewMapper">
+    <resultMap type="cn.bean.CommodityReview" id="CommodityReviewResultMap">
+        <id column="commodityreviewno" property="commodityreviewno" />
+        <result column="commodityno" property="commodityno" />
+        <result column="reviewcontent" property="reviewcontent" />
+        <result column="empno" property="empno" />
+        <result column="reviewtime" property="reviewtime" />
+        <result column="OrderNo" property="OrderNo" />
+        <!-- 指定联合查询出的商品类型字段的封装 -->
+        <association property="empId" javaType="cn.bean.Emp">
+            <id column="empno" property="empno"/>
+            <result column="empname" property="empname"/>
+            <result column="empsex" property="empsex"/>
+            <result column="idcard" property="idcard"/>
+            <association property="departmentId" javaType="cn.bean.Department">
+                <id column="depano" property="depano"/>
+                <result column="depaname" property="depaname"/>
+                <result column="parentdepa" property="parentdepa"/>
+            </association>
+        </association>
+        <association property="commodityId" javaType="cn.bean.Commodity">
+            <id column="commodityno" jdbcType="INTEGER" property="commodityno" />
+            <result column="price" jdbcType="DOUBLE" property="price" />
+            <result column="needintegral" jdbcType="INTEGER" property="needintegral" />
+            <result column="commoditytitle" jdbcType="VARCHAR" property="commoditytitle" />
+            <result column="commoditydetails" jdbcType="VARCHAR" property="commoditydetails" />
+            <result column="commodityinventory" jdbcType="INTEGER" property="commodityinventory" />
+            <result column="commoditytypeno" jdbcType="INTEGER" property="commoditytypeno" />
+            <result column="commoditytype" jdbcType="INTEGER" property="commoditytype" />
+        </association>
+    </resultMap>
+
+    <sql id="WithCommodityType_Column_List">
+        cr.commodityreviewno,cr.commodityno,cr.reviewcontent,cr.empno,cr.reviewtime,cr.OrderNo,
+        e.empno, e.empname, e.empsex, e.idcard,de.depano,de.depaname,de.parentdepa,
+        c.commodityno,c.price,c.needintegral,c.commoditytitle,c.commoditydetails,c.commodityinventory,c.commoditytypeno,c.commoditytype
+    </sql>
+
+    <select id="selectCommodityReviewById" resultMap="CommodityReviewResultMap" parameterType="cn.bean.CommodityReview">
+        select <include refid="WithCommodityType_Column_List"/> from CommodityReview cr,emp e,Department de,Commodity c
+        <where>
+            cr.empno=e.empno and cr.commodityno=c.commodityno and e.departmentno=de.depano
+            <if test="commodityno != null and commodityno !=''">
+              and cr.commodityno = #{commodityno}
+           </if>
+            <if test="empno != null and empno !=''">
+                and cr.empno = #{empno}
+            </if>
+            <if test="OrderNo != null and OrderNo !=''">
+                and cr.OrderNo = #{OrderNo}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addCommodityReview" parameterType="cn.bean.CommodityReview" useGeneratedKeys="true" keyProperty="commodityreviewno" keyColumn="commodityreviewno">
+        insert into CommodityReview
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="commodityno != null">
+                commodityno,
+            </if>
+            <if test="reviewcontent != null">
+                reviewcontent,
+            </if>
+            <if test="empno != null">
+                empno,
+            </if>
+            <if test="reviewtime != null">
+                reviewtime,
+            </if>
+            <if test="OrderNo != null">
+                OrderNo,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="commodityno != null">
+                #{commodityno},
+            </if>
+            <if test="reviewcontent != null">
+                #{reviewcontent},
+            </if>
+            <if test="empno != null">
+                #{empno},
+            </if>
+            <if test="reviewtime != null">
+                #{reviewtime},
+            </if>
+            <if test="OrderNo != null">
+                #{OrderNo},
+            </if>
+        </trim>
+    </insert>
 </mapper>

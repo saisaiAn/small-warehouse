@@ -12,6 +12,7 @@ public class BgInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse response, Object o) throws Exception {
         Emp empReturn = (Emp) httpServletRequest.getSession().getAttribute("loginUser");
         if (empReturn==null||empReturn.equals("")){
+            System.out.println("后台拦截器");
             response.sendRedirect("/SSMDemo1/view");
            /* response.write("<script>window.parent.location.href='';</script>");*/
             return false;

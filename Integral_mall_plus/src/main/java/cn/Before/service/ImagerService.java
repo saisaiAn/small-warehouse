@@ -38,4 +38,7 @@ public class ImagerService {
         }
         return imager;
     }
+    public List<Imager> selectImagerById(Imager imager){
+        return  imagerMapper.selectImagerById(imager);
+    };
 }

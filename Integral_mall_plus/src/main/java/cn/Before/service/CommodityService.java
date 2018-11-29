@@ -16,7 +16,6 @@ public class CommodityService {
     CommodityMapper commodityMapper;
     @Autowired
     private JedisClientImp jedisClient;
-    final String a="aa";
     public List<Commodity> selectAllCommodity(){
         try{
             String result=jedisClient.get("BeforeCommoditys");

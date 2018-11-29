@@ -139,7 +139,7 @@
                         success: function (result) {
                             layer.msg("修改成功");
                             setTimeout(function () {
-                                parent.location.href = "/product/Products_List_html";
+                                parent.location.href = "${path}/product/Products_List_html";
                             }, 1500);
                         }
                     })

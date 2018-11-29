@@ -6,4 +6,17 @@
         select * from Attendance
     </select>
 
+    <insert id="add_Attendance" parameterType="java.util.Map">
+        insert into attendance(NumberIntegrals,content) value (#{Integral_quantity},#{Attendance_record})
+    </insert>
+
+    <update id="upd_Attendance" parameterType="java.util.Map">
+        update attendance set NumberIntegrals = #{updIntegral_quantity},content=#{updAttendance_record}
+        where AttendanceNo = #{AttendanceNo}
+    </update>
+
+    <delete id="delete_Attendance" parameterType="java.lang.Integer">
+        delete from attendance where AttendanceNo = #{aid}
+    </delete>
+
 </mapper>

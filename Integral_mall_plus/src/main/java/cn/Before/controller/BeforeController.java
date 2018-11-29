@@ -26,6 +26,9 @@ public class BeforeController {
     CommodityTypeService commodityTypeService;
 
     @Autowired
+    CommodityReviewService commodityReviewService;
+
+    @Autowired
     ImagerService imagerService;
 
     @Autowired
@@ -245,6 +248,10 @@ public class BeforeController {
         Commodity commodity=new Commodity();
         commodity.setCommodityno(id);
         model.addAttribute("commodity",commodityService.selectCommodityById(commodity));
+        CommodityReview commodityReview = new CommodityReview();
+        commodityReview.setCommodityno(id);
+        List<CommodityReview> commodityReviews= commodityReviewService.selectCommodityReviewById(commodityReview);
+        model.addAttribute("commodityReviews",commodityReviews);
         return "/before/detail";
     }
     //跳转商品列表
@@ -284,6 +291,47 @@ public class BeforeController {
     @RequestMapping("/toBeforeUserInfo")
     public String userInfo(){
         return "/before/userInfo";
+    }
+    @ResponseBody
+    @RequestMapping("/selectOrdersById")
+    public Map selectOrdersById(Integer id){
+        Map map= new  HashMap<String,Object>();
+        Orders orders= ordersService.selectOrdersById(id);
+        map.put("Order",orders);
+        Imager imager=new Imager();
+        imager.setImageclassification(3+"");
+        imager.setImagerid(orders.getCommodityId().getCommodityno());
+        map.put("imager",imagerService.selectImagerById(imager).get(0));
+        return map;
+    }
+    @Transactional(rollbackFor = {Exception.class})
+    @ResponseBody
+    @RequestMapping("/addCommodityReview")
+    public Map addCommodityReview(Integer CommodityNo,Integer EmpNo,String ReviewContent,String Orders){
+        Map map = new HashMap<Object, Object>();
+        map.put("Oid",Orders);
+        map.put("OrderStatus",4);
+        ordersService.updOrderStatus(map);
+        CommodityReview commodityReview=new CommodityReview();
+        commodityReview.setCommodityno(CommodityNo);
+        commodityReview.setEmpno(EmpNo);
+        commodityReview.setReviewcontent(ReviewContent);
+        commodityReview.setReviewtime(new Date());
+        commodityReview.setOrderNo(Integer.parseInt(Orders));
+        int a=commodityReviewService.addCommodityReview(commodityReview);
+        Map maps= new  HashMap<String,Object>();
+        maps.put("status",a);
+        return maps;
+    }
+    @ResponseBody
+    @RequestMapping("/selectCommodityReviewById")
+    public Map selectCommodityReviewById(Integer Order){
+        CommodityReview commodityReview = new CommodityReview();
+        commodityReview.setOrderNo(Order);
+        CommodityReview commodityReview1= commodityReviewService.selectCommodityReviewById(commodityReview).get(0);
+        Map maps= new  HashMap<String,Object>();
+        maps.put("commodityReview",commodityReview1);
+        return maps ;
     }
     //跳转密码
     @RequestMapping("/toBeforePassword")

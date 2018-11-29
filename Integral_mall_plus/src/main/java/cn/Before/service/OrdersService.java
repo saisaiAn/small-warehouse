@@ -48,4 +48,16 @@ public class OrdersService {
         }
         return Orders;
     }
+    public Orders selectOrdersById(Integer id){
+       return ordersMapper.selectOrdersById(id).get(0);
+    }
+    public int updOrderStatus(Map<Object,Object> Oid){
+        try{
+            jedisClient.del("BeforeOrders");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ordersMapper.updOrderStatus(Oid);
+    }
 }
+

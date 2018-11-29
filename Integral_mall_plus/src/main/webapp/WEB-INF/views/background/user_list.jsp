@@ -73,6 +73,18 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
               <%-- <li><label class="l_f">添加时间</label><input class="inline laydate-icon" id="start" style=" margin-left:10px;"></li>--%>
                <li style="width:90px;"><button type="submit" class="btn_search"><i class="icon-search"></i>查询</button></li>
           </form>
+
+          <form action="LikeSelectByDeptName" method="post">
+              <li><label class="l_f">部门名称</label>&nbsp;&nbsp;
+              <select class="form-control" name="selectDeptName" style="width: 250px;display: inline-block">
+                 <c:forEach items="${deptList}" var="d">
+                    <option value="${d.depano}">${d.depaname}</option>
+                 </c:forEach>
+              </select>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <button type="submit" class="btn btn-success btn-xs" style="display: inline-block">查询</button>
+          </form>
+
       </ul>
     </div>
      <!---->
@@ -94,10 +106,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<th width="80">性别</th>
 				<th width="120">身份证</th>
 				<th width="150">部门</th>
-				<th width="">转正日期</th>
+                <th width="70">职位</th>
+				<th width="">入职日期</th>
+                <th width="">转正日期</th>
 				<th width="180">电话</th>
                 <th width="100">积分</th>
-				<th width="70">职位</th>
 				<th width="250">操作</th>
 			</tr>
 		</thead>
@@ -110,21 +123,30 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                   <td>${emp.empsex}</td>
                   <td>${emp.idcard}</td>
                   <td>${emp.departmentId.depaname}</td>
-                  <td><fmt:formatDate value="${emp.positivedates}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                  <td>${emp.empphone}</td>
-                  <td>${emp.integralId.remainingpoints}</td>
                   <td>
                       <c:if test="${emp.position==1}">普通员工</c:if>
                       <c:if test="${emp.position==2}">经理</c:if>
                       <c:if test="${emp.position==3}">综合部经理</c:if>
                       <c:if test="${emp.position==4}">校长</c:if>
                   </td>
+                  <td><fmt:formatDate value="${emp.positivedates}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                  <c:if test="${empty emp.emptype}">
+                    <td style="color: red">未转正</td>
+                  </c:if>
+                  <c:if test="${not empty emp.emptype}">
+                      <td><fmt:formatDate value="${emp.emptype}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                  </c:if>
+                  <td>${emp.empphone}</td>
+                  <td>${emp.integralId.remainingpoints}</td>
                   <td class="td-manage">
                       <%--<a onClick="member_stop(this,'10001')"  href="javascript:;" title="停用"  class="btn btn-xs btn-success"><i class="icon-ok bigger-120"></i></a>--%>
                       <a title="编辑" href="javascript:;" class="btn btn-xs btn-info updateEmp"
                       empId="${emp.empno}" empName="${emp.empname}" sex="${emp.empsex}" idcard="${emp.idcard}" departemtName="${emp.departmentId.depano}" empphone="${emp.empphone}" position="${emp.position}"
                       ><i class="icon-edit bigger-120"></i></a>
                      <a title="删除" empId="${emp.empno}" jifen="${emp.integralId.intergralno}"  href="javascript:;" class="btn btn-xs btn-warning deleteEmp"><i class="icon-trash  bigger-120"></i></a>
+                     <c:if test="${empty emp.emptype}">
+                          <button type="button" class="btn btn-primary btn-xs Become_a_regular_worker" empId="${emp.empno}">转正</button>
+                     </c:if>
                   </td>
               </tr>
           </c:forEach>
@@ -212,6 +234,34 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </div>
 <script type="text/javascript">
     $(function(){
+        $(".Become_a_regular_worker").click(function () {
+            //员工转正
+            var empId = $(this).attr("empId");
+            layer.confirm('是否确定给该员工转正？', {
+                btn: ['确定','拒绝'] //按钮
+            }, function(){
+                $.ajax({
+                    url:"emp_Become_a_regular_worker",
+                    data:{empId:empId},
+                    type:"post",
+                    success:function (result) {
+                        if(result=="y"){
+                            layer.msg("转正成功");
+                            setTimeout(function () {
+                                location.href="Membermanagement"
+                            },1000)
+                        }else{
+                            layer.msg("转正失败");
+                            setTimeout(function () {
+                                location.href="Membermanagement"
+                            },1000)
+                        }
+                    }
+                })
+            }, function(){
+                layer.msg('拒绝成功', {icon: 1});
+            });
+        })
         /*修改用户 先把用户的值赋值到修改模态框中*/
         $(".updateEmp").on('click',function () {
             var id = $(this).attr("empId");
@@ -237,6 +287,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 type: 1,
                 title: '修改用户',
                 maxmin: true,
+                offset: '300px',
                 shadeClose: true, //点击遮罩关闭层
                 area : ['800px' , ''],
                 content:$('#update_menber_style'),
@@ -278,7 +329,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             layer.msg("删除成功");
                             setTimeout(function () {
                                 location.href="Membermanagement";
-                            },2000)
+                            },1000)
+                        }else{
+                            layer.msg("删除失败");
+                            setTimeout(function () {
+                                location.href="Membermanagement";
+                            },1000)
                         }
                     }
                 })
@@ -290,7 +346,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
             $("input[type='checkbox']:checked").each(function(i){
                 arr[i] = $(this).val();
             });
-            alert(arr)
             if(arr==""){
                 layer.msg("请选择要删除的用户");
             }else{
@@ -303,12 +358,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                             layer.msg("批量删除成功");
                             setTimeout(function () {
                                 location.href="Membermanagement"
-                            },2000)
+                            },1000)
                         }else{
                             layer.msg("批量删除失败");
                             setTimeout(function () {
                                 location.href="Membermanagement"
-                            },2000)
+                            },1000)
                         }
                     }
                 })

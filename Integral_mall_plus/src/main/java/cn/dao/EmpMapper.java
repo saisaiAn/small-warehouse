@@ -35,4 +35,6 @@ public interface EmpMapper {
     
     int updateBeforeEmpType(Emp emp);
 
+    int emp_Become_a_regular_worker(Integer empId);
+
 }

@@ -22,7 +22,7 @@
         <!--[if lte IE 8]>
 		  <link rel="stylesheet" href="${path}/static/background/assets/css/ace-ie.min.css" />
 		<![endif]-->
-		<script src="${path}/static/background/js/jquery-1.9.1.min.js"></script>
+		<script src="${path}/static/before/js/jquery-1.8.3.min.js"></script>
         <script src="${path}/static/background/assets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="${path}/static/background/js/H-ui.js"></script>
 		<script src="${path}/static/background/assets/js/typeahead-bs2.min.js"></script>
@@ -86,6 +86,9 @@
                 <c:if test="${o.orderstatus == 3}">
                     <td style="color: red">已领取</td>
                 </c:if>
+                <c:if test="${o.orderstatus == 4}">
+                    <td style="color: skyblue">用户已评价</td>
+                </c:if>
                 <td>${o.emp.empname}</td>
                 <td>${o.ordercommoditysum}</td>
                 <td>
@@ -133,15 +136,15 @@
                     data:{oid:id},
                     success:function (result) {
                         if(id=="y"){
-                            layer.msg("修改成功");
-                            setTimeout(function () {
+                            alert("修改成功");
+
                                 location.href="Orderform_html";
-                            },1000)
+
                         }else {
-                            layer.msg("修改成功");
-                            setTimeout(function () {
+                            alert("修改成功");
+
                                 location.href="Orderform_html";
-                            },1000)
+
                         }
                     }
                 })
@@ -152,7 +155,7 @@
                 type: 1,
                 title: '兑换商品',
                 maxmin: true,
-                offset: '250px',
+                offset: '350px',
                 shadeClose: true, //点击遮罩关闭层
                 area : ['500px' , ''],
                 content:$('#update_menber_style'),
@@ -167,15 +170,15 @@
                 data:{RedeemCode:RedeemCode},
                 success:function (res) {
                     if(res=="y"){
-                        layer.msg("兑换成功");
-                        setTimeout(function () {
+                        alert("兑换成功");
+
                             location.href="Orderform_html";
-                        },1000);
+
                     }else{
-                        layer.msg("兑换失败");
-                        setTimeout(function () {
+                        alert("兑换失败,兑换码输入错误cnm");
+
                             location.href="Orderform_html";
-                        },1000);
+
                     }
                 }
 

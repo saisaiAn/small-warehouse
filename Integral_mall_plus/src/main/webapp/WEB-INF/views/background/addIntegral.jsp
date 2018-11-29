@@ -82,9 +82,10 @@
             var jfNum = $("#jfNum").val();
             var zdyNR = $("#zdyNR").val();
             var zdyJfNum = $("#zdyJfNum").val();
-            if(jfSelect=="---请选择---"&&zdyNR==""){
+            if(jfSelect=="---请选择---"||zdyNR==""){
                 layer.msg("请选择内容");
-            }else if(jfSelect!="---请选择---"&&zdyNR==""){
+            }
+            if(jfSelect!="---请选择---"&&zdyNR==""&&zdyJfNum==0){
                 /*
                 * 根据考勤表申请积分
                 * 自定义没有填写
@@ -107,7 +108,8 @@
                         }
                     }
                 })
-            }else if(zdyNR!=""&&jfSelect=="---请选择---"){
+            }
+            if(zdyNR!=""&&jfSelect=="---请选择---"){
                 if(zdyJfNum==0){
                     layer.msg("自定义加减积分不能为0,请不要胡乱尝试！务必认真对待");
                 }else{
@@ -135,7 +137,7 @@
                     })
                 }
             }else{
-                if(zdyJfNum!=0){
+                if(zdyJfNum!=0&&zdyNR!=""&&jfSelect!="---请选择---"){
                     /*
                  * 考勤表自定义都选了 全部提交
                  * */
@@ -158,7 +160,7 @@
                         }
                     })
                 }else{
-                    layer.msg("自定义加减积分不能为0,请不要胡乱尝试！务必认真对待")
+                    layer.msg("请填写完整自定义内容")
                 }
             }
         })
